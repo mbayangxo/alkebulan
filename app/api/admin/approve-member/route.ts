@@ -54,9 +54,7 @@ async function yandeWelcome(app: {
       body: JSON.stringify({
         model: "claude-haiku-4-5-20251001",
         max_tokens: 80,
-        system: `You are Yande, BloomBay's AI. Write a 1-2 sentence welcome message for a newly approved member.
-Warm, personal, specific — reference their neighborhood or interests if you have them.
-Sound like a friend who already knows them, not a brand. No emojis. No "Welcome to BloomBay!" openers.`,
+        system: `You are Yande, BloomBay's AI. Write a 1-2 sentence welcome message for a newly approved member.\nWarm, personal, specific — reference their neighborhood or interests if you have them.\nSound like a friend who already knows them, not a brand. No emojis. No "Welcome to BloomBay!" openers.`,
         messages: [{ role: "user", content: context || "New member, no extra details." }],
       }),
     });
