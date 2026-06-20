@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Nav } from "@/app/components/nav";
 import Link from "next/link";
+import { WEALTH_PATHS } from "@/lib/wealth-paths";
 
 interface PathStep {
   step: number;
@@ -29,7 +31,8 @@ function parsePathFromText(text: string, goal: string): ParsedPath {
 }
 
 export default function PathPage() {
-  const [goal, setGoal] = useState("");
+  const searchParams = useSearchParams();
+  const [goal, setGoal] = useState(searchParams.get("goal") || "");
   const [country, setCountry] = useState("");
   const [currentStatus, setCurrentStatus] = useState("");
   const [budget, setBudget] = useState("");
@@ -138,11 +141,41 @@ Sequence the steps so each one enables the next. The first step should be someth
           </p>
         </div>
 
+        {/* Wealth path personas */}
+        {!result && (
+          <div className="mb-8">
+            <p className="text-xs font-semibold text-muted uppercase tracking-wide mb-4">
+              Start from a wealth path — click to pre-fill your goal
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+              {WEALTH_PATHS.map((path) => (
+                <button
+                  key={path.id}
+                  onClick={() => setGoal(path.prefilledGoal)}
+                  className={`flex flex-col items-center text-center p-3 rounded-xl border transition-all ${
+                    goal === path.prefilledGoal
+                      ? "bg-deep-green text-ivory border-deep-green"
+                      : "bg-white border-border hover:border-gold"
+                  }`}
+                >
+                  <span className="text-2xl mb-1.5">{path.emoji}</span>
+                  <span className={`text-[10px] font-bold leading-tight ${goal === path.prefilledGoal ? "text-ivory" : "text-ink"}`}>
+                    {path.persona}
+                  </span>
+                  <span className={`text-[9px] mt-0.5 ${goal === path.prefilledGoal ? "text-ivory/70" : "text-muted"}`}>
+                    {path.startingCapital}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Goal examples */}
         {!result && (
           <div className="mb-6">
             <p className="text-xs font-semibold text-muted uppercase tracking-wide mb-3">
-              Examples — click to use
+              Or try an example — click to use
             </p>
             <div className="flex flex-wrap gap-2">
               {GOAL_EXAMPLES.map((eg) => (

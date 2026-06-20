@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { AlkebulanCrest } from "@/app/components/panther-motif";
 import { createClient } from "@/lib/supabase/client";
 import { Sector, FundingType, BusinessStage, DiasporaStatus } from "@/lib/types";
+import { saveUserSignals } from "@/lib/scoring";
 
 const AFRICAN_COUNTRIES = [
   "Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi",
@@ -66,6 +67,16 @@ export default function OnboardingPage() {
 
   async function handleFinish() {
     setLoading(true);
+
+    // Save to localStorage for instant client-side scoring
+    saveUserSignals({
+      country: residenceCountry || targetCountries[0] || undefined,
+      sector: sectors[0] || undefined,
+      stage: businessStage || undefined,
+      diasporaStatus: diasporaStatus || undefined,
+      fundingTypes,
+    });
+
     const { data: { user } } = await supabase.auth.getUser();
     if (user) {
       await supabase.from("user_profiles").upsert({

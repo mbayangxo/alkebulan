@@ -5,6 +5,7 @@ import { SAMPLE_OPPORTUNITIES } from "@/lib/data/sample-opportunities";
 import { OpportunityCard } from "./components/opportunity-card";
 import { SUCCESS_STORIES } from "@/lib/data/success-stories";
 import { getHotItems } from "@/lib/data/feed-items";
+import { WEALTH_PATHS } from "@/lib/wealth-paths";
 
 const FEATURED = SAMPLE_OPPORTUNITIES.slice(0, 3);
 const FEATURED_STORIES = SUCCESS_STORIES.slice(0, 3);
@@ -199,6 +200,80 @@ export default function LandingPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── WEALTH PATHS ─── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-24">
+        <div className="text-center mb-12">
+          <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-3">7 proven paths</p>
+          <h2 className="font-display text-4xl font-bold text-ink mb-4">
+            Which path is yours?
+          </h2>
+          <p className="text-lg text-muted max-w-2xl mx-auto">
+            Every one of these has been walked before. Real programs. Real timelines.
+            Click your path and we&apos;ll build the exact roadmap for you.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          {WEALTH_PATHS.slice(0, 4).map((path) => (
+            <Link
+              key={path.id}
+              href={`/path?goal=${encodeURIComponent(path.prefilledGoal)}`}
+              className="group bg-white border border-border rounded-2xl p-5 hover:border-gold transition-all hover:shadow-md"
+            >
+              <div className="text-3xl mb-3">{path.emoji}</div>
+              <h3 className="font-display text-lg font-bold text-ink mb-1 group-hover:text-deep-green transition-colors">
+                {path.persona}
+              </h3>
+              <p className="text-xs text-muted mb-3 leading-relaxed">{path.tagline}</p>
+              <div className="flex gap-3 mb-4">
+                <div>
+                  <p className="text-[10px] text-muted uppercase tracking-wide">Start with</p>
+                  <p className="text-xs font-bold text-ink">{path.startingCapital}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-muted uppercase tracking-wide">Timeline</p>
+                  <p className="text-xs font-bold text-ink">{path.timelineMonths} months</p>
+                </div>
+              </div>
+              <div className="space-y-1.5">
+                {path.milestones.slice(0, 3).map((m, i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <div className="w-4 h-4 rounded-full border border-border text-[9px] font-bold text-muted flex items-center justify-center flex-shrink-0">
+                      {i + 1}
+                    </div>
+                    <p className="text-[10px] text-muted">{m.label}</p>
+                  </div>
+                ))}
+                <p className="text-[10px] text-gold font-semibold pl-6">+{path.milestones.length - 3} more steps →</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+          {WEALTH_PATHS.slice(4).map((path) => (
+            <Link
+              key={path.id}
+              href={`/path?goal=${encodeURIComponent(path.prefilledGoal)}`}
+              className="group bg-white border border-border rounded-2xl p-5 hover:border-gold transition-all hover:shadow-md flex gap-4 items-start"
+            >
+              <span className="text-3xl flex-shrink-0">{path.emoji}</span>
+              <div>
+                <h3 className="font-semibold text-ink text-sm group-hover:text-deep-green transition-colors">{path.persona}</h3>
+                <p className="text-[10px] text-muted mb-1">{path.tagline}</p>
+                <p className="text-[10px] text-gold font-semibold">Start from {path.startingCapital} →</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div className="text-center">
+          <Link href="/path" className="inline-flex items-center gap-2 border border-deep-green text-deep-green font-semibold px-6 py-3 rounded-xl hover:bg-deep-green hover:text-ivory transition-colors">
+            Build my custom roadmap →
+          </Link>
         </div>
       </section>
 

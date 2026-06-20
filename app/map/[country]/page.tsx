@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Nav } from "@/app/components/nav";
 import { COUNTRY_PROFILES, getCountryProfile } from "@/lib/data/country-profiles";
 import { SAMPLE_OPPORTUNITIES } from "@/lib/data/sample-opportunities";
+import { COUNTRY_INTELLIGENCE } from "@/lib/data/country-intelligence";
 
 export function generateStaticParams() {
   return COUNTRY_PROFILES.map((p) => ({ country: p.country_code.toLowerCase() }));
@@ -17,6 +18,7 @@ export default async function CountryPage({
   const profile = getCountryProfile(country.toUpperCase());
   if (!profile) notFound();
 
+  const intel = COUNTRY_INTELLIGENCE[profile.country_code.toUpperCase()];
   const countryOpps = SAMPLE_OPPORTUNITIES.filter(
     (o) =>
       o.country === profile.country ||
@@ -198,6 +200,103 @@ export default async function CountryPage({
           <div className="bg-gold/5 border border-gold/20 rounded-2xl p-6 mb-8">
             <h2 className="font-display text-lg font-bold text-gold-dark mb-3">Startup ecosystem</h2>
             <p className="text-sm text-warm-brown leading-relaxed">{profile.startup_notes}</p>
+          </div>
+        )}
+
+        {/* Business Intelligence */}
+        {intel && (
+          <div className="space-y-6 mb-8">
+            {/* Ease of doing business */}
+            <div className="bg-white border border-border rounded-2xl p-6">
+              <div className="flex items-center justify-between gap-4 mb-3">
+                <h2 className="font-display text-lg font-bold text-ink">Business climate</h2>
+                <div className="text-right">
+                  <span className="font-display text-2xl font-bold text-deep-green">{intel.easeOfBusiness.score}</span>
+                  <p className="text-xs text-muted">{intel.easeOfBusiness.rank}</p>
+                </div>
+              </div>
+              <div className="h-2 bg-border rounded-full mb-3">
+                <div className="h-full bg-deep-green rounded-full" style={{ width: `${intel.easeOfBusiness.score}%` }} />
+              </div>
+              <p className="text-sm text-muted">{intel.easeOfBusiness.note}</p>
+            </div>
+
+            {/* Best sectors */}
+            <div className="bg-white border border-border rounded-2xl p-6">
+              <h2 className="font-display text-base font-bold text-ink mb-4">Highest-opportunity sectors</h2>
+              <div className="space-y-3">
+                {intel.bestSectors.map((s, i) => (
+                  <div key={s.name} className="flex gap-3">
+                    <div className="w-6 h-6 rounded-full bg-gold/10 text-gold-dark text-xs font-bold flex items-center justify-center flex-shrink-0">
+                      {i + 1}
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm text-ink">{s.name}</p>
+                      <p className="text-xs text-muted leading-snug">{s.reason}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Registration guide */}
+            <div className="bg-white border border-border rounded-2xl p-6">
+              <h2 className="font-display text-base font-bold text-ink mb-4">How to register a business</h2>
+              <div className="space-y-4">
+                {intel.registrationSteps.map((step) => (
+                  <div key={step.step} className="flex gap-3">
+                    <div className="w-7 h-7 rounded-full bg-deep-green text-ivory text-xs font-bold flex items-center justify-center flex-shrink-0">
+                      {step.step}
+                    </div>
+                    <div>
+                      <p className="font-semibold text-sm text-ink">{step.action}</p>
+                      <p className="text-xs text-muted mt-0.5">
+                        {step.timeline} · {step.cost}
+                      </p>
+                      <p className="text-xs text-deep-green mt-0.5">{step.where}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Tax rates */}
+              <div className="bg-white border border-border rounded-2xl p-5">
+                <h2 className="font-display text-base font-bold text-ink mb-3">Key tax rates</h2>
+                <div className="space-y-2">
+                  {intel.taxRates.map((t) => (
+                    <div key={t.label} className="flex justify-between items-center py-1.5 border-b border-border last:border-0">
+                      <span className="text-xs text-muted">{t.label}</span>
+                      <span className="text-xs font-bold text-ink">{t.rate}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Mobile money */}
+              <div className="bg-white border border-border rounded-2xl p-5">
+                <h2 className="font-display text-base font-bold text-ink mb-3">Mobile money platforms</h2>
+                <div className="space-y-2">
+                  {intel.mobileMoney.map((m) => (
+                    <div key={m} className="flex items-center gap-2">
+                      <span className="text-green-500 text-sm">●</span>
+                      <span className="text-sm text-muted">{m}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <h2 className="font-display text-base font-bold text-ink mt-5 mb-3">Best banks for SMEs</h2>
+                <div className="space-y-2">
+                  {intel.keyBanks.filter(b => b.sme_friendly).map((b) => (
+                    <div key={b.name}>
+                      <p className="text-xs font-semibold text-ink">{b.name}</p>
+                      <p className="text-xs text-muted">{b.notes}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         )}
 
