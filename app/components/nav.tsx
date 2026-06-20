@@ -7,15 +7,16 @@ import { AlkebulanCrest } from "./panther-motif";
 const NAV_LINKS = [
   { label: "My Goals", href: "/goals", highlight: true },
   { label: "Your Path", href: "/path" },
-  { label: "Opportunities", href: "/dashboard" },
+  { label: "Africa is the Opportunity", href: "/opportunities", highlight: false },
+  { label: "Funding & Programs", href: "/dashboard" },
   { label: "Countries", href: "/map" },
-  { label: "Network", href: "/network" },
   { label: "Feed", href: "/feed" },
 ];
 
 const TOOLS = [
   { label: "What Should I Build?", href: "/build" },
   { label: "Brand Builder", href: "/brand" },
+  { label: "Social Media Agent", href: "/social" },
   { label: "Capital Intelligence", href: "/capital" },
   { label: "Capital Stack", href: "/capital-stack" },
   { label: "AfCFTA Navigator", href: "/afcfta" },
