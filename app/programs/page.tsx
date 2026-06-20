@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { Nav } from "@/app/components/nav";
+import { useProfile } from "@/app/components/user-profile";
 import {
   ALL_COUNTRY_PROGRAMS,
   type CountryOpportunityProfile,
@@ -21,7 +22,57 @@ const CATEGORIES = [
 
 type CategoryId = (typeof CATEGORIES)[number]["id"];
 
-function ProgramCard({ program, country, flag }: { program: ProgramEntry; country: string; flag: string }) {
+function ProgramCard({
+  program,
+  country,
+  flag,
+  userProfile,
+}: {
+  program: ProgramEntry;
+  country: string;
+  flag: string;
+  userProfile?: ReturnType<typeof useProfile>["profile"];
+}) {
+  const [explaining, setExplaining] = useState(false);
+  const [explanation, setExplanation] = useState("");
+  const [explainOpen, setExplainOpen] = useState(false);
+
+  async function explain() {
+    if (explanation) { setExplainOpen(true); return; }
+    setExplaining(true);
+    setExplainOpen(true);
+    try {
+      const res = await fetch("/api/explain", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: program.name,
+          what: program.what,
+          for_who: program.for_who,
+          amount: program.amount,
+          apply_at: program.apply_at,
+          indigenous_note: program.indigenous_note,
+          country,
+          profile: userProfile,
+        }),
+      });
+      if (!res.body) throw new Error("No stream");
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let text = "";
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        text += decoder.decode(value, { stream: true });
+        setExplanation(text);
+      }
+    } catch {
+      setExplanation("Couldn't load explanation. Try again.");
+    } finally {
+      setExplaining(false);
+    }
+  }
+
   return (
     <div className="bg-white border border-border rounded-xl p-4">
       <div className="flex items-start justify-between gap-3 mb-2">
@@ -50,11 +101,32 @@ function ProgramCard({ program, country, flag }: { program: ProgramEntry; countr
           <p className="text-[10px] text-muted">Apply at: <span className="font-semibold text-ink">{program.apply_at}</span></p>
         </div>
       )}
+
+      {/* Explain simply */}
+      <button
+        onClick={explain}
+        className="mt-3 text-[10px] font-bold text-deep-green hover:underline flex items-center gap-1"
+      >
+        💬 Explain this to me simply
+      </button>
+
+      {explainOpen && (
+        <div className="mt-2 bg-deep-green/5 border border-deep-green/20 rounded-xl px-4 py-3">
+          <div className="flex items-center justify-between mb-1.5">
+            <p className="text-[10px] font-bold text-deep-green uppercase tracking-wide">Plain language</p>
+            <button onClick={() => setExplainOpen(false)} className="text-muted text-xs hover:text-ink">×</button>
+          </div>
+          <p className="text-xs text-ink leading-relaxed whitespace-pre-wrap">
+            {explanation || (explaining ? "" : "")}
+            {explaining && <span className="inline-block w-1.5 h-3 bg-gold ml-0.5 animate-pulse align-middle" />}
+          </p>
+        </div>
+      )}
     </div>
   );
 }
 
-function CountryCard({ profile, category }: { profile: CountryOpportunityProfile; category: CategoryId }) {
+function CountryCard({ profile, category, userProfile }: { profile: CountryOpportunityProfile; category: CategoryId; userProfile?: ReturnType<typeof useProfile>["profile"] }) {
   const [expanded, setExpanded] = useState(false);
 
   const programs: { program: ProgramEntry; type: string }[] = useMemo(() => {
@@ -144,6 +216,7 @@ function CountryCard({ profile, category }: { profile: CountryOpportunityProfile
                   program={program}
                   country={profile.country}
                   flag={profile.flag}
+                  userProfile={userProfile}
                 />
               ))}
             </div>
@@ -164,12 +237,13 @@ function CountryCard({ profile, category }: { profile: CountryOpportunityProfile
 }
 
 export default function ProgramsPage() {
+  const { profile, setShowSetup } = useProfile();
   const [search, setSearch] = useState("");
   const [region, setRegion] = useState<string>("All regions");
   const [category, setCategory] = useState<CategoryId>("all");
 
   const filtered = useMemo(() => {
-    return ALL_COUNTRY_PROGRAMS.filter((p) => {
+    let results = ALL_COUNTRY_PROGRAMS.filter((p) => {
       const matchesRegion = region === "All regions" || p.region === region;
       const matchesSearch =
         !search.trim() ||
@@ -188,7 +262,17 @@ export default function ProgramsPage() {
         );
       return matchesRegion && matchesSearch;
     });
-  }, [search, region]);
+
+    // Float user's home country to top if profile is set
+    if (profile.setup_complete && profile.country_of_origin) {
+      results = [
+        ...results.filter(p => p.country === profile.country_of_origin),
+        ...results.filter(p => p.country !== profile.country_of_origin),
+      ];
+    }
+
+    return results;
+  }, [search, region, profile]);
 
   const totalPrograms = useMemo(
     () =>
@@ -279,6 +363,40 @@ export default function ProgramsPage() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
 
+        {/* Personalized banner */}
+        {profile.setup_complete ? (
+          <div className="bg-deep-green text-ivory rounded-2xl px-5 py-4 mb-5 flex items-center justify-between gap-4">
+            <div>
+              <p className="text-xs font-bold text-gold mb-0.5">
+                Showing programs for{" "}
+                {profile.gender === "woman" ? "women" : profile.gender === "man" ? "men" : "you"}
+                {profile.age ? `, age ${profile.age}` : ""}
+                {profile.country_of_origin ? ` from ${profile.country_of_origin}` : ""}
+                {profile.is_diaspora ? " (diaspora)" : ""}
+              </p>
+              <p className="text-ivory/70 text-xs">
+                {profile.country_of_origin
+                  ? `${profile.country_of_origin} programs are shown first. Indigenous notes highlighted where relevant.`
+                  : "Indigenous ownership notes are highlighted where relevant."}
+              </p>
+            </div>
+            <button
+              onClick={() => setShowSetup(true)}
+              className="text-[10px] font-bold text-gold border border-gold/30 px-3 py-1.5 rounded-full hover:bg-gold/10 transition-colors flex-shrink-0"
+            >
+              Edit profile
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={() => setShowSetup(true)}
+            className="w-full bg-gold/10 border border-gold/30 rounded-2xl px-5 py-4 mb-5 text-left hover:bg-gold/15 transition-colors"
+          >
+            <p className="text-sm font-bold text-ink mb-0.5">✨ Personalize this for me</p>
+            <p className="text-xs text-muted">Tell us who you are — we&apos;ll surface the most relevant programs for your gender, age, and country.</p>
+          </button>
+        )}
+
         {/* Search & filters */}
         <div className="bg-white border border-border rounded-2xl p-5 mb-6">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
@@ -343,8 +461,8 @@ export default function ProgramsPage() {
               <button onClick={() => setSearch("")} className="mt-3 text-xs text-gold hover:underline">Clear search</button>
             </div>
           ) : (
-            filtered.map((profile) => (
-              <CountryCard key={profile.country} profile={profile} category={category} />
+            filtered.map((countryProfile) => (
+              <CountryCard key={countryProfile.country} profile={countryProfile} category={category} userProfile={profile} />
             ))
           )}
         </div>

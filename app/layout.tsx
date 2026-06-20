@@ -4,6 +4,8 @@ import "./globals.css";
 import { PWARegister } from "@/app/components/pwa-register";
 import { LocaleProvider } from "@/app/components/locale-context";
 import { LanguageBar } from "@/app/components/language-bar";
+import { ProfileProvider, ProfileSetupModal, ProfileBadge } from "@/app/components/user-profile";
+import { ReportBug } from "@/app/components/report-bug";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -45,10 +47,15 @@ export default function RootLayout({
     <html lang="en" className={`${fraunces.variable} ${jost.variable} h-full antialiased`}>
       <body className="min-h-full text-ink bg-ivory">
         <PWARegister />
-        <LocaleProvider>
-          <LanguageBar />
-          {children}
-        </LocaleProvider>
+        <ProfileProvider>
+          <LocaleProvider>
+            <LanguageBar />
+            {children}
+            <ProfileSetupModal />
+            <ProfileBadge />
+            <ReportBug />
+          </LocaleProvider>
+        </ProfileProvider>
       </body>
     </html>
   );
