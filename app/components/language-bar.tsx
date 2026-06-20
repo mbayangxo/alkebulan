@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useLocale } from "./locale-context";
-import { LANGUAGES, CURRENCIES, COUNTRY_LOCALE } from "@/lib/locale";
+import { LANGUAGES, CURRENCIES, COUNTRY_LOCALE, Language } from "@/lib/locale";
 
 const AFRICAN_COUNTRIES = [
   "Nigeria", "Ghana", "Kenya", "Senegal", "South Africa", "Rwanda", "Morocco",
@@ -12,9 +12,13 @@ const AFRICAN_COUNTRIES = [
   "UK diaspora", "France diaspora", "US diaspora", "Canada diaspora",
 ];
 
+// Languages where AI translations are near-native quality
+const HIGH_QUALITY_LANGS = new Set(["en", "fr", "ar", "pt", "sw"]);
+
 export function LanguageBar() {
   const { lang, currency, country, setLang, setCurrency, setCountry, t } = useLocale();
   const [open, setOpen] = useState(false);
+  const [showCorrectionTip, setShowCorrectionTip] = useState(false);
 
   const currentLang = LANGUAGES.find((l) => l.code === lang) ?? LANGUAGES[0];
   const currentCurrency = CURRENCIES[currency] ?? CURRENCIES["USD"];
@@ -133,6 +137,30 @@ export function LanguageBar() {
       {/* Backdrop to close */}
       {open && (
         <div className="fixed inset-0 z-30" onClick={() => setOpen(false)} />
+      )}
+
+      {/* Translation quality note for African languages */}
+      {!HIGH_QUALITY_LANGS.has(lang) && (
+        <div className="bg-gold/10 border-b border-gold/20 py-1.5 px-4 text-[10px] text-gold/90 flex items-center justify-between gap-4 max-w-7xl mx-auto">
+          <span>
+            AI translations in {LANGUAGES.find((l: Language) => l.code === lang)?.native ?? lang} are approximate — African languages are complex and we&apos;re still learning.
+            {lang === "wo" && " Native Wolof speakers: your corrections help Yande improve."}
+          </span>
+          <button
+            onClick={() => setShowCorrectionTip(!showCorrectionTip)}
+            className="text-gold font-semibold whitespace-nowrap hover:underline flex-shrink-0"
+          >
+            Help improve →
+          </button>
+        </div>
+      )}
+
+      {showCorrectionTip && !HIGH_QUALITY_LANGS.has(lang) && (
+        <div className="bg-ink border-b border-ivory/10 px-4 py-3 text-xs text-ivory/80 max-w-7xl mx-auto">
+          <p className="font-semibold text-gold mb-1">How to help Yande learn {LANGUAGES.find((l: Language) => l.code === lang)?.native}</p>
+          <p>When you see a translation that&apos;s wrong or unnatural, tap the AI response and use the &ldquo;Suggest correction&rdquo; button. Your correction gets saved and Yande uses it in future responses. Community corrections make her smarter for everyone.</p>
+          <button onClick={() => setShowCorrectionTip(false)} className="text-gold/60 hover:text-gold mt-2">Close</button>
+        </div>
       )}
     </div>
   );

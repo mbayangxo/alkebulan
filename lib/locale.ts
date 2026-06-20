@@ -18,6 +18,13 @@ export const LANGUAGES: Language[] = [
   { code: "yo", name: "Yoruba", native: "Yorùbá", flag: "🇳🇬" },
   { code: "ig", name: "Igbo", native: "Igbo", flag: "🇳🇬" },
   { code: "wo", name: "Wolof", native: "Wolof", flag: "🇸🇳" },
+  { code: "ff", name: "Fulfulde", native: "Fulfulde / Pulaar", flag: "🇸🇳" },
+  { code: "bm", name: "Bambara", native: "Bamanankan", flag: "🇲🇱" },
+  { code: "tw", name: "Twi", native: "Twi (Akan)", flag: "🇬🇭" },
+  { code: "ln", name: "Lingala", native: "Lingála", flag: "🇨🇩" },
+  { code: "zu", name: "Zulu", native: "isiZulu", flag: "🇿🇦" },
+  { code: "so", name: "Somali", native: "Soomaali", flag: "🇸🇴" },
+  { code: "ti", name: "Tigrinya", native: "ትግርኛ", flag: "🇪🇷" },
   { code: "am", name: "Amharic", native: "አማርኛ", flag: "🇪🇹" },
   { code: "ar", name: "Arabic", native: "العربية", flag: "🇲🇦", rtl: true },
   { code: "pt", name: "Portuguese", native: "Português", flag: "🇦🇴" },
@@ -338,7 +345,7 @@ export function t(lang: string, key: TranslationKey): string {
 }
 
 // System prompt language instruction for AI calls
-export function langInstruction(langCode: string): string {
+export function langInstruction(langCode: string, corrections?: string): string {
   const map: Record<string, string> = {
     en: "Respond in English.",
     fr: "Réponds en français. Utilise un langage accessible et motivant.",
@@ -346,10 +353,37 @@ export function langInstruction(langCode: string): string {
     ha: "Ka amsa da Hausa. Yi amfani da harshe mai sauƙi kuma mai ƙarfafawa.",
     yo: "Dáhùn ní èdè Yorùbá. Lo èdè tó rọrùn àti tó fún ìmúlárugẹ.",
     ig: "Zaghachi n'asụsụ Igbo. Jiri asụsụ dị mfe ma na-eme ka ọ dị ume.",
-    wo: "Yëgël ci Wolof. Jëfandikoo làkk bu yomb te bu noppiku.",
+    wo: "Yëgël ci Wolof. Jëfandikoo làkk bu yomb te bu noppiku. Sunu AI amna seen tëralinu ci Wolof — xamal ne man dafa amoon njëk yu baaxul.",
+    ff: "Jaɓɓo e Fulfulde / Pulaar. Jëfandikoo mbaadiiji ɗi yimɓe fahmata. Yande waawi taƴtaali Fulfulde kañum ɗoo — ñoɓu e kattanɗe moodibaaɓe.",
+    bm: "Jaabi Bamanankan na. Kuma yèrèlen ni jigiyalen ye. Yande tɛ Bamanankan kalan ka ɲɛ — i ka kɔlɔsi di n'i ye segin.",
+    tw: "Gye so wɔ Twi (Akan) kasa mu. Fa kasa a yɛde nti ara. Yande nim Twi kakra — wo tumiboa yɛn na yɛakyerɛ yaw biara.",
+    ln: "Yambi na Lingála. Sálá maloba ya pɛtɛɛ mpe ya botɔndi. Yande ayebi Lingála moke — support yo ekosalisa ye akola.",
+    zu: "Phendula ngesiZulu. Sebenzisa ulimi olulula nolwezwayo. Izwi eliqinile liyasiza—siza usile.",
+    so: "Ka jawaab Soomaali. Isticmaal luuqad sahlan oo dhiirigelisa. Yande waxay garataa Soomaali xoogaa—caawinta saxaafadda ayaa muhiim ah.",
+    ti: "ብትግርኛ መልሲ ሃቦ። ቀሊልን ዘበርታዕን ቋንቋ ተጠቀም። Yande ትግርኛ ውሑድ ትፈልጥ — ምርሓዊ ምቕራብ ጠቓሚ እዩ።",
     am: "በአማርኛ ምላሽ ስጥ። ቀላልና አበረታች ቋንቋ ተጠቀም።",
     ar: "أجب باللغة العربية. استخدم لغة بسيطة ومحفزة.",
     pt: "Responda em português. Use linguagem simples e motivadora.",
   };
-  return map[langCode] ?? "Respond in English.";
+  const base = map[langCode] ?? "Respond in English.";
+  if (corrections) {
+    return `${base}\n\nCommunity-verified translations to use (provided by native speakers — use these exact phrases when relevant):\n${corrections}`;
+  }
+  return base;
+}
+
+// Load community corrections from localStorage for a given language
+export function loadCorrections(langCode: string): string {
+  if (typeof localStorage === "undefined") return "";
+  const stored = localStorage.getItem(`yande_corrections_${langCode}`);
+  return stored ?? "";
+}
+
+// Save a community correction to localStorage
+export function saveCorrection(langCode: string, original: string, correction: string): void {
+  if (typeof localStorage === "undefined") return;
+  const existing = loadCorrections(langCode);
+  const entry = `- Instead of "${original}", say "${correction}"`;
+  const updated = existing ? `${existing}\n${entry}` : entry;
+  localStorage.setItem(`yande_corrections_${langCode}`, updated);
 }
