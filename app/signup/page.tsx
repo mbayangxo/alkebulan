@@ -6,9 +6,10 @@ import { AlkebulanCrest } from "@/app/components/panther-motif";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 
-export default function LoginPage() {
+export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
@@ -18,12 +19,16 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
     setError("");
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { data: { full_name: name } },
+    });
     if (error) {
       setError(error.message);
       setLoading(false);
     } else {
-      router.push("/dashboard");
+      router.push("/onboarding");
     }
   }
 
@@ -39,8 +44,10 @@ export default function LoginPage() {
         </div>
 
         <div className="bg-ivory rounded-2xl p-8">
-          <h1 className="font-display text-2xl font-bold text-ink mb-2">Welcome back</h1>
-          <p className="text-muted text-sm mb-8">Sign in to see your matched opportunities</p>
+          <h1 className="font-display text-2xl font-bold text-ink mb-2">Create your account</h1>
+          <p className="text-muted text-sm mb-8">
+            Free forever to browse. We&apos;ll match you to opportunities in minutes.
+          </p>
 
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm mb-6">
@@ -49,6 +56,18 @@ export default function LoginPage() {
           )}
 
           <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label className="block text-sm font-semibold text-ink mb-2">Full name</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                placeholder="Your name"
+                className="w-full border border-border rounded-xl px-4 py-3 text-sm bg-white text-ink placeholder:text-muted/50 focus:outline-none focus:border-gold"
+              />
+            </div>
+
             <div>
               <label className="block text-sm font-semibold text-ink mb-2">Email</label>
               <input
@@ -68,7 +87,8 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                placeholder="••••••••"
+                minLength={8}
+                placeholder="At least 8 characters"
                 className="w-full border border-border rounded-xl px-4 py-3 text-sm bg-white text-ink placeholder:text-muted/50 focus:outline-none focus:border-gold"
               />
             </div>
@@ -78,14 +98,18 @@ export default function LoginPage() {
               disabled={loading}
               className="w-full bg-deep-green text-ivory font-bold py-3.5 rounded-xl hover:bg-mid-green transition-colors disabled:opacity-60"
             >
-              {loading ? "Signing in..." : "Sign in"}
+              {loading ? "Creating account..." : "Create account & find opportunities"}
             </button>
           </form>
 
-          <p className="text-center text-sm text-muted mt-6">
-            No account yet?{" "}
-            <Link href="/signup" className="text-deep-green font-semibold hover:text-gold transition-colors">
-              Create one for free
+          <p className="text-xs text-muted text-center mt-4 leading-relaxed">
+            By creating an account you agree to our terms. Your data is never sold.
+          </p>
+
+          <p className="text-center text-sm text-muted mt-4">
+            Already have an account?{" "}
+            <Link href="/login" className="text-deep-green font-semibold hover:text-gold transition-colors">
+              Sign in
             </Link>
           </p>
         </div>
