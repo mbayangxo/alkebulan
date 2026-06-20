@@ -5,11 +5,11 @@ import { useState } from "react";
 import { AlkebulanCrest } from "./panther-motif";
 
 const NAV_LINKS = [
-  { label: "Your Path", href: "/path", highlight: true },
+  { label: "My Goals", href: "/goals", highlight: true },
+  { label: "Your Path", href: "/path" },
   { label: "Opportunities", href: "/dashboard" },
-  { label: "Procurement", href: "/procurement" },
-  { label: "Network", href: "/network" },
   { label: "Countries", href: "/map" },
+  { label: "Network", href: "/network" },
   { label: "Feed", href: "/feed" },
 ];
 

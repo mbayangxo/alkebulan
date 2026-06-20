@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Jost } from "next/font/google";
 import "./globals.css";
 import { PWARegister } from "@/app/components/pwa-register";
+import { LocaleProvider } from "@/app/components/locale-context";
+import { LanguageBar } from "@/app/components/language-bar";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -43,7 +45,10 @@ export default function RootLayout({
     <html lang="en" className={`${fraunces.variable} ${jost.variable} h-full antialiased`}>
       <body className="min-h-full text-ink bg-ivory">
         <PWARegister />
-        {children}
+        <LocaleProvider>
+          <LanguageBar />
+          {children}
+        </LocaleProvider>
       </body>
     </html>
   );
