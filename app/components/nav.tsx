@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: "Your Path", href: "/path" },
   { label: "Africa is the Opportunity", href: "/opportunities", highlight: false },
   { label: "Funding & Programs", href: "/dashboard" },
+  { label: "Programs Database", href: "/programs" },
   { label: "Countries", href: "/map" },
   { label: "Feed", href: "/feed" },
 ];
