@@ -15,6 +15,8 @@ const NAV_LINKS = [
 
 const TOOLS = [
   { label: "What Should I Build?", href: "/build" },
+  { label: "Brand Builder", href: "/brand" },
+  { label: "Capital Intelligence", href: "/capital" },
   { label: "Capital Stack", href: "/capital-stack" },
   { label: "AfCFTA Navigator", href: "/afcfta" },
   { label: "Bankability Engine", href: "/bankability" },

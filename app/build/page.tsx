@@ -11,6 +11,8 @@ import {
   WASTE_OPPORTUNITIES,
   DISTRIBUTION_PLAYBOOKS,
 } from "@/lib/data/brand-intelligence";
+import { COUNTRY_TRADE_PROFILES } from "@/lib/data/import-export-gaps";
+import { BRAND_DEEP_DIVES } from "@/lib/data/brand-deep-dives";
 
 const AFRICAN_COUNTRIES = [
   "Nigeria", "Ghana", "Kenya", "Senegal", "South Africa", "Rwanda", "Morocco",
@@ -51,6 +53,18 @@ export default function BuildPage() {
 
   const countryWaste = WASTE_OPPORTUNITIES.filter(
     (w) => country && w.countries.some((c) => c.toLowerCase().includes(country.toLowerCase()) || country.toLowerCase().includes(c.toLowerCase()))
+  );
+
+  const countryTradeProfile = COUNTRY_TRADE_PROFILES.find(
+    (p) => country && p.country.toLowerCase().includes(country.toLowerCase())
+  );
+
+  const countryBrandDive = BRAND_DEEP_DIVES.find(
+    (d) => country && d.africa_product_ideas.some(() => true) &&
+      (country.toLowerCase().includes("morocco") ? d.id === "josie-maran" :
+       country.toLowerCase().includes("ghana") || country.toLowerCase().includes("nigeria") || country.toLowerCase().includes("burkina") ? d.id === "the-body-shop-shea" :
+       country.toLowerCase().includes("kenya") || country.toLowerCase().includes("ethiopia") ? d.id === "starbucks-ethiopian-coffee" :
+       d.id === "josie-maran")
   );
 
   async function handleAnalyze() {
@@ -406,6 +420,123 @@ Give 3 specific businesses. Make it feel like advice from someone who has actual
                   <p className="text-xs text-warm-brown leading-snug">{gap.imported}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {/* ── IMPORT/EXPORT REALITY ── */}
+        {countryTradeProfile && (
+          <div className="mb-5 space-y-3">
+            <p className="text-xs font-bold text-muted uppercase tracking-wide">
+              The import problem — what {country} buys that it shouldn&apos;t have to
+            </p>
+            <div className="bg-red-50 border border-red-100 rounded-2xl p-5">
+              <div className="grid grid-cols-3 gap-3 mb-4">
+                <div>
+                  <p className="text-[10px] text-muted mb-0.5">Total imports</p>
+                  <p className="text-sm font-bold text-ink">{countryTradeProfile.total_imports_usd}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-muted mb-0.5">Total exports</p>
+                  <p className="text-sm font-bold text-deep-green">{countryTradeProfile.total_exports_usd}</p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-muted mb-0.5">Export/import ratio</p>
+                  <p className="text-sm font-bold text-red-600">{countryTradeProfile.export_to_import_ratio}</p>
+                </div>
+              </div>
+              <p className="text-xs text-ink mb-3 leading-relaxed font-medium">{countryTradeProfile.import_dependency_summary}</p>
+              <div className="space-y-2">
+                {countryTradeProfile.what_we_import_that_we_shouldnt.slice(0, 4).map((item) => (
+                  <div key={item.product} className="bg-white rounded-xl p-3">
+                    <div className="flex items-start justify-between gap-2 mb-1">
+                      <p className="text-xs font-bold text-ink">{item.product}</p>
+                      <span className="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded-full flex-shrink-0">{item.annual_import_value}</span>
+                    </div>
+                    <p className="text-[10px] text-warm-brown leading-snug mb-1">{item.why_absurd}</p>
+                    <p className="text-[10px] font-semibold text-deep-green">Opportunity: {item.opportunity}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {countryTradeProfile.top_raw_exports.length > 0 && (
+              <div className="bg-gold/8 border border-gold/20 rounded-2xl p-5">
+                <p className="text-xs font-bold text-gold-dark mb-3">What {country} exports raw — and could be processing instead</p>
+                <div className="space-y-2">
+                  {countryTradeProfile.top_raw_exports.map((exp) => (
+                    <div key={exp.product} className="bg-white rounded-xl p-3">
+                      <div className="flex items-center justify-between gap-2 mb-1">
+                        <p className="text-xs font-bold text-ink">{exp.product}</p>
+                        <span className="text-[10px] text-muted flex-shrink-0">{exp.annual_value}/yr</span>
+                      </div>
+                      <p className="text-[10px] text-muted">Processed by: {exp.who_processes_it}</p>
+                      <p className="text-[10px] text-muted">Processed value: {exp.processed_value}</p>
+                      <p className="text-[10px] font-semibold text-red-600 mt-0.5 leading-snug">{exp.the_loss}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="bg-deep-green text-ivory rounded-xl p-4">
+              <p className="text-xs font-bold text-gold mb-1">The verdict</p>
+              <p className="text-sm text-ivory/90 leading-relaxed">{countryTradeProfile.the_verdict}</p>
+            </div>
+          </div>
+        )}
+
+        {/* ── BRAND DEEP DIVE ── */}
+        {countryBrandDive && (
+          <div className="mb-5">
+            <p className="text-xs font-bold text-muted uppercase tracking-wide mb-3">
+              Who is making money from your country&apos;s raw materials right now
+            </p>
+            <div className="bg-white border border-border rounded-2xl overflow-hidden">
+              <div className="bg-red-900 text-ivory p-5">
+                <p className="text-gold text-xs font-bold uppercase tracking-widest mb-1">{countryBrandDive.brand_name}</p>
+                <p className="text-xl font-display font-bold mb-1">Est. {countryBrandDive.annual_revenue_est}/year</p>
+                <p className="text-ivory/70 text-xs">Founded {countryBrandDive.founded} by {countryBrandDive.founder.name} ({countryBrandDive.founder.from})</p>
+              </div>
+              <div className="p-5 space-y-4">
+                <div>
+                  <p className="text-xs font-bold text-muted uppercase tracking-widest mb-1">Who they are</p>
+                  <p className="text-sm text-ink leading-relaxed">{countryBrandDive.founder.background}</p>
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-muted uppercase tracking-widest mb-1">What they built</p>
+                  <p className="text-sm text-ink leading-relaxed">{countryBrandDive.elevator_pitch}</p>
+                </div>
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="bg-red-50 rounded-xl p-3 text-center">
+                    <p className="text-[10px] text-red-600 mb-0.5">Africa earns</p>
+                    <p className="text-xs font-bold text-red-800">{countryBrandDive.what_africa_earns}</p>
+                  </div>
+                  <div className="bg-warm-ivory rounded-xl p-3 text-center">
+                    <p className="text-[10px] text-muted mb-0.5">They earn</p>
+                    <p className="text-xs font-bold text-ink">{countryBrandDive.what_they_earn}</p>
+                  </div>
+                  <div className="bg-deep-green/5 rounded-xl p-3 text-center">
+                    <p className="text-[10px] text-deep-green mb-0.5">Multiplier</p>
+                    <p className="text-xs font-bold text-deep-green">{countryBrandDive.multiplier}</p>
+                  </div>
+                </div>
+                <div className="bg-deep-green text-ivory rounded-xl p-4">
+                  <p className="text-gold text-xs font-bold mb-1">The friend take</p>
+                  <p className="text-sm text-ivory/90 leading-relaxed">{countryBrandDive.the_friend_take}</p>
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-ink mb-2">What you can build instead</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                    {countryBrandDive.africa_product_ideas.map((idea, i) => (
+                      <div key={i} className="flex gap-2 text-xs text-ink bg-warm-ivory rounded-lg p-2.5">
+                        <span className="text-gold flex-shrink-0">→</span>
+                        <span>{idea}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )}
