@@ -1,0 +1,226 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Nav } from "@/app/components/nav";
+import { SAMPLE_OPPORTUNITIES } from "@/lib/data/sample-opportunities";
+
+export default async function OpportunityPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const opp = SAMPLE_OPPORTUNITIES.find((o) => o.id === id);
+  if (!opp) notFound();
+
+  const deadlineDate = opp.deadline ? new Date(opp.deadline) : null;
+  const now = new Date();
+  const daysLeft = deadlineDate
+    ? Math.ceil((deadlineDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24))
+    : null;
+  const isUrgent = daysLeft !== null && daysLeft <= 14 && daysLeft > 0;
+  const isExpired = daysLeft !== null && daysLeft <= 0;
+
+  const formattedAmount = opp.amount
+    ? new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: opp.currency,
+        maximumFractionDigits: 0,
+      }).format(opp.amount)
+    : null;
+
+  const formattedAmountMax = opp.amount_max
+    ? new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: opp.currency,
+        maximumFractionDigits: 0,
+      }).format(opp.amount_max)
+    : null;
+
+  return (
+    <div className="min-h-screen bg-warm-ivory">
+      <Nav />
+
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+        {/* Breadcrumb */}
+        <div className="flex items-center gap-2 text-xs text-muted mb-6">
+          <Link href="/dashboard" className="hover:text-deep-green transition-colors">
+            Opportunities
+          </Link>
+          <span>/</span>
+          <span className="text-ink">{opp.title}</span>
+        </div>
+
+        {/* Type + Country */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-deep-green/10 text-deep-green">
+            {opp.type}
+          </span>
+          <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-warm-ivory border border-border text-warm-brown">
+            {opp.country}
+          </span>
+          {opp.diaspora_allowed && (
+            <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gold/10 text-gold-dark">
+              Diaspora eligible
+            </span>
+          )}
+          {opp.verified_status === "verified" && (
+            <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-green-100 text-green-800">
+              ✓ Verified
+            </span>
+          )}
+        </div>
+
+        {/* Title */}
+        <h1 className="font-display text-3xl font-bold text-ink mb-2 leading-tight">
+          {opp.title}
+        </h1>
+        <p className="text-muted text-sm mb-8">Source: {opp.source_name}</p>
+
+        {/* Key facts */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+          {formattedAmount && (
+            <div className="bg-white border border-border rounded-xl p-4">
+              <p className="text-xs text-muted mb-1">Amount</p>
+              <p className="font-bold text-gold-dark">
+                {formattedAmountMax ? `${formattedAmount} – ${formattedAmountMax}` : formattedAmount}
+              </p>
+            </div>
+          )}
+          {deadlineDate && (
+            <div className="bg-white border border-border rounded-xl p-4">
+              <p className="text-xs text-muted mb-1">Deadline</p>
+              <p className={`font-bold text-sm ${isUrgent ? "text-red-earth" : isExpired ? "text-muted line-through" : "text-ink"}`}>
+                {isExpired ? "Expired" : isUrgent ? `${daysLeft} days left` : deadlineDate.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+              </p>
+            </div>
+          )}
+          {(opp.eligibility_age_min || opp.eligibility_age_max) && (
+            <div className="bg-white border border-border rounded-xl p-4">
+              <p className="text-xs text-muted mb-1">Age</p>
+              <p className="font-bold text-sm text-ink">
+                {opp.eligibility_age_min && opp.eligibility_age_max
+                  ? `${opp.eligibility_age_min}–${opp.eligibility_age_max}`
+                  : opp.eligibility_age_min
+                  ? `${opp.eligibility_age_min}+`
+                  : `Under ${opp.eligibility_age_max}`}
+              </p>
+            </div>
+          )}
+          {opp.eligibility_gender && opp.eligibility_gender !== "All" && (
+            <div className="bg-white border border-border rounded-xl p-4">
+              <p className="text-xs text-muted mb-1">Gender</p>
+              <p className="font-bold text-sm text-ink">{opp.eligibility_gender}</p>
+            </div>
+          )}
+        </div>
+
+        {/* Description */}
+        <div className="bg-white border border-border rounded-2xl p-6 mb-6">
+          <h2 className="font-display text-lg font-bold text-ink mb-3">About this opportunity</h2>
+          <p className="text-sm text-muted leading-relaxed">{opp.description || opp.summary}</p>
+          {opp.notes && (
+            <p className="text-xs text-muted/70 mt-3 italic">{opp.notes}</p>
+          )}
+        </div>
+
+        {/* Eligibility */}
+        {opp.eligibility_citizenship && opp.eligibility_citizenship.length > 0 && (
+          <div className="bg-white border border-border rounded-2xl p-6 mb-6">
+            <h2 className="font-display text-lg font-bold text-ink mb-4">Eligibility</h2>
+            <div className="space-y-3">
+              <div>
+                <p className="text-xs font-semibold text-muted uppercase tracking-wide mb-1">Citizenship</p>
+                <p className="text-sm text-ink">{opp.eligibility_citizenship.join(", ")}</p>
+              </div>
+              {opp.eligibility_residence && (
+                <div>
+                  <p className="text-xs font-semibold text-muted uppercase tracking-wide mb-1">Residence</p>
+                  <p className="text-sm text-ink">{opp.eligibility_residence.join(", ")}</p>
+                </div>
+              )}
+              {opp.business_stage_required && opp.business_stage_required.length > 0 && (
+                <div>
+                  <p className="text-xs font-semibold text-muted uppercase tracking-wide mb-1">Business stage</p>
+                  <p className="text-sm text-ink">{opp.business_stage_required.join(", ")}</p>
+                </div>
+              )}
+              {opp.sectors && opp.sectors.length > 0 && (
+                <div>
+                  <p className="text-xs font-semibold text-muted uppercase tracking-wide mb-1">Sectors</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {opp.sectors.map((s) => (
+                      <span key={s} className="text-xs px-2 py-0.5 rounded-full bg-warm-ivory border border-border text-ink">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Documents */}
+        {opp.documents_required && opp.documents_required.length > 0 && (
+          <div className="bg-white border border-border rounded-2xl p-6 mb-6">
+            <h2 className="font-display text-lg font-bold text-ink mb-4">Documents required</h2>
+            <ul className="space-y-2">
+              {opp.documents_required.map((doc, i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-ink">
+                  <span className="text-gold mt-0.5">•</span>
+                  {doc}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Application steps */}
+        {opp.application_steps && opp.application_steps.length > 0 && (
+          <div className="bg-white border border-border rounded-2xl p-6 mb-6">
+            <h2 className="font-display text-lg font-bold text-ink mb-4">How to apply</h2>
+            <ol className="space-y-3">
+              {opp.application_steps.map((step, i) => (
+                <li key={i} className="flex items-start gap-3 text-sm text-ink">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-deep-green text-ivory text-xs font-bold flex items-center justify-center">
+                    {i + 1}
+                  </span>
+                  {step}
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+
+        {/* Tags */}
+        {opp.tags && opp.tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-8">
+            {opp.tags.map((tag) => (
+              <span key={tag} className="text-xs px-2.5 py-1 rounded-full bg-ivory border border-border text-muted">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* CTA */}
+        <div className="flex gap-3">
+          <a
+            href={opp.source_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 bg-deep-green text-ivory font-bold py-4 rounded-xl hover:bg-mid-green transition-colors text-center"
+          >
+            Apply now →
+          </a>
+          <Link
+            href="/assistant"
+            className="flex-1 border border-deep-green text-deep-green font-bold py-4 rounded-xl hover:bg-deep-green hover:text-ivory transition-colors text-center"
+          >
+            Get AI coaching
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
