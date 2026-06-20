@@ -15,19 +15,22 @@ const NAV_LINKS = [
 ];
 
 const TOOLS = [
-  { label: "What Should I Build?", href: "/build" },
-  { label: "Brand Builder", href: "/brand" },
-  { label: "Social Media Agent", href: "/social" },
-  { label: "Capital Intelligence", href: "/capital" },
+  { label: "Meet the Agents →", href: "/agents" },
+  { label: "Amara — Research Agent", href: "/agents/amara" },
+  { label: "Zuri — QA Guardian", href: "/agents/zuri" },
+  { label: "Ada — Social Storyteller", href: "/social" },
+  { label: "Kofi — Capital Analyst", href: "/capital" },
+  { label: "Imani — AI Coach", href: "/assistant" },
+  { label: "Akin — Business Builder", href: "/build" },
+  { label: "Nadia — Brand Builder", href: "/brand" },
+  { label: "Olu — AfCFTA Navigator", href: "/afcfta" },
   { label: "Capital Stack", href: "/capital-stack" },
-  { label: "AfCFTA Navigator", href: "/afcfta" },
   { label: "Bankability Engine", href: "/bankability" },
   { label: "Budget Intelligence", href: "/budget-intel" },
   { label: "Regulatory Map", href: "/regulatory" },
   { label: "Remittance → Ownership", href: "/remittance" },
   { label: "First-Order Collective", href: "/collective" },
   { label: "Succession Planner", href: "/succession" },
-  { label: "AI Coach", href: "/assistant" },
   { label: "Success Maps", href: "/success" },
 ];
 
