@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Nav } from "@/app/components/nav";
 import { ALL_COUNTRY_PROGRAMS } from "@/lib/data/all-country-programs";
 import Link from "next/link";
@@ -99,10 +99,11 @@ export default function AmaraPage() {
   const [question, setQuestion] = useState("");
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
-  const [saved, setSaved] = useState<SavedResearch[]>(() => {
-    if (typeof window === "undefined") return [];
-    try { return JSON.parse(localStorage.getItem("amara_research") || "[]"); } catch { return []; }
-  });
+  const [saved, setSaved] = useState<SavedResearch[]>([]);
+
+  useEffect(() => {
+    try { setSaved(JSON.parse(localStorage.getItem("amara_research") || "[]")); } catch {}
+  }, []);
 
   const countryList = ALL_COUNTRY_PROGRAMS.map(p => `${p.flag} ${p.country}`);
 

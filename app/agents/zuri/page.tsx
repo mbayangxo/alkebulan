@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Nav } from "@/app/components/nav";
 import Link from "next/link";
 
@@ -61,10 +61,11 @@ function ReportDisplay({ text, loading }: { text: string; loading: boolean }) {
 export default function ZuriPage() {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
-  const [reports, setReports] = useState<QAReport[]>(() => {
-    if (typeof window === "undefined") return [];
-    try { return JSON.parse(localStorage.getItem("zuri_reports") || "[]"); } catch { return []; }
-  });
+  const [reports, setReports] = useState<QAReport[]>([]);
+
+  useEffect(() => {
+    try { setReports(JSON.parse(localStorage.getItem("zuri_reports") || "[]")); } catch {}
+  }, []);
 
   async function runQA() {
     setLoading(true);
