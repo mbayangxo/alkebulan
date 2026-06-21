@@ -8,8 +8,9 @@ const NAV_LINKS = [
   { label: "My Path 🗺", href: "/path", highlight: true },
   { label: "My Matches ⚡", href: "/matches" },
   { label: "Programs", href: "/programs" },
+  { label: "Procurement", href: "/procurement" },
+  { label: "Feed", href: "/feed" },
   { label: "Countries", href: "/map" },
-  { label: "Newsroom", href: "/newsroom" },
 ];
 
 const TOOLS = [

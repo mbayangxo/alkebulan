@@ -4,17 +4,58 @@ import { useState } from "react";
 import { Nav } from "@/app/components/nav";
 
 const PROCUREMENT_PORTALS = [
-  { country: "Nigeria", name: "Bureau of Public Procurement", url: "https://www.bpp.gov.ng", flag: "🇳🇬" },
-  { country: "Ghana", name: "Public Procurement Authority", url: "https://www.ppaghana.org", flag: "🇬🇭" },
-  { country: "Kenya", name: "Public Procurement Information Portal", url: "https://ppip.go.ke", flag: "🇰🇪" },
-  { country: "Senegal", name: "ARMP — Marchés Publics", url: "https://marchespublics.sn", flag: "🇸🇳" },
-  { country: "Rwanda", name: "Rwanda Public Procurement Authority", url: "https://www.rppa.gov.rw", flag: "🇷🇼" },
-  { country: "Morocco", name: "Marchés Publics du Maroc", url: "https://www.marchespublics.gov.ma", flag: "🇲🇦" },
-  { country: "South Africa", name: "Government Tender Bulletin", url: "https://www.etenders.gov.za", flag: "🇿🇦" },
-  { country: "Ethiopia", name: "Public Procurement and Property", url: "https://www.pppa.gov.et", flag: "🇪🇹" },
-  { country: "Tanzania", name: "Tanzania Procurement Portal", url: "https://www.ppra.go.tz", flag: "🇹🇿" },
-  { country: "Uganda", name: "PPDA Uganda", url: "https://www.ppda.go.ug", flag: "🇺🇬" },
+  // Pan-African / UN
+  { country: "UN System (40+ countries)", name: "UNGM — UN Global Marketplace", url: "https://www.ungm.org", flag: "🌍", region: "Pan-African" },
+  // West Africa
+  { country: "Nigeria", name: "Bureau of Public Procurement", url: "https://www.bpp.gov.ng", flag: "🇳🇬", region: "West Africa" },
+  { country: "Ghana", name: "Public Procurement Authority", url: "https://www.ppaghana.org", flag: "🇬🇭", region: "West Africa" },
+  { country: "Senegal", name: "ARMP — Marchés Publics", url: "https://www.dcmp.gouv.sn", flag: "🇸🇳", region: "West Africa" },
+  { country: "Côte d'Ivoire", name: "Marchés Publics de Côte d'Ivoire", url: "https://www.marchespublics.ci", flag: "🇨🇮", region: "West Africa" },
+  { country: "Cameroon", name: "ARMP Cameroun", url: "https://www.armp.cm", flag: "🇨🇲", region: "West Africa" },
+  { country: "Mali", name: "DGMP — Direction Générale", url: "https://www.dgmp.gouv.ml", flag: "🇲🇱", region: "West Africa" },
+  { country: "Burkina Faso", name: "DGCMEF Marchés Publics", url: "https://www.dgcmef.gov.bf", flag: "🇧🇫", region: "West Africa" },
+  { country: "Guinea", name: "Marchés Publics Guinée", url: "https://www.marchespublics.gov.gn", flag: "🇬🇳", region: "West Africa" },
+  { country: "Benin", name: "ARMP Bénin", url: "https://www.armp.bj", flag: "🇧🇯", region: "West Africa" },
+  { country: "Togo", name: "ARMP Togo", url: "https://www.armp.tg", flag: "🇹🇬", region: "West Africa" },
+  { country: "Sierra Leone", name: "NPPA Sierra Leone", url: "https://www.nppa.gov.sl", flag: "🇸🇱", region: "West Africa" },
+  { country: "Liberia", name: "PPCC Liberia", url: "https://www.ppcc.gov.lr", flag: "🇱🇷", region: "West Africa" },
+  { country: "Gambia", name: "GPPA Gambia", url: "https://www.gppa.gm", flag: "🇬🇲", region: "West Africa" },
+  { country: "Cabo Verde", name: "Portal de Compras Públicas", url: "https://www.portalcompras.gov.cv", flag: "🇨🇻", region: "West Africa" },
+  { country: "Niger", name: "ARMP Niger", url: "https://www.armp.ne", flag: "🇳🇪", region: "West Africa" },
+  // East Africa
+  { country: "Kenya", name: "Public Procurement Information Portal", url: "https://ppip.go.ke", flag: "🇰🇪", region: "East Africa" },
+  { country: "Ethiopia", name: "Public Procurement & Property Authority", url: "https://www.ppa.gov.et", flag: "🇪🇹", region: "East Africa" },
+  { country: "Tanzania", name: "Tanzania Procurement Portal", url: "https://www.tender.go.tz", flag: "🇹🇿", region: "East Africa" },
+  { country: "Uganda", name: "PPDA Uganda", url: "https://www.gpp.ppda.go.ug", flag: "🇺🇬", region: "East Africa" },
+  { country: "Rwanda", name: "Rwanda Public Procurement Authority", url: "https://www.rppa.gov.rw", flag: "🇷🇼", region: "East Africa" },
+  { country: "Burundi", name: "ARMP Burundi", url: "https://www.armp.bi", flag: "🇧🇮", region: "East Africa" },
+  // North Africa
+  { country: "Morocco", name: "Marchés Publics du Maroc", url: "https://www.marchespublics.gov.ma", flag: "🇲🇦", region: "North Africa" },
+  { country: "Egypt", name: "Egyptian Government Procurement", url: "https://www.eprocurement.gov.eg", flag: "🇪🇬", region: "North Africa" },
+  { country: "Algeria", name: "ARMP Algérie", url: "https://www.armp.dz", flag: "🇩🇿", region: "North Africa" },
+  { country: "Tunisia", name: "TunEPS Procurement Portal", url: "https://www.tuneps.tn", flag: "🇹🇳", region: "North Africa" },
+  // Southern Africa
+  { country: "South Africa", name: "Government Tender Bulletin (eTenders)", url: "https://www.etenders.gov.za", flag: "🇿🇦", region: "Southern Africa" },
+  { country: "Zimbabwe", name: "PRAZ Zimbabwe", url: "https://www.praz.org.zw", flag: "🇿🇼", region: "Southern Africa" },
+  { country: "Zambia", name: "ZPPA Zambia", url: "https://www.zppa.org.zm", flag: "🇿🇲", region: "Southern Africa" },
+  { country: "Botswana", name: "PPADB Botswana", url: "https://www.ppb.org.bw", flag: "🇧🇼", region: "Southern Africa" },
+  { country: "Mozambique", name: "UFSA Mozambique", url: "https://www.ufsa.gov.mz", flag: "🇲🇿", region: "Southern Africa" },
+  { country: "Namibia", name: "Namibia Tender Portal (NIPDB)", url: "https://www.nipdb.com", flag: "🇳🇦", region: "Southern Africa" },
+  { country: "Malawi", name: "ODPP Malawi", url: "https://www.odpp.gov.mw", flag: "🇲🇼", region: "Southern Africa" },
+  { country: "Eswatini", name: "SPPRA Eswatini", url: "https://www.sppra.co.sz", flag: "🇸🇿", region: "Southern Africa" },
+  { country: "Lesotho", name: "PPD Lesotho", url: "https://www.ppd.gov.ls", flag: "🇱🇸", region: "Southern Africa" },
+  { country: "Madagascar", name: "ARMP Madagascar", url: "https://www.armp.mg", flag: "🇲🇬", region: "Southern Africa" },
+  { country: "Mauritius", name: "Government Tenders Mauritius", url: "https://www.govtenders.gov.mu", flag: "🇲🇺", region: "Southern Africa" },
+  { country: "Seychelles", name: "PPU Seychelles", url: "https://www.ppu.gov.sc", flag: "🇸🇨", region: "Southern Africa" },
+  // Central Africa
+  { country: "Congo (DRC)", name: "ACMP Marchés Publics RDC", url: "https://www.acmp.gouv.cd", flag: "🇨🇩", region: "Central Africa" },
+  { country: "Congo-Brazzaville", name: "Marchés Publics Congo", url: "https://www.marchespublics.cg", flag: "🇨🇬", region: "Central Africa" },
+  { country: "Gabon", name: "Marchés Publics Gabon", url: "https://www.marchespublics.ga", flag: "🇬🇦", region: "Central Africa" },
+  { country: "Angola", name: "SPE Angola", url: "https://www.spe.gov.ao", flag: "🇦🇴", region: "Central Africa" },
+  { country: "Mauritania", name: "ARMP Mauritanie", url: "https://www.armp.mr", flag: "🇲🇷", region: "West Africa" },
 ];
+
+const REGIONS = ["Pan-African", "West Africa", "East Africa", "North Africa", "Southern Africa", "Central Africa"] as const;
 
 type AnalysisMode = "find" | "register" | "bid" | "consortium";
 
@@ -27,6 +68,8 @@ export default function ProcurementPage() {
   const [context, setContext] = useState("");
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
+  const [portalSearch, setPortalSearch] = useState("");
+  const [portalRegion, setPortalRegion] = useState<string>("All");
 
   const modeConfig = {
     find: {
@@ -285,26 +328,46 @@ Be specific: name the actual portal, ministry, regulation, or document. Give rea
 
           {/* Right: Portal directory */}
           <div>
-            <div className="bg-white border border-border rounded-2xl p-5 sticky top-6">
-              <h2 className="font-display text-base font-bold text-ink mb-4">
-                Procurement portals
+            <div className="bg-white border border-border rounded-2xl p-5 sticky top-6 max-h-[80vh] overflow-y-auto">
+              <h2 className="font-display text-base font-bold text-ink mb-3">
+                {PROCUREMENT_PORTALS.length} Procurement portals
               </h2>
-              <div className="space-y-2">
-                {PROCUREMENT_PORTALS.map(({ country: c, name, url, flag }) => (
-                  <a key={url} href={url} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-warm-ivory transition-colors group">
-                    <span className="text-xl">{flag}</span>
-                    <div className="min-w-0">
-                      <p className="text-xs font-semibold text-ink group-hover:text-deep-green leading-tight">{c}</p>
-                      <p className="text-[10px] text-muted truncate">{name}</p>
-                    </div>
-                    <span className="ml-auto text-muted group-hover:text-gold text-xs">→</span>
-                  </a>
+              <input
+                type="text"
+                value={portalSearch}
+                onChange={e => setPortalSearch(e.target.value)}
+                placeholder="Search country..."
+                className="w-full text-xs border border-border rounded-lg px-3 py-2 mb-3 focus:outline-none focus:border-gold"
+              />
+              <div className="flex gap-1 flex-wrap mb-3">
+                {["All", ...REGIONS].map(r => (
+                  <button key={r} onClick={() => setPortalRegion(r)}
+                    className={`text-[9px] font-semibold px-2 py-0.5 rounded-full transition-colors ${
+                      portalRegion === r ? "bg-deep-green text-ivory" : "bg-warm-ivory text-muted hover:text-ink"
+                    }`}>
+                    {r === "All" ? "All" : r.replace(" Africa", "")}
+                  </button>
                 ))}
               </div>
-              <p className="text-xs text-muted mt-4 text-center">
-                More portals via Country Explorer
-              </p>
+              <div className="space-y-1">
+                {PROCUREMENT_PORTALS
+                  .filter(p =>
+                    (portalRegion === "All" || p.region === portalRegion) &&
+                    (portalSearch === "" || p.country.toLowerCase().includes(portalSearch.toLowerCase()))
+                  )
+                  .map(({ country: c, name, url, flag }) => (
+                    <a key={url} href={url} target="_blank" rel="noopener noreferrer"
+                      className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-warm-ivory transition-colors group">
+                      <span className="text-base flex-shrink-0">{flag}</span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-xs font-semibold text-ink group-hover:text-deep-green leading-tight truncate">{c}</p>
+                        <p className="text-[10px] text-muted truncate">{name}</p>
+                      </div>
+                      <span className="ml-auto text-muted group-hover:text-gold text-xs flex-shrink-0">→</span>
+                    </a>
+                  ))
+                }
+              </div>
             </div>
           </div>
         </div>
