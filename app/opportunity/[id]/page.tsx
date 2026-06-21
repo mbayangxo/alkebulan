@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Nav } from "@/app/components/nav";
 import { SAMPLE_OPPORTUNITIES } from "@/lib/data/sample-opportunities";
 import { computeFreshness, freshnessUI } from "@/lib/verification";
+import { FlagListing } from "@/app/components/flag-listing";
 
 export default async function OpportunityPage({
   params,
@@ -77,7 +78,30 @@ export default async function OpportunityPage({
         <h1 className="font-display text-3xl font-bold text-ink mb-2 leading-tight">
           {opp.title}
         </h1>
-        <p className="text-muted text-sm mb-4">Source: {opp.source_name}</p>
+
+        {/* Attribution metadata */}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted mb-4">
+          <span>Source: <span className="text-ink font-medium">{opp.source_name}</span></span>
+          {opp.attributed_ministry && (
+            <span>Ministry: <span className="text-ink font-medium">{opp.attributed_ministry}</span></span>
+          )}
+          {opp.legal_basis && (
+            <span>Legal basis: <span className="text-ink font-medium">{opp.legal_basis}</span></span>
+          )}
+          {opp.verification_source_url && (
+            <a href={opp.verification_source_url} target="_blank" rel="noopener noreferrer"
+               className="text-deep-green hover:underline font-medium">
+              Verification source →
+            </a>
+          )}
+        </div>
+
+        {opp.attributed_official && (
+          <div className="bg-warm-ivory border border-border rounded-xl px-3 py-2 mb-4 text-xs text-muted">
+            Program associated with <span className="font-medium text-ink">{opp.attributed_official}</span>.
+            Leadership changes flag this listing for reverification — they do not automatically close the program.
+          </div>
+        )}
 
         {/* Verification notice — shown prominently when stale, flagged, or unknown */}
         {freshnessStyle.showWarning && (
@@ -231,7 +255,7 @@ export default async function OpportunityPage({
         )}
 
         {/* CTA */}
-        <div className="flex gap-3">
+        <div className="flex gap-3 mb-4">
           <a
             href={opp.source_url}
             target="_blank"
@@ -246,6 +270,12 @@ export default async function OpportunityPage({
           >
             Get AI coaching
           </Link>
+        </div>
+
+        {/* Crowdsourced correction — every listing, day one */}
+        <div className="flex items-center justify-center gap-2 text-xs text-muted">
+          <span>Something look wrong?</span>
+          <FlagListing opportunityId={opp.id} opportunityTitle={opp.title} />
         </div>
       </div>
     </div>

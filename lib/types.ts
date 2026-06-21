@@ -90,6 +90,10 @@ export interface Opportunity {
   verified_at?: string;   // ISO date — when this was last confirmed active
   flag_reason?: string;   // e.g. "Senegal PM changed May 22, 2026, program status unconfirmed"
   volatility?: Volatility; // determines freshness window: high=14d, medium=30d, low=90d
+  attributed_ministry?: string;    // e.g. "Ministère de la Jeunesse et des Sports"
+  legal_basis?: string;            // e.g. "Budget line 2024/L023 — renewable annually"
+  attributed_official?: string;    // for news-monitoring trigger ONLY — not survival basis
+  verification_source_url?: string; // URL where this was verified (ministry gazette, official site)
   summary: string;
   description?: string;
   documents_required?: string[];

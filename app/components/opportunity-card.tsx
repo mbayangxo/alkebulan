@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Opportunity, OpportunityWithMatch } from "@/lib/types";
 import { ScoreBreakdown, getScoreColor } from "@/lib/scoring";
 import { computeFreshness, freshnessUI, type VerificationInput } from "@/lib/verification";
+import { FlagListing } from "@/app/components/flag-listing";
 
 function VerifiedBadge({ opp }: { opp: VerificationInput }) {
   const state = computeFreshness(opp);
@@ -164,12 +165,15 @@ export function OpportunityCard({ opportunity, showMatch = false, score, onTrack
               + Track
             </button>
           )}
-          <Link
-            href={`/opportunity/${opportunity.id}`}
-            className="text-xs font-semibold text-deep-green hover:text-gold transition-colors"
-          >
-            View →
-          </Link>
+          <div className="flex items-center gap-3">
+            <FlagListing opportunityId={opportunity.id} opportunityTitle={opportunity.title} />
+            <Link
+              href={`/opportunity/${opportunity.id}`}
+              className="text-xs font-semibold text-deep-green hover:text-gold transition-colors"
+            >
+              View →
+            </Link>
+          </div>
         </div>
       </div>
     </div>

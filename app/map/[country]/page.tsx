@@ -243,9 +243,25 @@ export default async function CountryPage({
             )}
 
             {/* Vision */}
-            <div className="bg-deep-green text-ivory rounded-2xl p-6 mb-8">
+            <div className="bg-deep-green text-ivory rounded-2xl p-6 mb-6">
               <p className="text-xs font-semibold text-gold uppercase tracking-wider mb-2">The vision</p>
               <p className="text-sm text-ivory/90 leading-relaxed">{deep.vision}</p>
+            </div>
+
+            {/* Register a business CTA — links to concrete path guide */}
+            <div className="bg-white border border-border rounded-2xl p-5 mb-8 flex items-center justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold text-ink mb-1">Ready to register a business?</p>
+                <p className="text-xs text-muted leading-snug">
+                  Concrete steps, actual CFA costs, real phone numbers. Branched by business type — GIE, SARL, Auto-entrepreneur.
+                </p>
+              </div>
+              <a
+                href={`/register/${profile.country.toLowerCase()}`}
+                className="flex-shrink-0 bg-deep-green text-ivory text-xs font-semibold px-4 py-2.5 rounded-full hover:bg-mid-green transition-colors whitespace-nowrap"
+              >
+                Register a business →
+              </a>
             </div>
           </>
         )}
