@@ -14,6 +14,8 @@ const NAV_LINKS = [
 ];
 
 const TOOLS = [
+  { label: "Build My Site →", href: "/store/new" },
+  { label: "My Store Dashboard", href: "/store/dashboard" },
   { label: "Meet the Agents →", href: "/agents" },
   { label: "Amara — Research Agent", href: "/agents/amara" },
   { label: "Kwame — Growth Agent", href: "/agents/kwame" },
