@@ -4,6 +4,7 @@ import { Nav } from "@/app/components/nav";
 import { COUNTRY_PROFILES, getCountryProfile } from "@/lib/data/country-profiles";
 import { SAMPLE_OPPORTUNITIES } from "@/lib/data/sample-opportunities";
 import { COUNTRY_INTELLIGENCE } from "@/lib/data/country-intelligence";
+import { getCountryDeepProfile, type LocalResource, type ForeignExtraction, type LocalProblem, type Infrastructure, type LocalBuilder } from "@/lib/data/country-deep-profiles";
 
 export function generateStaticParams() {
   return COUNTRY_PROFILES.map((p) => ({ country: p.country_code.toLowerCase() }));
@@ -19,6 +20,7 @@ export default async function CountryPage({
   if (!profile) notFound();
 
   const intel = COUNTRY_INTELLIGENCE[profile.country_code.toUpperCase()];
+  const deep = getCountryDeepProfile(profile.country_code.toUpperCase());
   const countryOpps = SAMPLE_OPPORTUNITIES.filter(
     (o) =>
       o.country === profile.country ||
@@ -41,13 +43,17 @@ export default async function CountryPage({
         </div>
 
         {/* Hero */}
-        <div className="bg-deep-green text-ivory rounded-2xl p-8 mb-8">
+        <div className="bg-deep-green text-ivory rounded-2xl p-8 mb-6">
           <h1 className="font-display text-4xl font-bold mb-2">{profile.country}</h1>
-          <p className="text-ivory/60 text-sm mb-6">
-            {profile.capital && `Capital: ${profile.capital}`}
-            {profile.population && ` · Population: ${(profile.population / 1000000).toFixed(0)}M`}
-            {profile.gdp && ` · GDP: ${profile.gdp}`}
-          </p>
+          {deep ? (
+            <p className="text-gold/90 text-sm font-medium mb-4 italic">{deep.tagline}</p>
+          ) : (
+            <p className="text-ivory/60 text-sm mb-4">
+              {profile.capital && `Capital: ${profile.capital}`}
+              {profile.population && ` · Population: ${(profile.population / 1000000).toFixed(0)}M`}
+              {profile.gdp && ` · GDP: ${profile.gdp}`}
+            </p>
+          )}
           <div className="flex flex-wrap gap-2">
             {profile.languages.map((lang) => (
               <span key={lang} className="text-xs font-medium px-2.5 py-1 rounded-full bg-ivory/10 text-ivory/80">
@@ -56,6 +62,195 @@ export default async function CountryPage({
             ))}
           </div>
         </div>
+
+        {/* ── DEEP PROFILE SECTIONS ─────────────────────────────────────── */}
+        {deep && (
+          <>
+            {/* Opening narrative */}
+            <div className="bg-amber-50 border border-amber-200/60 rounded-2xl p-6 mb-6">
+              <p className="text-sm text-amber-900 leading-relaxed">{deep.opening}</p>
+            </div>
+
+            {/* Quick facts */}
+            {deep.quick_facts.length > 0 && (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+                {deep.quick_facts.map((fact) => (
+                  <div key={fact.label} className="bg-white border border-border rounded-xl p-3">
+                    <p className="text-xs text-muted mb-1">{fact.label}</p>
+                    <p className="text-xs font-semibold text-ink leading-snug">{fact.value}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Resources — What this country has */}
+            {deep.resources.length > 0 && (
+              <div className="mb-8">
+                <h2 className="font-display text-xl font-bold text-ink mb-1">What {profile.country} has</h2>
+                <p className="text-xs text-muted mb-4">Specific resources, named places, real numbers — and who's capturing the value today.</p>
+                <div className="space-y-4">
+                  {deep.resources.map((res: LocalResource) => (
+                    <div key={res.name} className="bg-white border border-border rounded-2xl overflow-hidden">
+                      <div className="p-5 border-b border-border">
+                        <h3 className="font-display text-base font-bold text-ink mb-2">{res.name}</h3>
+                        <p className="text-sm text-muted leading-relaxed mb-3">{res.what_it_is}</p>
+                        <p className="text-sm text-muted leading-relaxed mb-3">{res.current_state}</p>
+                        {/* The gap — amber alert */}
+                        <div className="bg-amber-50 border border-amber-200 rounded-xl p-3">
+                          <p className="text-xs font-semibold text-amber-800 uppercase tracking-wide mb-1">The gap</p>
+                          <p className="text-xs text-amber-900 leading-relaxed">{res.the_gap}</p>
+                        </div>
+                      </div>
+                      {/* Businesses to build */}
+                      <div className="p-5 bg-deep-green/3">
+                        <p className="text-xs font-semibold text-deep-green uppercase tracking-wide mb-3">Businesses to build here</p>
+                        <div className="space-y-3">
+                          {res.businesses.map((biz) => (
+                            <div key={biz.name} className="flex gap-3">
+                              <span className="text-gold mt-0.5 flex-shrink-0">→</span>
+                              <div>
+                                <p className="text-sm font-semibold text-ink">{biz.name}</p>
+                                <p className="text-xs text-deep-green font-medium mb-0.5">{biz.cost}</p>
+                                <p className="text-xs text-muted leading-snug">{biz.description}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                        {res.africans_doing_it && (
+                          <div className="mt-4 bg-deep-green/5 rounded-lg p-3">
+                            <p className="text-xs font-semibold text-deep-green mb-1">Africans doing it</p>
+                            <p className="text-xs text-deep-green/80 leading-relaxed">{res.africans_doing_it}</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Foreign extraction — Who profits */}
+            {deep.foreign_extraction.length > 0 && (
+              <div className="mb-8">
+                <h2 className="font-display text-xl font-bold text-ink mb-1">Who profits from {profile.country}</h2>
+                <p className="text-xs text-muted mb-4">Foreign companies extracting value — and what you can do instead.</p>
+                <div className="space-y-3">
+                  {deep.foreign_extraction.map((ext: ForeignExtraction) => (
+                    <div key={ext.sector} className="bg-white border border-red-100 rounded-2xl overflow-hidden">
+                      <div className="bg-red-50 px-5 py-3 border-b border-red-100">
+                        <div className="flex items-center justify-between gap-3">
+                          <span className="text-xs font-semibold text-red-700 uppercase tracking-wide">{ext.sector}</span>
+                          <span className="text-xs font-bold text-red-900">{ext.company}</span>
+                        </div>
+                      </div>
+                      <div className="p-5">
+                        <p className="text-sm text-muted mb-2">{ext.what_they_do}</p>
+                        <p className="text-xs text-red-700 font-medium mb-3">{ext.what_africa_gets}</p>
+                        <div className="flex items-start gap-2 bg-deep-green/5 rounded-lg p-3">
+                          <span className="text-deep-green font-bold text-sm flex-shrink-0">→</span>
+                          <p className="text-xs text-deep-green leading-relaxed">{ext.what_you_can_do}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Problems = Opportunities */}
+            {deep.problems.length > 0 && (
+              <div className="mb-8">
+                <h2 className="font-display text-xl font-bold text-ink mb-1">Problems are opportunities</h2>
+                <p className="text-xs text-muted mb-4">Every gap in the market is a business waiting to be built.</p>
+                <div className="space-y-4">
+                  {deep.problems.map((prob: LocalProblem) => (
+                    <div key={prob.problem} className="bg-white border border-border rounded-2xl p-5">
+                      <div className="flex items-start gap-3 mb-3">
+                        <div className="w-2 h-2 rounded-full bg-gold mt-1.5 flex-shrink-0" />
+                        <div>
+                          <h3 className="font-semibold text-sm text-ink mb-1">{prob.problem}</h3>
+                          <p className="text-xs text-muted mb-1">{prob.scale}</p>
+                          <p className="text-xs text-deep-green font-medium">{prob.opportunity}</p>
+                        </div>
+                      </div>
+                      <div className="space-y-1.5 ml-5">
+                        {prob.businesses.map((biz) => (
+                          <div key={biz.name} className="flex items-start gap-2">
+                            <span className="text-gold text-xs mt-0.5 flex-shrink-0">→</span>
+                            <div>
+                              <span className="text-xs font-semibold text-ink">{biz.name}</span>
+                              <span className="text-xs text-muted ml-2">{biz.cost}</span>
+                            </div>
+                          </div>
+                        ))}
+                        {prob.example && (
+                          <p className="text-xs text-deep-green/70 italic mt-2">{prob.example}</p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Infrastructure */}
+            {deep.infrastructure.length > 0 && (
+              <div className="mb-8">
+                <h2 className="font-display text-xl font-bold text-ink mb-1">Infrastructure you can use</h2>
+                <p className="text-xs text-muted mb-4">Assets already built — networks, hubs, platforms. How to access them.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {deep.infrastructure.map((infra: Infrastructure) => (
+                    <div key={infra.name} className="bg-white border border-border rounded-2xl p-5">
+                      <h3 className="font-semibold text-sm text-ink mb-2">{infra.name}</h3>
+                      <p className="text-xs text-muted leading-relaxed mb-2">{infra.what_it_is}</p>
+                      <p className="text-xs text-deep-green font-medium mb-2">{infra.opportunity}</p>
+                      <div className="bg-gold/5 border border-gold/20 rounded-lg p-2">
+                        <p className="text-xs text-warm-brown leading-snug">{infra.who_can_use_it}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Builders */}
+            {deep.builders.length > 0 && (
+              <div className="mb-8">
+                <h2 className="font-display text-xl font-bold text-ink mb-1">Builders who started here</h2>
+                <p className="text-xs text-muted mb-4">Real people, what they built, and what they started with.</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {deep.builders.map((builder: LocalBuilder) => (
+                    <div key={builder.name} className="bg-white border border-border rounded-2xl p-5">
+                      <div className="flex items-start gap-3">
+                        <div className="w-8 h-8 rounded-full bg-deep-green/10 text-deep-green text-xs font-bold flex items-center justify-center flex-shrink-0">
+                          {builder.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
+                        </div>
+                        <div>
+                          <p className="font-semibold text-sm text-ink">{builder.name}</p>
+                          <p className="text-xs text-gold-dark font-medium mb-1">{builder.sector}</p>
+                          <p className="text-xs text-muted leading-relaxed mb-2">{builder.what}</p>
+                          {builder.started_with && (
+                            <div className="bg-amber-50 border border-amber-100 rounded-lg px-2.5 py-1.5">
+                              <p className="text-xs text-amber-800 font-medium">Started with: {builder.started_with}</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Vision */}
+            <div className="bg-deep-green text-ivory rounded-2xl p-6 mb-8">
+              <p className="text-xs font-semibold text-gold uppercase tracking-wider mb-2">The vision</p>
+              <p className="text-sm text-ivory/90 leading-relaxed">{deep.vision}</p>
+            </div>
+          </>
+        )}
+
+        {/* ── EXISTING SECTIONS ─────────────────────────────────────────── */}
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {/* Industries */}
