@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation";
 
 const TABS = [
   { href: "/", icon: "🏠", label: "Home" },
-  { href: "/programs", icon: "🔍", label: "Programs" },
   { href: "/matches", icon: "⚡", label: "Matches" },
-  { href: "/store/dashboard", icon: "🏪", label: "My Store" },
-  { href: "/agents", icon: "🤖", label: "Agents" },
+  { href: "/path", icon: "🗺", label: "My Path" },
+  { href: "/build", icon: "🏗", label: "Build" },
+  { href: "/programs", icon: "🔍", label: "Programs" },
 ];
 
 export function MobileBottomNav() {

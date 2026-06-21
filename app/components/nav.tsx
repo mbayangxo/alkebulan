@@ -5,12 +5,11 @@ import { useState } from "react";
 import { AlkebulanCrest } from "./panther-motif";
 
 const NAV_LINKS = [
-  { label: "My Goals", href: "/goals", highlight: true },
+  { label: "My Path 🗺", href: "/path", highlight: true },
   { label: "My Matches ⚡", href: "/matches" },
-  { label: "Newsroom", href: "/newsroom" },
-  { label: "Programs Database", href: "/programs" },
+  { label: "Programs", href: "/programs" },
   { label: "Countries", href: "/map" },
-  { label: "Feed", href: "/feed" },
+  { label: "Newsroom", href: "/newsroom" },
 ];
 
 const TOOLS = [

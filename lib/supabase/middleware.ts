@@ -31,6 +31,9 @@ function isPublicPath(pathname: string): boolean {
   if (pathname.startsWith("/remittance")) return true;
   if (pathname.startsWith("/collective")) return true;
   if (pathname.startsWith("/succession")) return true;
+  if (pathname.startsWith("/build")) return true;
+  if (pathname.startsWith("/path")) return true;
+  if (pathname.startsWith("/success")) return true;
   if (/\.[a-z0-9]+$/i.test(pathname)) return true;
   return false;
 }
