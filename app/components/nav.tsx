@@ -15,7 +15,11 @@ const NAV_LINKS = [
 ];
 
 const TOOLS = [
-  { label: "Build a Business →", href: "/build" },
+  { label: "Build vs. Leave →", href: "/compare" },
+  { label: "Decode This Product →", href: "/scan" },
+  { label: "Local Starts Map", href: "/starts" },
+  { label: "Community Partners", href: "/gatekeepers" },
+  { label: "Build a Business", href: "/build" },
   { label: "Bankability Engine", href: "/bankability" },
   { label: "AfCFTA Navigator", href: "/afcfta" },
   { label: "Capital Stack", href: "/capital-stack" },
