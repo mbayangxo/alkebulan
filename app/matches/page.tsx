@@ -31,6 +31,9 @@ export default function MatchesPage() {
   const [scoreFilter, setScoreFilter] = useState<string>("All");
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [scoreExpanded, setScoreExpanded] = useState<Set<string>>(new Set());
+  const [kitExpanded, setKitExpanded] = useState<Set<string>>(new Set());
+  const [kitContent, setKitContent] = useState<Record<string, string>>({});
+  const [kitLoading, setKitLoading] = useState<Set<string>>(new Set());
 
   const hasProfile = profile.country_of_origin || profile.country_of_residence;
 
@@ -61,6 +64,48 @@ export default function MatchesPage() {
       next.has(name) ? next.delete(name) : next.add(name);
       return next;
     });
+  }
+
+  async function buildKit(match: MatchedProgram) {
+    if (kitContent[match.programName]) {
+      setKitExpanded(prev => {
+        const next = new Set(prev);
+        next.has(match.programName) ? next.delete(match.programName) : next.add(match.programName);
+        return next;
+      });
+      return;
+    }
+    setKitExpanded(prev => new Set([...prev, match.programName]));
+    setKitLoading(prev => new Set([...prev, match.programName]));
+    try {
+      const res = await fetch("/api/apply-kit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          programName: match.programName,
+          programDescription: match.what,
+          forWho: match.for_who,
+          amount: match.amount,
+          applyAt: match.apply_at,
+          country: match.country,
+          userProfile: profile,
+        }),
+      });
+      if (!res.body) throw new Error("No stream");
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let text = "";
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        text += decoder.decode(value, { stream: true });
+        setKitContent(prev => ({ ...prev, [match.programName]: text }));
+      }
+    } catch {
+      setKitContent(prev => ({ ...prev, [match.programName]: "Could not build kit. Please try again." }));
+    } finally {
+      setKitLoading(prev => { const next = new Set(prev); next.delete(match.programName); return next; });
+    }
   }
 
   const categories = ["All", ...new Set(matches.map(m => m.category))];
@@ -181,6 +226,15 @@ export default function MatchesPage() {
           ))}
         </div>
 
+        {!loading && matches.length > 0 && (
+          <div className="bg-deep-green/5 border border-deep-green/20 rounded-xl px-4 py-3.5 mb-4">
+            <p className="text-xs font-bold text-deep-green mb-1">These are tools to build with — not the goal</p>
+            <p className="text-xs text-ink/70 leading-relaxed">
+              Grants, loans, and contracts are fuel. The goal is to own businesses, supply chains, and sectors that foreigners currently own in your country. Use this funding to build something that lasts.{" "}
+              <Link href="/sovereignty" className="font-semibold text-deep-green underline">See what&apos;s yours to reclaim →</Link>
+            </p>
+          </div>
+        )}
         {loading ? (
           <div className="text-center py-16">
             <div className="w-10 h-10 rounded-full border-2 border-deep-green border-t-transparent animate-spin mx-auto mb-4" />
@@ -201,6 +255,8 @@ export default function MatchesPage() {
               const intel = PROGRAM_INTEL[match.programName];
               const isExpanded = expanded.has(match.programName);
               const isScoreExpanded = scoreExpanded.has(match.programName);
+              const isKitExpanded = kitExpanded.has(match.programName);
+              const isKitLoading = kitLoading.has(match.programName);
 
               return (
                 <div
@@ -288,7 +344,7 @@ export default function MatchesPage() {
                             onClick={() => toggleScore(match.programName)}
                             className="text-xs font-semibold text-muted hover:text-ink transition-colors"
                           >
-                            {isScoreExpanded ? "Hide score breakdown ▲" : "Score breakdown ▼"}
+                            {isScoreExpanded ? "Hide breakdown ▲" : "Score breakdown ▼"}
                           </button>
                           {intel?.success && (
                             <button
@@ -298,6 +354,13 @@ export default function MatchesPage() {
                               {isExpanded ? "Hide intel ▲" : "Success intel ▼"}
                             </button>
                           )}
+                          <button
+                            onClick={() => buildKit(match)}
+                            disabled={isKitLoading}
+                            className="text-xs font-bold text-gold hover:text-gold-dark transition-colors disabled:opacity-50"
+                          >
+                            {isKitLoading ? "Building kit..." : isKitExpanded ? "Hide kit ▲" : "📋 Build my application ▼"}
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -312,6 +375,34 @@ export default function MatchesPage() {
                         breakdown={match.breakdown}
                         gaps={match.gaps}
                       />
+                    </div>
+                  )}
+
+                  {/* Application kit panel */}
+                  {isKitExpanded && (
+                    <div className="border-t border-border p-5">
+                      <div className="flex items-center justify-between mb-3">
+                        <p className="text-xs font-bold text-deep-green uppercase tracking-wide">Application Kit</p>
+                        <button onClick={() => buildKit(match)} className="text-[10px] text-muted hover:text-ink">close ×</button>
+                      </div>
+                      {isKitLoading && !kitContent[match.programName] && (
+                        <div className="flex items-center gap-2 text-sm text-muted py-4">
+                          <span className="w-4 h-4 rounded-full border-2 border-deep-green border-t-transparent animate-spin" />
+                          Building your personalised application kit...
+                        </div>
+                      )}
+                      {kitContent[match.programName] && (
+                        <div className="prose prose-sm max-w-none text-ink leading-relaxed">
+                          {kitContent[match.programName].split("\n").map((line, i) => {
+                            if (line.startsWith("## ")) return <h3 key={i} className="font-bold text-ink text-sm mt-4 mb-2">{line.replace("## ", "")}</h3>;
+                            if (line.startsWith("- ")) return <li key={i} className="text-xs text-ink/80 ml-4 mb-1 list-disc">{line.replace("- ", "")}</li>;
+                            if (/^\d+\./.test(line)) return <p key={i} className="text-xs text-ink/80 mb-1 flex gap-2"><span className="font-bold text-deep-green flex-shrink-0">{line.match(/^\d+/)?.[0]}.</span><span>{line.replace(/^\d+\.\s*/, "")}</span></p>;
+                            if (line.trim() === "") return <br key={i} />;
+                            return <p key={i} className="text-xs text-ink/80 mb-2 leading-relaxed">{line}</p>;
+                          })}
+                          {isKitLoading && <span className="inline-block w-1.5 h-3 bg-gold ml-0.5 animate-pulse align-middle" />}
+                        </div>
+                      )}
                     </div>
                   )}
 

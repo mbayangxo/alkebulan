@@ -9,32 +9,19 @@ const NAV_LINKS = [
   { label: "My Matches ⚡", href: "/matches" },
   { label: "Programs", href: "/programs" },
   { label: "Procurement", href: "/procurement" },
+  { label: "Opportunity", href: "/sovereignty" },
   { label: "Feed", href: "/feed" },
   { label: "Countries", href: "/map" },
 ];
 
 const TOOLS = [
-  { label: "Build My Site →", href: "/store/new" },
-  { label: "My Store Dashboard", href: "/store/dashboard" },
-  { label: "Meet the Agents →", href: "/agents" },
-  { label: "Amara — Research Agent", href: "/agents/amara" },
-  { label: "Kwame — Growth Agent", href: "/agents/kwame" },
-  { label: "Zuri — QA Guardian", href: "/agents/zuri" },
-  { label: "Email Digest", href: "/email" },
-  { label: "Ada — Social Storyteller", href: "/social" },
-  { label: "Kofi — Capital Analyst", href: "/capital" },
-  { label: "Imani — AI Coach", href: "/assistant" },
-  { label: "Akin — Business Builder", href: "/build" },
-  { label: "Nadia — Brand Builder", href: "/brand" },
-  { label: "Olu — AfCFTA Navigator", href: "/afcfta" },
-  { label: "Capital Stack", href: "/capital-stack" },
+  { label: "Build a Business →", href: "/build" },
   { label: "Bankability Engine", href: "/bankability" },
-  { label: "Budget Intelligence", href: "/budget-intel" },
-  { label: "Regulatory Map", href: "/regulatory" },
-  { label: "Remittance → Ownership", href: "/remittance" },
-  { label: "First-Order Collective", href: "/collective" },
-  { label: "Succession Planner", href: "/succession" },
-  { label: "Success Maps", href: "/success" },
+  { label: "AfCFTA Navigator", href: "/afcfta" },
+  { label: "Capital Stack", href: "/capital-stack" },
+  { label: "Success Stories", href: "/success" },
+  { label: "AI Assistant", href: "/assistant" },
+  { label: "Yande AI Agents →", href: "/agents" },
 ];
 
 export function Nav({ transparent = false }: { transparent?: boolean }) {
@@ -77,7 +64,7 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
               onBlur={() => setTimeout(() => setToolsOpen(false), 150)}
               className="text-ivory/80 hover:text-gold transition-colors flex items-center gap-1"
             >
-              AI Engines
+              Tools
               <span className="text-[10px] opacity-60">▾</span>
             </button>
             {toolsOpen && (
