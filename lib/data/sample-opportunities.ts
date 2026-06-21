@@ -24,7 +24,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-06-18",
     volatility: "high",
     summary:
-      "The Tony Elumelu Foundation offers $5,000 seed capital, business training, and mentoring to 10,000 African entrepreneurs annually. Open to all African entrepreneurs with a viable business idea.",
+      "Every year, 10,000 African entrepreneurs go through 12 weeks of real business training and walk out with $5,000 and a network of 18,000+ alumni across the continent. The money is a tool — the network and the credential are what you're actually building here.",
     description:
       "TEEP is a 12-week programme of entrepreneurship training, mentoring, and networking, followed by $5,000 in seed funding. Recipients also gain access to the TEF Entrepreneurship Network of 18,000+ alumni across Africa.",
     documents_required: [
@@ -67,7 +67,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-04-20",
     volatility: "low",
     summary:
-      "Full scholarships for exceptional young Africans to study at leading universities globally, with mentorship and leadership development. Up to $60,000 per scholar.",
+      "Full university funding — tuition, living costs, everything — at partner schools in Canada, the US, and Europe. This isn't just a degree. You leave with the credential and the global network that lets you come back and build on a completely different level.",
     documents_required: [
       "Academic transcripts",
       "Proof of admission to partner university",
@@ -108,7 +108,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-05-02",
     volatility: "medium",
     summary:
-      "Low-interest loans and grants from the Senegalese government for youth (18–40) and women entrepreneurs. Loans range from 500,000 to 50 million FCFA. No collateral required for smaller amounts.",
+      "Senegal's main government fund for young people and women who have a business idea but no savings behind them. What you're really building here isn't just capital — it's your first formal credit record, which is the key that unlocks every larger opportunity after this.",
     documents_required: [
       "Business plan (Plan d'affaires)",
       "NINEA (Tax identification number)",
@@ -152,7 +152,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     volatility: "high",
     flag_reason: "Ghana government budget reallocation announced April 2026 — NEIP disbursement schedule unconfirmed. Check NEIP website directly before applying.",
     summary:
-      "Ghana's flagship youth entrepreneurship program offering funding, mentorship, business training, and market access to young Ghanaians aged 15–35.",
+      "Ghana's main government program for entrepreneurs aged 15–35 — training, mentorship, and capital in one place. Note: Ghana's budget was reallocated in April 2026 and disbursement timelines are unconfirmed. Check NEIP.gov.gh before you start your application.",
     documents_required: [
       "Ghana Card or other valid ID",
       "Business registration (for existing businesses)",
@@ -189,7 +189,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     source_name: "Africa50",
     verified_status: "verified",
     summary:
-      "Africa50 is a pan-African infrastructure fund investing in energy, transport, ICT, and social infrastructure projects across Africa. Minimum investment scale is $5M+.",
+      "Infrastructure investment for serious, large-scale projects — energy plants, ports, roads, logistics hubs. If you're building something that requires $5M+ and changes how an entire country or region functions, this is who to talk to. Not for early stage.",
     documents_required: [
       "Project feasibility study",
       "Financial projections (5-year minimum)",
@@ -230,7 +230,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     source_name: "Rwanda Development Board (RDB)",
     verified_status: "verified",
     summary:
-      "RDB's Business Development Fund provides grants and concessional loans to Rwandan SMEs in priority sectors. Diaspora Rwandans investing in Rwanda are also eligible.",
+      "Rwanda's government actively recruits diaspora investors back home. This fund supports SMEs in agriculture, tech, and tourism — and if you're Rwandan and building from outside the country, you can bring your business home under this scheme with funding support.",
     documents_required: [
       "Business registration in Rwanda",
       "Business plan with financial projections",
@@ -269,7 +269,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     source_name: "Government of Kenya / Hustler Fund",
     verified_status: "verified",
     summary:
-      "The Kenyan government's flagship financial inclusion program providing instant micro and small business loans via mobile phone. No collateral needed. Accessed via M-Pesa, Airtel Money, or Equitel.",
+      "Kenya's government loan dialed directly into M-Pesa — no forms, no office visit, no waiting weeks. It exists because most Kenyan entrepreneurs have a phone and a hustle but the banking system was never built for them.",
     documents_required: [
       "Kenya national ID",
       "Mobile phone registered with Safaricom, Airtel, or Telkom",
@@ -308,7 +308,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     source_name: "Maroc PME",
     verified_status: "verified",
     summary:
-      "Maroc PME offers grants and subsidies for Moroccan SMEs to improve competitiveness, invest in new equipment, adopt new technologies, and enter international markets. Moroccan diaspora investors are eligible.",
+      "For Moroccan businesses that are already running but blocked by outdated equipment, missing certifications, or no pathway to international buyers — Maroc PME pays for the upgrade. Diaspora Moroccans investing back home are also eligible.",
     documents_required: [
       "Legal business registration (RC, patente)",
       "Financial statements (2 years)",
@@ -348,7 +348,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     source_name: "Small Enterprise Finance Agency (SEFA)",
     verified_status: "verified",
     summary:
-      "SEFA provides affordable loan finance to South African youth entrepreneurs aged 18–35. Preference is given to businesses in townships and rural areas. No collateral required for loans under R250,000.",
+      "Loan finance specifically for young South African entrepreneurs in townships and rural areas — at rates below what commercial banks charge, no collateral under R250,000. The point is to fund where the formal banking system never showed up.",
     documents_required: [
       "South African ID",
       "Business plan",
@@ -389,7 +389,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     source_name: "Banque Nationale d'Investissement (BNI)",
     verified_status: "verified",
     summary:
-      "BNI's Fonds PME provides long-term concessional loans to Ivorian SMEs at rates below the market average. Ideal for productive investments, equipment purchases, and working capital.",
+      "Côte d'Ivoire's development bank for businesses that are generating revenue and need serious capital to grow — equipment, expansion, working capital — at rates below what commercial banks charge. For established businesses ready to scale.",
     documents_required: [
       "RCCM (Business registration)",
       "Déclaration Fiscale d'Existence (DFE)",
@@ -429,7 +429,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     source_name: "Bank of Industry (BOI)",
     verified_status: "verified",
     summary:
-      "BOI's YES Programme provides low-interest loans (9% per annum) to Nigerian youth entrepreneurs. Loans are bundled with capacity building, mentorship, and market access support.",
+      "Nigeria's Bank of Industry lends to young entrepreneurs at 9% — while commercial banks charge 25%+. Bundled with real business training, not box-checking training. For anyone building a business in Nigeria between 18–35.",
     documents_required: [
       "Nigerian National ID, Voter's Card, or International Passport",
       "Business plan",
@@ -470,7 +470,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     source_name: "African Development Bank (AfDB)",
     verified_status: "verified",
     summary:
-      "AFAWA aims to close the $42 billion financing gap for women entrepreneurs in Africa. Through partner banks across 38 countries, women can access loans, guarantees, and capacity building.",
+      "The African Development Bank stands behind women's loans in 38 countries — which means your local bank is now willing to lend to your business when they otherwise wouldn't, because AfDB is absorbing the risk. Ask your bank specifically about the AFAWA credit line.",
     documents_required: [
       "Business plan",
       "Financial statements",
@@ -510,7 +510,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     source_name: "YouthConnekt Africa",
     verified_status: "verified",
     summary:
-      "YouthConnekt Africa, an UNDP initiative, accelerates youth-led businesses with up to $10,000 in funding, 3-month mentorship, regional market access, and a showcase at the annual YouthConnekt Africa Summit.",
+      "UNDP's continent-wide accelerator for youth-led businesses. The summit isn't a conference — it's a deal room where regional buyers, investors, and government procurement officers come specifically looking for youth-led businesses to work with.",
     documents_required: [
       "Business registration or proof of business activity",
       "Pitch deck (maximum 10 slides)",
@@ -549,7 +549,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     source_name: "Seedstars",
     verified_status: "verified",
     summary:
-      "Seedstars invests $200K–$500K in early-stage African tech startups with a strong product, early traction, and a scalable business model. They operate across 25+ African countries.",
+      "Active VC investor in early-stage African tech startups across 25 countries. If you have a product that works and need $200K–$500K to grow it, Seedstars is one of the most consistent investors on the continent right now. You need an MVP and early traction to get their attention.",
     documents_required: [
       "Pitch deck",
       "Business registration in African country",
@@ -591,7 +591,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-05-15",
     volatility: "low",
     attributed_ministry: "Ministère des Finances et du Budget",
-    summary: "FONGIP guarantees up to 80% of your bank loan — meaning you only need 20% in collateral to get credit from a Senegalese bank. This is not a loan itself; it is what makes a bank loan possible for businesses that lack full collateral. Guarantees from 5M to 300M CFA.",
+    summary: "Most Senegalese businesses can't get a bank loan because they don't own land or have enough savings as collateral. FONGIP fixes that — it promises the bank it'll cover 80% of losses if you default. You show up to the bank with a FONGIP guarantee instead of collateral, and the bank says yes where it said no before.",
     description: "FONGIP (Fonds de Garantie des Investissements Prioritaires) is one of the most impactful and least-known programs in Senegal. Most businesses cannot access bank credit because they lack collateral. FONGIP solves this by promising to cover 70–80% of the loan if the business defaults — so the bank only needs you to cover 20–30%. You approach a bank (BNDE, Banque Atlantique, UBA, Ecobank, etc.), identify the loan you want, and apply for a FONGIP guarantee alongside it. Priority sectors: agriculture, agri-processing, energy, ICT, health, construction, tourism. Women and youth entrepreneurs get priority consideration.",
     documents_required: [
       "Business plan with financial projections",
@@ -636,7 +636,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     volatility: "low",
     attributed_ministry: "Ministère de l'Investissement, des Partenariats et de l'Intégration Africaine",
     legal_basis: "Code des Investissements du Sénégal — Loi 2004-06 et modifications",
-    summary: "Any registered company approved under Senegal's Investment Code pays ZERO customs duties on imported equipment, machinery, and raw materials during the investment phase. Additionally: 0% VAT on approved imports and corporate tax exemption (IS) for 3 to 7 years. Approved via APIX. This is the primary mechanism for free imports.",
+    summary: "Setting up a business that requires imported equipment? Senegal law lets you import everything tax-free during your investment phase — and then gives you a 3–7 year corporate tax holiday on top. One rule: you must get approved through APIX before you import, not after. Retroactive approval doesn't exist.",
     description: "Senegal's Code des Investissements provides three approval regimes based on investment size:\n\n• Régime A (15M–250M CFA investment): 0% customs duties on equipment and raw material imports during project build-out. 0% VAT on qualifying imports. Partial exemption from local business taxes for 3 years.\n\n• Régime B (250M–1.5B CFA): All of Régime A + full exemption from corporate tax (IS) for 5 years. Reduced employer contributions for 5 years.\n\n• Régime C (above 1.5B CFA): All of Régime B + 7-year full tax and duty holiday. Negotiated land access.\n\nTo qualify, your business must: be formally registered (RCCM + NINEA), submit an investment plan showing the equipment/machinery to be imported, and have the investment approved by APIX before you import. The approval typically takes 4–8 weeks.",
     documents_required: [
       "RCCM registration and NINEA",
@@ -681,7 +681,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     attributed_ministry: "Ministère de l'Industrie et du Commerce",
     legal_basis: "Loi n° 2017-15 portant Code des Zones Économiques Spéciales",
     currency: "XOF",
-    summary: "Companies operating inside Diamniadio Industrial City (Senegal's Special Economic Zone, 30km from Dakar) pay ZERO import duties on ALL equipment, machinery, and raw materials — permanently, not just during the investment phase. Plus 0% corporate tax for 7 years, then 15% (vs. 30% standard rate). Free repatriation of profits. Factory space from 100 sqm available.",
+    summary: "Manufacturing inside Diamniadio Industrial City means you never pay import duties — on raw materials, machines, or spare parts. Permanently. Combined with 0% corporate tax for 7 years and factory space from 100 sqm, this is why serious manufacturers planning to export set up here instead of anywhere else in Senegal.",
     description: "Diamniadio Industrial City is Senegal's flagship Special Economic Zone. Unlike the investment code's temporary exemptions, companies inside the SEZ receive permanent 0% import duties on all inputs used in production — machinery, raw materials, intermediate goods.\n\nKey benefits:\n• 0% customs duties on all imports (equipment, raw materials, spare parts) — permanent for SEZ companies\n• 0% corporate income tax (IS) for first 7 years\n• Reduced IS rate of 15% from year 8 onward (vs. 30% standard)\n• 0% export duties on goods produced in the zone\n• Full and free repatriation of profits, dividends, and capital\n• Ready-built factory units (100–5,000 sqm) at subsidized rates\n• Single-window customs and permit processing\n• Priority electricity connection (SENELEC dedicated line)\n\nThis is the best structure for any manufacturer who imports raw materials and exports or sells finished goods. The Dakar–Diamniadio expressway makes distribution easy.",
     documents_required: [
       "Business registration (RCCM + NINEA, or willingness to incorporate)",
@@ -724,7 +724,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-05-10",
     volatility: "low",
     attributed_ministry: "Ministère des Finances et du Budget",
-    summary: "Senegal's dedicated SME development bank, created specifically to finance businesses that commercial banks turn away. Below-market interest rates (7–10% vs 15%+ commercial). Specializes in GIEs, agricultural cooperatives, and women's enterprises. Minimum loan: 1M CFA. No early repayment penalties.",
+    summary: "This bank was created specifically because commercial banks wouldn't serve GIEs, cooperatives, and small agricultural businesses. Below-market rates, repayment schedules that follow harvest cycles, and products built around how Senegalese businesses actually work. If you run a GIE or cooperative, BNDE is your first call — not a commercial bank.",
     description: "BNDE is not a commercial bank — it was created by the government specifically to finance SMEs and cooperatives that cannot access commercial credit. Its rates are typically 4–8 percentage points below commercial banks.\n\nKey products:\n• Credit agricole: 7–9% rate, seasonal repayment schedule (aligned with harvest cycles)\n• Crédit PME: 8–10% rate, 1–5 year terms, for equipment and working capital\n• Crédit GIE: Specific product for GIEs and cooperatives, including groups with no prior credit history\n• Lignes de crédit femmes: Preferential products for women's businesses at 7% or below\n\nBNDE actively works with FONGIP guarantees — meaning if you lack collateral, BNDE + FONGIP together is the pathway.",
     documents_required: [
       "RCCM registration and NINEA",
@@ -767,7 +767,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-04-20",
     volatility: "low",
     attributed_ministry: "Ministère de l'Industrie et du Commerce",
-    summary: "Free technical assistance, business diagnostics, export market preparation, and quality certification support for Senegalese SMEs. ADPME also connects SMEs to buyers and public procurement. The service is completely free to registered businesses with NINEA.",
+    summary: "Business consultants in Senegal charge 500,000–5,000,000 CFA for a business diagnostic and market access strategy. ADPME does the same thing for free — they'll identify what's blocking your growth, connect you to buyers, and coach you through bidding on government contracts. Walk in with your NINEA. No appointment needed.",
     description: "ADPME (Agence de Développement et d'Encadrement des PME) provides free business development services that private consultants charge 500,000–5,000,000 CFA for:\n\n• Business diagnostic: Free structured assessment of your business — identifies what's blocking growth\n• Accounting and management training: Free group sessions on bookkeeping, tax filing, cash flow\n• Quality certification preparation: Helps you meet standards for ISO, HACCP (food), or CE marking for export\n• Market access: ADPME connects Senegalese SMEs to domestic buyers (supermarkets, hotels, public institutions) and export markets\n• ARMP procurement coaching: Helps you prepare to bid on government contracts\n• Product labeling and packaging support for food and cosmetics producers\n\nADPME has offices in Dakar, Thiès, Saint-Louis, Ziguinchor, and Kaolack.",
     documents_required: [
       "RCCM registration number",
@@ -806,7 +806,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-04-15",
     volatility: "medium",
     attributed_ministry: "Ministère de la Formation Professionnelle et Technique",
-    summary: "The government reimburses up to 100% of the cost of vocational training for employees and entrepreneurs. If you are a registered business and send your employees or yourself to a certified training program, 3FPT pays the bill. Covers technical skills, management, health and safety, IT, and more.",
+    summary: "If you're a registered business in Senegal, the government is already collecting a training levy from your payroll. 3FPT is how you get that money back — they reimburse up to 100% of training costs for you or your employees. The money exists. Most businesses never know to claim it.",
     description: "3FPT (Fonds de Financement de la Formation Professionnelle et Technique) is funded by a 3% payroll levy that all registered employers pay — even if you have just one employee. If you are registered and paying this levy, you are already contributing to 3FPT and can claim training reimbursement.\n\nWhat is covered:\n• Technical trade skills (welding, electrical, carpentry, plumbing, tailoring, etc.)\n• Business management and accounting training\n• Computer and digital skills\n• Food processing and quality control\n• Health and safety certification\n• Any training at a certified Senegalese training center\n\nFor small businesses: Even if you are not a formal employer, 3FPT's Entrepreneuriat track allows sole traders and GIE members to access subsidized training at partner centers nationwide.\n\nFor larger businesses: Submit your annual training plan (Plan de Formation) and 3FPT reimburses approved training costs.",
     documents_required: [
       "NINEA",
@@ -850,7 +850,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-05-02",
     volatility: "medium",
     attributed_ministry: "Ministère de l'Entrepreneuriat Rapide, de l'Emploi et de la Formation Professionnelle",
-    summary: "Women entrepreneurs in Senegal can access zero-interest loans (0% taux) from DER/FJ for amounts between 100,000 and 1,000,000 CFA. No collateral required under 500,000 CFA. Special fast-track processing — typically 2–4 weeks. This is DER/FJ's women-specific track, separate from the main loan product.",
+    summary: "Zero interest — which means you borrow 500,000 CFA and you repay exactly 500,000 CFA. No fees. What you're really building isn't just capital for your business — it's your first formal credit record, which is the key that opens every larger door after this. Fastest DER/FJ product: 2–4 weeks.",
     description: "The DER/FJ women's financing track provides:\n• 0% interest rate (no interest charged at all) for amounts up to 1,000,000 CFA\n• No collateral required for amounts under 500,000 CFA\n• Group lending available (solidarity group of 3–10 women, all sharing responsibility)\n• Repayment period: 12–24 months, aligned with business cycle\n• Training included: 2-day financial management training provided before disbursement\n\nPriority is given to:\n• Women running food processing, dairy, gardening, or agri-processing businesses\n• Women's GIEs and cooperatives\n• Women between 18–40 in semi-urban or rural areas\n• Women who have not previously received DER/FJ financing",
     documents_required: [
       "National ID card (CNI)",
@@ -894,7 +894,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-05-02",
     volatility: "medium",
     attributed_ministry: "Ministère de l'Environnement, du Développement Durable et de la Transition Écologique",
-    summary: "DER/FJ's green financing track covers solar energy installations, drip irrigation systems, biogas units, organic farming transition, and clean cookstove businesses. Subsidized interest rate of 2–3% (vs 5%+ on standard track). Bundled with technical advisory from GIZ and other partners.",
+    summary: "If you're building a solar, irrigation, or biogas business — DER/FJ's green track gives you capital at 2–3% with a GIZ technical advisor who comes to your site to help you make the project work. Often the technical support matters more than the loan rate. Say 'Financement Vert' explicitly at the counter — not all staff know it exists.",
     description: "DER/FJ Vert covers renewable energy and sustainable agriculture businesses specifically:\n• Solar panel installation businesses: panels for household use, mini-grids, agricultural pumping\n• Drip irrigation system installation (selling or using)\n• Biogas units (building or operating)\n• Organic agriculture and natural fertilizer production\n• Clean cookstove manufacturing or distribution\n• Agroforestry and climate-adapted farming\n\nRate: 2–3% interest (compared to 5% for standard DER/FJ loans). Technical partner: GIZ provides free on-site advisory for approved projects.",
     documents_required: [
       "Business plan for the green activity",
@@ -937,7 +937,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-04-30",
     volatility: "low",
     attributed_ministry: "Ministère de l'Agriculture, de la Souveraineté Alimentaire et de l'Élevage",
-    summary: "Senegal's national agricultural bank offers seasonal credit aligned with harvest cycles — you borrow before planting, repay after harvest. Rates of 7.5–10%. Serves farmers, GIEs, cooperatives, and agri-processors in all 14 regions. Can finance inputs (seeds, fertilizer, pesticides), equipment, and storage.",
+    summary: "You borrow before planting and repay after harvest — not in fixed monthly installments that ignore how farming actually works. CNCAS is the agricultural bank built around the farmer's reality: seeds, fertilizer, equipment, and storage all financed on the crop cycle. For GIEs and cooperatives, rates and approval chances are both better than for individuals.",
     description: "CNCAS is Senegal's dedicated agricultural credit institution. Unlike commercial banks that require stable monthly income, CNCAS structures repayment around harvest seasons.\n\nProducts:\n• Crédit de campagne (campaign credit): Short-term loan (3–12 months) for seeds, fertilizer, pesticides, fuel. Repaid after harvest. Rate: 7.5–9%.\n• Crédit d'équipement agricole: Medium-term loan (1–5 years) for tractors, irrigation pumps, processing machines. Rate: 9–10%.\n• Crédit de stockage: Bridge loan to store harvest and sell when prices are higher rather than forced-selling at harvest time.\n• Crédit transformation: For agri-processing units (mills, dryers, presses).\n\nCNCAS is present in all 14 Senegalese regions with 15+ branches. Groups and GIEs are strongly preferred — better rates and higher approval chances.",
     documents_required: [
       "National ID card",
@@ -979,7 +979,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     verified_at: "2026-04-15",
     volatility: "medium",
-    summary: "Free tech incubation program based in Dakar: coworking space, mentors, WIFI, equipment access, investor introductions. No equity taken in cohort stage. 6-month program with monthly sessions, demo day, and connections to EU/AfDB startup grant programs. Open to any tech, fintech, or digital-product startup.",
+    summary: "Six months of incubation — space, internet, equipment, mentors, and a demo day in front of investors — at no cost and without giving up any equity. For any tech, fintech, or digital-product startup in Senegal, this is how you go from a product that works to investor-ready.",
     description: "Dakar Digital Campus is Senegal's main government-backed tech incubator, managed in partnership with the Ministry of Digital Economy.\n\nWhat you get (free, no equity):\n• Coworking desk space at the Almadies campus (Dakar)\n• High-speed internet\n• Access to servers, dev tools, and lab equipment\n• Monthly workshops: pitching, product development, accounting, fundraising\n• 1-on-1 mentor matching (tech, marketing, legal, finance)\n• Demo Day (month 6): pitch to Senegalese investors, EU partners, and AfDB reps\n• Introduction to TEF, AFD, and EU startup grant programs\n\nNot a residency — you keep your own business. The campus does not take equity during the cohort. If you raise investment through their connections, no fees.",
     documents_required: [
       "Completed application at dakardigitalcampus.com",
@@ -1020,7 +1020,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     verified_at: "2026-04-10",
     volatility: "medium",
-    summary: "Orange's free digital skills center in Dakar offers coding bootcamps, entrepreneurship training, and the Orange Fab accelerator — which provides up to 5M CFA in funding plus 6 months of mentoring to selected startups. Equipment (3D printers, electronics lab, dev tools) available for free to members. Open to all nationalities resident in Senegal.",
+    summary: "Free coding training, a FabLab with 3D printers and electronics you can actually use, and a direct path into Orange's startup accelerator — which gives selected teams 5M CFA and opens Orange's commercial network across 26 African countries. Open to any nationality resident in Senegal.",
     description: "Orange Digital Center (ODC) in Dakar is part of Orange's continent-wide network of 30+ centers. In Dakar specifically:\n\n• Free coding and digital skills training: Web dev, mobile apps, data science, digital marketing. Courses run 3–6 months. Certificate upon completion.\n• FabLab: 3D printers, laser cutters, electronics lab — free for registered members to use on projects\n• Orange Fab accelerator: 6-month program for startups selected by Orange Ventures. Benefits include 5M CFA funding (convertible grant), mentoring, offices, and access to Orange's partner network in 26 African countries.\n• SoliCode program: Coding training specifically for young people from disadvantaged backgrounds — fully subsidized\n\nFor Orange Fab specifically: startups apply with a pitch deck, go through 2 rounds of selection, and 10–15 are chosen per cohort.",
     documents_required: [
       "Registration at orangedigitalcenters.com/sn or in person at the center (Dakar Sacré-Coeur)",
@@ -1059,7 +1059,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-05-01",
     volatility: "low",
     attributed_ministry: "Ministère des Finances et du Budget",
-    summary: "Once you are registered with the government procurement authority (ARMP), you can bid on Senegal's 800B+ CFA annual government purchasing budget — food supply for schools, construction, uniforms, IT services, agricultural inputs, cleaning, and hundreds of other categories. Registration costs 25,000–50,000 CFA and is valid indefinitely. Most GIEs and SMEs who qualify never register.",
+    summary: "The Senegalese government spends 800+ billion CFA a year buying from private businesses — food, uniforms, construction, IT, cleaning, everything. Registration to bid costs 25,000–50,000 CFA. 30% of contracts are reserved for women-led businesses. Most businesses that qualify never register, which means less competition for those who do.",
     description: "The Senegalese government spends hundreds of billions of CFA per year buying from the private sector — and most small businesses never bid because they do not know how or think they are too small. In reality:\n\n• Contracts are broken into lots — you can bid on small lots (5M–50M CFA range)\n• GIEs are explicitly allowed to bid on contracts up to a certain size\n• 30% of public contracts are reserved for women-led businesses\n• Many food supply contracts (school canteens, hospitals, army) go to small suppliers\n\nTo bid on any government contract in Senegal you must:\n1. Have RCCM + NINEA\n2. Register on the ARMP Portail des Marchés Publics\n3. Pay the registration fee (25,000–50,000 CFA)\n4. Respond to published tenders (Avis d'Appel d'Offres)\n\nADPME offers free coaching on how to prepare your first bid.",
     documents_required: [
       "RCCM and NINEA",
@@ -1103,7 +1103,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-04-01",
     volatility: "low",
     attributed_ministry: "Présidence de la République / Ministère des Finances",
-    summary: "Senegal's sovereign wealth fund co-invests in strategic private sector projects that create jobs and expand productive capacity. Minimum investment: 100M CFA. FONSIS takes a minority equity stake (typically 10–30%) and exits within 7–10 years. Priority sectors: agri-processing, manufacturing, renewables, infrastructure, digital economy.",
+    summary: "Senegal's sovereign wealth fund becomes your co-investor — taking a minority equity stake and bringing government credibility that unlocks international development finance alongside it. Not for early stage: minimum 100M CFA investment, proven business model required. Diaspora entrepreneurs with significant capital are actively welcomed.",
     description: "FONSIS was created to catalyze private investment in Senegal's economy by co-investing alongside entrepreneurs and investors. It does not give grants — it becomes your co-investor, taking an equity stake and providing patient capital.\n\nWhat FONSIS brings:\n• Patient capital (5–10 year horizon, no short-term exit pressure)\n• Government credibility that unlocks co-financing from international DFIs (IFC, AfDB, Proparco)\n• Strategic network and connections to government procurement and regulatory fast-track\n• Management support for funded companies\n\nWho is it for:\n• Established businesses or serious entrepreneurs with validated business models\n• Projects requiring above 100M CFA in investment\n• Projects in priority sectors of the Plan Sénégal Émergent\n\nNot for micro-businesses — this is for mid-scale investments. But diaspora entrepreneurs with significant capital can approach FONSIS for co-investment.",
     documents_required: [
       "Business plan and financial model (5-year projection)",
@@ -1145,7 +1145,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-04-15",
     volatility: "medium",
     attributed_ministry: "Présidence de la République",
-    summary: "Businesses aligned with Plan Sénégal Émergent priority sectors can receive PSE Entreprise Prioritaire status — which fast-tracks all government permits, customs clearances, and approvals through a single window. This means customs in 24 hours instead of 2–3 weeks, building permits in 2 weeks instead of 3–6 months, and a dedicated government liaison. Free to apply for.",
+    summary: "Bureaucracy kills businesses through delay — permits taking months, customs clearances taking weeks. PSE Entreprise Prioritaire status gives you a single government desk that processes everything in 24–72 hours. For any business doing serious investment in a priority sector, this removes the biggest non-financial barrier to building.",
     description: "The Plan Sénégal Émergent (PSE) is Senegal's national development strategy. It designates priority sectors for the country's industrialization — and businesses in these sectors that meet investment and job creation thresholds can receive 'Entreprise Prioritaire' designation.\n\nBenefits:\n• Single-window permit processing — all your government permits managed by one APIX desk\n• Priority customs clearance (24–72 hours instead of 2–3 weeks)\n• Fast-track building permits and land lease agreements\n• Priority access to industrial zones (Diamniadio, Thiès)\n• Dedicated APIX advisor for ongoing government interface\n• Eligibility for PSE financing windows via FONSIS and BNDE\n\nPriority sectors: Agriculture and agri-industry, Energy and mining, Tourism, ICT and digital, Infrastructure and logistics, Industrial fisheries, Habitat and construction\n\nRequirements: Formal business registration, minimum investment plan of 50M CFA (flexible for priority sectors), commitment to creating at least 5 formal jobs.",
     documents_required: [
       "RCCM, NINEA, and business statutes",
@@ -1187,7 +1187,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-04-01",
     volatility: "high",
     attributed_ministry: "Ministère de l'Agriculture, de la Souveraineté Alimentaire et de l'Élevage",
-    summary: "World Bank-financed program providing grants and technical support to agribusinesses in the Senegal River Valley and groundnut basin. Matching grants of 2M–50M CFA for smallholders, cooperatives, and agri-processors investing in irrigation, storage, processing, and market access. Runs until 2026.",
+    summary: "World Bank matching grants for agricultural businesses in the Senegal River Valley, Casamance, and Groundnut Basin — you invest 30–50%, the program covers 50–70%. The grant goes toward infrastructure that multiplies your output: irrigation, cold storage, processing equipment. Program closes 2026 — apply now if you're in these regions.",
     description: "PDIDAS (World Bank IDA-financed) specifically targets the Senegal River Valley, Casamance, and Groundnut Basin. It provides matching grants — you invest 30–50% and the program contributes 50–70%.\n\nEligible investments:\n• Irrigation infrastructure (pumps, drip systems, canal lining)\n• Cold storage and drying facilities\n• Processing equipment (mills, presses, packaging machines)\n• Market access (transport, logistics, buyer connections)\n• Seeds, fertilizer, and certified planting material\n\nTargeted beneficiaries:\n• Small-scale farmers and GIEs in the Senegal River Valley, Casamance, and Louga\n• Women's processing cooperatives\n• Young agri-entrepreneurs (18–35)\n• Agribusinesses connecting smallholders to markets\n\nNote: The program is in its final disbursement phase — check PDIDAS.sn for current call status.",
     documents_required: [
       "Business or project plan",
@@ -1229,7 +1229,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-03-20",
     volatility: "medium",
     attributed_ministry: "Ministère de l'Agriculture",
-    summary: "German development agency (GIZ) provides free technical assistance to Senegalese agricultural value chains: improved farming techniques, post-harvest handling, quality certification, and buyer connections. Active in mango, onion, potato, sesame, and dairy value chains. No money — but the training and certifications unlock export markets worth 3–10x local prices.",
+    summary: "GIZ teaches you how to lose less — 30–60% less post-harvest waste is the target. Then they connect your certified produce to European buyers who pay 3–5x local market prices. No money changes hands. What you're building is access to a completely different tier of market that your produce was already good enough for.",
     description: "GIZ's agricultural programs in Senegal focus on the technical gap — most Senegalese farmers know how to grow; GIZ helps them grow better, reduce losses, and access markets that pay more.\n\nPrograms active in 2026:\n• ProFarm: Post-harvest loss reduction — proper drying, storage, handling. Reduces losses by 30–60%.\n• AgriFi: Access to financial services for smallholders — helps groups qualify for BNDE and CNCAS credit\n• Value chain integration: Connects certified producer groups to export buyers in Europe and Gulf markets\n• Mango and onion certification: Organic certification support for GIE groups exporting to EU\n\nHow to access: GIZ works through Senegalese partner organizations (farmer unions, NGOs, local government). The easiest entry point is through FONGS (Fédération des ONG du Sénégal) or your regional agricultural development body (CADAK, ANCAR).",
     documents_required: [
       "GIE registration or farmer group membership",
@@ -1267,7 +1267,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     verified_at: "2026-04-01",
     volatility: "high",
-    summary: "Women-focused business accelerator and incubator in Dakar. 4-month program with 2.5M CFA startup grant (for winners), mentoring, legal support, and investor pitch day. Open to women entrepreneurs from any African country who are based in Senegal. Applications open once annually.",
+    summary: "Four months of building your business seriously — strategy, finance, legal, and market access — with 12 other women doing the same. The top three finishers receive 2.5M CFA. Every participant walks out with introductions to DER/FJ, FONGIP, and EU grant programs. This is an accelerant, not a handout. Open to women from any African country based in Senegal.",
     description: "WOFBI runs an intensive 4-month cohort for women entrepreneurs across all sectors:\n\n• 12 women selected per cohort\n• 4 months of weekly sessions: business strategy, financial modeling, marketing, legal structure, export preparation\n• Mentors include Senegalese executives, European investors, and diaspora entrepreneurs\n• Access to WOFBI's partner network for procurement, distribution, and export\n• Finalist pitch competition: top 3 receive 2.5M CFA grants (non-dilutive)\n• All 12 participants get introductions to DER/FJ, FONGIP, and EU grant programs\n\nSectors actively recruited: food processing, fashion, beauty/cosmetics, tech, agriculture. Open to women from any African country resident in Senegal.",
     documents_required: [
       "Application form at wofbi.com during intake period",
@@ -1308,7 +1308,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     volatility: "low",
     attributed_ministry: "Ministère des Finances et du Budget / Ministère de l'Énergie",
     legal_basis: "Code Général des Impôts du Sénégal — disposition énergie renouvelable",
-    summary: "By law, solar panels, wind turbines, drip irrigation systems, biogas units, energy-efficient cookstoves, and associated equipment are PERMANENTLY exempt from import duties (droits de douane) and TVA in Senegal. Any business or individual importing or purchasing these items pays zero tax. No application required — the exemption applies automatically at customs.",
+    summary: "Solar panels, drip irrigation, biogas equipment, and energy-efficient cookstoves are permanently exempt from import duties and TVA in Senegal — by law, automatically, no application needed. This makes the difference between an irrigation pump costing 800,000 CFA and 500,000 CFA. Many customs officers won't volunteer this. You have to know to invoke it.",
     description: "This is one of the most practically useful and least-known fiscal provisions in Senegal. The government permanently exempted green energy and efficiency equipment from all import taxes to encourage adoption.\n\nItems covered (no import duty, no TVA):\n• Solar panels (all wattages and types)\n• Solar inverters and charge controllers\n• Solar water pumps\n• Wind turbines and components\n• Drip irrigation systems and components\n• Biogas digesters and equipment\n• Energy-efficient cookstoves and improved clay stoves\n• LED lighting for rural areas\n• Water purification systems (solar or manual)\n\nThis means:\n• A solar water pump that costs 800,000 CFA at full duties costs ~500,000 CFA without duties\n• A drip irrigation kit that costs 1,500,000 CFA costs ~950,000 CFA\n• A full solar home system that costs 600,000 CFA costs ~380,000 CFA\n\nFor businesses importing these items for resale, installation, or use in production, the exemption is automatic — show the customs officer the equipment falls under the green exemption category.",
     documents_required: [
       "For importers: RCCM and NINEA (standard import documentation)",
@@ -1348,7 +1348,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     verified_at: "2026-04-01",
     volatility: "low",
-    summary: "France's development finance institution (AFD/Proparco) channels subsidized credit lines through partner banks in Senegal — BNDE, Banque Atlantique, and Ecobank. These credit lines are allocated specifically for SME investment loans at below-market rates (7–10%). You apply at the partner bank, not at Proparco directly.",
+    summary: "France's development bank routes subsidized credit through BNDE, Banque Atlantique, and Ecobank — which means you can get a business loan at 7–10% instead of 15%+ commercial rates. The catch: you have to ask specifically for the 'ligne Proparco/AFD PME.' The bank won't offer it unless you ask.",
     description: "Proparco (the private sector arm of AFD — Agence Française de Développement) has allocated several hundred million Euros in credit lines to Senegalese partner banks specifically for SME lending. The bank on-lends at below-market rates.\n\nCurrent partner banks in Senegal:\n• BNDE — best access for GIEs and agricultural businesses (rates as low as 7%)\n• Banque Atlantique Sénégal — more accessible for growing SMEs with some operating history\n• Ecobank Sénégal — good for businesses with regional expansion plans\n\nWho qualifies:\n• Registered businesses (RCCM + NINEA) operating at least 1 year\n• Clear investment purpose (equipment, expansion, working capital for exports)\n• Minimum 20% own contribution (less if FONGIP guarantee available)\n\nRates: 7–10% depending on bank and tenor (1–7 years).\n\nNote: You do not apply to Proparco. You apply to BNDE, Banque Atlantique, or Ecobank and request the SME credit line specifically. Ask for the 'ligne de crédit Proparco/AFD PME'.",
     documents_required: [
       "Business plan with investment project description",
@@ -1389,7 +1389,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     verified_at: "2026-04-01",
     volatility: "medium",
-    summary: "Rural and peri-urban businesses connecting to the grid for the first time can access SENELEC's subsidized connection program — reducing the upfront cost of a professional business connection from 500,000–2,000,000 CFA to 50,000–150,000 CFA. The ASER program also extends grid coverage to villages that previously had no access.",
+    summary: "A professional electricity connection in rural Senegal normally costs 500,000–2,000,000 CFA upfront. The subsidized scheme brings that to 50,000–150,000 CFA payable over 12 months. If your commune isn't on the grid yet, a documented registered business is what makes you a priority for ASER's rural electrification program.",
     description: "Getting a business electricity connection in Senegal's peri-urban and rural areas has been prohibitively expensive. Two programs address this:\n\n1. SENELEC Branchement Économique: For areas already on the grid. Reduces upfront connection cost to ~50,000–150,000 CFA for standard business connection (3-phase, 30A). Payment can be spread over 12 months. The connection includes meter installation.\n\n2. ASER (Agence Sénégalaise d'Électrification Rurale): For villages not yet on the grid. ASER builds and operates rural mini-grids and extends the grid to qualifying villages. If your commune is applying for grid extension, a registered local business is a strong qualifying factor for ASER priority consideration.\n\nFor productive use grants: ASER specifically funds 'Poles Électrification Productive' — areas where electricity enables businesses (grain mills, cold storage, workshops). A documented local business need (from a registered GIE or SME) can trigger ASER to prioritize your area for electrification.",
     documents_required: [
       "RCCM and NINEA (for business connection)",
@@ -1431,7 +1431,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     verified_at: "2026-05-20",
     volatility: "low",
-    summary: "PAMECAS is the most widely-used microfinance institution for women in Senegal. Solidarity group loans from 50,000 CFA with NO collateral required — the group of 3–10 women is the guarantee. First loan approved within 2–4 weeks of group formation. Present in 11 of 14 regions. This is the starting point for millions of women who have never accessed formal credit.",
+    summary: "You and 3–10 other women vouch for each other's loans. No property, no employment proof — the group is the guarantee. This is how the majority of women in Senegal access formal credit for the first time. Successful repayment builds each woman's individual credit record — which is what opens every larger door after this.",
     description: "PAMECAS (Partenariat pour la Mobilisation de l'Épargne et le Crédit au Sénégal) was built specifically for the informal sector — and 70%+ of its clients are women.\n\nThe solidarity group model:\n• Form a group of 3–10 women (can be friends, neighbors, market stall neighbors)\n• Attend 2–4 group training sessions on savings and credit (free, takes 2–3 weeks)\n• Entire group applies together — each member is responsible for her own loan but the group vouches collectively\n• No formal collateral required — solidarity is the guarantee\n\nLoan products:\n• Crédit solidaire (group): 50,000–500,000 CFA per member, 4–12 months\n• Crédit individuel (after 2+ cycles): 200,000–2,000,000 CFA, for established clients\n• Crédit transformation: For women moving from trading to small production\n• Crédit agricole: Seasonal loans for women farmers\n\nRate: 12–18% annually (higher than banks but far more accessible — no employment proof, no property collateral). Disbursement: 2–4 weeks.\n\nPAMECAS has branches in Dakar, Thiès, Saint-Louis, Louga, Ziguinchor, Kaolack, Diourbel, and rural areas.",
     documents_required: [
       "National ID card",
@@ -1473,7 +1473,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     verified_at: "2026-05-15",
     volatility: "low",
-    summary: "Cooperative credit union model — you become a member-owner, not just a client. Rates of 10–14% (lower than commercial microfinance) because profits return to members. Over 300,000 members across Senegal. Strong in peri-urban and rural areas. Tontine groups can formalize as CMS savings cooperatives and access group credit. Used heavily by women's associations.",
+    summary: "CMS is a cooperative — you become a member, not just a client, and the profits return to you as lower rates. If you already run a tontine group, bringing it to CMS and formalizing it unlocks group credit lines that individual members couldn't access alone. Recommended next step after 1–2 PAMECAS cycles.",
     description: "CMS is a mutualist institution — a cooperative owned by its members. This structural difference matters: because members share profits, rates are 3–5% lower than commercial microfinance institutions.\n\nMembership:\n• Pay a one-time membership share (part social): typically 2,000–5,000 CFA\n• Once a member, you save and borrow at member rates\n• Members vote on leadership and policies\n\nKey products for women:\n• Compte d'épargne classique: Save small amounts (even 1,000 CFA), earn interest\n• Crédit à la consommation: Small personal loans up to 500,000 CFA\n• Crédit productif (entreprise): For income-generating activities, 100,000–5,000,000 CFA\n• Crédit tontine formalisée: Women's savings groups (tontines) can formalize as CMS groups and access credit backed by collective savings\n• Crédit agricole de campagne: Seasonal agricultural loans aligned with harvest\n\nWomen's savings associations that register as CMS groups access group credit at rates as low as 10% — significantly cheaper than individual microfinance loans.\n\nCMS has 104 points of service across Senegal's 14 regions.",
     documents_required: [
       "National ID card",
@@ -1515,7 +1515,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     verified_at: "2026-05-10",
     volatility: "low",
-    summary: "ACEP is the bridge between informal microfinance and formal banking. Serves established micro and small businesses with operating history. Loans 500,000–15,000,000 CFA at 12–15% — higher than BNDE but far faster (2–3 weeks) and more flexible on collateral. Women with 1+ year of activity and mobile money history qualify. Has strong women's agricultural credit track.",
+    summary: "Six months of Wave or Orange Money transactions showing income IS your income proof at ACEP. They were among the first to accept mobile money statements — which means women who've been building without a bank account can now borrow up to 15M CFA against the record they already have. Faster than BNDE, more flexible on collateral.",
     description: "ACEP occupies the gap between PAMECAS (very small, informal) and BNDE (formal, requires documentation). It serves women and men who have run a business for at least 6–12 months and need more than microfinance but cannot yet access a commercial bank.\n\nKey differences from PAMECAS:\n• No solidarity group required — individual credit\n• Larger amounts (500,000–15,000,000 CFA)\n• Requires 6+ months of activity history\n• Mobile money statements accepted as income proof\n\nWomen's track:\n• ACEP actively recruits women entrepreneurs with agriculture, food processing, retail, and service activities\n• Women's group loan available: groups of 3–6 women with shared business activity\n• Mobile money transaction history (Wave, Orange Money) used as income assessment\n• Repayment aligned with business cycle — monthly, quarterly, or seasonal\n\nAgricultural credit:\n• Campaign credit (inputs) at the start of season\n• Equipment credit for processing machines\n• Repayment after harvest",
     documents_required: [
       "National ID card",
@@ -1557,7 +1557,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     verified_at: "2026-04-20",
     volatility: "low",
-    summary: "CAURIE-MF specifically targets rural and peri-urban women excluded from all other credit systems — no mobile money history, no market stall, no formal activity. Solidarity group loans starting from 30,000 CFA. Active in the most underserved communes of Louga, Thiès, Diourbel, and Fatick. Monthly meetings, financial literacy, and peer support included.",
+    summary: "CAURIE loan officers travel to your village — you don't travel to them. Starting from 30,000 CFA. This program exists for the woman who has been told no everywhere else: no mobile money history, no market stall, no documentation beyond a CNI. If that's you, CAURIE is the call to make.",
     description: "CAURIE-MF (Caisse de l'Union Africaine pour le Renforcement des Initiatives d'Épargne) was specifically founded to reach the women that PAMECAS and ACEP cannot — women in villages with no income history and no documentation beyond an ID card.\n\nWhat makes CAURIE different:\n• Starting loans as small as 30,000 CFA — the smallest entry point in Senegal\n• Designed for women who have never borrowed formally\n• Intensive group methodology: meetings every 2 weeks, shared financial literacy training\n• Loan officers visit villages, not the reverse\n• Mobile outreach teams serve communes with no fixed office\n\nActivities commonly financed:\n• Buying and reselling vegetables or fish\n• Groundnut and shea processing\n• Small poultry farming (5–20 chickens)\n• Dyeing and tie-dye production\n• Artisan salt production (coastal areas)\n• Small grain trading\n\nPremium rates (15–20%) reflect the cost of serving remote areas — but for the women who access it, there is no alternative.",
     documents_required: [
       "National ID card only",
@@ -1596,7 +1596,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     verified_at: "2026-04-15",
     volatility: "high",
-    summary: "Dakar-based incubator exclusively for women building beauty, cosmetics, wellness, and natural product businesses. Free lab access (formulation equipment, testing tools), packaging design support, DPANS regulatory guidance for product approval, and connections to Dakar retail buyers and EU export pathways. 3-month intensive cohorts, 15 women per cohort.",
+    summary: "If you're building a beauty or cosmetics product, the barrier is usually the lab — formulation equipment, testing, packaging compliance, regulatory approval. Teranga Lab removes that barrier: free lab access, production support, and the DPANS pathway to get your product legally on Senegalese shelves and into EU export channels.",
     description: "Teranga Lab addresses a specific and critical gap: women with formulas and recipes who cannot access lab equipment, product certification, or retail distribution.\n\nWhat Teranga Lab provides (free to cohort members):\n• Laboratory access: Formulation lab, mixing equipment, pH testing, stability testing\n• Packaging and labeling: Graphic design support and printer access for professional labels\n• DPANS (Direction de la Pharmacie et du Médicament) regulatory guidance: Navigating product approval for cosmetics, natural remedies, and food supplements — the process most women do not know\n• Retail connections: Direct buyer introductions to Dakar supermarkets, hotels, and pharmacies\n• Export pathway: Connections to EU natural cosmetics importers (Senegal's shea and baobab products have strong EU demand)\n• Pitch day: Connects graduates to DER/FJ Femmes and BNDE for product launch financing\n\nProducts commonly developed:\n• Shea butter formulations (body butter, lotions)\n• Baobab oil products (skincare, hair)\n• Black soap (savon noir) refined and packaged for retail\n• Moringa supplements and teas\n• Hibiscus-based beverages and health products\n• Natural hair care (henna, karité, bissap)\n\nDiaspora women based in Dakar are explicitly welcome.",
     documents_required: [
       "Application via terangalab.com with product description",
@@ -1636,7 +1636,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-04-01",
     volatility: "high",
     attributed_ministry: "Ministère de l'Éducation Nationale / WFP",
-    summary: "The UN World Food Programme buys food directly from Senegalese women's farmer groups to supply school meal programs. Guaranteed purchase contracts for cowpeas, rice, groundnut oil, millet, sorghum, and vegetables. This gives women farmers a guaranteed buyer — eliminating price risk and forced selling. Active in Saint-Louis, Louga, Tambacounda, Kolda, and Ziguinchor regions.",
+    summary: "The government feeds 300,000+ school children every day and all that food has to come from somewhere. WFP signs annual purchase contracts with women's farmer groups specifically — so you know before you plant what quantity you need to grow and at what price. The contract itself then becomes collateral for seasonal credit from CNCAS. A guaranteed buyer changes everything.",
     description: "The WFP Achat au Service du Progrès (ASP) — also called Home-Grown School Feeding — is one of the most valuable and least-known programs for rural women farmers in Senegal.\n\nHow it works:\n• WFP signs annual purchase agreements with registered women's producer groups\n• Groups supply locally-grown food (cowpeas, millet, sorghum, groundnut oil, vegetables)\n• WFP pays at market-linked prices — eliminating the forced selling at harvest when prices crash\n• The contract itself becomes collateral for seasonal credit (from CNCAS or PAMECAS)\n• 1,000+ schools currently participate across Senegal\n\nWhat it unlocks:\n• Guaranteed buyer: You know before planting what quantity you need to grow and at what price\n• Credit access: A WFP purchase contract is accepted by CNCAS as evidence of future revenue — enabling input loans\n• Volume discipline: Forces groups to organize production, quality control, and delivery — skills that also serve private buyers\n• Reputation: WFP-certified supplier groups become attractive to other institutional buyers\n\nEligible groups:\n• Women's GIEs and cooperative groups registered with RCCM or commune\n• Groups with at least 10 women members\n• Agricultural production in target regions: Saint-Louis, Louga, Tambacounda, Kolda, Ziguinchor",
     documents_required: [
       "GIE registration or women's group statutes",
@@ -1676,7 +1676,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     verified_at: "2026-04-01",
     volatility: "medium",
-    summary: "The Mastercard Foundation's flagship employment program in Senegal targets 30,000 young Senegalese (18–35), with 70% women as the explicit target. Provides skills training, connections to financial services (PAMECAS, CMS, CAURIE-MF), mentorship, and market linkages. Active through local implementing partners — CAURIE-MF, COSEC, ENDA Tiers Monde. Free to participants.",
+    summary: "Mastercard Foundation's program in Senegal has a hard 70% women target — implementing partners actively recruit women first. It doesn't give out money directly: it connects rural women to the full financial system (CAURIE-MF, CMS, PAMECAS) so that one training cycle becomes the start of a progression, not a one-time event.",
     description: "Young Africa Works Senegal is implemented through a network of local partners and is NOT applied to directly — you access it through partner organizations:\n\n• CAURIE-MF: Women's financial inclusion training + credit products\n• COSEC (Conseil Sénégalais des Chargeurs): Trade skills and export market access for young exporters\n• ENDA Tiers Monde: Urban informal sector skills + micro-enterprise support\n• Dakar Digital Campus: Digital skills track\n• Agri-partners: Agricultural enterprise skills in target regions\n\nWhat participants receive:\n• 3–6 month skills training specific to their sector\n• Financial literacy and savings training\n• Facilitated access to microfinance (PAMECAS, CMS, CAURIE-MF credit products)\n• Mentorship from established Senegalese entrepreneurs\n• Market linkage support (connecting to buyers, retailers, exporters)\n• Job placement support for those seeking employment rather than self-employment\n\nThe 70% women target is a hard commitment — implementing partners actively recruit women first.",
     documents_required: [
       "National ID card",
@@ -1716,7 +1716,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_at: "2026-04-10",
     volatility: "low",
     attributed_ministry: "Ministère de la Formation Professionnelle et Technique",
-    summary: "The government operates dedicated women's vocational training centers (CETF — Centre d'Enseignement Technique Féminin) across Senegal. Completely free. Courses: tailoring/couture, cooking and catering, beauty and cosmetics, tie-dye and batik, hairdressing, embroidery, soap making. 3–12 month programs, certificate upon completion. 14 centers, one per region.",
+    summary: "Free government vocational training for women in every region — tailoring, food processing, beauty, tie-dye, embroidery, soap making. No minimum education required. No application fee. This is the first step for someone who wants to build something but doesn't yet have a marketable skill. One center per region, 14 across Senegal.",
     description: "ONFP's women's vocational centers (CETF) are a completely free, government-run pathway into skilled trades. They exist specifically for women who did not complete formal education and want a marketable skill.\n\nCourses available (varies by center):\n• Couture et confection (tailoring): 6–12 months, covers all clothing categories\n• Cuisine et traiteur (cooking and catering): 6 months, restaurant and event catering skills\n• Coiffure (hairdressing): 6–12 months, includes business management\n• Beauté et esthétique (beauty): 6 months, cosmetics application and product sales\n• Teinture et tie-dye: 3–6 months, artisan dyeing techniques\n• Savonnerie et parfumerie: 3–6 months, soap and fragrance production\n• Broderie et tapisserie: 3–6 months, embroidery and weaving\n\nUpon completion:\n• National certificate (CAP or attestation professionnelle)\n• Certificate is recognized by employers and for business registration\n• ONFP helps connect graduates to employers or guides them toward self-employment with DER/FJ referral\n\nCenters in every region — Dakar, Thiès, Louga, Ziguinchor, Saint-Louis, Kaolack, Matam, Tambacounda, and 6 more.",
     documents_required: [
       "National ID or birth certificate",
@@ -1758,7 +1758,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     verified_at: "2026-04-01",
     volatility: "medium",
-    summary: "ADIE provides the very smallest micro-loans in Senegal — starting from 50,000 CFA — specifically for people who cannot access any other form of credit. No ID required beyond CNI. No collateral. No formal business. Explicitly for the poorest entrepreneurs starting with nothing. Bundled with free coaching from ADIE volunteers.",
+    summary: "ADIE gives you a loan when every other door is closed — and the only thing they ask for is your CNI. Starting from 50,000 CFA. They were built specifically for people the financial system decided were too small or too risky. The loan is the tool. The credit record you build with it — showing you can borrow and repay — is what you're actually after.",
     description: "ADIE (Association pour le Droit à l'Initiative Économique) was founded on the principle that credit is a human right, not a privilege. In Senegal, they operate in the most marginal communities.\n\nWho ADIE is for (explicitly):\n• People with no mobile money history\n• People who have never borrowed formally\n• People who have been rejected by PAMECAS or CAURIE-MF\n• People starting with literally nothing except an idea and energy\n\nProduct:\n• Micro-prêt solidaire: 50,000–500,000 CFA, 6–18 months\n• Rate: 18–24% (the highest in the microfinance ecosystem, reflecting the highest-risk clients)\n• No collateral, no prior credit history, no formal income proof\n• Bundled with 1-on-1 coaching from an ADIE volunteer (retired business people)\n\nCommon activities financed:\n• Buying stock for a market stall (first time)\n• Buying a mobile phone for resale or service\n• Buying chickens or ducks for the first time\n• Fabric for first tailoring jobs\n• Transport vehicle for first delivery business\n\nADIE Sénégal is primarily active in Dakar (Rufisque, Pikine, Guédiawaye, Parcelles), Thiès, and peri-urban zones.",
     documents_required: [
       "National ID card (CNI) — the only document required",
@@ -2000,7 +2000,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     volatility: "high",
     attributed_ministry: "Ministère de la Jeunesse, des Sports et de la Culture",
     summary:
-      "Government fund for young Senegalese entrepreneurs aged 18–35. Grants of 500,000–5,000,000 CFA for viable business projects. Distinct from DER/FJ — managed by the Ministry of Youth, not the Presidency. Often combined with free training at Maisons de la Jeunesse.",
+      "If you're 18–35 with a business idea but no money behind it, your local Maison de la Jeunesse or CDEPS office holds the door to government grants of 500,000–5M CFA. You don't start at a bank. You start here, with a simple written project and your CNI. Distinct from DER/FJ — this is the Ministry of Youth, not the Presidency.",
     description:
       "FAJE was established to provide direct financial support to young Senegalese with viable business project ideas. Unlike DER/FJ (which is presidency-controlled and mainly disbursed as interest-free loans), FAJE provides outright grants with lighter reporting requirements. Applications go through regional CDEPS (Centres Départementaux d'Education Populaire et Sportive) offices. Projects in agriculture, manufacturing, digital services, and creative industries are all eligible. Grants are conditioned on a business plan and often a short training session at a local Maison de la Jeunesse.",
     documents_required: [
@@ -2046,7 +2046,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     volatility: "low",
     attributed_ministry: "Ministère de la Jeunesse, des Sports et de la Culture",
     summary:
-      "Free government youth centers in every commune offering sewing machines, music rehearsal rooms, computer labs, and meeting space. Most Senegalese don't know these exist or are accessible for business use. Zero cost. Walk in with your CNI.",
+      "There is a government building in your commune with sewing machines, a music practice room, and computers — and it's free to use. Most people walk past it without knowing what's inside. Walk in with your CNI, tell the director what you're building, and ask what equipment is available. Quality varies a lot by location — ask specifically before assuming.",
     description:
       "Maisons de la Jeunesse et de la Culture (MJCs) are government-owned community centers managed by the Ministry of Youth. Every major commune in Senegal has at least one. They are massively underutilized. Equipment available varies by location but typically includes: sewing/embroidery machines (fashion designers use these to test patterns before buying equipment), music practice rooms (often with basic instruments), computer stations with internet, meeting/presentation rooms, and sometimes ceramics, woodworking, or screen printing equipment. The MJC director can also connect you to local CDEPS for FAJE grant applications and to vocational trainers for free courses. No membership fee — bring your CNI and state your purpose.",
     application_steps: [
@@ -2087,7 +2087,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     volatility: "high",
     attributed_ministry: "Ministère de la Culture et du Patrimoine Historique",
     summary:
-      "Government arts fund for musicians, theater companies, visual artists, filmmakers, and cultural organizations. Grants of 500,000–10,000,000 CFA. Annual call for proposals from the Ministry of Culture. Most Senegalese artists don't apply because they don't know it exists.",
+      "The Ministry of Culture gives out grants every year to musicians, theater companies, filmmakers, and visual artists. Most years, the competition is lighter than you'd expect — because most artists don't know the call exists. Get your Carte Professionnelle d'Artiste first. That's step one. The grant call follows.",
     description:
       "FONAC (Fonds National d'Aide à la Culture) is Senegal's main government arts grant mechanism. It funds: album production (musicians), theatrical productions (stage companies and solo performers), visual arts exhibitions and residencies, documentary and short film production, cultural festivals and events, and cultural heritage preservation projects. The call for proposals is published annually — usually Q1 — in the Journal Officiel and on the ministry website. Individual artists and cultural associations are both eligible. A registered structure (association loi 1901 equivalent, or individual artist registration) is typically required. Grants don't need to be repaid but require an artistic report and accounting after project completion.",
     documents_required: [
@@ -2132,7 +2132,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     volatility: "low",
     summary:
-      "Free copyright registration for Senegalese musicians, writers, filmmakers, and visual artists. BSDA collects royalties when your music plays on radio, TV, or in public spaces — and pays them to you quarterly. Most artists never register, so royalties go uncollected. This is free money you're leaving on the table.",
+      "Every time your music plays on RFM, TFM, or 2STV — a royalty is generated and paid to BSDA. If you're not registered, they don't pay it to you. It accumulates and disappears. Registration is free. If you have any radio play in Senegal and haven't done this, you are leaving money on the table right now, today.",
     description:
       "BSDA is Senegal's official copyright collecting society, equivalent to France's SACEM or the US's ASCAP. Registration is free. Once registered, BSDA automatically collects royalties on your behalf when: your music plays on any Senegalese radio station or TV channel, your music plays in public commercial spaces (restaurants, hotels, shops, events), your literary work is reprinted or performed, and through reciprocal agreements with SACEM and other international societies, when your work plays in France, ECOWAS countries, or other partner territories. Royalties are distributed quarterly. The amount depends on how much your work is played — for an active artist with radio play, this can be 50,000–500,000+ CFA per year that currently goes uncollected. Registration requires submitting your works (tracks, lyrics, manuscripts) and takes 2–4 weeks.",
     documents_required: [
@@ -2178,7 +2178,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     volatility: "medium",
     summary:
-      "French cultural institute in Dakar offering project grants, studio recording access, gallery/performance space, and international residency opportunities for Senegalese artists. Also funds French-Senegalese co-productions. Annual calls for proposals — apply in Q4 for following year projects.",
+      "Production grants, a recording studio, a theater, and gallery space — all available to Senegalese artists, not just French nationals. Most Senegalese artists assume this is for French people. It's not. The call opens every September. The relationship you build with the programming team before the call opens is what gets your application read seriously.",
     description:
       "The Institut Français Sénégal (IFS) is one of the best-funded arts support systems in the country and is drastically underused by Senegalese artists who assume it's only for French nationals. It's not. IFS actively seeks Senegalese artists and co-productions. What it offers: production grants for music albums, short films, theater, and exhibitions; use of the IFS gallery, theater (Théâtre du Sénégal in Dakar), and recording facilities; international residency placements in France and other Francophonie countries; and collaboration with French artists and institutions. The facility in Dakar (off Rue Mermoz, Fann) also has a Médiathèque with sound recording equipment and editing suites available for members. Annual grant calls open in September–October for the following year. Projects must have cultural/artistic merit — commercial pop projects may need a stronger pitch than avant-garde work.",
     documents_required: [
@@ -2225,7 +2225,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     volatility: "high",
     attributed_ministry: "Ministère de la Culture et du Patrimoine Historique",
     summary:
-      "Africa's most important contemporary art biennale (biennial — happens every 2 years). Selected artists receive production grants, exhibition space, and access to international curators, gallerists, and collectors. The 'OFF' section is open to any artist without jury — costs less but gets massive exposure during the event week.",
+      "Once every two years, the world's most serious African art collectors, curators, and gallerists land in Dakar for a week. That's when careers happen — not gradually but in concentrated moments of visibility. Getting into the OFF section doesn't require jury approval. You show up with your work, you're in the room with the buyers.",
     description:
       "Dak'Art (Biennale de l'Art Africain Contemporain) has been held in Dakar since 1992 and is the most important showcase for contemporary African art globally. It runs in even years (2026, 2028, etc.). Two tracks: 1) The official IN section — jury-selected, comes with production support of 500,000–3,000,000 CFA, premium exhibition venue, catalogue publication, and access to international collectors, gallerists, and curators who attend from Paris, New York, London, Lagos. Applications for IN typically open 18 months before the event. 2) The OFF section — any artist can register to show work during Biennale week in venues across Dakar. Lower production support, but massive foot traffic and the same international buyers walk through. Also in the OFF: pop-up sales, gallery partnerships, artist talks. The Biennale creates a market moment — diaspora buyers and collectors converge on Dakar. This is when to sell.",
     documents_required: [
@@ -2268,7 +2268,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     volatility: "medium",
     summary:
-      "Africa's most prestigious fashion platform. Selected designers show collections to international press, buyers, and distributors. A runway spot at DFW has launched African fashion brands into French, American, and Middle Eastern retail. Applications open several months before the annual event.",
+      "International buyers from Paris, New York, and the Gulf specifically travel to Dakar Fashion Week looking for African designers to stock. A runway spot doesn't mean you're famous — it means your clothes are in a room with people who can place a 200-unit order. That's what you're building: distribution. Even without a runway slot, the marketplace is open to any designer to sell directly.",
     description:
       "Dakar Fashion Week (DFW) was founded in 2002 by Adama Paris and is now recognized as one of the continent's most influential fashion platforms. It runs annually in June/July. Selected designers: show full collections on the DFW runway to international media, buyers, and fashion professionals; are featured in DFW official publications, social media, and press kits distributed to international press; gain access to DFW's buyer network (French department stores, US boutiques, Middle Eastern retailers have all purchased through DFW contacts); and receive mentoring from DFW's curators. Beyond the main show, DFW includes a marketplace, B2B sessions with buyers, and a content production component. The event attracts African-American and Afropean diaspora buyers specifically looking for African-made fashion. A confirmed runway spot is one of the fastest routes to an international fashion market. Applications are competitive — submit a strong portfolio with at minimum 10 original garments.",
     documents_required: [
@@ -2312,7 +2312,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     volatility: "medium",
     summary:
-      "German cultural institute offering project grants for Senegalese music, theater, film, and visual artists — especially for Senegal-Germany or Africa-Germany co-productions. Annual calls. Also offers German language scholarships and residency placements in Germany for established artists.",
+      "The German cultural institute in Dakar funds music, theater, film, and visual arts — and has connections to European labels, galleries, and residency programs most Senegalese artists don't know exist. The programming staff are unusually accessible. A well-crafted email about a serious project often gets a reply.",
     description:
       "The Goethe Institut Senegal (Dakar, Almadies) is less well-known than the Institut Français but equally accessible to Senegalese artists. It funds: music production projects especially those connecting traditional Senegalese or West African music with contemporary forms; theater and performance work; short film and documentary production; literary projects; and exhibitions. Priority goes to projects with cross-cultural relevance (Senegal-Africa-Germany dialogue) and innovative or experimental forms. The Goethe also hosts its own events and often programs Senegalese artists — this is a pathway in even without a formal grant. The Institute has connections to German music labels (especially world music and Afropop labels) and regularly facilitates introductions. Annual calls typically open October–November for following year. Residency programs in Germany (Berlin, Hamburg, Munich) are available for established artists — 3–6 months with stipend.",
     documents_required: [
@@ -2356,7 +2356,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     volatility: "medium",
     summary:
-      "West Africa's most established tech incubator. 6–12 month incubation with office space, mentorship, investor access, and connections to WAEMU and international markets. Competitive — takes 10–15 startups per cohort from hundreds of applications. Being an CTIC alumnus is a recognized credential in West African tech.",
+      "CTIC is the credential that changes how West Africa's banking and investment community sees your startup. Six to twelve months of incubation, real investor connections, and alumni who've built successful companies across WAEMU. You need a working product to get in — ideas don't pass the door. But if you get in, the credential lasts.",
     description:
       "CTIC Dakar (Centre de Technologies de l'Information et de la Communication) was founded in 2011 and is the oldest and most credentialed tech incubator in West Africa. It has launched companies that now operate across WAEMU and beyond. CTIC provides: furnished office space in central Dakar (free or heavily subsidized during program); access to a mentor network of 100+ experienced entrepreneurs and corporate partners; structured curriculum on business model, product-market fit, fundraising, and legal structure; investor connections — CTIC alumni have raised from Orange Ventures, Partech Africa, Proparco, and international VCs; and representation at African and international tech conferences. CTIC is selective. Applications require a working product (MVP at minimum), an articulated market, and a coachable team. The program is free — CTIC historically has not taken equity, though this model has evolved for some cohorts. Check current terms. Being an CTIC company signals seriousness to Senegalese banks and government procurement.",
     documents_required: [
@@ -2403,7 +2403,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     volatility: "medium",
     attributed_ministry: "Ministère du Commerce et de l'Industrie",
     summary:
-      "Government program that pays for certified consultants to diagnose and upgrade your business: quality management systems, export certifications (ISO, HACCP), equipment modernization, and HR/accounting systems. Covers 70–90% of consultant costs. For established businesses that need to become export-ready or compete with imports.",
+      "If Auchan, a hotel chain, or an export buyer won't work with you without an ISO or HACCP certification — and that certification costs 3M CFA — BMN pays 70–90% of that cost. What you're building is legitimacy in markets that were previously closed to you because you didn't have the right paperwork.",
     description:
       "BMN (Bureau de Mise à Niveau) is a World Bank-backed government program that helps Senegalese SMEs become competitive with imported goods and qualify for export markets. The process: a certified BMN diagnostic consultant audits your business (manufacturing process, quality, equipment, finance systems, HR); a competitiveness upgrade plan is developed; the government pays 70–90% of the cost of implementing that plan. This can include: ISO 9001, ISO 22000, HACCP, or other quality certifications (required to sell to supermarkets, hotels, or export); equipment purchases; staff training and HR systems; accounting and ERP software; packaging redesign; and laboratory testing equipment. The program is designed for businesses already generating revenue (typically 5M CFA+/year) that want to grow but are blocked by competitiveness gaps. Particularly powerful for food producers, manufacturers, and anyone trying to sell to Carrefour, CFAO, or international buyers who require certifications.",
     documents_required: [
@@ -2448,7 +2448,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     volatility: "low",
     summary:
-      "Chamber of commerce membership (fee: ~25,000–50,000 CFA/year) gives access to trade missions, buyer introductions, contract tender databases, and business training programs. Membership also provides a formal business address recognized by banks and government agencies. For any business planning to export or bid on contracts.",
+      "Trade missions are the value — organized trips to Dubai, Paris, and Casablanca where buyers are already looking for Senegalese products. A 25,000–50,000 CFA annual membership puts you on those trips. You bring something worth selling; CCIAD brings the room full of buyers. Banks and government agencies also recognize CCIAD membership as a sign of business legitimacy.",
     description:
       "The CCIAD is Senegal's main chamber of commerce and is an underused resource for SMEs. Membership benefits include: access to international trade missions (annual trips to Dubai, Paris, Casablanca, Lagos market fairs organized by CCIAD); participation in business-to-business meetings with foreign buyers who visit Dakar through CCIAD partnerships; access to the chamber's procurement tender database (government and private sector contracts); use of the CCIAD meeting rooms and business center in Plateau, Dakar; legal and commercial information services; arbitration service for commercial disputes; and trade statistics and market research. The CCIAD also runs the Centre de Formation Professionnelle de la Chambre — short courses in accounting, import/export logistics, and business management, at subsidized rates for members. Beyond Dakar, regional CCIs (Thiès, Saint-Louis, Ziguinchor, etc.) offer similar services. Membership is recognized by banks as a sign of business legitimacy — useful when applying for loans.",
     documents_required: [
@@ -2491,7 +2491,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     volatility: "medium",
     summary:
-      "Annual Orange Foundation pitch competition for social entrepreneurs in Africa. Top prize ~15M CFA equivalent. Senegalese entrepreneurs have strong track record — Orange operates in Senegal and the local jury is accessible. Social impact focus: health, education, agriculture, clean energy, financial inclusion.",
+      "Orange Foundation's annual competition for social entrepreneurs — up to 15M CFA for the regional winner, with real media coverage through Orange's platforms across West Africa. Senegalese applicants have won before. If your venture genuinely solves a problem in health, education, agriculture, or clean energy, apply. The local Orange Sénégal jury is more accessible than you'd expect.",
     description:
       "The Prix Orange de l'Entrepreneuriat Social en Afrique et au Moyen-Orient (POESAM) is an annual competition run by the Orange Foundation across all countries where Orange operates, including Senegal. It funds entrepreneurs whose ventures solve social problems through technology or innovation. Prize structure: national winners in each country receive ~5M CFA; regional finalists receive ~10M CFA; the overall continental winner receives the equivalent of ~15M CFA. Beyond prize money: winners get coaching from Orange executive mentors, media coverage across Orange's platforms (radio, TV, digital), visibility in Orange's enterprise client network, and facilitated introductions to Orange's impact investing partners. The competition is particularly strong in Senegal because Orange Sénégal (Sonatel) is well-resourced locally and actively supports Senegalese applicants. Social ventures in digital health, agritech, edtech, clean energy access, and fintech for the unbanked all fit the criteria. Applications are online — no Senegal-specific submission portal.",
     documents_required: [
@@ -2536,7 +2536,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     volatility: "low",
     summary:
-      "West Africa's most established open innovation community. Coworking space in Dakar (membership from ~20,000 CFA/month), regular workshops, hackathons, and entrepreneur events. Known for its community of freelancers, founders, NGO workers, and diaspora returnees. The place in Dakar to find co-founders, collaborators, and early users.",
+      "The person who becomes your co-founder, your first serious client, or your first investor — you're more likely to meet them at Jokkolabs than anywhere else in Dakar. This is a community, not a grant program. The coworking membership is low cost. The value is who shows up. Show up consistently.",
     description:
       "Jokkolabs was founded in 2011 as one of Africa's first open innovation hubs and remains the most active community space for Dakar's startup and creative tech ecosystem. It's not primarily an incubator — it's a community space where people work, connect, and build. What Jokkolabs offers: hot desk, dedicated desk, and private office coworking memberships; weekly events — workshops, pitch nights, demo days, expert talks; connections to diaspora returnees who are starting businesses in Senegal; partner network including AFD, EU, USAID, Orange, and tech companies; organized access to international competitions and programs (Jokkolabs often identifies and promotes opportunities to its member community); and a track record of connecting people with co-founders, first employees, and early customers. Jokkolabs also has hubs in other West African cities (Abidjan, Bamako, Ouagadougou) — membership can give you community access in those cities too. Good for: freelancers wanting community; early-stage founders needing co-founders; diaspora returning to Dakar; creative entrepreneurs seeking collaborators.",
     application_steps: [
@@ -2573,7 +2573,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     verified_status: "verified",
     volatility: "low",
     summary:
-      "Prestigious social entrepreneur fellowship. Ashoka Fellows receive 3 years of living stipend, global network access, and the 'Fellow' credential — one of the most recognized markers of social entrepreneurship globally. Extremely selective (fewer than 10 per country per year). For established social ventures with proven system-change potential.",
+      "A three-year living stipend and the most recognized credential in social entrepreneurship globally. Ashoka is for someone who's already built something that changes how a system works — not just an organization that helps people. Extremely selective. Most Fellows arrived through someone who knew their work and nominated them, not through self-promotion.",
     description:
       "Ashoka is the world's largest social entrepreneur network. Being named an Ashoka Fellow is a career-defining credential recognized by foundations, governments, and impact investors globally. What being an Ashoka Fellow includes: a 3-year living stipend (amount varies by country, roughly equivalent to a professional salary) to allow the fellow to focus full-time on their venture; access to the global Ashoka Fellow network (4,000+ fellows in 90+ countries) with warm introductions; connections to Ashoka's corporate partners (major multinationals that fund and partner with Ashoka fellows); support from Ashoka's Africa regional office; and speaking opportunities at Ashoka-organized events with media and investors. The selection process is rigorous and takes 6–18 months: initial nomination (you can self-nominate or be nominated), local panel review, global panel review, and final election. Ashoka looks for: a new idea that changes a system (not just a good organization); proof of impact at scale or near-scale; the personal qualities of an entrepreneur (not just an NGO manager); and an ethical fiber check. This is NOT for early-stage projects — you need demonstrated impact with a clear path to system change.",
     documents_required: [
@@ -2618,7 +2618,7 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     source_name: "African Export-Import Bank (Afreximbank)",
     verified_status: "verified",
     summary:
-      "Afreximbank's Creative Africa initiative provides trade finance, project financing, and export support for Africa's creative industries — including music, film, fashion, and cultural tourism.",
+      "If your creative business — music label, film production, fashion house, cultural tourism — has outgrown local financing and needs $500K+, Afreximbank is the continental resource built specifically for this. They understand creative industry economics in a way most development banks don't.",
     documents_required: [
       "Business registration",
       "Audited financial statements (3 years)",
