@@ -36,6 +36,8 @@ export async function POST(req: NextRequest) {
     contactWhatsapp: body.contactWhatsapp || "",
     colorTheme: body.colorTheme || "forest",
     publishedAt: new Date().toISOString(),
+    notifyPhone: body.notifyPhone || undefined,
+    notifyEmail: body.notifyEmail || undefined,
   };
 
   storeDb.sites.save(site);

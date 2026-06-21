@@ -23,6 +23,9 @@ export interface StoreSite {
   contactWhatsapp?: string;
   colorTheme: "forest" | "earth" | "ocean" | "flame" | "midnight";
   publishedAt: string;
+  // Seller notification preferences
+  notifyPhone?: string;  // SMS via Africa's Talking
+  notifyEmail?: string;  // Email via Resend
 }
 
 export interface StoreOrder {

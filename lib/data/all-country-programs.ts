@@ -17,6 +17,16 @@ export interface CountryOpportunityProfile {
   the_opportunity: string; // one-sentence friend voice
 }
 
+export interface ProgramEligibility {
+  age_min?: number;
+  age_max?: number;
+  gender?: "all" | "women";
+  citizenship?: string;
+  diaspora_ok?: boolean;
+  stages?: Array<"idea" | "early" | "growing" | "established">;
+  sectors?: string[];
+}
+
 export interface ProgramEntry {
   name: string;
   what: string;
@@ -24,6 +34,7 @@ export interface ProgramEntry {
   amount?: string;
   apply_at?: string;
   indigenous_note?: string;
+  eligibility?: ProgramEligibility;
 }
 
 export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
@@ -132,25 +143,106 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     population: "27M",
     key_sectors: ["Cocoa", "Coffee", "Cashews", "Construction", "Logistics", "Financial services"],
     procurement_portal: "marchespublics.ci",
-    procurement_note: "All public tenders on marchespublics.ci — the world's largest cocoa producer's procurement system is substantial.",
+    procurement_note: "All public tenders on marchespublics.ci — the world's largest cocoa producer's procurement system is substantial. CEPICI (cepici.gouv.ci) is the one-stop shop for business registration and investment facilitation.",
     youth_women_funds: [
-      { name: "FAFCI — Fund for Women", what: "Government microcredit for women entrepreneurs", for_who: "Ivorian women", amount: "CFA 100,000–5,000,000" },
-      { name: "AGEFOP Youth Employment", what: "Vocational training and enterprise support for youth", for_who: "Ivorian youth" },
-      { name: "PNUD-backed Youth Entrepreneurship", what: "UNDP youth enterprise support in targeted regions", for_who: "Ivorian youth" },
+      {
+        name: "FAFCI — Fonds d'Appui aux Femmes de Côte d'Ivoire",
+        what: "Government microcredit program for women entrepreneurs without material guarantees — the First Lady's initiative, active since 2012",
+        for_who: "Ivorian women entrepreneurs",
+        amount: "CFA 100,000–5,000,000",
+        indigenous_note: "Ivorian nationality required",
+        eligibility: { gender: "women", citizenship: "Ivorian", stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "AGIR pour les Jeunes (UNACOOPEC)",
+        what: "State-backed microcredit for youth 18–40 seeking to develop revenue-generating activities — 10.5% annual rate with 6-month repayment deferral option",
+        for_who: "Ivorian youth 18–40 with a business project",
+        amount: "CFA 500,000–10,000,000",
+        apply_at: "unacoopec.com",
+        eligibility: { age_min: 18, age_max: 40, citizenship: "Ivorian", stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "CI-PME Startup & Women Programme",
+        what: "Côte d'Ivoire PME agency customized support program for startups created by young people and women — training, mentoring, and market linkages",
+        for_who: "Youth-led and women-led Ivorian SMEs",
+        apply_at: "cipme.ci",
+        indigenous_note: "Ivorian-registered businesses prioritized",
+        eligibility: { citizenship: "Ivorian", stages: ["early", "growing"] },
+      },
+      {
+        name: "ONUDI Fonds d'Appui à l'Entrepreneuriat des Jeunes",
+        what: "UNIDO-managed youth entrepreneurship support fund targeting job creation in productive sectors including agri-processing and manufacturing",
+        for_who: "Ivorian youth entrepreneurs in productive sectors",
+        apply_at: "onudi.ci",
+        eligibility: { age_max: 35, stages: ["idea", "early"] },
+      },
     ],
     development_bank_programs: [
-      { name: "BOAD (West African Development Bank)", what: "Finances large infrastructure and SME projects across UEMOA zone", for_who: "CIV businesses", apply_at: "boad.org" },
-      { name: "Caisse Nationale de Prévoyance Sociale SME Loans", what: "Pension fund-backed SME loans for Ivorian businesses", for_who: "Ivorian companies" },
+      {
+        name: "BOAD — West African Development Bank",
+        what: "Finances large infrastructure and SME projects across the UEMOA zone — credit lines through partner banks for Ivorian SMEs",
+        for_who: "Ivorian businesses in agriculture, manufacturing, services",
+        amount: "CFA 50M–5B",
+        apply_at: "boad.org",
+      },
+      {
+        name: "AfDB Côte d'Ivoire Portfolio",
+        what: "African Development Bank active portfolio includes agribusiness, infrastructure, and private sector financing — access through Ivorian financial intermediaries",
+        for_who: "Ivorian private sector companies",
+        apply_at: "afdb.org",
+      },
+      {
+        name: "FIN'Elle Women's Finance Program",
+        what: "Inclusive financing model dedicated to women in Côte d'Ivoire — savings products, credit, and capacity-building specifically designed for women entrepreneurs",
+        for_who: "Ivorian women entrepreneurs",
+        apply_at: "fin-elle.com",
+        eligibility: { gender: "women", citizenship: "Ivorian" },
+      },
     ],
     donor_grants: [
-      { name: "EU Private Sector Development", what: "EU-funded cocoa and cashew value chain development", for_who: "Ivorian agribusinesses" },
+      {
+        name: "Tony Elumelu Foundation (TEF) Programme",
+        what: "$5,000 non-refundable seed capital + 12 weeks business training + mentorship — open to all Africans of African descent including diaspora",
+        for_who: "Ivorian entrepreneurs with ideas or businesses under 5 years old",
+        amount: "$5,000 USD",
+        apply_at: "tefconnect.com",
+        eligibility: { diaspora_ok: true, stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "EU–Côte d'Ivoire Cocoa & Cashew Value Chain Program",
+        what: "EU-funded program supporting local processing of cocoa and cashews — grants and technical assistance for agro-processors",
+        for_who: "Ivorian agribusiness companies and cooperatives",
+      },
+      {
+        name: "AfDB Youth Entrepreneurship & Innovation Multi-Donor Trust Fund",
+        what: "AfDB-managed grant fund supporting African youth entrepreneurs in green jobs, agribusiness, and digital sectors",
+        for_who: "Ivorian youth entrepreneurs 18–35",
+        amount: "Grants via implementing partners",
+        apply_at: "afdb.org/yei-mdtf",
+        eligibility: { age_max: 35, stages: ["idea", "early"] },
+      },
     ],
     startup_innovation: [
-      { name: "Abidjan Tech Hub", what: "French-speaking West Africa's growing tech hub", for_who: "Tech startups" },
-      { name: "Yamoussoukro Digital Economy Zone", what: "Special economic zone for digital businesses", for_who: "Tech companies" },
+      {
+        name: "Abidjan Digital Hub (ADBN)",
+        what: "French-speaking West Africa's growing tech hub — home to Orange Digital Center and multiple accelerators in Abidjan",
+        for_who: "Tech startups",
+        apply_at: "orangedigitalcenters.com",
+      },
+      {
+        name: "Yamoussoukro Digital Economy Zone",
+        what: "Special economic zone for digital businesses with reduced regulatory burden and tax incentives — part of the government's Smart Côte d'Ivoire 2025 strategy",
+        for_who: "Tech and digital companies",
+      },
+      {
+        name: "CEPICI One-Stop Shop",
+        what: "Register a business in 24 hours — CEPICI fast-tracks registration, investment facilitation, and investor services for Ivorian and foreign investors",
+        for_who: "Any entrepreneur registering in Côte d'Ivoire",
+        apply_at: "cepici.gouv.ci",
+      },
     ],
-    key_agencies: ["CEPICI (investment promotion)", "AGEFOP", "BOAD"],
-    the_opportunity: "World's largest cocoa producer — processing less than 40% locally. Every cocoa processor built here is a business that should have existed 30 years ago.",
+    key_agencies: ["CEPICI", "CI-PME", "AGEFOP", "BOAD", "FAFCI"],
+    the_opportunity: "World's largest cocoa producer processing less than 40% locally — every cocoa and cashew processing plant built here captures value that currently leaves the country, and CI-PME plus FAFCI are actively funding entrepreneurs to make this happen.",
   },
 
   {
@@ -186,23 +278,88 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     population: "22M",
     key_sectors: ["Gold mining services", "Agriculture (cotton, millet, sorghum)", "Livestock", "Construction"],
     procurement_portal: "dgmp.gouv.ml",
-    procurement_note: "Government tenders on DGMP portal. UN procurement (MINUSMA winding down but other UN agencies active).",
+    procurement_note: "Government tenders on DGMP portal. UNGM (ungm.org) for UN system procurement — WFP, UNICEF, and UNDP all procure locally in Bamako.",
     youth_women_funds: [
-      { name: "APEJ — Youth Employment Agency", what: "Youth employment and training programs", for_who: "Malian youth" },
-      { name: "FARE (women's fund)", what: "Microcredit for women entrepreneurs", for_who: "Malian women", amount: "CFA 50,000–2,000,000" },
+      {
+        name: "APEJ — Agence pour la Promotion de l'Emploi des Jeunes",
+        what: "Government youth employment agency offering enterprise training, grants, and market linkages for young Malian entrepreneurs",
+        for_who: "Malian youth 18–35",
+        indigenous_note: "Malian nationals only",
+        eligibility: { age_min: 18, age_max: 35, citizenship: "Malian", stages: ["idea", "early"] },
+      },
+      {
+        name: "FARE — Fonds d'Appui à la Responsabilisation Économique des Femmes",
+        what: "Government revolving microcredit fund for women entrepreneurs — one of West Africa's oldest women's funds",
+        for_who: "Malian women entrepreneurs",
+        amount: "CFA 50,000–2,000,000",
+        indigenous_note: "Malian women only",
+        eligibility: { gender: "women", citizenship: "Malian", stages: ["idea", "early"] },
+      },
+      {
+        name: "TEF Entrepreneurship Programme",
+        what: "$5,000 non-refundable seed capital + mentorship — open to all 54 African countries including Mali",
+        for_who: "Malian entrepreneurs 18–35 with ideas or businesses under 5 years",
+        amount: "$5,000 USD",
+        apply_at: "tefconnect.com",
+        eligibility: { diaspora_ok: true, stages: ["idea", "early", "growing"] },
+      },
     ],
     development_bank_programs: [
-      { name: "BOAD", what: "West African Development Bank financing for Mali businesses", for_who: "Malian companies", apply_at: "boad.org" },
-      { name: "BMS-SA Agricultural Finance", what: "Malian development bank agricultural loans", for_who: "Malian farmers" },
+      {
+        name: "BOAD — West African Development Bank",
+        what: "Credit lines through Malian partner banks for SME investment in agriculture, manufacturing, and services",
+        for_who: "Malian businesses",
+        apply_at: "boad.org",
+      },
+      {
+        name: "BMS-SA — Banque Malienne de Solidarité",
+        what: "Mali's dedicated solidarity bank for agricultural loans and small enterprise finance at below-market rates",
+        for_who: "Malian farmers and micro-entrepreneurs",
+        amount: "CFA 100,000–5,000,000",
+      },
+      {
+        name: "IsDB Mali Portfolio",
+        what: "Islamic Development Bank active in Mali for agricultural development, infrastructure, and SME finance — Islamic finance products available",
+        for_who: "Malian businesses",
+        apply_at: "isdb.org",
+      },
     ],
     donor_grants: [
-      { name: "World Food Programme Procurement", what: "WFP buys food locally when possible — food suppliers can register", for_who: "Malian food businesses", apply_at: "wfp.org/procurement" },
+      {
+        name: "WFP Mali Local Procurement",
+        what: "World Food Programme buys staple foods locally when available — food suppliers and processors can register as WFP vendors",
+        for_who: "Malian food producers, processors, and traders",
+        apply_at: "wfp.org/procurement",
+      },
+      {
+        name: "AfDB Youth Entrepreneurship & Innovation Fund (YEI MDTF)",
+        what: "AfDB multi-donor fund supporting youth-led businesses in agribusiness, digital, and green economy — open to Malian youth",
+        for_who: "Malian youth entrepreneurs",
+        apply_at: "afdb.org/yei-mdtf",
+        eligibility: { age_max: 35, stages: ["idea", "early"] },
+      },
+      {
+        name: "Sahel Alliance Resilience Fund",
+        what: "Multi-donor (France, Germany, EU, World Bank) fund for Sahel agricultural resilience and SME development — active in Mali despite transition",
+        for_who: "Malian farmers, agribusinesses, and service companies",
+      },
     ],
     startup_innovation: [
-      { name: "JOKKOLABS Bamako", what: "Co-working and startup support in Bamako", for_who: "Tech founders" },
+      {
+        name: "JOKKOLABS Bamako",
+        what: "Co-working space and startup support hub in Bamako — connects Malian tech entrepreneurs to regional networks",
+        for_who: "Tech founders",
+        apply_at: "jokkolabs.net",
+      },
+      {
+        name: "Orange Digital Center Bamako",
+        what: "Free digital skills training, coding bootcamps, and startup support — open to all Malian youth",
+        for_who: "Malian youth and tech founders",
+        apply_at: "orangedigitalcenters.com",
+      },
     ],
-    key_agencies: ["APEJ", "ANPE", "BOAD"],
-    the_opportunity: "Despite instability, Mali's gold sector and agricultural processing are open — mining service companies need local suppliers for everything.",
+    key_agencies: ["APEJ", "ANPE", "BOAD", "BMS-SA", "DGMP"],
+    the_opportunity: "Mali's gold sector services — catering, transport, environmental monitoring, and maintenance at gold mines are heavily dominated by foreign companies, and local businesses that register and get OHADA-compliant have a guaranteed market.",
   },
 
   {
@@ -212,22 +369,90 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     population: "22M",
     key_sectors: ["Gold mining services", "Cotton processing", "Agriculture", "Construction"],
     procurement_portal: "dgcmef.gov.bf",
-    procurement_note: "Government procurement through DGCMEF. Mining companies have local procurement requirements.",
+    procurement_note: "Government procurement through DGCMEF. Mining companies have local procurement requirements. UN system (UNGM) procurement open via ungm.org.",
     youth_women_funds: [
-      { name: "FAPE — Enterprise Promotion Fund", what: "Youth and women enterprise fund", for_who: "Burkinabè entrepreneurs" },
-      { name: "FAARF — Women's Fund", what: "Revolving fund for women-owned microenterprises", for_who: "Burkinabè women" },
+      {
+        name: "FAPE — Fonds d'Appui à la Promotion de l'Emploi",
+        what: "Government fund supporting youth and women enterprise creation — grants, subsidized loans, and training for Burkinabè entrepreneurs",
+        for_who: "Burkinabè youth and women entrepreneurs",
+        indigenous_note: "Burkinabè nationals only",
+        eligibility: { citizenship: "Burkinabè", stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "FAARF — Fonds d'Appui aux Activités Rémunératrices des Femmes",
+        what: "Government revolving microcredit fund specifically for women-owned microenterprises — one of Burkina's longest-running women's finance programs",
+        for_who: "Burkinabè women entrepreneurs",
+        amount: "CFA 50,000–2,000,000",
+        indigenous_note: "Burkinabè women only",
+        eligibility: { gender: "women", citizenship: "Burkinabè", stages: ["idea", "early"] },
+      },
+      {
+        name: "AfDB PADEJ-MR Phase III (2025)",
+        what: "AfDB €12.25M grant supporting rural youth employment through incubators — practical training in financial education, personalized coaching, and local technical support launched July 2025",
+        for_who: "Burkinabè rural youth 15–35",
+        amount: "Part of €13.62M total program",
+        apply_at: "afdb.org",
+        eligibility: { age_max: 35, stages: ["idea", "early"] },
+      },
+      {
+        name: "AfDB Multisectoral Youth Resilience Project",
+        what: "AfDB $39.2M loan for skills development and resilience — priority for women and youth in Burkina Faso despite security challenges",
+        for_who: "Burkinabè youth and women",
+        amount: "Part of $39.2M program",
+        apply_at: "afdb.org",
+        eligibility: { gender: "all", stages: ["idea", "early"] },
+      },
     ],
     development_bank_programs: [
-      { name: "BOAD Regional Finance", what: "West African Development Bank projects in Burkina Faso", for_who: "Burkinabè businesses" },
+      {
+        name: "BOAD — West African Development Bank",
+        what: "Credit lines through Burkinabè partner banks for SME investment — Djoliba 2021-2025 strategic plan prioritizes sustainable transformation",
+        for_who: "Burkinabè businesses",
+        apply_at: "boad.org",
+      },
+      {
+        name: "AfDB Boost Africa Initiative",
+        what: "Equity and quasi-equity financing for Burkinabè innovative startups and high-growth SMEs — co-investment model with local partners",
+        for_who: "Innovative Burkinabè SMEs and startups",
+        apply_at: "afdb.org/boost-africa",
+      },
     ],
     donor_grants: [
-      { name: "USAID Burkina Faso", what: "Agricultural and resilience programs — local procurement of food and services", for_who: "Burkinabè agribusinesses" },
+      {
+        name: "WFP Burkina Faso Local Purchase",
+        what: "WFP purchasing food and services locally — food processors, traders, and logistics companies can register as vendors",
+        for_who: "Burkinabè food businesses and service providers",
+        apply_at: "wfp.org/procurement",
+      },
+      {
+        name: "Sahel Alliance Agricultural Fund",
+        what: "Multi-donor Sahel development fund (EU, France, Germany) supporting agricultural SMEs and food processing in Burkina Faso",
+        for_who: "Burkinabè agribusinesses and cooperatives",
+      },
+      {
+        name: "TEF Entrepreneurship Programme",
+        what: "$5,000 non-refundable grant + mentorship — open to Burkinabè entrepreneurs",
+        for_who: "Burkinabè entrepreneurs with ideas or businesses under 5 years",
+        amount: "$5,000 USD",
+        apply_at: "tefconnect.com",
+        eligibility: { diaspora_ok: true, stages: ["idea", "early"] },
+      },
     ],
     startup_innovation: [
-      { name: "Ouagadougou Tech Ecosystem", what: "Growing startup scene despite instability", for_who: "Tech founders" },
+      {
+        name: "Ouagadougou Tech Ecosystem (CIPMEN, YIRI)",
+        what: "Growing startup scene in Ouagadougou — CIPMEN incubator and YIRI hub supporting Burkinabè tech entrepreneurs despite security challenges",
+        for_who: "Tech founders",
+      },
+      {
+        name: "Orange Digital Center Ouagadougou",
+        what: "Free coding bootcamps, digital skills, and startup support for Burkinabè youth",
+        for_who: "Youth and tech founders",
+        apply_at: "orangedigitalcenters.com",
+      },
     ],
-    key_agencies: ["CEFORE", "FAPE", "BOAD"],
-    the_opportunity: "Mining service contracts (catering, security, transport, equipment) at gold mines — most go unclaimed by local companies.",
+    key_agencies: ["CEFORE", "FAPE", "FAARF", "BOAD", "BUMIGEB (mining)"],
+    the_opportunity: "Gold mining service contracts for catering, transport, and maintenance go largely to foreign companies — any Burkinabè business that is formally registered and can pass a mining company's supplier vetting has a guaranteed pipeline of work.",
   },
 
   {
@@ -237,22 +462,85 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     population: "13M",
     key_sectors: ["Bauxite & alumina services", "Agriculture", "Construction", "Logistics"],
     procurement_portal: "marchespublics.gov.gn",
-    procurement_note: "Government tenders and mining company local procurement are the main channels.",
+    procurement_note: "Government tenders on marchespublics.gov.gn. CBG (bauxite) and SMB-Winning local procurement are primary channels — both companies have local content offices.",
     youth_women_funds: [
-      { name: "FAPA Guinea", what: "Youth and women enterprise fund backed by government and donors", for_who: "Guinean youth and women" },
-      { name: "Ministry of Youth Enterprise Fund", what: "Youth business grants and loans", for_who: "Guinean youth" },
+      {
+        name: "FAPA — Fonds d'Appui à la Promotion et à l'Autonomisation",
+        what: "Government youth and women enterprise fund backed by donors — grants and subsidized loans for Guinean youth and women entrepreneurs",
+        for_who: "Guinean youth 18–35 and women",
+        indigenous_note: "Guinean nationals prioritized",
+        eligibility: { age_max: 35, citizenship: "Guinean", stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "ANPE Youth Enterprise Programs",
+        what: "Guinean National Employment Agency enterprise training and micro-grant programs for unemployed youth",
+        for_who: "Guinean unemployed youth",
+        eligibility: { age_max: 40, citizenship: "Guinean", stages: ["idea", "early"] },
+      },
+      {
+        name: "TEF Entrepreneurship Programme",
+        what: "$5,000 non-refundable seed capital + mentorship — open to all African entrepreneurs including Guineans",
+        for_who: "Guinean entrepreneurs with ideas or businesses under 5 years",
+        amount: "$5,000 USD",
+        apply_at: "tefconnect.com",
+        eligibility: { diaspora_ok: true, stages: ["idea", "early", "growing"] },
+      },
     ],
     development_bank_programs: [
-      { name: "IFC Guinea Portfolio", what: "IFC finances private sector in Guinea's mining and agri sectors", for_who: "Guinean private sector" },
+      {
+        name: "IFC Guinea Private Sector Portfolio",
+        what: "International Finance Corporation finances private sector in Guinea's mining services, agribusiness, and financial sector — equity and loans for growth companies",
+        for_who: "Guinean private sector growth companies",
+        apply_at: "ifc.org",
+      },
+      {
+        name: "IsDB Guinea Portfolio",
+        what: "Islamic Development Bank active in Guinea for agricultural development, vocational training, and SME finance",
+        for_who: "Guinean businesses and farmers",
+        apply_at: "isdb.org",
+      },
+      {
+        name: "BOAD Regional Finance",
+        what: "West African Development Bank financing for Guinea-based SMEs in manufacturing and agribusiness via Guinean partner banks",
+        for_who: "Guinean businesses",
+        apply_at: "boad.org",
+      },
     ],
     donor_grants: [
-      { name: "CBG/SAG Mining Community Funds", what: "Bauxite mining companies required to fund community businesses — apply locally", for_who: "Businesses in mining regions" },
+      {
+        name: "CBG/SAG Mining Community Development Fund",
+        what: "Compagnie des Bauxites de Guinée and SMB-Winning — both required by law to fund local supplier development. Apply directly at their community relations offices in Boké and Conakry.",
+        for_who: "Businesses in Boké, Kindia, and Conakry mining supply chains",
+        indigenous_note: "Guinean-owned businesses prioritized for supplier development",
+      },
+      {
+        name: "AfDB Jobs for Youth in Africa — Guinea",
+        what: "AfDB multi-donor fund specifically targeting Guinean youth in agribusiness, mining services, and digital — grants via implementing partners",
+        for_who: "Guinean youth entrepreneurs",
+        apply_at: "afdb.org",
+        eligibility: { age_max: 35, stages: ["idea", "early"] },
+      },
+      {
+        name: "EU-Guinea Private Sector Support",
+        what: "EU funds for Guinean agricultural value chains and SME development — priority for agro-processing and food security businesses",
+        for_who: "Guinean agribusinesses and SMEs",
+      },
     ],
     startup_innovation: [
-      { name: "Orange Digital Center Conakry", what: "Tech training and startup support", for_who: "Tech founders" },
+      {
+        name: "Orange Digital Center Conakry",
+        what: "Free tech training, coding bootcamps, and startup mentoring in Conakry — accelerator for Guinean digital entrepreneurs",
+        for_who: "Guinean youth and tech founders",
+        apply_at: "orangedigitalcenters.com",
+      },
+      {
+        name: "Hub Conakry Numérique",
+        what: "Growing digital hub supporting Guinean tech startups — co-working, networking, and investor connections",
+        for_who: "Tech startups",
+      },
     ],
-    key_agencies: ["AGUIPE (investment promotion)", "FAPA"],
-    the_opportunity: "30% of world's bauxite is here — mining service suppliers (catering, transport, maintenance, environmental) desperately needed from local businesses.",
+    key_agencies: ["AGUIPE", "FAPA", "ANPE", "CBG Local Content Office", "BOAD"],
+    the_opportunity: "Guinea holds 30% of the world's bauxite reserves and is the world's largest bauxite exporter — the mining services supply chain (catering, transport, environmental, maintenance) is almost entirely foreign, and any formally registered Guinean company in these sectors is immediately in demand.",
   },
 
   {
@@ -262,23 +550,93 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     population: "13M",
     key_sectors: ["Agriculture (cotton, cashews)", "Trade & transit", "Tourism (Vodoun heritage)", "Digital economy"],
     procurement_portal: "armp.bj",
-    procurement_note: "Public procurement through ARMP Bénin. Growing digital economy procurement.",
+    procurement_note: "Public procurement through ARMP Bénin at armp.bj. Digital Benin and port logistics contracts are growing. World Bank WARDIP digital integration program brings $137M across Benin, Liberia, and Sierra Leone (approved March 2026).",
     youth_women_funds: [
-      { name: "FNPEJ — National Fund for Youth Enterprise", what: "Government fund for youth-owned businesses", for_who: "Beninese youth", amount: "CFA 500,000–10,000,000" },
-      { name: "FNMF Women's Microcredit Fund", what: "Microcredit for women entrepreneurs", for_who: "Beninese women" },
+      {
+        name: "FNPEJ — Fonds National de Promotion de l'Entreprise et de l'Emploi des Jeunes",
+        what: "Government fund for youth-owned businesses — loans at below-market rates with technical support for Beninese entrepreneurs under 40",
+        for_who: "Beninese youth under 40",
+        amount: "CFA 500,000–10,000,000",
+        indigenous_note: "Beninese nationals only",
+        eligibility: { age_max: 40, citizenship: "Beninese", stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "FNMF Women's Microcredit Fund",
+        what: "Government microcredit program for women entrepreneurs — part of Benin's social protection and women empowerment strategy",
+        for_who: "Beninese women entrepreneurs",
+        indigenous_note: "Beninese women only",
+        eligibility: { gender: "women", citizenship: "Beninese", stages: ["idea", "early"] },
+      },
+      {
+        name: "World Bank Adaptive Safety Nets — Youth Business Grants",
+        what: "World Bank-supported program providing $500 micro-grants to urban youth plus basic business training — 65,000+ youth targeted across Benin",
+        for_who: "Unemployed urban Beninese youth",
+        amount: "$500 USD equivalent",
+        eligibility: { stages: ["idea", "early"] },
+      },
     ],
     development_bank_programs: [
-      { name: "BOAD", what: "West African Development Bank financing", for_who: "Beninese businesses" },
+      {
+        name: "BOAD — West African Development Bank",
+        what: "Credit lines through Beninese partner banks for agricultural processing, manufacturing, and services",
+        for_who: "Beninese businesses",
+        apply_at: "boad.org",
+      },
+      {
+        name: "AfDB Benin Portfolio",
+        what: "African Development Bank financing for infrastructure and private sector — local content opportunities in AfDB-financed projects",
+        for_who: "Beninese companies",
+        apply_at: "afdb.org",
+      },
+      {
+        name: "APIEX Investment Facilitation",
+        what: "Agence de Promotion des Investissements et des Exportations — one-stop shop for business registration and investment incentives in Benin",
+        for_who: "Investors and Beninese businesses",
+        apply_at: "apiex.bj",
+      },
     ],
     donor_grants: [
-      { name: "MCC Compact Grant", what: "Millennium Challenge Corporation infrastructure and agri grants in Benin", for_who: "Beninese businesses and cooperatives" },
+      {
+        name: "MCC Benin Compact",
+        what: "Millennium Challenge Corporation infrastructure and agricultural programs — procurement opportunities for local businesses in road construction and agriculture",
+        for_who: "Beninese businesses and cooperatives",
+      },
+      {
+        name: "World Bank WARDIP Digital Program",
+        what: "$137M World Bank initiative across Benin, Liberia, and Sierra Leone to accelerate digital economy — tech companies, ISPs, and digital service providers can participate",
+        for_who: "Beninese tech and digital companies",
+        amount: "Part of $137M regional program",
+        apply_at: "worldbank.org",
+      },
+      {
+        name: "TEF Entrepreneurship Programme",
+        what: "$5,000 non-refundable seed capital — open to all 54 African countries including Benin",
+        for_who: "Beninese entrepreneurs",
+        amount: "$5,000 USD",
+        apply_at: "tefconnect.com",
+        eligibility: { diaspora_ok: true, stages: ["idea", "early", "growing"] },
+      },
     ],
     startup_innovation: [
-      { name: "Cotonou Tech Hub", what: "Growing startup ecosystem", for_who: "Tech founders" },
-      { name: "Digital Benin Initiative", what: "Government digital economy push — tech procurement opportunities", for_who: "Digital businesses" },
+      {
+        name: "Cotonou Digital Hub & Activspaces",
+        what: "Growing startup ecosystem in Cotonou — accelerators, co-working spaces, and tech events connecting Beninese founders to regional investors",
+        for_who: "Tech founders",
+      },
+      {
+        name: "Digital Benin Initiative",
+        what: "Government digital economy push under the Bénin Révélé strategy — tech procurement for e-government, digital ID, and smart city projects",
+        for_who: "Digital businesses",
+      },
+      {
+        name: "Orange Digital Center Cotonou",
+        what: "Free digital skills training and startup support for Beninese youth",
+        for_who: "Youth and tech entrepreneurs",
+        apply_at: "orangedigitalcenters.com",
+      },
     ],
-    key_agencies: ["APIEX (investment)", "ANPME", "FNPEJ"],
-    the_opportunity: "Trade transit hub between Nigeria and francophone West Africa — logistics, warehousing, and processing businesses here serve the whole region.",
+    key_agencies: ["APIEX", "ANPME", "FNPEJ", "BOAD", "ARMP"],
+    the_opportunity: "Cotonou port is the main transit gateway between Nigeria and landlocked francophone West Africa — logistics, warehousing, and customs brokerage businesses here serve a multi-billion dollar trade corridor, and very few local companies are formally structured to capture it.",
   },
 
   {
@@ -288,23 +646,81 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     population: "8M",
     key_sectors: ["Phosphate mining services", "Logistics (Port of Lomé)", "Agriculture", "Trade"],
     procurement_portal: "armp.tg",
-    procurement_note: "Public procurement on ARMP Togo portal.",
+    procurement_note: "Public procurement on ARMP Togo portal. Port of Lomé logistics contracts are a separate channel via Lomé Container Terminal.",
     youth_women_funds: [
-      { name: "FAIEJ — Youth Enterprise Investment Fund", what: "Main government fund for young entrepreneurs", for_who: "Togolese youth", amount: "CFA 500,000–5,000,000", apply_at: "faiej.tg" },
-      { name: "FNFI Women's Fund", what: "National inclusive finance fund for women", for_who: "Togolese women" },
+      {
+        name: "FAIEJ — Fonds d'Appui aux Initiatives Économiques des Jeunes",
+        what: "Main government fund for young Togolese entrepreneurs — loans at below-market rates for business creation and expansion",
+        for_who: "Togolese youth 18–40",
+        amount: "CFA 500,000–5,000,000",
+        apply_at: "faiej.tg",
+        indigenous_note: "Togolese nationals only",
+        eligibility: { age_min: 18, age_max: 40, citizenship: "Togolese", stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "FNFI — Fonds National de la Finance Inclusive",
+        what: "National inclusive finance fund — access to credit for women entrepreneurs and excluded populations through MFI partners",
+        for_who: "Togolese women and low-income entrepreneurs",
+        apply_at: "fnfi.tg",
+        eligibility: { gender: "women", citizenship: "Togolese", stages: ["idea", "early"] },
+      },
+      {
+        name: "ANPGF Women's Guarantee Fund",
+        what: "National partial credit guarantee fund — stands behind bank loans for women who lack collateral, enabling access to commercial bank credit",
+        for_who: "Togolese women business owners",
+        apply_at: "anpgf.tg",
+        eligibility: { gender: "women", stages: ["early", "growing"] },
+      },
     ],
     development_bank_programs: [
-      { name: "BOAD", what: "Regional development bank financing", for_who: "Togolese businesses" },
-      { name: "UTB (Union Togolaise de Banque)", what: "Development-oriented bank with SME programs", for_who: "Togolese SMEs" },
+      {
+        name: "BOAD — West African Development Bank",
+        what: "Headquartered in Lomé — BOAD directly finances Togolese SME and agribusiness through partner banks. Priority sectors include agriculture and manufacturing.",
+        for_who: "Togolese businesses",
+        apply_at: "boad.org",
+      },
+      {
+        name: "UTB — Union Togolaise de Banque",
+        what: "Development-oriented bank with SME credit lines and agricultural finance programs for Togolese businesses",
+        for_who: "Togolese SMEs",
+      },
+      {
+        name: "AfDB Boost Africa Initiative",
+        what: "AfDB equity and quasi-equity financing for innovative Togolese startups and high-growth companies",
+        for_who: "Togolese startups and innovative SMEs",
+        apply_at: "afdb.org/boost-africa",
+      },
     ],
     donor_grants: [
-      { name: "EU-Togo Support Programme", what: "EU funds for Togolese agriculture and SME development", for_who: "Togolese businesses" },
+      {
+        name: "EU-Togo Private Sector Development Programme",
+        what: "EU funds for Togolese agriculture, SME competitiveness, and trade facilitation — cashew, cotton, and food processing priority",
+        for_who: "Togolese agribusinesses and SMEs",
+      },
+      {
+        name: "TEF Entrepreneurship Programme",
+        what: "$5,000 non-refundable seed capital — open to Togolese entrepreneurs of all backgrounds",
+        for_who: "Togolese entrepreneurs",
+        amount: "$5,000 USD",
+        apply_at: "tefconnect.com",
+        eligibility: { diaspora_ok: true, stages: ["idea", "early", "growing"] },
+      },
     ],
     startup_innovation: [
-      { name: "Lomé Digital Hub", what: "Tech accelerator and co-working space", for_who: "Tech founders" },
+      {
+        name: "Lomé Digital Hub (WoeLab / Impact Hub Lomé)",
+        what: "Togo's pioneer tech hub — WoeLab created Africa's first satellite, W.AFATE. Active co-working, mentoring, and startup competitions",
+        for_who: "Tech founders",
+        apply_at: "impacthubafrica.org",
+      },
+      {
+        name: "Togo Digital Accelerator Program",
+        what: "Government-supported digital acceleration under the Togo Digital 2025 strategy — supporting e-commerce, fintech, and agri-tech startups",
+        for_who: "Togolese digital startups",
+      },
     ],
-    key_agencies: ["APIF", "FAIEJ", "BOAD"],
-    the_opportunity: "Port of Lomé is the deepest port in West Africa — logistics, warehousing, and value-added services to port operations is a massive gap.",
+    key_agencies: ["APIM (investment)", "FAIEJ", "FNFI", "BOAD", "ARMP"],
+    the_opportunity: "Port of Lomé is the deepest port in West Africa and its main free trade zone handles trade for 7 landlocked countries — logistics, warehousing, and port services companies here serve a regional market worth billions.",
   },
 
   {
@@ -314,22 +730,83 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     population: "8M",
     key_sectors: ["Mineral services (iron ore, diamonds, rutile)", "Agriculture", "Fisheries", "Tourism (beaches)"],
     procurement_portal: "nppa.gov.sl",
-    procurement_note: "Government procurement on NPPA Sierra Leone portal.",
+    procurement_note: "Government procurement on NPPA Sierra Leone portal at nppa.gov.sl. World Bank WARDIP digital program ($137M across Benin, Liberia, Sierra Leone approved March 2026) opens major digital procurement.",
     youth_women_funds: [
-      { name: "SLIEPA SME Support", what: "Sierra Leone investment promotion agency SME programs", for_who: "Sierra Leonean entrepreneurs" },
-      { name: "NASSIT SME Loans", what: "Pension fund SME financing for Sierra Leonean businesses", for_who: "Sierra Leonean businesses" },
+      {
+        name: "SLIEPA SME Support Program",
+        what: "Sierra Leone Investment and Export Promotion Agency — SME advisory, market connections, and grant facilitation for Sierra Leonean entrepreneurs",
+        for_who: "Sierra Leonean entrepreneurs",
+        apply_at: "sliepa.org",
+        eligibility: { citizenship: "Sierra Leonean", stages: ["early", "growing"] },
+      },
+      {
+        name: "NASSIT SME Financing Scheme",
+        what: "National Social Security and Insurance Trust pension fund — SME loans for registered Sierra Leonean businesses contributing to NASSIT",
+        for_who: "Sierra Leonean businesses registered with NASSIT",
+        apply_at: "nassit.org",
+      },
+      {
+        name: "Youth Enterprise Fund (START Program)",
+        what: "Government and donor-backed startup training and enterprise support targeting Sierra Leonean youth — business plan competitions and seed grants",
+        for_who: "Sierra Leonean youth 18–35",
+        eligibility: { age_max: 35, citizenship: "Sierra Leonean", stages: ["idea", "early"] },
+      },
     ],
     development_bank_programs: [
-      { name: "World Bank Sierra Leone Portfolio", what: "Agricultural and youth employment programs with local procurement", for_who: "Sierra Leonean businesses" },
+      {
+        name: "World Bank Sierra Leone Development Portfolio",
+        what: "Major World Bank programs in agriculture, health, education, and infrastructure — significant local procurement for Sierra Leonean companies",
+        for_who: "Sierra Leonean businesses",
+        apply_at: "worldbank.org",
+      },
+      {
+        name: "AfDB Sierra Leone Programs",
+        what: "African Development Bank financing for agriculture, infrastructure, and private sector — local content requirements for all projects",
+        for_who: "Sierra Leonean businesses",
+        apply_at: "afdb.org",
+      },
+      {
+        name: "Bank of Sierra Leone SME Lines",
+        what: "Central bank credit lines to commercial banks for SME lending at reduced rates",
+        for_who: "Sierra Leonean SMEs",
+      },
     ],
     donor_grants: [
-      { name: "Tony Elumelu Foundation", what: "Pan-African fund open to Sierra Leoneans", for_who: "Entrepreneurs", amount: "$5,000" },
+      {
+        name: "Tony Elumelu Foundation (TEF)",
+        what: "$5,000 non-refundable seed capital + mentorship — actively recruiting Sierra Leonean entrepreneurs",
+        for_who: "Sierra Leonean entrepreneurs",
+        amount: "$5,000 USD",
+        apply_at: "tefconnect.com",
+        eligibility: { diaspora_ok: true, stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "USAID Sierra Leone Economic Growth",
+        what: "USAID programs supporting agricultural value chains, trade, and private sector development in Sierra Leone",
+        for_who: "Sierra Leonean agribusinesses and SMEs",
+        apply_at: "usaid.gov/sierra-leone",
+      },
+      {
+        name: "World Bank WARDIP Digital Integration Program",
+        what: "$137M World Bank program across Benin, Liberia, and Sierra Leone — digital economy, broadband, and e-government procurement",
+        for_who: "Sierra Leonean tech and digital companies",
+        apply_at: "worldbank.org",
+      },
     ],
     startup_innovation: [
-      { name: "Transform Finance Sierra Leone", what: "Financial inclusion and fintech support", for_who: "Fintech founders" },
+      {
+        name: "Transform Finance Sierra Leone",
+        what: "Freetown-based financial inclusion and fintech hub — supporting Sierra Leonean startups in mobile money, savings, and digital lending",
+        for_who: "Fintech founders",
+      },
+      {
+        name: "Rethink Sierra Leone / Digital Jobs SL",
+        what: "Tech skills and startup support for Sierra Leonean youth — coding, digital marketing, and freelancing programs",
+        for_who: "Youth and digital entrepreneurs",
+      },
     ],
-    key_agencies: ["SLIEPA", "NRA", "NPPA"],
-    the_opportunity: "Post-conflict rebuild + mineral boom = huge procurement demand — but very few locally registered companies to supply it.",
+    key_agencies: ["SLIEPA", "NASSIT", "NPPA", "NRA (revenue)", "Bank of Sierra Leone"],
+    the_opportunity: "Diamond, iron ore, and rutile mining generate billions but local supplier development is minimal — a formally registered Sierra Leonean services company (catering, transport, environmental compliance) can immediately begin supplier accreditation with mining operators.",
   },
 
   {
@@ -339,22 +816,83 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     population: "5M",
     key_sectors: ["Rubber processing", "Iron ore services", "Agriculture", "Timber (sustainable)"],
     procurement_portal: "ppcc.gov.lr",
-    procurement_note: "Government procurement on PPCC (Public Procurement and Concessions Commission) portal.",
+    procurement_note: "Government procurement on PPCC portal. AfDB and World Bank project procurement open to Liberian companies. WARDIP digital program ($137M across Benin, Liberia, Sierra Leone, approved March 2026) creates new procurement opportunities.",
     youth_women_funds: [
-      { name: "LACE — Liberia Agency for Community Empowerment", what: "Government youth and community enterprise programs", for_who: "Liberian youth" },
-      { name: "Youth Entrepreneurship Investment Bank (AfDB-backed)", what: "AfDB-supported bank providing youth loans at concessional rates", for_who: "Liberian youth" },
+      {
+        name: "YEIB — Liberia Youth Entrepreneurship Investment Bank (AfDB, launched July 2025)",
+        what: "Africa's first YEIB — officially launched July 22, 2025 by President Boakai and AfDB President Adesina. Three components: Early-Stage Equity Fund, Technical Assistance Fund, and Credit Guarantee Fund. Target: 30,000 youth businesses, 120,000 jobs, $500M in unlocked lending.",
+        for_who: "Liberian youth 18–35",
+        amount: "$17.8M initial capitalization (AfDB $15.9M + Korea Africa $0.7M + Government $1.2M in-kind)",
+        apply_at: "moci.gov.lr",
+        indigenous_note: "Liberian nationals — first-of-its-kind in Africa",
+        eligibility: { age_min: 18, age_max: 35, citizenship: "Liberian", stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "LACE — Liberia Agency for Community Empowerment",
+        what: "Government agency providing youth and community enterprise grants, vocational training, and livelihood support",
+        for_who: "Liberian youth and communities",
+        eligibility: { citizenship: "Liberian", stages: ["idea", "early"] },
+      },
+      {
+        name: "Innovation Bureau Liberia (YEIB-linked)",
+        what: "Innovation labs, incubation spaces, hands-on training, workspace, and mentorship launched alongside YEIB in July 2025 to support young Liberian entrepreneurs",
+        for_who: "Liberian youth entrepreneurs",
+        apply_at: "moci.gov.lr",
+        eligibility: { age_max: 35, citizenship: "Liberian", stages: ["idea", "early"] },
+      },
     ],
     development_bank_programs: [
-      { name: "AfDB Liberia Portfolio", what: "Infrastructure and agri projects with significant local procurement", for_who: "Liberian businesses" },
+      {
+        name: "AfDB Liberia Portfolio",
+        what: "Active AfDB infrastructure and agribusiness projects — local content requirements open procurement to Liberian companies in construction, services, and supply",
+        for_who: "Liberian businesses",
+        apply_at: "afdb.org",
+      },
+      {
+        name: "World Bank Liberia Portfolio",
+        what: "World Bank active programs in health, education, and infrastructure — significant local procurement opportunities for registered Liberian businesses",
+        for_who: "Liberian businesses",
+        apply_at: "worldbank.org",
+      },
     ],
     donor_grants: [
-      { name: "USAID Liberia", what: "Agricultural, governance, and economic growth programs", for_who: "Liberian businesses and NGOs" },
+      {
+        name: "USAID Liberia Economic Growth Program",
+        what: "USAID supports agricultural value chains, trade facilitation, and private sector development — grants and technical assistance for Liberian businesses",
+        for_who: "Liberian agribusinesses and SMEs",
+        apply_at: "usaid.gov/liberia",
+      },
+      {
+        name: "Tony Elumelu Foundation (TEF)",
+        what: "$5,000 non-refundable seed capital — open to Liberian entrepreneurs",
+        for_who: "Liberian entrepreneurs",
+        amount: "$5,000 USD",
+        apply_at: "tefconnect.com",
+        eligibility: { diaspora_ok: true, stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "World Bank WARDIP Digital Program",
+        what: "$137M World Bank digital economy initiative across Benin, Liberia, and Sierra Leone — tech sector procurement and digital inclusion funding",
+        for_who: "Liberian digital companies and tech entrepreneurs",
+        apply_at: "worldbank.org",
+      },
     ],
     startup_innovation: [
-      { name: "iLab Liberia", what: "Monrovia's main tech hub", for_who: "Tech founders" },
+      {
+        name: "iLab Liberia",
+        what: "Monrovia's main tech hub and co-working space — incubator for Liberian digital entrepreneurs",
+        for_who: "Tech founders",
+        apply_at: "ilabliberia.org",
+      },
+      {
+        name: "YEIB Innovation Bureau",
+        what: "Newly established (July 2025) innovation labs providing research support, mentorship, and incubation for young Liberian business owners",
+        for_who: "Young Liberian entrepreneurs",
+        apply_at: "moci.gov.lr",
+      },
     ],
-    key_agencies: ["LIPA (investment)", "PPCC", "LACE"],
-    the_opportunity: "Rubber — Liberia is one of the world's biggest producers yet earns pennies. Processing and value-addition is wide open.",
+    key_agencies: ["LIPA", "PPCC", "LACE", "YEIB", "Ministry of Commerce & Industry"],
+    the_opportunity: "Liberia just launched Africa's first Youth Entrepreneurship Investment Bank — the window to be among the first 30,000 businesses funded at below-market rates is open right now.",
   },
 
   {
@@ -363,19 +901,67 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     region: "West Africa",
     population: "2M",
     key_sectors: ["Cashew processing", "Fisheries", "Agriculture"],
-    procurement_note: "Government procurement limited — donor and UN procurement are main channels. UNGM registration for UN contracts.",
+    procurement_note: "Government procurement limited — donor and UN procurement are main channels. UNGM (ungm.org) registration opens UN system procurement. WFP and FAO both procure locally.",
     youth_women_funds: [
-      { name: "World Bank PDSS Project", what: "Social development and enterprise support", for_who: "Bissau-Guinean youth and women" },
+      {
+        name: "World Bank PDSS Social Development Project",
+        what: "World Bank-funded social development with enterprise components — youth training, community grants, and livelihood support",
+        for_who: "Bissau-Guinean youth and women",
+        apply_at: "worldbank.org",
+        eligibility: { stages: ["idea", "early"] },
+      },
+      {
+        name: "TEF Entrepreneurship Programme",
+        what: "$5,000 non-refundable seed capital — open to Bissau-Guinean entrepreneurs of African descent",
+        for_who: "Bissau-Guinean entrepreneurs",
+        amount: "$5,000 USD",
+        apply_at: "tefconnect.com",
+        eligibility: { diaspora_ok: true, stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "BOAD UEMOA Women's Enterprise Finance",
+        what: "West African Development Bank credit lines for women-owned SMEs in UEMOA zone including Guinea-Bissau",
+        for_who: "Women-owned Bissau-Guinean businesses",
+        apply_at: "boad.org",
+        eligibility: { gender: "women", stages: ["early", "growing"] },
+      },
     ],
     development_bank_programs: [
-      { name: "BOAD", what: "West African Development Bank — limited but present", for_who: "Businesses in UEMOA zone" },
+      {
+        name: "BOAD — West African Development Bank",
+        what: "UEMOA zone development bank — credit lines through Bissau-Guinean partner banks for agribusiness and services",
+        for_who: "Bissau-Guinean businesses",
+        apply_at: "boad.org",
+      },
+      {
+        name: "AfDB Guinea-Bissau Programs",
+        what: "AfDB active in Guinea-Bissau for agriculture, fisheries, and infrastructure — local procurement for registered businesses",
+        for_who: "Bissau-Guinean businesses",
+        apply_at: "afdb.org",
+      },
     ],
     donor_grants: [
-      { name: "FAO Agricultural Support", what: "Food and agriculture organization procurement and grants", for_who: "Farmers and agribusinesses" },
+      {
+        name: "FAO Guinea-Bissau Agricultural Grants",
+        what: "FAO procurement and grants for food production, fisheries management, and agricultural development",
+        for_who: "Bissau-Guinean farmers and agribusinesses",
+        apply_at: "ungm.org",
+      },
+      {
+        name: "EU Fisheries Agreement Revenue",
+        what: "EU pays Guinea-Bissau for fishing access — fisheries processing and value-addition businesses benefit from EU partnerships",
+        for_who: "Bissau-Guinean fisheries businesses",
+      },
     ],
-    startup_innovation: [{ name: "Bissau Digital Initiative", what: "Nascent digital economy support", for_who: "Local entrepreneurs" }],
-    key_agencies: ["CCIA-GB (chamber of commerce)"],
-    the_opportunity: "6th largest cashew producer in the world — exporting 100% raw. A single cashew processing plant here is a $10M+ business opportunity.",
+    startup_innovation: [
+      {
+        name: "Bissau Digital Initiative",
+        what: "Nascent digital economy — growing mobile money adoption and tech entrepreneurship in Bissau",
+        for_who: "Local entrepreneurs",
+      },
+    ],
+    key_agencies: ["CCIA-GB", "API-GB (investment)", "BOAD"],
+    the_opportunity: "Guinea-Bissau is the world's 6th largest cashew producer yet exports 99% raw — a single processing facility transforms a commodity into premium branded products worth 3–5× more, and the raw material grows here with zero cost.",
   },
 
   {
@@ -385,20 +971,79 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     population: "2.5M",
     key_sectors: ["Tourism", "Agriculture (groundnuts)", "Fisheries", "Remittances"],
     procurement_portal: "gppa.gm",
-    procurement_note: "Government procurement on GPPA portal.",
+    procurement_note: "Government procurement on GPPA portal at gppa.gm. UN system procurement via UNGM.org open to Gambian-registered businesses.",
     youth_women_funds: [
-      { name: "Youth Empowerment Project (YEP)", what: "World Bank-backed youth enterprise and training", for_who: "Gambian youth" },
-      { name: "GIEPA SME Support", what: "Gambia investment and export promotion — SME grants", for_who: "Gambian SMEs" },
+      {
+        name: "Youth Empowerment Project (YEP) — World Bank",
+        what: "World Bank-backed youth enterprise, vocational training, and grants program targeting unemployed Gambian youth",
+        for_who: "Gambian youth 18–35",
+        apply_at: "worldbank.org",
+        eligibility: { age_max: 35, citizenship: "Gambian", stages: ["idea", "early"] },
+      },
+      {
+        name: "GIEPA SME Export Support",
+        what: "Gambia Investment and Export Promotion Agency — SME grants, market linkages, and trade facilitation for Gambian exporters",
+        for_who: "Gambian SMEs with export potential",
+        apply_at: "giepa.gm",
+        eligibility: { citizenship: "Gambian", stages: ["growing", "established"] },
+      },
+      {
+        name: "NEDI — National Enterprise Development Initiative",
+        what: "Government SME development fund providing grants and subsidized loans to Gambian micro and small enterprises",
+        for_who: "Gambian micro and small entrepreneurs",
+        eligibility: { citizenship: "Gambian", stages: ["idea", "early", "growing"] },
+      },
     ],
     development_bank_programs: [
-      { name: "ECOWAS Bank SME Lines", what: "Regional development bank SME financing", for_who: "Gambian SMEs" },
+      {
+        name: "ECOWAS Bank for Investment and Development (EBID)",
+        what: "Regional development bank providing credit lines through Gambian commercial banks for SME investment",
+        for_who: "Gambian SMEs",
+        apply_at: "ebid.int",
+      },
+      {
+        name: "IsDB Gambia Portfolio",
+        what: "Islamic Development Bank active in Gambia for agricultural development, education, and SME finance",
+        for_who: "Gambian businesses and farmers",
+        apply_at: "isdb.org",
+      },
     ],
     donor_grants: [
-      { name: "EU-Gambia Support", what: "Agricultural and SME development grants", for_who: "Gambian businesses" },
+      {
+        name: "EU-Gambia Migration and Development Programme",
+        what: "EU grants for Gambian businesses, remittance-linked investment, and diaspora entrepreneurship initiatives",
+        for_who: "Gambian businesses and diaspora entrepreneurs",
+        eligibility: { diaspora_ok: true },
+      },
+      {
+        name: "TEF Entrepreneurship Programme",
+        what: "$5,000 non-refundable seed capital — open to Gambian entrepreneurs including diaspora",
+        for_who: "Gambian entrepreneurs",
+        amount: "$5,000 USD",
+        apply_at: "tefconnect.com",
+        eligibility: { diaspora_ok: true, stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "USAID Gambia Feed the Future",
+        what: "Agricultural value chain development grants and technical assistance for Gambian agribusinesses and farmers",
+        for_who: "Gambian farmers and agribusinesses",
+      },
     ],
-    startup_innovation: [{ name: "Gambia Tech Hub", what: "Small but growing digital ecosystem", for_who: "Tech founders" }],
-    key_agencies: ["GIEPA", "GPPA", "GRA"],
-    the_opportunity: "Diaspora remittances flow in massively — financial services, property investment, and tourism businesses serving the diaspora connection are under-built.",
+    startup_innovation: [
+      {
+        name: "Gambia Tech Hub / GamCode",
+        what: "Small but growing digital ecosystem in Banjul — tech training, startup support, and connection to regional networks",
+        for_who: "Tech founders",
+      },
+      {
+        name: "Orange Digital Center Banjul",
+        what: "Free digital skills training, coding bootcamps, and startup mentoring in Gambia",
+        for_who: "Youth and tech entrepreneurs",
+        apply_at: "orangedigitalcenters.com",
+      },
+    ],
+    key_agencies: ["GIEPA", "GPPA", "NEDI", "GRA"],
+    the_opportunity: "Diaspora remittances to Gambia are equivalent to nearly 30% of GDP — financial services, property management, agri-export, and tourism businesses that bridge the diaspora connection to home are dramatically under-served.",
   },
 
   {
@@ -408,20 +1053,71 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     population: "600K",
     key_sectors: ["Tourism", "Blue economy (fisheries, shipping)", "Renewable energy", "Financial services"],
     procurement_portal: "portalcompras.gov.cv",
-    procurement_note: "Small economy but strong institutions — government procurement portal well-managed.",
+    procurement_note: "Small but well-run government at portalcompras.gov.cv. EU association agreement opens EU procurement markets to Cape Verdean businesses.",
     youth_women_funds: [
-      { name: "IEFP Youth Training Grants", what: "Vocational training and enterprise grants for youth", for_who: "Cape Verdean youth" },
-      { name: "BCA SME Lines", what: "Commercial bank SME lines backed by government guarantees", for_who: "Cape Verdean SMEs" },
+      {
+        name: "IEFP — Instituto de Emprego e Formação Profissional",
+        what: "Government vocational training and enterprise grant program for youth — subsidy for business creation and professional development",
+        for_who: "Cape Verdean youth entrepreneurs",
+        indigenous_note: "Cape Verdean nationals prioritized",
+        eligibility: { citizenship: "Cape Verdean", stages: ["idea", "early"] },
+      },
+      {
+        name: "Casa do Jovem Empreendedor (CJE)",
+        what: "Government business incubator and enterprise support for young Cape Verdean entrepreneurs — training, mentoring, and seed funding",
+        for_who: "Cape Verdean youth entrepreneurs",
+        eligibility: { age_max: 40, citizenship: "Cape Verdean", stages: ["idea", "early"] },
+      },
+      {
+        name: "TEF Entrepreneurship Programme",
+        what: "$5,000 non-refundable seed capital — open to Cape Verdean entrepreneurs of African descent",
+        for_who: "Cape Verdean entrepreneurs",
+        amount: "$5,000 USD",
+        apply_at: "tefconnect.com",
+        eligibility: { diaspora_ok: true, stages: ["idea", "early", "growing"] },
+      },
     ],
     development_bank_programs: [
-      { name: "AfDB Cape Verde Portfolio", what: "Small economy programs — energy and tourism focus", for_who: "Cape Verdean businesses" },
+      {
+        name: "BCA — Banco Comercial do Atlântico SME Lines",
+        what: "Cape Verde's largest commercial bank with SME credit lines backed by government guarantees — priority for tourism, renewable energy, and export businesses",
+        for_who: "Cape Verdean SMEs",
+        apply_at: "bca.cv",
+      },
+      {
+        name: "AfDB Cape Verde Portfolio",
+        what: "AfDB active in renewable energy, water, and private sector development — local content opportunities in AfDB-financed infrastructure",
+        for_who: "Cape Verdean businesses",
+        apply_at: "afdb.org",
+      },
     ],
     donor_grants: [
-      { name: "EU Atlantic Cooperation Grants", what: "EU grants for Atlantic island economies", for_who: "Cape Verdean businesses" },
+      {
+        name: "EU Atlantic Cooperation Special Status Grants",
+        what: "Cape Verde has Special Partnership status with EU — access to EU funding for SME development, fisheries, and renewable energy projects",
+        for_who: "Cape Verdean businesses",
+      },
+      {
+        name: "Global Fund for Blue Economy",
+        what: "International funds for sustainable ocean economy — fisheries processing, marine services, and ocean tourism businesses in Cape Verde qualify",
+        for_who: "Cape Verdean blue economy businesses",
+      },
     ],
-    startup_innovation: [{ name: "Praia Digital Hub", what: "Growing tech scene — small but well-connected", for_who: "Tech founders" }],
-    key_agencies: ["ADEI (investment)", "IEFP"],
-    the_opportunity: "Blue economy — fisheries processing, marine services, and renewable energy on Atlantic islands is dramatically underexploited.",
+    startup_innovation: [
+      {
+        name: "ADEI — Agência para o Desenvolvimento Empresarial e Inovação",
+        what: "Cape Verde's SME development and innovation agency — incubation, market access, and internationalization support for Cape Verdean startups",
+        for_who: "Cape Verdean startups and SMEs",
+        apply_at: "adei.cv",
+      },
+      {
+        name: "Praia Digital Hub (NOSi / CV Digital)",
+        what: "Growing tech scene in Praia — e-government contracts and digital services are a major opportunity given Cape Verde's advanced ICT infrastructure",
+        for_who: "Tech founders and digital companies",
+      },
+    ],
+    key_agencies: ["ADEI", "IEFP", "BCA", "Câmara de Comércio"],
+    the_opportunity: "Cape Verde is positioning as the Atlantic gateway between Africa, Europe, and the Americas — logistics, digital services, and premium fisheries products for European markets through the EU Special Partnership are the overlooked opportunities.",
   },
 
   // ── EAST AFRICA ──────────────────────────────────────────────────────────
@@ -465,25 +1161,89 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     population: "120M",
     key_sectors: ["Agriculture (coffee, sesame, cut flowers)", "Industrial parks (textiles, apparel)", "Digital economy", "Tourism", "Construction"],
     procurement_portal: "ppa.gov.et",
-    procurement_note: "Government procurement on PPA Ethiopia portal. Industrial park procurement is a separate channel.",
+    procurement_note: "Government procurement on PPA Ethiopia portal. Industrial parks (Hawassa, Bole Lemi) have their own procurement channels. AfDB $42.86M Agri-MSMEs for Jobs program creates additional procurement for Ethiopians.",
     youth_women_funds: [
-      { name: "YEIP — Youth Entrepreneurship & Innovation Program", what: "Government youth enterprise and innovation fund", for_who: "Ethiopian youth" },
-      { name: "Women's Development Fund", what: "Ministry of Women fund for women entrepreneurs", for_who: "Ethiopian women" },
+      {
+        name: "AMD4J — Agri-MSMEs Development for Jobs (AfDB, approved May 2024)",
+        what: "AfDB $42.86M grant approved May 2024, co-financed by DBE ($10M) and government ($6.24M). Two pillars: (1) expand finance access for youth/women agri-MSMEs; (2) establish YEIB framework. Target: 8,000+ youth and women-led businesses",
+        for_who: "Ethiopian youth and women agri-MSMEs",
+        amount: "$42.86M program; individual businesses via DBE implementing partners",
+        apply_at: "dbe.com.et",
+        eligibility: { gender: "all", stages: ["early", "growing"] },
+      },
+      {
+        name: "WEDP — Women Entrepreneurship Development Project (DBE/World Bank/EIB)",
+        what: "EIB €30M loan + World Bank co-finance through Development Bank of Ethiopia — micro and small enterprises owned or partly owned by women. One of Ethiopia's largest women enterprise programs.",
+        for_who: "Ethiopian women entrepreneurs in micro and small enterprises",
+        amount: "ETB 10,000–2,000,000 through DBE partner MFIs",
+        apply_at: "dbe.com.et",
+        eligibility: { gender: "women", citizenship: "Ethiopian", stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "Youth Entrepreneurship & Innovation Program (YEIP)",
+        what: "Government youth enterprise and innovation fund — grants, loans, and training for Ethiopian youth starting or scaling businesses",
+        for_who: "Ethiopian youth 15–35",
+        eligibility: { age_max: 35, citizenship: "Ethiopian", stages: ["idea", "early"] },
+      },
     ],
     development_bank_programs: [
-      { name: "DBE — Development Bank of Ethiopia", what: "Ethiopia's national development bank — priority sectors get low rates", for_who: "Ethiopian businesses", apply_at: "dbe.com.et" },
-      { name: "Ethiopian Investment Commission", what: "Investment facilitation and incentives for priority sectors", for_who: "Investors and businesses", apply_at: "ethiopiainvestment.gov.et" },
+      {
+        name: "DBE — Development Bank of Ethiopia",
+        what: "Ethiopia's national DFI — priority sectors (agriculture, manufacturing, export) get below-market rates. Also implementing AMD4J and WEDP through partner MFIs.",
+        for_who: "Ethiopian businesses in priority sectors",
+        amount: "ETB 500,000–500M",
+        apply_at: "dbe.com.et",
+        indigenous_note: "Ethiopian businesses; foreign investors can access through joint ventures",
+      },
+      {
+        name: "EIC — Ethiopian Investment Commission",
+        what: "One-stop shop for investment facilitation — tax holidays, industrial park access, and incentives for manufacturing and export businesses",
+        for_who: "Investors and Ethiopian businesses in manufacturing",
+        apply_at: "ethiopiainvestment.gov.et",
+      },
     ],
     donor_grants: [
-      { name: "GIZ Ethiopia", what: "Vocational training and private sector development", for_who: "Ethiopian businesses and workers" },
-      { name: "USAID Ethiopia", what: "Agricultural, food security, and enterprise programs", for_who: "Ethiopian businesses" },
+      {
+        name: "USAID Feed the Future Ethiopia",
+        what: "USAID programs supporting agricultural value chains, food security, and enterprise — grants and technical assistance for Ethiopian agribusinesses",
+        for_who: "Ethiopian farmers and agribusinesses",
+        apply_at: "usaid.gov/ethiopia",
+      },
+      {
+        name: "GIZ Ethiopia Skills & Private Sector",
+        what: "German development cooperation — vocational training, private sector advisory, and SME technical assistance programs",
+        for_who: "Ethiopian businesses, youth, and workers",
+      },
+      {
+        name: "Tony Elumelu Foundation (TEF)",
+        what: "$5,000 non-refundable seed capital — actively supports Ethiopian entrepreneurs",
+        for_who: "Ethiopian entrepreneurs",
+        amount: "$5,000 USD",
+        apply_at: "tefconnect.com",
+        eligibility: { diaspora_ok: true, stages: ["idea", "early", "growing"] },
+      },
     ],
     startup_innovation: [
-      { name: "iCog Labs Addis", what: "AI and tech startup hub", for_who: "Tech founders" },
-      { name: "Africa to Silicon Valley (A2SV)", what: "Programming training and placement program", for_who: "Ethiopian coders" },
+      {
+        name: "iCog Labs Addis Ababa",
+        what: "Ethiopia's leading AI and robotics hub — incubator for Ethiopian tech startups, creator of the BINA48 and Sophia robot's African contributions",
+        for_who: "Tech founders especially AI/robotics",
+        apply_at: "icog-labs.com",
+      },
+      {
+        name: "Africa to Silicon Valley (A2SV)",
+        what: "Programming excellence training transforming Ethiopian university students into global tech talent — alumni placed at Google, Meta, Amazon",
+        for_who: "Ethiopian coders and computer science students",
+        apply_at: "a2sv.org",
+      },
+      {
+        name: "Addis Ababa Innovation Hub (Ministry of Innovation)",
+        what: "Government innovation support for Ethiopian tech startups — incubation, prototyping labs, and market access programs",
+        for_who: "Ethiopian tech entrepreneurs",
+      },
     ],
-    key_agencies: ["EIC", "DBE", "ECAE (export)", "ERCA (revenue)"],
-    the_opportunity: "Industrial parks need thousands of Ethiopians to run production, quality control, logistics, and services — and the domestic market of 120M is still barely served.",
+    key_agencies: ["EIC", "DBE", "ECAE (export)", "ERCA (revenue)", "UNDP Ethiopia"],
+    the_opportunity: "AfDB's $42.86M AMD4J program approved May 2024 is being deployed through DBE right now — 8,000 Ethiopian youth and women agri-businesses will be funded, and the application window through partner MFIs is open.",
   },
 
   {
@@ -493,24 +1253,94 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     population: "63M",
     key_sectors: ["Agriculture (tobacco, cashews, coffee)", "Tourism (Serengeti, Zanzibar)", "Mining (gold, tanzanite)", "Construction"],
     procurement_portal: "tender.go.tz",
-    procurement_note: "TANePS (Tanzania National e-Procurement System) at tendering.go.tz — well-organized digital procurement.",
+    procurement_note: "TANePS (Tanzania National e-Procurement System) at tender.go.tz — well-organized digital procurement. Government allocated TZS 200 billion for youth startups and SMEs in 2024–2025.",
     youth_women_funds: [
-      { name: "SIDO — Small Industries Development", what: "Government agency supporting Tanzanian SMEs with training and finance", for_who: "Tanzanian small businesses", apply_at: "sido.go.tz" },
-      { name: "Youth Development Fund (YDF)", what: "Government fund for youth entrepreneurship", for_who: "Tanzanian youth" },
-      { name: "Women Enterprise Fund", what: "Low-interest loans for women-owned businesses", for_who: "Tanzanian women" },
+      {
+        name: "Tanzania Government Youth Fund — TZS 200 Billion",
+        what: "President Samia Suluhu Hassan's TZS 200 billion fund for youth enterprises, startups, and SMEs — agriculture, mining, ICT, manufacturing, and services. In 2024–2025, TZS 66.9 billion disbursed as loans and guarantees to 13,000+ beneficiaries.",
+        for_who: "Tanzanian youth entrepreneurs",
+        amount: "TZS 1M–50M (via TAMISEMI and regional offices)",
+        indigenous_note: "Tanzanian nationals; priority for youth under 35",
+        eligibility: { age_max: 35, citizenship: "Tanzanian", stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "SIDO — Small Industries Development Organisation",
+        what: "Government agency supporting Tanzanian SMEs — training centers, equipment hire purchase, market linkages, and enterprise development since 1973",
+        for_who: "Tanzanian small businesses in manufacturing and agro-processing",
+        apply_at: "sido.go.tz",
+        eligibility: { citizenship: "Tanzanian", stages: ["early", "growing"] },
+      },
+      {
+        name: "Women Enterprise Fund Tanzania",
+        what: "Government fund providing low-interest loans specifically for women-owned businesses — capacity building and market access support",
+        for_who: "Tanzanian women entrepreneurs",
+        eligibility: { gender: "women", citizenship: "Tanzanian", stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "AfDB $129M Agricultural Youth Jobs Program",
+        what: "AfDB approved $129M loan for agricultural job creation targeting Tanzanian youth — agri-value chain businesses and food processing",
+        for_who: "Tanzanian youth in agriculture",
+        apply_at: "afdb.org",
+        eligibility: { age_max: 35, stages: ["early", "growing"] },
+      },
     ],
     development_bank_programs: [
-      { name: "TIB Development Bank", what: "Tanzania's development bank for industrial and agri projects", for_who: "Tanzanian businesses" },
-      { name: "AfDB Tanzania Portfolio", what: "Infrastructure and agriculture projects with local content requirements", for_who: "Tanzanian businesses" },
+      {
+        name: "TIB Development Bank",
+        what: "Tanzania's national development bank for industrial and agricultural projects — loans for energy, water, mining services, and agribusiness at below-market rates",
+        for_who: "Tanzanian businesses in priority sectors",
+        apply_at: "tib.co.tz",
+        indigenous_note: "Tanzanian businesses preferred; joint ventures eligible",
+      },
+      {
+        name: "NMB Bank Youth Startup Loans",
+        what: "NMB Bank provides startup capital in collaboration with TAMISEMI (President's Office Regional Administration) — accessible through regional offices",
+        for_who: "Tanzanian youth entrepreneurs",
+        apply_at: "nmbbank.co.tz",
+        eligibility: { age_max: 35, stages: ["idea", "early"] },
+      },
     ],
     donor_grants: [
-      { name: "MCC Tanzania Compact", what: "Millennium Challenge infrastructure and agri grant programs", for_who: "Tanzanian businesses and cooperatives" },
+      {
+        name: "MCC Tanzania Compact",
+        what: "Millennium Challenge Corporation infrastructure and agricultural programs — procurement and subcontracting for Tanzanian companies",
+        for_who: "Tanzanian businesses and cooperatives",
+      },
+      {
+        name: "Tony Elumelu Foundation (TEF)",
+        what: "$5,000 non-refundable seed capital — actively recruits Tanzanian entrepreneurs",
+        for_who: "Tanzanian entrepreneurs",
+        amount: "$5,000 USD",
+        apply_at: "tefconnect.com",
+        eligibility: { diaspora_ok: true, stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "GIZ Tanzania Private Sector Development",
+        what: "German development agency programs supporting Tanzanian agribusiness, vocational training, and SME competitiveness",
+        for_who: "Tanzanian businesses and youth",
+      },
     ],
     startup_innovation: [
-      { name: "Dar es Salaam Tech Scene", what: "Growing startup ecosystem — kLab and BUNI hubs", for_who: "Tech founders" },
+      {
+        name: "kLab Dar es Salaam",
+        what: "Tanzania's leading tech incubator and innovation hub — mentoring, co-working, and startup competitions for Tanzanian entrepreneurs",
+        for_who: "Tech founders",
+        apply_at: "klab.co.tz",
+      },
+      {
+        name: "BUNI Innovation Hub (COSTECH)",
+        what: "Government science and technology innovation hub at COSTECH — prototype development, incubation, and tech enterprise support",
+        for_who: "Tech and innovation entrepreneurs",
+        apply_at: "buni.costech.or.tz",
+      },
+      {
+        name: "Tanzania Youth Startup Fund (TTY Brand Africa)",
+        what: "Government-aligned fund specifically targeting digital economy growth and tech startup support in Tanzania",
+        for_who: "Tanzanian tech startups",
+      },
     ],
-    key_agencies: ["SIDO", "TIC (investment)", "TIB", "TANePS"],
-    the_opportunity: "Tourism is one of Africa's most lucrative — but Tanzanian-owned tourism businesses are a fraction of the sector. Supply chain to hotels and lodges is wide open.",
+    key_agencies: ["SIDO", "TIC (investment)", "TIB", "TAMISEMI", "TANePS"],
+    the_opportunity: "Tanzania's TZS 200 billion youth fund has already disbursed TZS 66.9 billion to 13,000 businesses — the pipeline is active and under-subscribed, especially in tourism supply chains serving Serengeti and Zanzibar's booming hospitality sector.",
   },
 
   {
@@ -520,25 +1350,92 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     population: "48M",
     key_sectors: ["Agriculture (coffee, tea, vanilla)", "Oil services (Albertine Basin)", "Construction", "Manufacturing"],
     procurement_portal: "gpp.ppda.go.ug",
-    procurement_note: "Government procurement on PPDA portal. Oil sector local content requirements creating significant SME opportunity.",
+    procurement_note: "Government procurement on PPDA portal. Oil sector (EACOP, TotalEnergies) local content office active. UDB approved Shs 124.2B for indigenous Ugandan infrastructure contractors in 2025.",
     youth_women_funds: [
-      { name: "Youth Livelihood Programme (YLP)", what: "Government interest-free loans for youth groups", for_who: "Ugandan youth", amount: "UGX 5M–25M per group" },
-      { name: "Women Entrepreneurship Programme (WEP)", what: "Government grants for women-owned businesses", for_who: "Ugandan women" },
-      { name: "UWESO Women's Fund", what: "Credit for women entrepreneurs", for_who: "Ugandan women" },
+      {
+        name: "Youth Livelihood Programme (YLP)",
+        what: "Government interest-free loans for youth groups — enterprise training + group loans for young Ugandans starting businesses",
+        for_who: "Ugandan youth groups 18–30",
+        amount: "UGX 5M–25M per group",
+        indigenous_note: "Ugandan nationals only — specifically designed for indigenous Ugandan youth",
+        eligibility: { age_max: 30, citizenship: "Ugandan", stages: ["idea", "early"] },
+      },
+      {
+        name: "Women Entrepreneurship Programme (WEP)",
+        what: "Government grants for women-owned businesses — access to affordable credit and business development support",
+        for_who: "Ugandan women entrepreneurs",
+        indigenous_note: "Ugandan women nationals",
+        eligibility: { gender: "women", citizenship: "Ugandan", stages: ["early", "growing"] },
+      },
+      {
+        name: "UDB Youth Special Program",
+        what: "Uganda Development Bank special youth enterprise program — in 2024/25 UDB supported 13 youth-owned enterprises, 85 women-owned businesses and 216 SMEs. Target: 69,202 jobs created in 2025.",
+        for_who: "Ugandan youth-owned businesses",
+        amount: "UGX 50M–500M",
+        apply_at: "udbl.co.ug",
+        eligibility: { age_max: 35, citizenship: "Ugandan", stages: ["early", "growing"] },
+      },
     ],
     development_bank_programs: [
-      { name: "UDB — Uganda Development Bank", what: "Development finance for priority sectors", for_who: "Ugandan businesses", apply_at: "udb.co.ug" },
-      { name: "DFCU Bank SME Lines", what: "SME credit backed by development finance", for_who: "Ugandan SMEs" },
+      {
+        name: "UDB — Uganda Development Bank",
+        what: "Uganda's DFI — capitalized to Shs 1.6 trillion. Special programs for SMEs, women, youth, AgriConnect, Local Contractors, and EACOP oil sector. Shs 124.2B for indigenous contractors in 2025.",
+        for_who: "Ugandan businesses in agriculture, manufacturing, oil services, infrastructure",
+        amount: "UGX 50M–5B",
+        apply_at: "udbl.co.ug",
+        indigenous_note: "Prioritizes indigenous Ugandan-owned businesses",
+      },
+      {
+        name: "DFCU Bank SME Development Lines",
+        what: "Development Finance Company of Uganda — SME credit backed by DFI money at lower-than-market rates",
+        for_who: "Ugandan SMEs",
+        apply_at: "dfcugroup.com",
+      },
     ],
     donor_grants: [
-      { name: "GIZ Uganda Skills Programme", what: "Vocational training and enterprise support", for_who: "Ugandan youth" },
+      {
+        name: "GIZ Uganda Skills & Private Sector Development",
+        what: "German development cooperation — skills development, agricultural value chains, and private sector technical assistance",
+        for_who: "Ugandan businesses and youth",
+      },
+      {
+        name: "Tony Elumelu Foundation (TEF)",
+        what: "$5,000 non-refundable seed capital — open to Ugandan entrepreneurs",
+        for_who: "Ugandan entrepreneurs",
+        amount: "$5,000 USD",
+        apply_at: "tefconnect.com",
+        eligibility: { diaspora_ok: true, stages: ["idea", "early", "growing"] },
+      },
+      {
+        name: "Mastercard Foundation Uganda Programs",
+        what: "Youth employment and education partnerships — funds Ugandan training institutions and employer networks",
+        for_who: "Ugandan youth",
+        apply_at: "mastercardfdn.org",
+      },
     ],
     startup_innovation: [
-      { name: "Outbox Hub Kampala", what: "Main tech accelerator and co-working space", for_who: "Tech founders" },
-      { name: "Innovation Village Kampala", what: "Startup studio and co-working", for_who: "Entrepreneurs" },
+      {
+        name: "Outbox Hub Kampala",
+        what: "Kampala's leading tech accelerator and co-working space — incubation for Ugandan digital entrepreneurs",
+        for_who: "Tech founders",
+        apply_at: "outbox.co.ug",
+      },
+      {
+        name: "Innovation Village Kampala",
+        what: "Startup studio, co-working, and investor connections — active acceleration programs for Ugandan startups",
+        for_who: "Entrepreneurs and tech startups",
+        apply_at: "innovationvillage.co.ug",
+      },
+      {
+        name: "EACOP Local Content Supplier Program",
+        what: "East Africa Crude Oil Pipeline (TotalEnergies) requires local Ugandan suppliers — official local content vendor registration open to qualified Ugandan businesses",
+        for_who: "Ugandan businesses in oil services, catering, logistics, construction",
+        apply_at: "eacop.com/local-content",
+        indigenous_note: "Ugandan-owned companies specifically required for local content quota",
+      },
     ],
-    key_agencies: ["UDB", "PPDA", "UWESO", "UIA (investment)"],
-    the_opportunity: "Uganda's oil sector is coming online — local content requirements mean Ugandan businesses must supply 30%+ of services. Oil service companies are urgently needed.",
+    key_agencies: ["UDB", "PPDA", "UIA (investment)", "UWESO", "EACOP Local Content Office"],
+    the_opportunity: "UDB's Shs 1.6 trillion capitalization is the largest in the bank's history — and special programs for youth, women, oil sector, and indigenous contractors are all under-subscribed; the money is there before you even walk in.",
   },
 
   {

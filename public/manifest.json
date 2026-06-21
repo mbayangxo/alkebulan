@@ -1,0 +1,50 @@
+{
+  "name": "Alkebulan — Africa is the Opportunity",
+  "short_name": "Alkebulan",
+  "description": "Find every grant, loan, tender, and program built for African entrepreneurs across 54 countries.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1B3A2B",
+  "theme_color": "#C9A035",
+  "orientation": "portrait-primary",
+  "categories": ["finance", "business", "education"],
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "My Matches",
+      "short_name": "Matches",
+      "description": "See programs you personally qualify for",
+      "url": "/matches",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Programs Database",
+      "short_name": "Programs",
+      "description": "Browse all 54 African countries",
+      "url": "/programs",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Build My Site",
+      "short_name": "My Site",
+      "description": "Launch your business online in 5 minutes",
+      "url": "/store/new",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

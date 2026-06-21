@@ -1,5 +1,7 @@
 import { NextRequest } from "next/server";
 import { storeDb, type StoreOrder } from "@/lib/store-data";
+import { analyticsDb } from "@/lib/analytics-store";
+import { sendOrderNotification } from "@/lib/notifications";
 
 // Flutterwave payment initialization
 // Requires FLW_SECRET_KEY env variable — get from dashboard.flutterwave.com
@@ -78,13 +80,31 @@ export async function POST(req: NextRequest) {
   };
 
   storeDb.orders.save(order);
+  analyticsDb.recordOrder(order.siteSlug);
+
+  const site = storeDb.sites.get(body.siteSlug);
+
+  // Send notification to seller (non-blocking — fire and forget)
+  if (site) {
+    const itemsSummary = order.items
+      .map(i => `${i.quantity}× ${i.offeringName}`)
+      .join(", ");
+    sendOrderNotification({
+      businessName: site.businessName,
+      customerName: order.customerName,
+      customerPhone: order.customerPhone,
+      itemsSummary,
+      orderId: order.id,
+      paymentMethod: order.paymentMethod,
+      notifyPhone: site.notifyPhone,
+      notifyEmail: site.notifyEmail,
+    }).catch(() => {});
+  }
 
   // Cash on delivery — no payment redirect needed
   if (body.paymentMethod === "cash") {
     return Response.json({ success: true, orderId: order.id, paymentUrl: null });
   }
-
-  const site = storeDb.sites.get(body.siteSlug);
 
   // Flutterwave payment
   if (body.paymentMethod === "flutterwave" && site) {

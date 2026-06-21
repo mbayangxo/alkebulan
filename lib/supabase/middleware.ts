@@ -16,6 +16,13 @@ function isPublicPath(pathname: string): boolean {
   if (pathname.startsWith("/api/")) return true;
   if (pathname.startsWith("/map/")) return true;
   if (pathname.startsWith("/opportunity/")) return true;
+  if (pathname.startsWith("/store/")) return true;
+  if (pathname.startsWith("/matches")) return true;
+  if (pathname.startsWith("/opportunities/")) return true;
+  if (pathname.startsWith("/grants/")) return true;
+  if (pathname.startsWith("/programs")) return true;
+  if (pathname.startsWith("/newsroom")) return true;
+  if (pathname.startsWith("/agents")) return true;
   if (pathname.startsWith("/capital-stack")) return true;
   if (pathname.startsWith("/afcfta")) return true;
   if (pathname.startsWith("/bankability")) return true;

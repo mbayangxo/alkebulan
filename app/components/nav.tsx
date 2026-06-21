@@ -6,7 +6,7 @@ import { AlkebulanCrest } from "./panther-motif";
 
 const NAV_LINKS = [
   { label: "My Goals", href: "/goals", highlight: true },
-  { label: "Your Path", href: "/path" },
+  { label: "My Matches ⚡", href: "/matches" },
   { label: "Newsroom", href: "/newsroom" },
   { label: "Programs Database", href: "/programs" },
   { label: "Countries", href: "/map" },

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Nav } from "@/app/components/nav";
 import type { StoreOrder } from "@/lib/store-data";
+import type { SiteAnalytics } from "@/lib/analytics-store";
 import Link from "next/link";
 
 interface MySite {
@@ -23,6 +24,7 @@ export default function DashboardPage() {
   const [sites, setSites] = useState<MySite[]>([]);
   const [activeSite, setActiveSite] = useState<MySite | null>(null);
   const [orders, setOrders] = useState<StoreOrder[]>([]);
+  const [analytics, setAnalytics] = useState<SiteAnalytics | null>(null);
   const [loadingOrders, setLoadingOrders] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -42,9 +44,15 @@ export default function DashboardPage() {
 
   function fetchOrders(slug: string) {
     setLoadingOrders(true);
-    fetch(`/api/store/orders/${slug}`)
-      .then(r => r.json())
-      .then(data => { setOrders(Array.isArray(data) ? data : []); setLoadingOrders(false); })
+    Promise.all([
+      fetch(`/api/store/orders/${slug}`).then(r => r.json()),
+      fetch(`/api/store/analytics/${slug}`).then(r => r.json()),
+    ])
+      .then(([orderData, analyticsData]) => {
+        setOrders(Array.isArray(orderData) ? orderData : []);
+        setAnalytics(analyticsData ?? null);
+        setLoadingOrders(false);
+      })
       .catch(() => { setOrders([]); setLoadingOrders(false); });
   }
 
@@ -145,6 +153,34 @@ export default function DashboardPage() {
                 </button>
               </div>
             </div>
+
+            {/* Analytics */}
+            {analytics && (analytics.totalViews > 0 || analytics.totalOrders > 0) && (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+                {[
+                  { label: "Total views", value: analytics.totalViews.toLocaleString() },
+                  { label: "Total orders", value: analytics.totalOrders.toLocaleString() },
+                  {
+                    label: "Conversion",
+                    value: analytics.totalViews > 0
+                      ? `${((analytics.totalOrders / analytics.totalViews) * 100).toFixed(1)}%`
+                      : "—",
+                  },
+                  {
+                    label: "Today",
+                    value: (analytics.dailyViews[0]?.date === new Date().toISOString().slice(0, 10)
+                      ? analytics.dailyViews[0].views
+                      : 0
+                    ).toString() + " views",
+                  },
+                ].map(({ label, value }) => (
+                  <div key={label} className="bg-white border border-border rounded-xl p-4 text-center">
+                    <p className="text-2xl font-bold text-ink">{value}</p>
+                    <p className="text-xs text-muted mt-1">{label}</p>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {/* Orders */}
             <div>

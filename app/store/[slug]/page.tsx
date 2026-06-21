@@ -49,8 +49,13 @@ export default function StorePage({ params }: { params: Promise<{ slug: string }
         return res.json();
       })
       .then(data => {
-        if (data && !data.error) setSite(data);
-        else setNotFound(true);
+        if (data && !data.error) {
+          setSite(data);
+          // Record view (fire and forget)
+          fetch(`/api/store/analytics/${slug}`, { method: "POST" }).catch(() => {});
+        } else {
+          setNotFound(true);
+        }
         setLoading(false);
       })
       .catch(() => { setNotFound(true); setLoading(false); });

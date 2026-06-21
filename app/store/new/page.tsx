@@ -48,6 +48,8 @@ export default function NewStorePage() {
   const [contactPhone, setContactPhone] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [contactWhatsapp, setContactWhatsapp] = useState("");
+  const [notifyPhone, setNotifyPhone] = useState("");
+  const [notifyEmail, setNotifyEmail] = useState("");
 
   // Generated content
   const [generated, setGenerated] = useState<GeneratedContent | null>(null);
@@ -115,6 +117,8 @@ export default function NewStorePage() {
           aboutText: generated.aboutText, offerings: fullOfferings,
           contactPhone, contactEmail, contactWhatsapp,
           colorTheme: generated.colorTheme,
+          notifyPhone: notifyPhone || contactPhone || undefined,
+          notifyEmail: notifyEmail || contactEmail || undefined,
         }),
       });
       const data = await res.json();
@@ -490,6 +494,36 @@ export default function NewStorePage() {
                 placeholder="you@gmail.com"
                 className="w-full border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold"
               />
+            </div>
+          </div>
+        </div>
+
+        {/* Order notifications */}
+        <div className="bg-white border border-border rounded-2xl p-6">
+          <p className="text-xs font-bold text-muted uppercase tracking-wide mb-1">Order notifications</p>
+          <p className="text-xs text-muted mb-4">Where should we send you an alert when a new order comes in?</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-bold text-ink mb-2">SMS number (Africa's Talking)</label>
+              <input
+                type="tel"
+                value={notifyPhone}
+                onChange={e => setNotifyPhone(e.target.value)}
+                placeholder={contactPhone || "+221 77 000 0000"}
+                className="w-full border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold"
+              />
+              <p className="text-xs text-muted mt-1">Leave blank to use your contact phone above</p>
+            </div>
+            <div>
+              <label className="block text-xs font-bold text-ink mb-2">Email notifications</label>
+              <input
+                type="email"
+                value={notifyEmail}
+                onChange={e => setNotifyEmail(e.target.value)}
+                placeholder={contactEmail || "orders@yourbusiness.com"}
+                className="w-full border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold"
+              />
+              <p className="text-xs text-muted mt-1">Leave blank to use your contact email above</p>
             </div>
           </div>
         </div>

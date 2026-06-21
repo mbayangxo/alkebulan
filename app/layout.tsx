@@ -6,6 +6,7 @@ import { LocaleProvider } from "@/app/components/locale-context";
 import { LanguageBar } from "@/app/components/language-bar";
 import { ProfileProvider, ProfileSetupModal, ProfileBadge } from "@/app/components/user-profile";
 import { ReportBug } from "@/app/components/report-bug";
+import { MobileBottomNav } from "@/app/components/mobile-nav";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -45,6 +46,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${fraunces.variable} ${jost.variable} h-full antialiased`}>
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body className="min-h-full text-ink bg-ivory">
         <PWARegister />
         <ProfileProvider>
@@ -54,6 +58,7 @@ export default function RootLayout({
             <ProfileSetupModal />
             <ProfileBadge />
             <ReportBug />
+            <MobileBottomNav />
           </LocaleProvider>
         </ProfileProvider>
       </body>
