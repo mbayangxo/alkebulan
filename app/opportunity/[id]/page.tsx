@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Nav } from "@/app/components/nav";
 import { SAMPLE_OPPORTUNITIES } from "@/lib/data/sample-opportunities";
+import { computeFreshness, freshnessUI } from "@/lib/verification";
 
 export default async function OpportunityPage({
   params,
@@ -11,6 +12,9 @@ export default async function OpportunityPage({
   const { id } = await params;
   const opp = SAMPLE_OPPORTUNITIES.find((o) => o.id === id);
   if (!opp) notFound();
+
+  const freshness = computeFreshness(opp);
+  const freshnessStyle = freshnessUI(freshness);
 
   const deadlineDate = opp.deadline ? new Date(opp.deadline) : null;
   const now = new Date();
@@ -63,18 +67,41 @@ export default async function OpportunityPage({
               Diaspora eligible
             </span>
           )}
-          {opp.verified_status === "verified" && (
-            <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-green-100 text-green-800">
-              ✓ Verified
-            </span>
-          )}
+          <span className={`inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-0.5 rounded-full ${freshnessStyle.bg} ${freshnessStyle.text}`}>
+            <span className={`w-1.5 h-1.5 rounded-full ${freshnessStyle.dot}`} />
+            {freshnessStyle.shortLabel}
+          </span>
         </div>
 
         {/* Title */}
         <h1 className="font-display text-3xl font-bold text-ink mb-2 leading-tight">
           {opp.title}
         </h1>
-        <p className="text-muted text-sm mb-8">Source: {opp.source_name}</p>
+        <p className="text-muted text-sm mb-4">Source: {opp.source_name}</p>
+
+        {/* Verification notice — shown prominently when stale, flagged, or unknown */}
+        {freshnessStyle.showWarning && (
+          <div className={`border rounded-xl px-4 py-3 mb-6 ${freshnessStyle.bg} border-current/20`}>
+            <div className="flex items-start gap-2">
+              <span className="text-sm mt-0.5">⚠</span>
+              <div>
+                <p className={`text-xs font-semibold ${freshnessStyle.text} mb-0.5`}>
+                  {freshness.kind === "flagged" ? "Program flagged for reverification" :
+                   freshness.kind === "stale" ? "Listing may be outdated" :
+                   freshness.kind === "removed" ? "Program closed" :
+                   "Verification date unknown"}
+                </p>
+                <p className={`text-xs ${freshnessStyle.text} opacity-80`}>
+                  {freshnessStyle.longLabel} Always verify directly with{" "}
+                  <a href={opp.source_url} target="_blank" rel="noopener noreferrer" className="underline">
+                    {opp.source_name}
+                  </a>{" "}
+                  before applying.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Key facts */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">

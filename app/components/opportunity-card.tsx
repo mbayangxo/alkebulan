@@ -1,26 +1,17 @@
 import Link from "next/link";
-import { Opportunity, OpportunityWithMatch, VerifiedStatus } from "@/lib/types";
+import { Opportunity, OpportunityWithMatch } from "@/lib/types";
 import { ScoreBreakdown, getScoreColor } from "@/lib/scoring";
+import { computeFreshness, freshnessUI, type VerificationInput } from "@/lib/verification";
 
-function VerifiedBadge({ status }: { status: VerifiedStatus }) {
-  if (status === "verified") {
-    return (
-      <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-green-100 text-green-800">
-        <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20">
-          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-        </svg>
-        Verified
-      </span>
-    );
-  }
-  if (status === "needs_review") {
-    return (
-      <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-800">
-        ⚠ Review
-      </span>
-    );
-  }
-  return null;
+function VerifiedBadge({ opp }: { opp: VerificationInput }) {
+  const state = computeFreshness(opp);
+  const ui = freshnessUI(state);
+  return (
+    <span className={`inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full ${ui.bg} ${ui.text}`}>
+      <span className={`w-1.5 h-1.5 rounded-full ${ui.dot}`} />
+      {ui.shortLabel}
+    </span>
+  );
 }
 
 function TypePill({ type }: { type: string }) {
@@ -115,7 +106,7 @@ export function OpportunityCard({ opportunity, showMatch = false, score, onTrack
             </span>
           )}
         </div>
-        <VerifiedBadge status={opportunity.verified_status} />
+        <VerifiedBadge opp={opportunity} />
       </div>
 
       {/* Title */}

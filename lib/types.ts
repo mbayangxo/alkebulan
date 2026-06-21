@@ -43,7 +43,9 @@ export type DiasporaStatus =
   | "Citizen of an African country"
   | "None of the above";
 
-export type VerifiedStatus = "verified" | "needs_review" | "deadline_unknown" | "expired";
+export type VerifiedStatus = "verified" | "outdated" | "removed" | "needs_review" | "deadline_unknown" | "expired";
+
+export type Volatility = "high" | "medium" | "low";
 
 export type OpportunityStatus = "saved" | "applying" | "submitted" | "won" | "rejected";
 
@@ -85,6 +87,9 @@ export interface Opportunity {
   source_url: string;
   source_name: string;
   verified_status: VerifiedStatus;
+  verified_at?: string;   // ISO date — when this was last confirmed active
+  flag_reason?: string;   // e.g. "Senegal PM changed May 22, 2026, program status unconfirmed"
+  volatility?: Volatility; // determines freshness window: high=14d, medium=30d, low=90d
   summary: string;
   description?: string;
   documents_required?: string[];

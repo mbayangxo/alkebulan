@@ -21,6 +21,8 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     source_url: "https://www.tonyelumelufoundation.org/teep",
     source_name: "Tony Elumelu Foundation",
     verified_status: "verified",
+    verified_at: "2026-06-18",
+    volatility: "high",
     summary:
       "The Tony Elumelu Foundation offers $5,000 seed capital, business training, and mentoring to 10,000 African entrepreneurs annually. Open to all African entrepreneurs with a viable business idea.",
     description:
@@ -62,6 +64,8 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     source_url: "https://mastercardfdn.org/all-programs/scholars-program/",
     source_name: "Mastercard Foundation",
     verified_status: "verified",
+    verified_at: "2026-04-20",
+    volatility: "low",
     summary:
       "Full scholarships for exceptional young Africans to study at leading universities globally, with mentorship and leadership development. Up to $60,000 per scholar.",
     documents_required: [
@@ -101,6 +105,8 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     source_url: "https://www.der.sn",
     source_name: "Délégation Générale à l'Entrepreneuriat Rapide (DER/FJ)",
     verified_status: "verified",
+    verified_at: "2026-05-02",
+    volatility: "medium",
     summary:
       "Low-interest loans and grants from the Senegalese government for youth (18–40) and women entrepreneurs. Loans range from 500,000 to 50 million FCFA. No collateral required for smaller amounts.",
     documents_required: [
@@ -141,7 +147,10 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     deadline: undefined,
     source_url: "https://neip.gov.gh",
     source_name: "Government of Ghana / NEIP",
-    verified_status: "verified",
+    verified_status: "outdated",
+    verified_at: "2026-03-10",
+    volatility: "high",
+    flag_reason: "Ghana government budget reallocation announced April 2026 — NEIP disbursement schedule unconfirmed. Check NEIP website directly before applying.",
     summary:
       "Ghana's flagship youth entrepreneurship program offering funding, mentorship, business training, and market access to young Ghanaians aged 15–35.",
     documents_required: [
