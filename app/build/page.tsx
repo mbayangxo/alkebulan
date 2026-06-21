@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { Nav } from "@/app/components/nav";
 import { useProfile } from "@/app/components/user-profile";
 import Link from "next/link";
+import { useEducation } from "@/app/components/education-system";
 
 const BUDGETS = [
   { label: "Under $500", value: "under $500 USD" },
@@ -65,6 +66,7 @@ function renderMarkdown(text: string) {
 
 export default function BuildPage() {
   const { profile } = useProfile();
+  const { showLesson } = useEducation();
   const [step, setStep] = useState(0); // 0=form, 1=loading, 2=results
   const [country, setCountry] = useState(profile.country_of_origin || profile.country_of_residence || "");
   const [budget, setBudget] = useState("");
@@ -218,7 +220,7 @@ export default function BuildPage() {
             </div>
 
             <button
-              onClick={generate}
+              onClick={() => showLesson("swahili-coast-trade", generate)}
               disabled={!country || !budget || skills.length === 0}
               className="w-full bg-deep-green text-ivory font-bold py-4 rounded-2xl text-base hover:bg-mid-green transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >

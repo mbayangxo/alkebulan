@@ -7,6 +7,7 @@ import { LanguageBar } from "@/app/components/language-bar";
 import { ProfileProvider, ProfileSetupModal, ProfileBadge } from "@/app/components/user-profile";
 import { ReportBug } from "@/app/components/report-bug";
 import { MobileBottomNav } from "@/app/components/mobile-nav";
+import { EducationProvider } from "@/app/components/education-system";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -53,12 +54,14 @@ export default function RootLayout({
         <PWARegister />
         <ProfileProvider>
           <LocaleProvider>
-            <LanguageBar />
-            {children}
-            <ProfileSetupModal />
-            <ProfileBadge />
-            <ReportBug />
-            <MobileBottomNav />
+            <EducationProvider>
+              <LanguageBar />
+              {children}
+              <ProfileSetupModal />
+              <ProfileBadge />
+              <ReportBug />
+              <MobileBottomNav />
+            </EducationProvider>
           </LocaleProvider>
         </ProfileProvider>
       </body>

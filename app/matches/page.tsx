@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Nav } from "@/app/components/nav";
 import { useProfile } from "@/app/components/user-profile";
+import { useEducation } from "@/app/components/education-system";
 import { SuccessIntelCard } from "@/app/components/success-intel-card";
 import { OpportunityScore } from "@/app/components/opportunity-score";
 import { PROGRAM_INTEL } from "@/lib/data/program-intel";
@@ -25,6 +26,7 @@ const LABEL_COLORS: Record<string, string> = {
 
 export default function MatchesPage() {
   const { profile, setShowSetup } = useProfile();
+  const { showRandom } = useEducation();
   const [matches, setMatches] = useState<MatchedProgram[]>([]);
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState<string>("All");
@@ -355,7 +357,13 @@ export default function MatchesPage() {
                             </button>
                           )}
                           <button
-                            onClick={() => buildKit(match)}
+                            onClick={() => {
+                              if (!kitContent[match.programName]) {
+                                showRandom(() => buildKit(match));
+                              } else {
+                                buildKit(match);
+                              }
+                            }}
                             disabled={isKitLoading}
                             className="text-xs font-bold text-gold hover:text-gold-dark transition-colors disabled:opacity-50"
                           >

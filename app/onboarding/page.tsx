@@ -6,6 +6,7 @@ import { AlkebulanCrest } from "@/app/components/panther-motif";
 import { createClient } from "@/lib/supabase/client";
 import { Sector, FundingType, BusinessStage, DiasporaStatus } from "@/lib/types";
 import { saveUserSignals } from "@/lib/scoring";
+import { useEducation } from "@/app/components/education-system";
 
 const AFRICAN_COUNTRIES = [
   "Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi",
@@ -51,6 +52,7 @@ const TOTAL_STEPS = 5;
 export default function OnboardingPage() {
   const router = useRouter();
   const supabase = createClient();
+  const { showLesson } = useEducation();
   const [step, setStep] = useState<Step>(0);
   const [loading, setLoading] = useState(false);
 
@@ -361,7 +363,7 @@ export default function OnboardingPage() {
                   </button>
                 ) : (
                   <button
-                    onClick={handleFinish}
+                    onClick={() => showLesson("mansa-musa-wealth", handleFinish)}
                     disabled={loading}
                     className="flex-1 bg-gold text-deep-green font-bold py-3 rounded-xl hover:bg-gold-light transition-colors disabled:opacity-60"
                   >

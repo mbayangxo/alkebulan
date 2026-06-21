@@ -5,6 +5,7 @@ import { Nav } from "@/app/components/nav";
 import { useProfile } from "@/app/components/user-profile";
 import type { GeneratedPath, PathStep } from "@/app/api/path/route";
 import Link from "next/link";
+import { useEducation } from "@/app/components/education-system";
 
 type Phase = PathStep["phase"];
 
@@ -39,6 +40,7 @@ function getMotivation(completed: number, total: number): string {
 
 export default function PathPage() {
   const { profile } = useProfile();
+  const { showLesson } = useEducation();
   const [path, setPath] = useState<GeneratedPath | null>(null);
   const [completed, setCompleted] = useState<Set<string>>(new Set());
   const [generating, setGenerating] = useState(false);
@@ -188,7 +190,7 @@ export default function PathPage() {
                 />
               </div>
               <button
-                onClick={generatePath}
+                onClick={() => showLesson("haya-steel", generatePath)}
                 disabled={!goal || !country || generating}
                 className="w-full bg-deep-green text-ivory font-bold py-4 rounded-2xl hover:bg-mid-green transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
               >
