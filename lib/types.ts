@@ -7,12 +7,16 @@ export type FundingType =
   | "Fellowship"
   | "Procurement"
   | "Training"
-  | "Investment";
+  | "Investment"
+  | "Tax incentive"
+  | "Guarantee";
 
 export type Sector =
   | "Agriculture"
   | "Beauty"
   | "Fashion"
+  | "Energy / Solar"
+  | "Construction"
   | "Tech"
   | "Media"
   | "Music"
