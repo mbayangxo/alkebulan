@@ -1,0 +1,92 @@
+import Anthropic from "@anthropic-ai/sdk";
+import { NextRequest } from "next/server";
+import { ALL_COUNTRY_PROGRAMS } from "@/lib/data/all-country-programs";
+
+const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+const SYSTEM = `You are Alkebulan's Email Agent. You write personalized opportunity digest emails for African entrepreneurs.
+
+Your tone: warm, direct, like a smart friend who works at a funding agency and is texting you personally.
+
+Email structure (ALWAYS follow this):
+1. Subject line: [SUBJECT: ...]
+2. Opening line: Address them by name. One sentence about why this email is for them specifically.
+3. Top 3 opportunities: For their country, their sector, their stage. Each one: name, what it is, amount, how to apply.
+4. One government contract they should know about: Even if small.
+5. One actionable step for this week: Something they can do in the next 7 days.
+6. One sentence of belief: Short. Punchy. From the heart.
+7. Sign-off: "— The Alkebulan Team"
+
+Rules:
+- Use real programs from the database provided.
+- Don't make up amounts or deadlines.
+- Be specific. "Apply at der.sn" beats "apply online."
+- Never use the word "empowerment." Never say "beneficiaries."
+- This person wants to BUILD, not receive charity.`;
+
+export async function POST(req: NextRequest) {
+  const { name, gender, country, sector, stage, goal } = await req.json();
+
+  if (!country) {
+    return Response.json({ error: "country is required" }, { status: 400 });
+  }
+
+  const profile = ALL_COUNTRY_PROGRAMS.find(
+    (p) => p.country.toLowerCase() === country.toLowerCase()
+  );
+
+  const contextData = profile
+    ? `Programs available in ${profile.country}:
+Youth/Women funds: ${profile.youth_women_funds.map(p => `${p.name} (${p.amount || "amount varies"}) — ${p.what} — apply: ${p.apply_at || "contact ministry"}`).join("; ")}
+Development banks: ${profile.development_bank_programs.map(p => `${p.name} — ${p.what}`).join("; ")}
+Donor grants: ${profile.donor_grants.map(p => `${p.name} (${p.amount || "varies"}) — ${p.what} — apply: ${p.apply_at || "see website"}`).join("; ")}
+Startup/innovation: ${profile.startup_innovation.map(p => `${p.name} — ${p.what}`).join("; ")}
+Procurement portal: ${profile.procurement_portal || "see country ministry"} — ${profile.procurement_note}`
+    : `Country: ${country}. Use Tony Elumelu Foundation ($5,000, tefconnect.com), AfDB AFAWA (women entrepreneurs), and USAID programs as fallbacks.`;
+
+  const prompt = `Write a personalized opportunity digest email for:
+
+Name: ${name || "Builder"}
+Gender: ${gender || "not specified"}
+Country: ${country}
+Sector: ${sector || "not specified"}
+Business stage: ${stage || "not specified"}
+Goal: ${goal || "grow my business"}
+
+Use these real programs available to them:
+${contextData}
+
+${gender === "woman" ? "This person is a woman — prioritize women-specific funds first. Acknowledge that directly in the opening." : ""}
+${stage === "idea" ? "They haven't started yet — focus on grants and startup funds, not loans." : ""}
+${stage === "growing" ? "They're established — focus on larger loans, procurement, and scale capital." : ""}
+
+Write the full email now.`;
+
+  const stream = anthropic.messages.stream({
+    model: "claude-opus-4-8",
+    max_tokens: 1500,
+    thinking: { type: "adaptive" },
+    system: SYSTEM,
+    messages: [{ role: "user", content: prompt }],
+  });
+
+  const encoder = new TextEncoder();
+  const readable = new ReadableStream({
+    async start(controller) {
+      for await (const event of stream) {
+        if (
+          event.type === "content_block_delta" &&
+          event.delta.type === "text_delta"
+        ) {
+          controller.enqueue(encoder.encode(event.delta.text));
+        }
+      }
+      controller.close();
+    },
+    cancel() { stream.abort(); },
+  });
+
+  return new Response(readable, {
+    headers: { "Content-Type": "text/plain; charset=utf-8", "Transfer-Encoding": "chunked" },
+  });
+}

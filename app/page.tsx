@@ -477,6 +477,92 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ─── NEWSROOM TEASER ─── */}
+      <section className="bg-deep-green text-ivory py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 text-xs font-semibold text-gold bg-gold/15 px-3 py-1.5 rounded-full mb-4">
+                OPPORTUNITY NEWSROOM — powered by Amara
+              </div>
+              <h2 className="font-display text-4xl font-bold text-ivory mb-4">
+                New grants. New tenders.
+                <br />Every single day.
+              </h2>
+              <p className="text-ivory/75 text-lg leading-relaxed mb-6">
+                Amara searches the web daily for new grants, government contracts, fund launches,
+                and policy changes across all 54 African countries. Real news. Actionable intel.
+                Never miss an opportunity because you didn&apos;t hear about it in time.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/newsroom"
+                  className="inline-flex items-center gap-2 bg-gold text-deep-green font-bold px-6 py-3 rounded-xl hover:bg-gold-light transition-colors">
+                  Run today&apos;s edition →
+                </Link>
+                <Link href="/email"
+                  className="border border-ivory/30 text-ivory font-semibold px-6 py-3 rounded-xl hover:bg-ivory/10 transition-colors">
+                  Get personalized digest
+                </Link>
+              </div>
+            </div>
+            <div className="space-y-3">
+              {[
+                { emoji: "🇳🇬", headline: "NITDA launches ₦2B fund for Nigerian tech startups", cat: "Grant", time: "2 days ago" },
+                { emoji: "🇸🇳", headline: "DER/FJ opens new window for women entrepreneurs — deadline Aug 31", cat: "Grant", time: "4 days ago" },
+                { emoji: "🇬🇭", headline: "Ghana GIIF grants round 3 open — $50K per company", cat: "Fund", time: "6 days ago" },
+                { emoji: "🇰🇪", headline: "Kenya eTims tender database: new county contracts listed", cat: "Contract", time: "1 week ago" },
+              ].map(({ emoji, headline, cat, time }) => (
+                <div key={headline} className="bg-ivory/10 rounded-xl px-4 py-3 flex items-start gap-3 hover:bg-ivory/15 transition-colors">
+                  <span className="text-xl flex-shrink-0">{emoji}</span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-ivory leading-snug">{headline}</p>
+                    <div className="flex gap-3 mt-1">
+                      <span className="text-[10px] text-gold font-semibold">{cat}</span>
+                      <span className="text-[10px] text-ivory/40">{time}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              <Link href="/newsroom" className="block text-center text-xs font-semibold text-gold hover:text-gold-light transition-colors pt-1">
+                Run live search for today&apos;s news →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── GRANTS BY CATEGORY ─── */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
+        <div className="text-center mb-10">
+          <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-3">Browse the database</p>
+          <h2 className="font-display text-4xl font-bold text-ink mb-4">Every type of opportunity, organized</h2>
+          <p className="text-lg text-muted max-w-2xl mx-auto">500+ verified programs across 54 countries — find yours by category or by country.</p>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+          {[
+            { icon: "💫", label: "For Women", href: "/grants/women", desc: "Women-specific grants & loans" },
+            { icon: "⚡", label: "Youth Funds", href: "/grants/youth", desc: "Ages 18–40 programs" },
+            { icon: "📋", label: "Procurement", href: "/grants/procurement", desc: "Government contracts" },
+            { icon: "🚀", label: "Startups", href: "/grants/startup", desc: "Accelerators & innovation" },
+            { icon: "🌍", label: "Diaspora", href: "/grants/diaspora", desc: "Invest from abroad" },
+            { icon: "🌾", label: "Agriculture", href: "/grants/agriculture", desc: "Farm & food grants" },
+          ].map(({ icon, label, href, desc }) => (
+            <Link key={href} href={href}
+              className="bg-white border border-border rounded-2xl p-4 text-center hover:border-gold/40 hover:shadow-sm transition-all group">
+              <div className="text-2xl mb-2">{icon}</div>
+              <p className="font-semibold text-ink text-sm group-hover:text-deep-green transition-colors">{label}</p>
+              <p className="text-xs text-muted mt-1 leading-snug">{desc}</p>
+            </Link>
+          ))}
+        </div>
+        <div className="text-center">
+          <Link href="/programs"
+            className="inline-flex items-center gap-2 border border-deep-green text-deep-green font-semibold px-6 py-3 rounded-xl hover:bg-deep-green hover:text-ivory transition-colors">
+            Browse all 500+ programs →
+          </Link>
+        </div>
+      </section>
+
       {/* ─── AI ENGINES ─── */}
       <section className="bg-warm-ivory py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -593,13 +679,16 @@ export default function LandingPage() {
               </div>
             </div>
             <div>
-              <p className="text-xs font-semibold text-ivory/40 uppercase tracking-wide mb-3">Explore</p>
+              <p className="text-xs font-semibold text-ivory/40 uppercase tracking-wide mb-3">Discover</p>
               <div className="space-y-2">
                 {[
+                  { label: "Opportunity Newsroom", href: "/newsroom" },
+                  { label: "Personalized Email Digest", href: "/email" },
+                  { label: "Grants for Women", href: "/grants/women" },
+                  { label: "Youth Funds", href: "/grants/youth" },
+                  { label: "Procurement / Tenders", href: "/grants/procurement" },
                   { label: "Country Explorer", href: "/map" },
                   { label: "Success Maps", href: "/success" },
-                  { label: "Sign up", href: "/signup" },
-                  { label: "Log in", href: "/login" },
                 ].map(({ label, href }) => (
                   <Link key={href} href={href} className="block text-xs hover:text-gold transition-colors">{label}</Link>
                 ))}

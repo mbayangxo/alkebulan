@@ -18,6 +18,21 @@ const AGENTS = [
     meaning: "Amara means 'eternal grace' in Igbo and Amharic",
   },
   {
+    name: "Kwame",
+    title: "Growth Agent",
+    emoji: "📈",
+    color: "from-orange-600 to-orange-500",
+    textColor: "text-orange-600",
+    bgColor: "bg-orange-50 border-orange-200",
+    sole_job: "Find your customers and channels. Search the web for communities, influencers, distribution channels, and institutional B2B buyers — specific to your business, sector, and country.",
+    capabilities: ["Communities and trade associations", "Influencer and creator partnerships", "Distribution channels and marketplaces", "Institutional buyers (B2B)", "One underrated growth move per search"],
+    href: "/agents/kwame",
+    cta: "Find growth levers →",
+    status: "Ready",
+    statusColor: "text-emerald-600 bg-emerald-50",
+    meaning: "Kwame is an Akan name meaning 'born on Saturday' — associated with wisdom and depth",
+  },
+  {
     name: "Zuri",
     title: "Quality Guardian",
     emoji: "✅",
@@ -148,8 +163,8 @@ export default function AgentsPage() {
               <p className="text-xs text-ivory/60">Active agents</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-gold">2</p>
-              <p className="text-xs text-ivory/60">Autonomous agents (Amara + Zuri)</p>
+              <p className="text-2xl font-bold text-gold">3</p>
+              <p className="text-xs text-ivory/60">Web-search agents (Amara, Kwame, Zuri)</p>
             </div>
             <div>
               <p className="text-2xl font-bold text-gold">54</p>
@@ -164,8 +179,8 @@ export default function AgentsPage() {
         {/* Highlight: Autonomous agents */}
         <div className="mb-8">
           <p className="text-xs font-bold text-muted uppercase tracking-widest mb-4">Autonomous agents — they have a daily job</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {AGENTS.filter(a => a.name === "Amara" || a.name === "Zuri").map((agent) => (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {AGENTS.filter(a => a.name === "Amara" || a.name === "Kwame" || a.name === "Zuri").map((agent) => (
               <Link key={agent.name} href={agent.href} className="group block">
                 <div className="bg-white border border-border rounded-2xl p-6 hover:shadow-lg transition-shadow h-full">
                   <div className="flex items-start justify-between mb-4">
@@ -211,7 +226,7 @@ export default function AgentsPage() {
         <div>
           <p className="text-xs font-bold text-muted uppercase tracking-widest mb-4">The full team</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {AGENTS.filter(a => a.name !== "Amara" && a.name !== "Zuri").map((agent) => (
+            {AGENTS.filter(a => a.name !== "Amara" && a.name !== "Kwame" && a.name !== "Zuri").map((agent) => (
               <Link key={agent.name} href={agent.href} className="group block">
                 <div className="bg-white border border-border rounded-2xl p-5 hover:shadow-lg transition-shadow h-full">
                   <div className="flex items-center gap-3 mb-3">
@@ -250,7 +265,7 @@ export default function AgentsPage() {
             with ambition has access to every opportunity available to them.
           </p>
           <p className="text-gold font-semibold mt-3 text-sm">
-            8 agents. 54 countries. One mission.
+            9 agents. 54 countries. One mission.
           </p>
         </div>
       </div>

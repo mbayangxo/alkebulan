@@ -7,8 +7,7 @@ import { AlkebulanCrest } from "./panther-motif";
 const NAV_LINKS = [
   { label: "My Goals", href: "/goals", highlight: true },
   { label: "Your Path", href: "/path" },
-  { label: "Africa is the Opportunity", href: "/opportunities", highlight: false },
-  { label: "Funding & Programs", href: "/dashboard" },
+  { label: "Newsroom", href: "/newsroom" },
   { label: "Programs Database", href: "/programs" },
   { label: "Countries", href: "/map" },
   { label: "Feed", href: "/feed" },
@@ -17,7 +16,9 @@ const NAV_LINKS = [
 const TOOLS = [
   { label: "Meet the Agents →", href: "/agents" },
   { label: "Amara — Research Agent", href: "/agents/amara" },
+  { label: "Kwame — Growth Agent", href: "/agents/kwame" },
   { label: "Zuri — QA Guardian", href: "/agents/zuri" },
+  { label: "Email Digest", href: "/email" },
   { label: "Ada — Social Storyteller", href: "/social" },
   { label: "Kofi — Capital Analyst", href: "/capital" },
   { label: "Imani — AI Coach", href: "/assistant" },
