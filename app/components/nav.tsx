@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { label: "My Matches ⚡", href: "/matches" },
   { label: "Programs", href: "/programs" },
   { label: "Procurement", href: "/procurement" },
-  { label: "Opportunity", href: "/sovereignty" },
+  { label: "Discover", href: "/opportunities" },
   { label: "Feed", href: "/feed" },
   { label: "Countries", href: "/map" },
 ];

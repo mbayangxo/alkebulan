@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Nav } from "@/app/components/nav";
 import Link from "next/link";
 import { AFRICA_SECTORS, COUNTRY_YOUTH_PROGRAMS, SectorOpportunity } from "@/lib/data/africa-sectors";
+import { HIDDEN_OPPORTUNITIES, type HiddenOpportunity } from "@/lib/data/hidden-opportunities";
 
 const PROBLEMS_ARE_MARKETS = [
   {
@@ -74,7 +75,7 @@ const PROBLEMS_ARE_MARKETS = [
 
 const SECTORS_NAV = AFRICA_SECTORS.map(s => ({ id: s.id, label: s.sector, icon: s.sector_icon }));
 
-type View = "overview" | "sectors" | "countries" | "contracts";
+type View = "overview" | "hidden" | "sectors" | "countries" | "contracts";
 
 export default function OpportunitiesPage() {
   const [view, setView] = useState<View>("overview");
@@ -82,6 +83,16 @@ export default function OpportunitiesPage() {
   const [activeCountry, setActiveCountry] = useState<string>("Senegal");
   const [expandedProgram, setExpandedProgram] = useState<string | null>(null);
   const [showAllProblems, setShowAllProblems] = useState(false);
+  const [activeOpportunity, setActiveOpportunity] = useState<string>(HIDDEN_OPPORTUNITIES[0].id);
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(["businesses"]));
+
+  function toggleSection(section: string) {
+    setExpandedSections(prev => {
+      const next = new Set(prev);
+      next.has(section) ? next.delete(section) : next.add(section);
+      return next;
+    });
+  }
 
   const sector = AFRICA_SECTORS.find(s => s.id === activeSector)!;
   const countryPrograms = COUNTRY_YOUTH_PROGRAMS.find(c => c.country === activeCountry);
@@ -117,6 +128,12 @@ export default function OpportunitiesPage() {
             Doctors who build the clinics. Developers who write the software. This is the generation that builds.
           </p>
           <div className="flex flex-wrap gap-3">
+            <button
+              onClick={() => setView("hidden")}
+              className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${view === "hidden" ? "bg-gold text-deep-green" : "border border-gold/60 text-gold hover:bg-gold/10"}`}
+            >
+              🔍 Hidden opportunities
+            </button>
             <button
               onClick={() => setView("overview")}
               className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all ${view === "overview" ? "bg-gold text-deep-green" : "border border-ivory/30 text-ivory hover:bg-ivory/10"}`}
@@ -163,6 +180,131 @@ export default function OpportunitiesPage() {
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+
+        {/* ── VIEW: HIDDEN OPPORTUNITIES ── */}
+        {view === "hidden" && (
+          <div>
+            <div className="mb-8">
+              <div className="inline-flex items-center gap-2 text-xs font-bold text-gold uppercase tracking-widest mb-3">
+                Hidden in plain sight
+              </div>
+              <h2 className="font-display text-3xl font-bold text-ink mb-3">
+                What's already on your land — and who's profiting from it.
+              </h2>
+              <p className="text-muted text-base leading-relaxed max-w-2xl">
+                Africa produces the raw materials for the world's most profitable industries. The leather for Louis Vuitton. The cocoa for Nestlé. The shea for L'Oréal. The coffee for Starbucks. The fish for European supermarkets. The raw material leaves Africa. The money stays in Europe. These pages show you what's happening — and what you can build instead.
+              </p>
+            </div>
+
+            {/* Commodity selector */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {HIDDEN_OPPORTUNITIES.map((opp) => (
+                <button
+                  key={opp.id}
+                  onClick={() => setActiveOpportunity(opp.id)}
+                  className={`flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full border transition-colors ${
+                    activeOpportunity === opp.id
+                      ? "bg-deep-green text-ivory border-deep-green"
+                      : "bg-white border-border text-ink hover:border-deep-green"
+                  }`}
+                >
+                  <span>{opp.emoji}</span>
+                  <span>{opp.commodity}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Active commodity detail */}
+            {(() => {
+              const opp = HIDDEN_OPPORTUNITIES.find(o => o.id === activeOpportunity);
+              if (!opp) return null;
+              return (
+                <div className="space-y-5">
+                  {/* Header */}
+                  <div className="bg-deep-green text-ivory rounded-2xl p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="text-4xl">{opp.emoji}</span>
+                      <div>
+                        <h3 className="font-display text-2xl font-bold text-ivory">{opp.commodity}</h3>
+                        <p className="text-ivory/60 text-sm">{opp.countries.join(" · ")}</p>
+                      </div>
+                    </div>
+                    <p className="text-ivory/85 text-sm leading-relaxed">{opp.the_truth}</p>
+                  </div>
+
+                  {/* What exists */}
+                  <div className="bg-white border border-border rounded-2xl p-6">
+                    <p className="text-xs font-bold text-deep-green uppercase tracking-widest mb-2">What already exists in Africa</p>
+                    <p className="text-sm text-ink/80 leading-relaxed">{opp.what_exists}</p>
+                  </div>
+
+                  {/* Who profits */}
+                  <div className="bg-red-50 border border-red-100 rounded-2xl p-6">
+                    <p className="text-xs font-bold text-red-800 uppercase tracking-widest mb-2">Who is currently profiting</p>
+                    <p className="text-sm text-red-900/80 leading-relaxed">{opp.who_profits}</p>
+                    <div className="mt-3 pt-3 border-t border-red-200">
+                      <p className="text-xs font-bold text-red-800">Annual market size:</p>
+                      <p className="text-sm text-red-900/80 mt-1">{opp.annual_value}</p>
+                    </div>
+                    <div className="mt-3 pt-3 border-t border-red-200">
+                      <p className="text-xs font-bold text-red-800">The value gap:</p>
+                      <p className="text-sm text-red-900/80 mt-1">{opp.the_gap}</p>
+                    </div>
+                  </div>
+
+                  {/* Businesses to build */}
+                  <div className="bg-white border border-border rounded-2xl p-6">
+                    <p className="text-xs font-bold text-deep-green uppercase tracking-widest mb-4">Businesses you can build</p>
+                    <div className="space-y-3">
+                      {opp.businesses_to_build.map((biz) => (
+                        <div key={biz.name} className="flex items-start gap-3 p-3 bg-deep-green/5 rounded-xl">
+                          <div className="w-5 h-5 rounded-full bg-deep-green text-ivory text-[10px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">→</div>
+                          <div>
+                            <div className="flex items-center gap-2 flex-wrap mb-1">
+                              <p className="font-bold text-sm text-ink">{biz.name}</p>
+                              <span className="text-xs font-semibold text-gold-dark bg-gold/15 px-2 py-0.5 rounded-full">{biz.startup_cost}</span>
+                            </div>
+                            <p className="text-xs text-muted leading-relaxed">{biz.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Two columns */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div className="bg-white border border-border rounded-2xl p-5">
+                      <p className="text-xs font-bold text-deep-green uppercase tracking-widest mb-2">Where to sell</p>
+                      <p className="text-sm text-ink/80 leading-relaxed">{opp.markets}</p>
+                    </div>
+                    <div className="bg-white border border-border rounded-2xl p-5">
+                      <p className="text-xs font-bold text-deep-green uppercase tracking-widest mb-2">Africans already doing it</p>
+                      <p className="text-sm text-ink/80 leading-relaxed">{opp.africans_doing_it}</p>
+                    </div>
+                  </div>
+
+                  {/* Historical note */}
+                  <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
+                    <p className="text-xs font-bold text-amber-900 uppercase tracking-widest mb-2">Our history in this sector</p>
+                    <p className="text-sm text-amber-900/80 leading-relaxed">{opp.historical_note}</p>
+                  </div>
+
+                  {/* First step */}
+                  <div className="bg-deep-green rounded-2xl p-6 text-center">
+                    <p className="text-xs font-bold text-gold uppercase tracking-widest mb-3">Start today</p>
+                    <p className="text-ivory text-sm leading-relaxed mb-5">{opp.first_step}</p>
+                    <Link
+                      href="/build"
+                      className="inline-block bg-gold text-deep-green font-bold px-6 py-3 rounded-xl text-sm hover:bg-gold-light transition-colors"
+                    >
+                      Build a business plan around this →
+                    </Link>
+                  </div>
+                </div>
+              );
+            })()}
+          </div>
+        )}
 
         {/* ── VIEW: OVERVIEW (Problems = Opportunities) ── */}
         {view === "overview" && (
