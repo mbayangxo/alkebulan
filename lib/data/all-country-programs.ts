@@ -40,26 +40,27 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     youth_women_funds: [
       { name: "Nigeria Youth Investment Fund (NYIF)", what: "Federal fund for youth entrepreneurs aged 18–35", for_who: "Nigerian nationals 18–35", amount: "₦250,000–₦25,000,000", apply_at: "nyif.gov.ng" },
       { name: "Government Enterprise & Empowerment Programme (GEEP)", what: "Zero-interest loans for market traders, farmers, artisans (TraderMoni, MarketMoni, FarmerMoni)", for_who: "Nigerian micro-entrepreneurs", amount: "₦10,000–₦100,000", apply_at: "envelopedevt.gov.ng" },
-      { name: "Youth Entrepreneurship Investment Bank (YEIB)", what: "AfDB-backed bank offering youth business loans at concessional rates", for_who: "Nigerian youth", amount: "₦500,000–₦10,000,000" },
-      { name: "Women Entrepreneurship Finance Initiative (We-Fi)", what: "Access to finance and markets for Nigerian women-owned SMEs", for_who: "Women-owned businesses", apply_at: "Through partner banks" },
+      { name: "Youth Entrepreneurship Investment Bank (YEIB)", what: "AfDB $100M facility — Equity Investment Fund, Ecosystem Development Fund, and Credit Guarantee for youth/women-led businesses. Being fully rolled out 2025–2026.", for_who: "Indigenous Nigerian youth and women entrepreneurs", amount: "₦500,000–₦50,000,000", indigenous_note: "Specifically for indigenous Nigerian-blooded entrepreneurs — not open to foreign nationals" },
+      { name: "Women Entrepreneurship Finance Initiative (We-Fi)", what: "Access to finance and markets for women-owned SMEs through partner banks", for_who: "Women-owned indigenous Nigerian businesses", apply_at: "Through BOI and partner banks" },
     ],
     development_bank_programs: [
-      { name: "BOI — Bank of Industry", what: "Development finance for SMEs and industrialists", for_who: "Nigerian businesses", amount: "₦1M–₦5B", apply_at: "boi.ng" },
-      { name: "CBN Anchor Borrowers Programme", what: "Agricultural loans at 9% subsidized rate through commercial banks", for_who: "Nigerian farmers", amount: "₦500,000–₦10,000,000" },
+      { name: "BOI — Bank of Industry", what: "Development finance for SMEs — also has women-specific facility at concessional rates with flexible repayment", for_who: "Indigenous Nigerian businesses", amount: "₦1M–₦5B", apply_at: "boi.ng" },
+      { name: "DBN FINCLUDE (2025)", what: "World Bank $500M facility approved December 2025 — expands DBN capacity to reach more MSMEs with longer-term, lower-cost loans", for_who: "Nigerian MSMEs via DBN partner banks", apply_at: "dbn.gov.ng" },
+      { name: "CBN Anchor Borrowers Programme", what: "Agricultural loans at 9% subsidized rate through commercial banks", for_who: "Indigenous Nigerian farmers", amount: "₦500,000–₦10,000,000" },
       { name: "NIRSAL — Agricultural Credit Guarantee", what: "Makes banks give agricultural loans by providing the guarantee", for_who: "Nigerian agribusinesses", apply_at: "nirsal.com" },
-      { name: "SMEDAN SME Support", what: "Training, grants, and advisory for small businesses", for_who: "Nigerian SMEs", apply_at: "smedan.gov.ng" },
+      { name: "SMEDAN SME Support + Free Registration", what: "CAC-SMEDAN partnership registered 250,000 micro-businesses for free in late 2025 — being a registered business unlocks all other programs", for_who: "Nigerian micro-entrepreneurs", apply_at: "smedan.gov.ng" },
     ],
     donor_grants: [
-      { name: "Tony Elumelu Foundation (TEF)", what: "$5,000 non-dilutive + mentorship — open to all Africans", for_who: "African entrepreneurs", amount: "$5,000 USD", apply_at: "tefconnect.com" },
+      { name: "Tony Elumelu Foundation (TEF)", what: "$5,000 non-dilutive grant + mentorship — open to all Africans of African descent", for_who: "African entrepreneurs", amount: "$5,000 USD", apply_at: "tefconnect.com" },
       { name: "USAID West Africa Trade & Investment Hub", what: "Matching grants and trade facilitation for Nigerian exporters", for_who: "Nigerian exporters", apply_at: "watradehub.com" },
     ],
     startup_innovation: [
-      { name: "NITDA Tech Startup Programme", what: "Technical and financial support for Nigerian tech companies", for_who: "Nigerian tech startups", apply_at: "nitda.gov.ng" },
+      { name: "NITDA Tech Startup Programme", what: "Technical and financial support for Nigerian tech companies", for_who: "Indigenous Nigerian tech startups", apply_at: "nitda.gov.ng" },
       { name: "Lagos State Employment Trust Fund", what: "Interest-free loans for Lagos-based entrepreneurs", for_who: "Lagos residents", amount: "₦1M–₦10M", apply_at: "lsetf.ng" },
       { name: "CcHUB (Co-Creation Hub)", what: "Nigeria's leading tech accelerator — Lagos and Abuja", for_who: "Tech founders", apply_at: "cchubnigeria.com" },
     ],
-    key_agencies: ["BOI", "NIRSAL", "SMEDAN", "NIPC", "NEPC", "BPP"],
-    the_opportunity: "Africa's largest economy — every sector is undersupplied; Lagos alone is bigger than most African countries.",
+    key_agencies: ["BOI", "NIRSAL", "SMEDAN", "NIPC", "NEPC", "BPP", "DBN"],
+    the_opportunity: "YEIB + DBN FINCLUDE = two massive new capital pools being deployed right now. Free CAC registration means the cost of becoming formal has dropped to zero — register today and unlock everything.",
   },
 
   {
@@ -71,14 +72,15 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     procurement_portal: "ppaghana.org",
     procurement_note: "Ghana Tender Portal at tenders.gov.gh — all government contracts published. PPA oversees procurement.",
     youth_women_funds: [
-      { name: "YouStart Initiative", what: "Government youth enterprise program with grants and training", for_who: "Ghanaian youth 18–40", amount: "GHS 10,000–50,000", apply_at: "masloc.gov.gh" },
-      { name: "MASLOC (Microfinance & Small Loans Centre)", what: "Government microloan scheme for small businesses", for_who: "Ghanaian entrepreneurs", amount: "GHS 2,000–50,000" },
-      { name: "Women Development Fund", what: "Loans and training for women-owned businesses", for_who: "Ghanaian women entrepreneurs" },
+      { name: "YouStart Initiative (World Bank)", what: "World Bank-funded youth enterprise grants + training. Targets 50,000+ youth, 50% women priority. Competitive business start-up grants.", for_who: "Indigenous Ghanaian youth 18–40", amount: "GHS 10,000–50,000", apply_at: "gea.gov.gh", indigenous_note: "Indigenous Ghanaian nationals — 50% of grants target women" },
+      { name: "GEA YEEP — Youth Entrepreneurship & Employment Program", what: "Ghana Enterprises Agency flagship program — grants, training, market linkages specifically for youth", for_who: "Ghanaian youth entrepreneurs", apply_at: "gea.gov.gh" },
+      { name: "MASLOC (Microfinance & Small Loans Centre)", what: "Government microloan scheme at competitive rates — three credit schemes available", for_who: "Ghanaian entrepreneurs", amount: "GHS 2,000–50,000" },
+      { name: "Women in Tech Accelerator Ghana 2026", what: "6-month program for women-led businesses using technology — grants + mini MBA + business support", for_who: "Ghanaian women entrepreneurs in tech", apply_at: "gea.gov.gh" },
     ],
     development_bank_programs: [
-      { name: "Ghana Enterprises Agency (GEA)", what: "SME training, grants, and market linkages", for_who: "Ghanaian SMEs", apply_at: "gea.gov.gh" },
+      { name: "Ghana Enterprises Agency (GEA)", what: "SME training, grants, and market linkages — the main government SME door", for_who: "Indigenous Ghanaian SMEs", apply_at: "gea.gov.gh" },
       { name: "AGROBank — Agricultural Finance", what: "Ghana's development bank for agribusiness — lower rates, longer tenors", for_who: "Ghanaian farmers and agribusinesses", apply_at: "adbghana.com" },
-      { name: "GIPC Investor Support", what: "Tax holidays and investment facilitation for registered investors", for_who: "Foreign and domestic investors", apply_at: "gipcghana.com" },
+      { name: "Ghana GIIF Grants Round 3", what: "Ghana Incentive-Based Risk Sharing System for Agricultural Lending — up to $50K per company for agribusiness", for_who: "Ghanaian agribusinesses", amount: "$50,000" },
     ],
     donor_grants: [
       { name: "Mastercard Foundation — Ghana Programs", what: "Youth employment and education funding in partnership with Ghanaian institutions", for_who: "Ghanaian youth and educators" },
@@ -88,8 +90,8 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
       { name: "MEST Africa", what: "Ghana's leading tech accelerator — seed funding and 2-year incubation", for_who: "Tech founders (Ghana-focused)", apply_at: "meltwater.org/en/mest" },
       { name: "Ghana Free Zones Board", what: "Tax holidays for export-focused manufacturers", for_who: "Export-oriented Ghanaian companies", apply_at: "gfzb.com.gh" },
     ],
-    key_agencies: ["GEA", "GIPC", "AGROBank", "Ghana Free Zones Board", "PPA"],
-    the_opportunity: "Cocoa processing, shea butter, and cashews — Ghana sits on value chains that Europe profits from. Processing locally is the next billion-dollar opportunity.",
+    key_agencies: ["GEA", "MASLOC", "AGROBank", "Ghana Free Zones Board", "PPA"],
+    the_opportunity: "YouStart has GHS sitting in the account waiting to be deployed. Most eligible youth never apply because they don't know it exists. Cocoa processing, shea butter, cashews — Ghana sits on value chains that Europe profits from. Processing locally is the next billion-dollar opportunity.",
   },
 
   {
@@ -102,7 +104,7 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     procurement_note: "All government contracts on DCMP portal — free registration, set alerts by sector. BSTP (bstp.sn) connects Senegalese businesses to subcontracts on large projects.",
     youth_women_funds: [
       { name: "DER/FJ — Délégation à l'Entrepreneuriat Rapide", what: "President's flagship youth and women fund — nano-credit to MSME financing", for_who: "Senegalese youth and women 18–40", amount: "CFA 300,000–10,000,000", apply_at: "der.sn", indigenous_note: "Senegalese nationals only — specifically designed for indigenous Senegalese" },
-      { name: "PAVIE II (2025)", what: "€163M EU-Senegal program for youth/women entrepreneurship, jobs, and food sovereignty", for_who: "Senegalese youth and women", amount: "CFA 1M–50M through implementing partners", indigenous_note: "Senegalese nationals priority" },
+      { name: "PAVIE II (launched May 2025)", what: "AfDB + AFD €163.449M flagship — targets 92,633 jobs, 40% women, 70% youth aged 15–40. Focuses on entrepreneurship, food sovereignty, women/youth economic empowerment under Sénégal 2050 strategy. Implemented through DER/FJ, FONGIP, and FONSIS.", for_who: "Senegalese youth 15–40 and all economically active women", amount: "Through DER/FJ and FONGIP implementing partners", apply_at: "der.sn or fongip.sn", indigenous_note: "Indigenous Senegalese nationals. Largest youth/women fund ever launched in Senegal." },
       { name: "FONGIP — Guarantee Fund", what: "Government stands behind your bank loan — get loans banks normally refuse", for_who: "Senegalese SMEs without collateral", amount: "CFA 300,000–150,000,000 in guarantees", apply_at: "fongip.sn", indigenous_note: "Prioritizes Senegalese nationals" },
     ],
     development_bank_programs: [
@@ -434,9 +436,10 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     procurement_note: "National tenders on tenders.go.ke — county tenders on individual county portals. AGPO reserves 30% of tenders for youth, women, and PWDs.",
     youth_women_funds: [
       { name: "Hustler Fund", what: "Instant mobile loans via M-PESA with no collateral", for_who: "Kenyan nationals with M-PESA", amount: "KES 500–50,000 (individual), up to KES 500,000 (groups)", apply_at: "Dial *844#" },
-      { name: "Kenya Youth Enterprise Development Fund (KYEDF)", what: "Government loans and support for youth businesses", for_who: "Kenyan youth 18–35", amount: "KES 50,000–1,000,000", apply_at: "kydf.go.ke" },
-      { name: "Women Enterprise Fund (WEF)", what: "Loans and capacity building for women-owned businesses", for_who: "Kenyan women entrepreneurs", apply_at: "wef.go.ke" },
-      { name: "AGPO (Access to Government Procurement Opportunities)", what: "30% of all government tenders reserved for youth, women, and PWDs", for_who: "Youth-owned, women-owned, PWD-owned companies", apply_at: "agpo.go.ke" },
+      { name: "Kenya Youth Enterprise Development Fund (KYEDF)", what: "Government loans and support for youth businesses", for_who: "Indigenous Kenyan youth 18–35", amount: "KES 50,000–1,000,000", apply_at: "kydf.go.ke" },
+      { name: "Women Enterprise Fund (WEF)", what: "Loans and capacity building for women-owned businesses", for_who: "Indigenous Kenyan women entrepreneurs", apply_at: "wef.go.ke" },
+      { name: "AGPO (Access to Government Procurement Opportunities)", what: "30% of ALL government tenders reserved for youth, women, and PWDs — one of the most powerful but underused programs in Africa", for_who: "Youth-owned, women-owned, PWD-owned companies (Kenyan nationals)", apply_at: "agpo.go.ke", indigenous_note: "Must be Kenyan citizen and 70%+ owned by the qualifying group" },
+      { name: "NYOTA Program (2025)", what: "National Youths Opportunities Towards Advancement — apprenticeships, certification, entrepreneurship grants, digital skills, savings support for 820,000 unemployed youth", for_who: "Unemployed indigenous Kenyan youth", apply_at: "nyotaproject.go.ke" },
     ],
     development_bank_programs: [
       { name: "Kenya Development Corporation (KDC)", what: "Long-term development finance for Kenyan businesses", for_who: "Kenyan companies", apply_at: "kdc.co.ke" },
@@ -693,24 +696,24 @@ export const ALL_COUNTRY_PROGRAMS: CountryOpportunityProfile[] = [
     procurement_portal: "etenders.gov.za",
     procurement_note: "eTenders portal for national tenders. CIDB grades construction companies — grade determines tender value you can bid. BBBEE compliance is essential for all government contracts.",
     youth_women_funds: [
-      { name: "NYDA — National Youth Development Agency", what: "Grants, loans, and business development for South African youth", for_who: "South African youth 14–35", amount: "R1,000–R100,000", apply_at: "nyda.gov.za" },
-      { name: "SEFA — Small Enterprise Finance Agency", what: "Loans for small businesses that commercial banks won't finance", for_who: "South African SMEs", apply_at: "sefa.org.za" },
-      { name: "NEF — National Empowerment Fund", what: "Equity and debt finance for black-owned businesses", for_who: "Black-owned South African businesses", amount: "R250,000–R75,000,000", apply_at: "nefcorp.co.za" },
-      { name: "IDC — Industrial Development Corporation", what: "Development finance for manufacturing and industrialization", for_who: "South African manufacturers", apply_at: "idc.co.za" },
+      { name: "NYDA — National Youth Development Agency", what: "Grants up to R250,000 for youth-led businesses — lower paperwork burden than SEDFA. Fast-track: 6–10 weeks if documents are complete.", for_who: "Black South African youth 18–35", amount: "R1,000–R250,000", apply_at: "nyda.gov.za", indigenous_note: "Indigenous Black South African youth — specifically designed for economic transformation" },
+      { name: "SEDFA (2025) — SEFA + SEDA Merged Agency", what: "NEW in 2025/26: SEFA and SEDA merged into SEDFA. One door for loans AND business support. Portal: sedfa.org.za. R50K–R15M loans, decisions within 21 days for under R500K.", for_who: "Black-owned South African SMEs", amount: "R50,000–R15,000,000", apply_at: "sedfa.org.za", indigenous_note: "Previously SEFA — merged 2025, same programs, new portal" },
+      { name: "NEF — National Empowerment Fund", what: "Equity and debt finance for black-owned businesses. NEF Women Empowerment Fund specifically for black women across all sectors.", for_who: "Black-owned South African businesses / Black women entrepreneurs", amount: "R250,000–R75,000,000", apply_at: "nefcorp.co.za", indigenous_note: "Indigenous Black South Africans only — economic transformation mandate" },
+      { name: "IDC — Industrial Development Corporation", what: "Development finance for manufacturing. IDC Youth Pipeline: grants to help youth businesses get proposal-ready for IDC applications.", for_who: "South African manufacturers and youth businesses", apply_at: "idc.co.za" },
     ],
     development_bank_programs: [
       { name: "DBSA — Development Bank of Southern Africa", what: "Infrastructure and development finance", for_who: "South African businesses", apply_at: "dbsa.org" },
-      { name: "Land Bank", what: "Agricultural finance for South African farmers", for_who: "South African farmers" },
+      { name: "Land Bank", what: "Agricultural finance for South African farmers", for_who: "Black South African farmers" },
     ],
     donor_grants: [
       { name: "NRF Innovation Grants", what: "Research and innovation funding for South African businesses", for_who: "SA businesses with R&D component" },
     ],
     startup_innovation: [
-      { name: "SEDA — Small Enterprise Development Agency", what: "Business support, incubation, and mentorship", for_who: "South African small businesses", apply_at: "seda.org.za" },
-      { name: "Cape Town Startup Ecosystem", what: "Africa's most developed VC ecosystem", for_who: "Tech startups" },
+      { name: "SEDFA Business Support (ex-SEDA)", what: "Business support, incubation, and mentorship — now integrated into SEDFA under one roof", for_who: "Black South African small businesses", apply_at: "sedfa.org.za" },
+      { name: "Cape Town + Joburg Startup Ecosystem", what: "Africa's most developed VC ecosystem — but note most VC is foreign-owned. Target SEDFA, NEF, IDC first.", for_who: "Tech startups" },
     ],
-    key_agencies: ["NYDA", "SEFA", "NEF", "IDC", "DBSA", "SEDA", "CIDB"],
-    the_opportunity: "BBBEE requirements mean large corporations are contractually obligated to buy from black-owned businesses — SAP, Anglo American, Standard Bank all have supplier development programs.",
+    key_agencies: ["NYDA", "SEDFA", "NEF", "IDC", "DBSA", "CIDB"],
+    the_opportunity: "BBBEE requirements mean large corporations are contractually obligated to buy from black-owned businesses — SAP, Anglo American, Standard Bank, Shoprite all have supplier development programs. SEDFA merger means one door now opens everything.",
   },
 
   {
