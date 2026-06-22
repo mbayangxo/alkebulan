@@ -205,3 +205,59 @@ export function createListing(data: Omit<MarketListing, "id" | "publishedAt">): 
   listings.set(id, listing);
   return listing;
 }
+
+// ── Enquiries ──────────────────────────────────────────────────────────────
+
+export type EnquiryStatus = "new" | "read" | "responded" | "closed";
+
+export interface MarketEnquiry {
+  id: string;
+  listingId: string;
+  buyerName: string;
+  buyerPhone: string;
+  buyerEmail?: string;
+  buyerBusiness?: string;
+  quantity: string;
+  unit: string;
+  message?: string;
+  status: EnquiryStatus;
+  sellerReply?: string;
+  createdAt: string;
+  repliedAt?: string;
+}
+
+const enquiries = new Map<string, MarketEnquiry[]>();
+
+export function getEnquiriesForListing(listingId: string): MarketEnquiry[] {
+  return (enquiries.get(listingId) ?? []).sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+}
+
+export function createEnquiry(
+  data: Omit<MarketEnquiry, "id" | "status" | "createdAt">
+): MarketEnquiry {
+  const id = `enq-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+  const enquiry: MarketEnquiry = {
+    ...data,
+    id,
+    status: "new",
+    createdAt: new Date().toISOString(),
+  };
+  const list = enquiries.get(data.listingId) ?? [];
+  enquiries.set(data.listingId, [...list, enquiry]);
+  return enquiry;
+}
+
+export function updateEnquiry(
+  listingId: string,
+  enquiryId: string,
+  patch: Partial<Pick<MarketEnquiry, "status" | "sellerReply" | "repliedAt">>
+): MarketEnquiry | null {
+  const list = enquiries.get(listingId);
+  if (!list) return null;
+  const idx = list.findIndex(e => e.id === enquiryId);
+  if (idx === -1) return null;
+  list[idx] = { ...list[idx], ...patch };
+  return list[idx];
+}
