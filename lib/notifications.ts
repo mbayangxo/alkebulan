@@ -1,9 +1,9 @@
-// Notification service for Alkebulan store orders
+// Notification service for Kebu store orders
 //
 // Required env vars (all optional — notifications fail silently if missing):
 //   AT_API_KEY + AT_USERNAME  → Africa's Talking SMS (africastalking.com — 40+ African countries)
 //   RESEND_API_KEY             → Email via Resend (resend.com)
-//   NOTIFY_FROM_EMAIL          → Sender address e.g. "orders@alkebulan.com"
+//   NOTIFY_FROM_EMAIL          → Sender address e.g. "orders@kebu.com"
 
 export interface OrderNotificationPayload {
   businessName: string;
@@ -23,7 +23,7 @@ export async function sendOrderNotification(data: OrderNotificationPayload): Pro
     `Order: ${data.itemsSummary}`,
     `Payment: ${data.paymentMethod}`,
     `ID: ${data.orderId}`,
-    `Manage: alkebulan.com/store/dashboard`,
+    `Manage: kebu.com/store/dashboard`,
   ].join("\n");
 
   const emailText = [
@@ -37,7 +37,7 @@ export async function sendOrderNotification(data: OrderNotificationPayload): Pro
     `Order ID: ${data.orderId}`,
     ``,
     `Confirm or manage this order at:`,
-    `https://alkebulan.com/store/dashboard`,
+    `https://kebu.com/store/dashboard`,
   ].join("\n");
 
   await Promise.allSettled([
@@ -68,7 +68,7 @@ async function sendSMS(to: string, message: string): Promise<void> {
 
 async function sendEmail(to: string, subject: string, text: string): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.NOTIFY_FROM_EMAIL || "orders@alkebulan.com";
+  const from = process.env.NOTIFY_FROM_EMAIL || "orders@kebu.com";
   if (!apiKey) return;
 
   await fetch("https://api.resend.com/emails", {

@@ -4,7 +4,7 @@ import { aiRateLimit, clamp } from "@/lib/api-guard";
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-const SYSTEM = `You are Alkebulan's Application Kit builder — an expert at helping African entrepreneurs write winning applications for grants, government programs, and development funds.
+const SYSTEM = `You are Kebu's Application Kit builder — an expert at helping African entrepreneurs write winning applications for grants, government programs, and development funds.
 
 Your job is to produce TWO things:
 1. A COMPLETE PRE-FILLED APPLICATION FORM the person can copy and paste directly

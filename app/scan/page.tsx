@@ -20,7 +20,7 @@ ${result.teaching_moment}
 🌱 Opportunité locale: ${result.local_opportunity.what_to_make}
 Coût de démarrage: ${result.local_opportunity.start_cost}
 
-Scanner un produit → alkebulan.app/scan`;
+Scanner un produit → kebu.app/scan`;
 
   async function share() {
     if (navigator.share) {

@@ -21,7 +21,7 @@ export default function RemittancePage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          system: `You are the Remittance-to-Ownership Pipeline engine for Alkebulan. You help African diaspora members transform monthly family remittances into equity ownership in African businesses and assets.
+          system: `You are the Remittance-to-Ownership Pipeline engine for Kebu. You help African diaspora members transform monthly family remittances into equity ownership in African businesses and assets.
 
 Africa receives $100B+ in diaspora remittances annually — more than all foreign aid combined. Most of this money is consumed, not invested. You help diaspora members:
 1. Understand the investment vehicles available to them in specific African countries

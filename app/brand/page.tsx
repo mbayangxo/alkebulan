@@ -72,7 +72,7 @@ export default function BrandPage() {
     }
   }
 
-  const BRANDING_SYSTEM = `You are Alkebulan's Brand Architect — a world-class creative director who specialises in building premium African brands. You understand:
+  const BRANDING_SYSTEM = `You are Kebu's Brand Architect — a world-class creative director who specialises in building premium African brands. You understand:
 
 - African brand strategy: heritage, origin stories, ingredient heroes, diaspora nostalgia
 - Gen Z aesthetics: Y2K, quiet luxury, clean girl, Afrofuturism, cottagecore — and how they apply to African products

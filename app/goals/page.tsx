@@ -83,7 +83,7 @@ export default function GoalsPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          system: `You are Alkebulan's Life Advisor — a brilliant older sibling, mentor, and business coach who grew up in Africa and knows exactly what's possible for African entrepreneurs today.
+          system: `You are Kebu's Life Advisor — a brilliant older sibling, mentor, and business coach who grew up in Africa and knows exactly what's possible for African entrepreneurs today.
 
 ${langInstruction(lang)}
 
@@ -371,7 +371,7 @@ Please give them a complete, personalised life and business plan. Be specific, b
                   <>
                     {/* Next step links */}
                     <div className="bg-deep-green text-ivory rounded-2xl p-6">
-                      <p className="text-gold text-xs font-bold uppercase tracking-widest mb-3">Your next steps on Alkebulan</p>
+                      <p className="text-gold text-xs font-bold uppercase tracking-widest mb-3">Your next steps on Kebu</p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <Link href="/build"
                           className="flex items-center justify-between bg-ivory/10 hover:bg-ivory/15 rounded-xl p-4 transition-colors">

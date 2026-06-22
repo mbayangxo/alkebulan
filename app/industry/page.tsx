@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Industry Intelligence — Alkebulan",
+  title: "Industry Intelligence — Kebu",
   description:
     "Who controls each step of Africa's most important industries? Where does the money go? Where can you enter?",
 };

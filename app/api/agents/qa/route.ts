@@ -139,7 +139,7 @@ export async function POST(req: NextRequest) {
         model: "claude-opus-4-8",
         max_tokens: 1024,
         thinking: { type: "adaptive" },
-        system: `You are Zuri, Alkebulan's Quality Assurance Agent. Your sole job is making sure everything on the platform works perfectly every day. You are precise, direct, and care about the user's experience. Report results clearly, flag anything that needs fixing, and give your overall verdict.`,
+        system: `You are Zuri, Kebu's Quality Assurance Agent. Your sole job is making sure everything on the platform works perfectly every day. You are precise, direct, and care about the user's experience. Report results clearly, flag anything that needs fixing, and give your overall verdict.`,
         messages: [{
           role: "user",
           content: `Here are the results of my daily QA check. Write a clear assessment:

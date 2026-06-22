@@ -240,7 +240,7 @@ export default function ListingPage() {
             {/* WhatsApp direct contact — show first if available */}
             {listing.contactWhatsapp && (
               <a
-                href={`https://wa.me/${listing.contactWhatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Hi ${listing.sellerName}, I saw your listing on Alkebulan Market for ${listing.productName}. I'd like to discuss an order.`)}`}
+                href={`https://wa.me/${listing.contactWhatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Hi ${listing.sellerName}, I saw your listing on Kebu Market for ${listing.productName}. I'd like to discuss an order.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 w-full bg-[#25D366] text-white font-bold py-4 rounded-2xl hover:bg-[#1ebe5d] transition-colors mb-4 text-base"
@@ -269,7 +269,7 @@ export default function ListingPage() {
                   </code>
                   {listing.contactWhatsapp && (
                     <a
-                      href={`https://wa.me/${listing.contactWhatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Hi ${listing.sellerName}, I just sent an enquiry on Alkebulan Market for ${listing.productName}. Reference: ${refId}`)}`}
+                      href={`https://wa.me/${listing.contactWhatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Hi ${listing.sellerName}, I just sent an enquiry on Kebu Market for ${listing.productName}. Reference: ${refId}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 w-full bg-[#25D366] text-white font-bold py-3 rounded-xl hover:bg-[#1ebe5d] transition-colors mb-4 text-sm"

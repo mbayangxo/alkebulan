@@ -40,7 +40,7 @@ export default function OrderConfirmedPage({
             href="/"
             className="block text-sm text-muted hover:text-ink transition-colors"
           >
-            Powered by Alkebulan
+            Powered by Kebu
           </Link>
         </div>
       </div>

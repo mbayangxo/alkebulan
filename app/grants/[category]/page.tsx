@@ -122,14 +122,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { category } = await params;
   const cat = CATEGORIES[category];
-  if (!cat) return { title: "Grants | Alkebulan" };
+  if (!cat) return { title: "Grants | Kebu" };
 
   return {
-    title: `${cat.title} | Alkebulan`,
+    title: `${cat.title} | Kebu`,
     description: cat.description,
     keywords: cat.keywords,
     openGraph: {
-      title: `${cat.title} | Alkebulan`,
+      title: `${cat.title} | Kebu`,
       description: cat.description,
       type: "website",
     },

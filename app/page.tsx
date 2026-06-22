@@ -21,7 +21,7 @@ export default function LandingPage() {
               <AlkebulanLion size={38} />
               <span style={{ letterSpacing: "0.13em", fontFamily: "var(--font-fraunces)", color: "#E05A18" }}
                 className="font-bold italic text-[17px] leading-none hidden sm:block">
-                ALKEBULAN
+                KEBU
               </span>
             </Link>
             <div className="hidden lg:flex items-center gap-5 text-[11px] font-semibold uppercase tracking-[0.14em]">
@@ -30,7 +30,7 @@ export default function LandingPage() {
               ))}
               <span className="text-white/20">·</span>
               <Link href="/build-business" className="flex items-center gap-2 bg-[#E05A18] hover:bg-[#F27840] text-[#0B3D2E] font-bold px-5 py-2 rounded-full transition-colors">
-                <AlkebulanLion size={14} /> Alkebulan Builder
+                <AlkebulanLion size={14} /> Kebu Builder
               </Link>
             </div>
             <div className="lg:hidden flex items-center gap-3">
@@ -84,7 +84,7 @@ export default function LandingPage() {
               The industries around them. The markets being built. The paths that already exist.
             </p>
             <p className="text-white/45 text-base max-w-xl leading-relaxed mb-12">
-              Alkebulan opens your eyes. Then shows you exactly how to move.
+              Kebu opens your eyes. Then shows you exactly how to move.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -185,7 +185,7 @@ export default function LandingPage() {
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="mb-16">
             <p style={{ letterSpacing: "0.2em", color: "#E05A18", fontSize: "10px" }} className="font-semibold uppercase mb-4">
-              What Alkebulan is
+              What Kebu is
             </p>
             <h2 style={{ fontFamily: "var(--font-fraunces)", lineHeight: 1.05, color: "#0B3D2E" }}
               className="font-bold text-[clamp(2rem,5vw,3.75rem)] max-w-3xl">
@@ -193,7 +193,7 @@ export default function LandingPage() {
             </h2>
             <p style={{ color: "#6B5B45", lineHeight: 1.75, maxWidth: "36rem", marginTop: "1.25rem" }} className="text-base">
               Grants run out. Government programs close. Markets don&apos;t.
-              Alkebulan is built around the opportunity that exists whether or not a grant exists.
+              Kebu is built around the opportunity that exists whether or not a grant exists.
             </p>
           </div>
 
@@ -218,7 +218,7 @@ export default function LandingPage() {
               },
               {
                 num: "03",
-                title: "Alkebulan Builder",
+                title: "Kebu Builder",
                 sub: "A structured session that builds your actual business plan — market, first sale, 12-month roadmap. Not a chat box.",
                 detail: "Market analysis · First sale · 12-month roadmap",
                 href: "/build-business",
@@ -303,7 +303,7 @@ export default function LandingPage() {
                 work, or the path that people like them have already walked.
               </p>
               <p style={{ color: "#6B5B45", lineHeight: 1.75 }} className="text-base mb-10 max-w-lg">
-                Alkebulan does that first. Once you see it — then we give you
+                Kebu does that first. Once you see it — then we give you
                 the exact steps. In order. With real costs and real timelines.
                 No grant required.
               </p>
@@ -592,10 +592,10 @@ export default function LandingPage() {
             &ldquo;The young person selling things on the street in Accra is not failing.
             They are untaught. No one showed them the industry around them,
             the business that could scale it, or the step that comes next.
-            That is what Alkebulan is here to do.&rdquo;
+            That is what Kebu is here to do.&rdquo;
           </blockquote>
           <p style={{ color: "#9B8B75", letterSpacing: "0.12em", fontSize: "11px" }} className="uppercase font-semibold">
-            Alkebulan — Mother of Mankind
+            Kebu — Mother of Mankind
           </p>
         </div>
       </section>
@@ -623,7 +623,7 @@ export default function LandingPage() {
             <Link href="/build-business"
               className="inline-flex items-center gap-3 font-semibold px-10 py-4 rounded-full text-sm uppercase tracking-[0.08em] transition-all"
               style={{ border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.7)" }}>
-              Alkebulan Builder
+              Kebu Builder
             </Link>
           </div>
         </div>
@@ -637,7 +637,7 @@ export default function LandingPage() {
               <div className="flex items-center gap-3 mb-4">
                 <AlkebulanCrest size={32} />
                 <span style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", letterSpacing: "0.1em" }}
-                  className="font-bold italic">ALKEBULAN</span>
+                  className="font-bold italic">KEBU</span>
               </div>
               <p style={{ color: "rgba(253,250,244,0.35)", fontSize: "12px", lineHeight: 1.7 }}>
                 Africa is the opportunity.
@@ -673,7 +673,7 @@ export default function LandingPage() {
             ))}
           </div>
           <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }} className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.2)" }}>© 2026 Alkebulan. Africa is the opportunity.</p>
+            <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.2)" }}>© 2026 Kebu. Africa is the opportunity.</p>
             <div className="flex gap-6">
               {[["Sign in", "/login"], ["Get started", "/signup"]].map(([l, h]) => (
                 <Link key={h} href={h} style={{ fontSize: "11px", color: "rgba(255,255,255,0.3)", letterSpacing: "0.1em" }}

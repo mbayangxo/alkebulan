@@ -73,7 +73,7 @@ export function AlkebulanWordmark({ size = 40, className = "" }: MarkProps) {
         style={{ fontFamily: "var(--font-fraunces)", letterSpacing: "0.12em" }}
         className="font-bold text-gold text-xl italic leading-none select-none"
       >
-        ALKEBULAN
+        KEBU
       </span>
     </span>
   );

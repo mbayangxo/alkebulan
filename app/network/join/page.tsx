@@ -214,7 +214,7 @@ export default function NetworkJoinPage() {
           </button>
 
           <p className="text-xs text-muted text-center">
-            Your profile will be visible to other Alkebulan members. We never sell your data.
+            Your profile will be visible to other Kebu members. We never sell your data.
           </p>
         </form>
       </div>

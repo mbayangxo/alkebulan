@@ -20,7 +20,7 @@ export default function BudgetIntelPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          system: `You are the Government Budget Intelligence Engine for Alkebulan. You decode African government budgets and identify private sector opportunities hidden within ministerial allocations.
+          system: `You are the Government Budget Intelligence Engine for Kebu. You decode African government budgets and identify private sector opportunities hidden within ministerial allocations.
 
 African governments collectively spend over $1 trillion annually. Within those budgets are:
 - Infrastructure tenders open to local companies

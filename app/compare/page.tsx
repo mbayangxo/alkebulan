@@ -36,7 +36,7 @@ function ShareButton({ wealthPath, localPath, route }: {
 • Revenus réalistes an 1: ${localPath.realist_year1_cfa}
 • En 5 ans: ${localPath.realist_5year}
 
-Compare toi-même → alkebulan.app/compare`;
+Compare toi-même → kebu.app/compare`;
 
   async function share() {
     if (navigator.share) {

@@ -63,7 +63,7 @@ export default function SuccessPage() {
         <div className="bg-gold/10 border border-gold/30 rounded-2xl p-5 mb-8">
           <p className="text-sm font-bold text-ink mb-1">These stories are not exceptions</p>
           <p className="text-sm text-gold-dark leading-relaxed">
-            Dangote started with a loan. Bethlehem started with no capital. Masiyiwa was refused a licence for 5 years. They are ordinary people who refused to be stopped. The resources on your continent, your land, your culture — they are the foundation. Alkebulan shows you the path to build on them.
+            Dangote started with a loan. Bethlehem started with no capital. Masiyiwa was refused a licence for 5 years. They are ordinary people who refused to be stopped. The resources on your continent, your land, your culture — they are the foundation. Kebu shows you the path to build on them.
           </p>
         </div>
 

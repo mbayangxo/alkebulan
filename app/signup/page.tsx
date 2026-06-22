@@ -39,7 +39,7 @@ export default function SignupPage() {
         <div className="text-center mb-10">
           <Link href="/" className="inline-flex flex-col items-center gap-3">
             <AlkebulanCrest size={56} />
-            <span className="font-display text-2xl font-bold text-gold">Alkebulan</span>
+            <span className="font-display text-2xl font-bold text-gold">Kebu</span>
           </Link>
           <p className="text-ivory/60 mt-2 text-sm">Africa is the opportunity</p>
         </div>

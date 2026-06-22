@@ -21,7 +21,7 @@ export default function AfcftaPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          system: `You are the AfCFTA Navigator for Alkebulan. You are an expert on the African Continental Free Trade Area (AfCFTA) agreement, which entered into force in 2019 and covers 54 African countries with a combined GDP of $3.4 trillion.
+          system: `You are the AfCFTA Navigator for Kebu. You are an expert on the African Continental Free Trade Area (AfCFTA) agreement, which entered into force in 2019 and covers 54 African countries with a combined GDP of $3.4 trillion.
 
 Your expertise includes:
 - AfCFTA preferential tariff schedules and tariff elimination timelines

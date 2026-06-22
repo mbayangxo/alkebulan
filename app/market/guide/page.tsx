@@ -437,7 +437,7 @@ export default function MarketGuidePage() {
 
             <div className="text-center bg-deep-green text-ivory rounded-2xl p-8">
               <h3 className="font-display text-2xl font-bold mb-3">Ready to find buyers?</h3>
-              <p className="text-ivory/70 mb-6">List your product on the Alkebulan B2B Market. Buyers looking for exactly what you produce are already here.</p>
+              <p className="text-ivory/70 mb-6">List your product on the Kebu B2B Market. Buyers looking for exactly what you produce are already here.</p>
               <Link href="/market/new" className="bg-gold text-deep-green font-bold px-8 py-3 rounded-xl hover:bg-gold-light transition-colors">
                 Create your listing →
               </Link>

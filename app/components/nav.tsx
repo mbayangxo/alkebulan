@@ -25,7 +25,7 @@ const EXPLORE = [
 
 const TOOLS = [
   { label: "Ka Score",             href: "/ka-score" },
-  { label: "Alkebulan Builder",     href: "/build-business" },
+  { label: "Kebu Builder",          href: "/build-business" },
   { label: "Build vs. Leave",      href: "/compare" },
   { label: "Decode a Product",     href: "/scan" },
   { label: "Local Starts Map",     href: "/starts" },
@@ -116,7 +116,7 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
               style={{ letterSpacing: "0.13em", fontFamily: "var(--font-fraunces)" }}
               className="font-bold italic text-[17px] text-gold leading-none hidden sm:block"
             >
-              ALKEBULAN
+              KEBU
             </span>
           </Link>
 

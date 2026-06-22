@@ -15,7 +15,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { country: slug } = await params;
   const profile = findBySlug(ALL_COUNTRY_PROGRAMS, slug);
-  if (!profile) return { title: "Country not found | Alkebulan" };
+  if (!profile) return { title: "Country not found | Kebu" };
 
   const total =
     profile.youth_women_funds.length +
@@ -24,7 +24,7 @@ export async function generateMetadata({
     profile.startup_innovation.length;
 
   return {
-    title: `Grants, Loans & Opportunities in ${profile.country} | Alkebulan`,
+    title: `Grants, Loans & Opportunities in ${profile.country} | Kebu`,
     description: `${total} verified funding programs for ${profile.country} entrepreneurs. Find grants, government contracts, development bank loans, and startup funds in ${profile.key_sectors.slice(0, 3).join(", ")} and more. Step-by-step application guides.`,
     keywords: [
       `grants ${profile.country}`,
@@ -35,7 +35,7 @@ export async function generateMetadata({
       ...profile.key_sectors.map((s) => `${s.toLowerCase()} ${profile.country.toLowerCase()}`),
     ],
     openGraph: {
-      title: `${profile.flag} ${profile.country} — ${total} Funding Programs | Alkebulan`,
+      title: `${profile.flag} ${profile.country} — ${total} Funding Programs | Kebu`,
       description: `Every grant, loan, tender, and startup fund available in ${profile.country}. Explained simply. With checklists.`,
       type: "website",
     },

@@ -46,11 +46,11 @@ const DISTRIBUTION_KIT: KitItem[] = [
     description: "Copy and send to your groups immediately",
     content: `📲 Une plateforme pour aider les jeunes à CONSTRUIRE ici, pas à partir.
 
-Alkebulan montre les vraies opportunités au Sénégal — financements, enregistrement d'entreprise, programmes de la DER/FJ, et plus encore. Tout gratuit, tout en clair.
+Kebu montre les vraies opportunités au Sénégal — financements, enregistrement d'entreprise, programmes de la DER/FJ, et plus encore. Tout gratuit, tout en clair.
 
 Si tu connais quelqu'un qui pense à partir en Europe — montre-lui ça d'abord.
 
-→ alkebulan.app
+→ kebu.app
 
 (Partager librement 🙏)`,
   },
@@ -59,11 +59,11 @@ Si tu connais quelqu'un qui pense à partir en Europe — montre-lui ça d'abord
     description: "For communities where Wolof reaches further than French",
     content: `📲 Plateforme bi dafa jëfandikoo ci ndaw ñi — soo bëggee liggéey ci Senegaal.
 
-Alkebulan dafa yégle liggéey yi nekkoon ci kanam — DER/FJ, entreprise, financement, ak yeneen. Dara la waral.
+Kebu dafa yégle liggéey yi nekkoon ci kanam — DER/FJ, entreprise, financement, ak yeneen. Dara la waral.
 
 Boo xam benn nekkoon bëgg dem Europe — daldi ko won lépp loolu.
 
-→ alkebulan.app`,
+→ kebu.app`,
   },
   {
     label: "Key talking points",
@@ -82,13 +82,13 @@ Boo xam benn nekkoon bëgg dem Europe — daldi ko won lépp loolu.
 
 1. Start with the question: "How many people here know someone who has left or is thinking of leaving?" (show of hands)
 
-2. Show the "Build vs. Leave" page: alkebulan.app/compare
+2. Show the "Build vs. Leave" page: kebu.app/compare
    → Let them see the real cost of the Atlantic route vs. starting a GIE
 
-3. Show one real program: alkebulan.app/dashboard
+3. Show one real program: kebu.app/dashboard
    → Find DER/FJ Sénégal — walk through eligibility and how to apply
 
-4. Show the business registration guide: alkebulan.app/register/senegal
+4. Show the business registration guide: kebu.app/register/senegal
    → Show how a GIE costs 15,000–35,000 CFA to start, not 600,000+ CFA
 
 5. Close: "This information exists. The question is whether it reaches people before the fixer does."
@@ -256,7 +256,7 @@ export default function GatekeepersPage() {
           <div className="space-y-3">
             {[
               ["📦", "Distribution kit", "Pre-written WhatsApp messages in French and Wolof. Talking points. A session guide for community meetings. Ready to use today."],
-              ["📊", "The comparison tool", "Share alkebulan.app/compare — it shows the real cost of leaving vs. the real cost of starting a business here. Built to spread on WhatsApp."],
+              ["📊", "The comparison tool", "Share kebu.app/compare — it shows the real cost of leaving vs. the real cost of starting a business here. Built to spread on WhatsApp."],
               ["🤝", "Direct contact", "We will follow up with you personally — not with a newsletter. You will hear from a real person within one week."],
               ["📍", "Your community on the map", "As verified local starts grow in your region, we will show them publicly — a live counter of who is building, not leaving."],
             ].map(([icon, title, desc]) => (

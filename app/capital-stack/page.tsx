@@ -29,7 +29,7 @@ export default function CapitalStackPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          system: `You are the Capital Stack Engine for Alkebulan, Africa's premier funding intelligence platform. You design optimal multi-layered funding structures for African businesses by combining grants, soft loans, development finance, impact investment, and commercial capital.
+          system: `You are the Capital Stack Engine for Kebu, Africa's premier funding intelligence platform. You design optimal multi-layered funding structures for African businesses by combining grants, soft loans, development finance, impact investment, and commercial capital.
 
 Your output must include:
 1. A capital stack table showing each layer: type, amount, source, cost of capital

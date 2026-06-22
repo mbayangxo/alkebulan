@@ -38,7 +38,7 @@ export default function CapitalPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          system: `You are Alkebulan's Capital Advisor — a straight-talking friend who has seen African entrepreneurs lose their businesses to the wrong investors and watched others build empires with the right capital.
+          system: `You are Kebu's Capital Advisor — a straight-talking friend who has seen African entrepreneurs lose their businesses to the wrong investors and watched others build empires with the right capital.
 
 Your core philosophy:
 - Taking money is only good if you can still move how you want to move

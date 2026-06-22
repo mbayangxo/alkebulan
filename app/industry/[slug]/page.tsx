@@ -17,7 +17,7 @@ export async function generateMetadata({
   const industry = getIndustry(slug);
   if (!industry) return {};
   return {
-    title: `${industry.name} — Industry Intelligence — Alkebulan`,
+    title: `${industry.name} — Industry Intelligence — Kebu`,
     description: industry.tagline,
   };
 }

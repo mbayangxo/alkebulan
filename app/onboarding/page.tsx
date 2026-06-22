@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { AlkebulanCrest } from "@/app/components/panther-motif";
+import { KebuCrest } from "@/app/components/panther-motif";
 import { createClient } from "@/lib/supabase/client";
 import { Sector, FundingType, BusinessStage, DiasporaStatus } from "@/lib/types";
 import { saveUserSignals } from "@/lib/scoring";
@@ -110,7 +110,7 @@ export default function OnboardingPage() {
       <div className="w-full max-w-xl">
         {/* Logo */}
         <div className="text-center mb-8">
-          <AlkebulanCrest size={48} />
+          <KebuCrest size={48} />
         </div>
 
         {/* Step 0: Welcome */}
@@ -123,7 +123,7 @@ export default function OnboardingPage() {
               Africa is the richest<br />continent on earth.
             </h1>
             <p className="text-ivory/70 text-base leading-relaxed mb-6 max-w-md mx-auto">
-              Right now, foreign companies own the banks, the telecoms, the supermarkets, and the supply chains on your land. Alkebulan exists to change that — by connecting you to the funding, contracts, and knowledge to build what belongs to Africans.
+              Right now, foreign companies own the banks, the telecoms, the supermarkets, and the supply chains on your land. Kebu exists to change that — by connecting you to the funding, contracts, and knowledge to build what belongs to Africans.
             </p>
             <div className="grid grid-cols-3 gap-4 mb-8 max-w-sm mx-auto">
               <div className="text-center">
@@ -186,7 +186,7 @@ export default function OnboardingPage() {
                     </div>
                     <div>
                       <label className="text-sm font-semibold text-ink mb-1.5 block">I identify as</label>
-                      <p className="text-xs text-muted mb-3">Alkebulan serves Africans everywhere — on the continent and across the diaspora.</p>
+                      <p className="text-xs text-muted mb-3">Kebu serves Africans everywhere — on the continent and across the diaspora.</p>
                       <div className="space-y-2">
                         {DIASPORA_STATUSES.map((status) => (
                           <button

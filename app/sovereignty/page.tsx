@@ -394,7 +394,7 @@ export default function SovereigntyPage() {
             {/* Bottom CTA */}
             <div className="bg-deep-green rounded-2xl p-6 text-center mt-6">
               <p className="font-display text-xl font-bold text-ivory mb-2">You have everything you need to start.</p>
-              <p className="text-ivory/70 text-sm mb-5">Your location, your knowledge of the market, your community, your labour — these are your inputs. Alkebulan finds you the funding to turn them into a business.</p>
+              <p className="text-ivory/70 text-sm mb-5">Your location, your knowledge of the market, your community, your labour — these are your inputs. Kebu finds you the funding to turn them into a business.</p>
               <Link
                 href="/matches"
                 className="inline-block bg-gold text-deep-green font-bold px-6 py-3 rounded-xl hover:bg-gold-light transition-colors"

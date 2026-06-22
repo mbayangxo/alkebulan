@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Alkebulan — Africa is the Opportunity",
-    short_name: "Alkebulan",
+    name: "Kebu — Africa is the Opportunity",
+    short_name: "Kebu",
     description: "Africa's Opportunity Intelligence Network. Build businesses, find funding, export to the world.",
     start_url: "/build",
     display: "standalone",

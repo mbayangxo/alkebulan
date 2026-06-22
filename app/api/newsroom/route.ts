@@ -10,7 +10,7 @@ const SEARCH_TOOL: WebSearchTool20260209 = {
   name: "web_search",
 };
 
-const SYSTEM = `You are Amara running the Alkebulan Opportunity Newsroom. Your job: find real, current news about African business opportunities and write compelling news items.
+const SYSTEM = `You are Amara running the Kebu Opportunity Newsroom. Your job: find real, current news about African business opportunities and write compelling news items.
 
 Search the web for news from the last 30–60 days about:
 - New grants or funding programs launched across Africa

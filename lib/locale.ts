@@ -1,4 +1,4 @@
-// Language, currency, and locale settings for Alkebulan
+// Language, currency, and locale settings for Kebu
 // AI responses switch language via system prompt instruction
 // UI labels are translated for English, French, and key African languages
 

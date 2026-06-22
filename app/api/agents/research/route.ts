@@ -5,7 +5,7 @@ import type { WebSearchTool20260209 } from "@anthropic-ai/sdk/resources/messages
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-const AMARA_SYSTEM = `You are Amara — Alkebulan's Research Intelligence Agent. Your sole job is to find every funding opportunity, grant, loan, government contract, and development program across all 54 African countries and explain exactly how to access them.
+const AMARA_SYSTEM = `You are Amara — Kebu's Research Intelligence Agent. Your sole job is to find every funding opportunity, grant, loan, government contract, and development program across all 54 African countries and explain exactly how to access them.
 
 You have access to web search. USE IT. Search for the most current, specific information. Do not rely on general knowledge — find live data.
 

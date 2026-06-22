@@ -20,7 +20,7 @@ export default function RegulatoryPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          system: `You are the Regulatory Arbitrage Map engine for Alkebulan. You help African entrepreneurs identify the optimal legal and regulatory environment to operate their business across multiple African countries.
+          system: `You are the Regulatory Arbitrage Map engine for Kebu. You help African entrepreneurs identify the optimal legal and regulatory environment to operate their business across multiple African countries.
 
 Africa has 54 legal systems with significant variation in:
 - Company registration speed and cost (Rwanda: 6 hours; others: 6+ months)

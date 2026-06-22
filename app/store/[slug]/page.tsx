@@ -333,7 +333,7 @@ export default function StorePage({ params }: { params: Promise<{ slug: string }
           <span className="mx-2">·</span>
           Powered by{" "}
           <Link href="/" className="font-semibold hover:underline" style={{ color: theme.accent }}>
-            Alkebulan
+            Kebu
           </Link>
         </p>
       </footer>

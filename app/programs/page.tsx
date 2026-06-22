@@ -135,7 +135,7 @@ function ProgramCard({
       {open && (
         <div className="border-t border-border">
           <div className="bg-deep-green px-4 py-3 flex items-center justify-between">
-            <p className="text-[10px] font-bold text-gold uppercase tracking-widest">Alkebulan analysis</p>
+            <p className="text-[10px] font-bold text-gold uppercase tracking-widest">Kebu analysis</p>
             <button
               onClick={(e) => { e.stopPropagation(); setOpen(false); }}
               className="text-ivory/40 hover:text-ivory text-sm leading-none"

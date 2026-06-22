@@ -23,19 +23,19 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Alkebulan — Africa is the Opportunity",
+  title: "Kebu — Africa is the Opportunity",
   description:
-    "Africa has the resources. Africa has the youth. Africa has the ideas. Alkebulan opens your eyes to what is already in front of you — the businesses to build, the problems that are markets, and the tools that already exist to help you build them.",
+    "Africa has the resources. Africa has the youth. Africa has the ideas. Kebu opens your eyes to what is already in front of you — the businesses to build, the problems that are markets, and the tools that already exist to help you build them.",
   keywords: ["African opportunity", "African entrepreneurs", "Africa business", "diaspora Africa", "AfCFTA", "African markets", "build in Africa"],
   openGraph: {
-    title: "Alkebulan — Africa is the Opportunity",
+    title: "Kebu — Africa is the Opportunity",
     description: "What can we do as a people? Everything. Here is what is already in front of you.",
     type: "website",
-    siteName: "Alkebulan",
+    siteName: "Kebu",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alkebulan — Africa is the Opportunity",
+    title: "Kebu — Africa is the Opportunity",
     description: "What can we do as a people? Everything. Here is what is already in front of you.",
   },
 };

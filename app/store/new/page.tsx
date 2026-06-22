@@ -154,7 +154,7 @@ export default function NewStorePage() {
 
           <div className="bg-white border border-border rounded-2xl p-6 mb-6">
             <p className="text-xs font-bold text-muted uppercase tracking-wide mb-2">Your site URL</p>
-            <p className="font-bold text-deep-green text-lg break-all mb-4">alkebulan.co{siteUrl}</p>
+            <p className="font-bold text-deep-green text-lg break-all mb-4">kebu.co{siteUrl}</p>
             <div className="flex gap-3">
               <a
                 href={siteUrl}
@@ -230,7 +230,7 @@ export default function NewStorePage() {
                 <div className="w-3 h-3 rounded-full bg-green-400" />
               </div>
               <div className="flex-1 bg-white rounded-lg px-3 py-1 text-xs text-gray-400 ml-2">
-                alkebulan.co/store/your-site
+                kebu.co/store/your-site
               </div>
             </div>
 
@@ -297,7 +297,7 @@ export default function NewStorePage() {
             {/* Footer */}
             <div style={{ backgroundColor: theme.card, borderTop: `1px solid ${theme.border}` }} className="px-6 py-4 text-center">
               <p className="text-xs" style={{ color: theme.muted }}>
-                Powered by <span style={{ color: theme.accent }} className="font-semibold">Alkebulan</span>
+                Powered by <span style={{ color: theme.accent }} className="font-semibold">Kebu</span>
               </p>
             </div>
           </div>
