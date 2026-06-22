@@ -1,124 +1,105 @@
 "use client";
 
-interface PantherMotifProps {
+// ── Lion Mark — Alkebulan brand symbol ───────────────────────────────────────
+// Front-facing geometric lion. 8-pointed starburst mane. Works at any size.
+// Replaces the panther motif. All old exports are kept as aliases.
+
+interface MarkProps {
   className?: string;
   size?: number;
-  variant?: "eyes" | "silhouette" | "crest" | "emblem";
 }
 
-export function PantherEyes({ className = "", size = 48 }: { className?: string; size?: number }) {
+export function AlkebulanLion({ size = 80, className = "" }: MarkProps) {
   return (
     <svg
       width={size}
-      height={size * 0.4}
-      viewBox="0 0 120 48"
+      height={size}
+      viewBox="0 0 80 80"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      aria-label="Alkebulan lion mark"
     >
-      {/* Left eye */}
-      <ellipse cx="28" cy="24" rx="22" ry="18" fill="#E05A18" opacity="0.15" />
-      <ellipse cx="28" cy="24" rx="16" ry="13" fill="#E05A18" opacity="0.3" />
-      <ellipse cx="28" cy="24" rx="8" ry="12" fill="#E05A18" />
-      <ellipse cx="25" cy="20" rx="3" ry="4" fill="#F2F3F6" opacity="0.6" />
-
-      {/* Right eye */}
-      <ellipse cx="92" cy="24" rx="22" ry="18" fill="#E05A18" opacity="0.15" />
-      <ellipse cx="92" cy="24" rx="16" ry="13" fill="#E05A18" opacity="0.3" />
-      <ellipse cx="92" cy="24" rx="8" ry="12" fill="#E05A18" />
-      <ellipse cx="89" cy="20" rx="3" ry="4" fill="#F2F3F6" opacity="0.6" />
-    </svg>
-  );
-}
-
-export function PantherSilhouette({ className = "", size = 200 }: { className?: string; size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size * 0.7}
-      viewBox="0 0 200 140"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      {/* Body */}
+      {/* Mane — 8-pointed starburst, tips become natural ears at upper-diagonals */}
       <path
-        d="M60 90 C40 85 20 80 15 70 C10 60 15 45 25 40 C30 37 38 38 42 35 C46 32 44 22 50 18 C56 14 65 16 70 20 C75 24 78 30 82 32 C90 36 102 34 112 38 C125 43 135 52 138 62 C141 72 138 82 132 88 C126 94 118 96 108 96 C98 96 88 94 80 92 C72 90 66 90 60 90Z"
+        d="M40 3 L49.2 17.8 L66.2 13.8 L62.2 30.8 L77 40 L62.2 49.2
+           L66.2 66.2 L49.2 62.2 L40 77 L30.8 62.2 L13.8 66.2 L17.8 49.2
+           L3 40 L17.8 30.8 L13.8 13.8 L30.8 17.8 Z"
         fill="#E05A18"
-        opacity="0.9"
       />
-      {/* Head */}
-      <ellipse cx="50" cy="38" rx="22" ry="18" fill="#E05A18" />
-      {/* Ears */}
-      <path d="M34 24 L30 14 L40 22 Z" fill="#E05A18" />
-      <path d="M62 24 L68 14 L60 22 Z" fill="#E05A18" />
-      <path d="M35 23 L31 16 L39 22 Z" fill="#B04510" />
-      <path d="M61 23 L66 16 L61 22 Z" fill="#B04510" />
+      {/* Mane fill — closes gaps between rays */}
+      <circle cx="40" cy="40" r="23" fill="#E05A18" />
+
+      {/* Face base */}
+      <ellipse cx="40" cy="43" rx="19" ry="17" fill="#C04010" />
+      {/* Forehead — blends face into mane */}
+      <ellipse cx="40" cy="34" rx="17" ry="13" fill="#D04E10" />
+
+      {/* Brow ridges — give the lion authority */}
+      <path d="M27 36 Q33 31 39 34" stroke="#0B3D2E" strokeWidth="2" fill="none" strokeLinecap="round" />
+      <path d="M53 36 Q47 31 41 34" stroke="#0B3D2E" strokeWidth="2" fill="none" strokeLinecap="round" />
+
       {/* Eyes */}
-      <ellipse cx="44" cy="36" rx="5" ry="6" fill="#0D3B2E" />
-      <ellipse cx="58" cy="36" rx="5" ry="6" fill="#0D3B2E" />
-      <ellipse cx="43" cy="34" rx="2" ry="2.5" fill="#F2F3F6" opacity="0.7" />
-      <ellipse cx="57" cy="34" rx="2" ry="2.5" fill="#F2F3F6" opacity="0.7" />
+      <ellipse cx="32" cy="40" rx="5.5" ry="4.5" fill="#0B3D2E" />
+      <ellipse cx="48" cy="40" rx="5.5" ry="4.5" fill="#0B3D2E" />
+      {/* Pupils */}
+      <ellipse cx="32" cy="41" rx="2.5" ry="3.2" fill="#061A10" />
+      <ellipse cx="48" cy="41" rx="2.5" ry="3.2" fill="#061A10" />
+      {/* Catch-lights */}
+      <ellipse cx="30.5" cy="38.5" rx="1.5" ry="2" fill="white" opacity="0.6" />
+      <ellipse cx="46.5" cy="38.5" rx="1.5" ry="2" fill="white" opacity="0.6" />
+
       {/* Nose */}
-      <path d="M50 44 L47 47 L53 47 Z" fill="#B04510" />
-      {/* Tail */}
-      <path
-        d="M132 88 C145 85 158 78 165 68 C170 60 168 50 164 45 C162 42 160 44 160 48 C160 54 162 60 158 66 C154 72 145 76 138 78"
-        stroke="#E05A18"
-        strokeWidth="6"
-        strokeLinecap="round"
-        fill="none"
-        opacity="0.9"
-      />
-      {/* Legs */}
-      <rect x="65" y="90" width="12" height="35" rx="6" fill="#E05A18" opacity="0.9" />
-      <rect x="82" y="90" width="12" height="38" rx="6" fill="#E05A18" opacity="0.9" />
-      <rect x="100" y="90" width="12" height="38" rx="6" fill="#E05A18" opacity="0.9" />
-      <rect x="116" y="90" width="12" height="35" rx="6" fill="#E05A18" opacity="0.9" />
-      {/* Spots */}
-      <circle cx="80" cy="65" r="4" fill="#B04510" opacity="0.5" />
-      <circle cx="95" cy="72" r="3" fill="#B04510" opacity="0.5" />
-      <circle cx="112" cy="68" r="3.5" fill="#B04510" opacity="0.5" />
-      <circle cx="70" cy="78" r="3" fill="#B04510" opacity="0.5" />
+      <path d="M40 49 L36 53.5 L44 53.5 Z" fill="#0B3D2E" />
+      <path d="M36 53.5 Q40 58 44 53.5" fill="#0B3D2E" />
+
+      {/* Mouth */}
+      <path d="M40 57 L36.5 60.5" stroke="#0B3D2E" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      <path d="M40 57 L43.5 60.5" stroke="#0B3D2E" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+
+      {/* Whisker dots — readable at large size, disappear cleanly at small */}
+      <circle cx="33.5" cy="57" r="1.2" fill="#0B3D2E" opacity="0.35" />
+      <circle cx="46.5" cy="57" r="1.2" fill="#0B3D2E" opacity="0.35" />
     </svg>
   );
 }
 
-export function AlkebulanCrest({ className = "", size = 80 }: { className?: string; size?: number }) {
+// Wordmark lockup — lion + "ALKEBULAN" as a single composited unit
+export function AlkebulanWordmark({ size = 40, className = "" }: MarkProps) {
   return (
-    <svg
-      width={size}
-      height={size * 1.1}
-      viewBox="0 0 80 88"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      {/* Shield shape */}
-      <path
-        d="M40 4 L72 16 L72 44 C72 62 57 76 40 84 C23 76 8 62 8 44 L8 16 Z"
-        fill="#0D3B2E"
-        stroke="#E05A18"
-        strokeWidth="2"
-      />
-      {/* Panther eyes in shield */}
-      <ellipse cx="30" cy="38" rx="7" ry="8" fill="#E05A18" opacity="0.9" />
-      <ellipse cx="50" cy="38" rx="7" ry="8" fill="#E05A18" opacity="0.9" />
-      <ellipse cx="28" cy="36" rx="2.5" ry="3" fill="#F2F3F6" opacity="0.6" />
-      <ellipse cx="48" cy="36" rx="2.5" ry="3" fill="#F2F3F6" opacity="0.6" />
-      {/* Stars */}
-      <circle cx="40" cy="22" r="2" fill="#E05A18" />
-      <circle cx="32" cy="25" r="1.5" fill="#E05A18" opacity="0.7" />
-      <circle cx="48" cy="25" r="1.5" fill="#E05A18" opacity="0.7" />
-      {/* Bottom line */}
-      <path d="M24 56 Q40 62 56 56" stroke="#E05A18" strokeWidth="1.5" fill="none" opacity="0.8" />
-    </svg>
+    <span className={`inline-flex items-center gap-2.5 ${className}`}>
+      <AlkebulanLion size={size} />
+      <span
+        style={{ fontFamily: "var(--font-fraunces)", letterSpacing: "0.12em" }}
+        className="font-bold text-gold text-xl italic leading-none select-none"
+      >
+        ALKEBULAN
+      </span>
+    </span>
   );
 }
 
-export function PantherMotif({ className = "", size = 48, variant = "eyes" }: PantherMotifProps) {
-  if (variant === "eyes") return <PantherEyes className={className} size={size} />;
-  if (variant === "silhouette") return <PantherSilhouette className={className} size={size} />;
-  if (variant === "crest") return <AlkebulanCrest className={className} size={size} />;
-  return <AlkebulanCrest className={className} size={size} />;
+// ── Legacy aliases — keep old names so other pages don't break ───────────────
+
+export function AlkebulanCrest({ size = 80, className = "" }: MarkProps) {
+  return <AlkebulanLion size={size} className={className} />;
+}
+
+export function PantherEyes({ size = 48, className = "" }: MarkProps) {
+  return <AlkebulanLion size={size} className={className} />;
+}
+
+export function PantherSilhouette({ size = 200, className = "" }: MarkProps) {
+  return <AlkebulanLion size={size} className={className} />;
+}
+
+export function PantherMotif({
+  size = 48,
+  className = "",
+}: {
+  size?: number;
+  className?: string;
+  variant?: string;
+}) {
+  return <AlkebulanLion size={size} className={className} />;
 }

@@ -2,154 +2,290 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { AlkebulanCrest } from "./panther-motif";
+import { usePathname } from "next/navigation";
+import { AlkebulanLion } from "./panther-motif";
 
-const NAV_LINKS = [
-  { label: "My Path 🗺", href: "/path", highlight: true },
-  { label: "My Matches ⚡", href: "/matches" },
-  { label: "Programs", href: "/programs" },
-  { label: "Procurement", href: "/procurement" },
-  { label: "Discover", href: "/opportunities" },
-  { label: "Market 🌾", href: "/market" },
+const PRIMARY = [
+  { label: "My Path",   href: "/path" },
+  { label: "Matches",   href: "/matches" },
+  { label: "Discover",  href: "/opportunities" },
+  { label: "Market",    href: "/market" },
   { label: "Blueprint", href: "/blueprint" },
-  { label: "Feed", href: "/feed" },
-  { label: "Countries", href: "/map" },
+];
+
+const EXPLORE = [
+  { label: "Programs",     href: "/programs" },
+  { label: "Procurement",  href: "/procurement" },
+  { label: "Feed",         href: "/feed" },
+  { label: "Countries",    href: "/map" },
+  { label: "Network",      href: "/network" },
+  { label: "Success Stories", href: "/success" },
 ];
 
 const TOOLS = [
-  { label: "Build vs. Leave →", href: "/compare" },
-  { label: "Decode This Product →", href: "/scan" },
-  { label: "Local Starts Map", href: "/starts" },
-  { label: "Community Partners", href: "/gatekeepers" },
-  { label: "Build a Business", href: "/build" },
-  { label: "Bankability Engine", href: "/bankability" },
-  { label: "AfCFTA Navigator", href: "/afcfta" },
-  { label: "Capital Stack", href: "/capital-stack" },
-  { label: "Success Stories", href: "/success" },
-  { label: "AI Assistant", href: "/assistant" },
-  { label: "Yande AI Agents →", href: "/agents" },
+  { label: "Build vs. Leave",     href: "/compare" },
+  { label: "Decode a Product",    href: "/scan" },
+  { label: "Local Starts Map",    href: "/starts" },
+  { label: "Build a Business",    href: "/build" },
+  { label: "Bankability Engine",  href: "/bankability" },
+  { label: "AfCFTA Navigator",    href: "/afcfta" },
+  { label: "Capital Stack",       href: "/capital-stack" },
+  { label: "Community Partners",  href: "/gatekeepers" },
+  { label: "AI Assistant",        href: "/assistant" },
+  { label: "AI Agents",           href: "/agents" },
 ];
 
-export function Nav({ transparent = false }: { transparent?: boolean }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [toolsOpen, setToolsOpen] = useState(false);
+function NavDot() {
+  return <span className="text-gold/30 select-none">·</span>;
+}
 
-  const bg = transparent ? "bg-transparent" : "bg-deep-green";
-
+function Dropdown({
+  label,
+  items,
+}: {
+  label: string;
+  items: { label: string; href: string }[];
+}) {
+  const [open, setOpen] = useState(false);
   return (
-    <nav className={`${bg} text-ivory sticky top-0 z-50 border-b border-gold/20`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 flex-shrink-0">
-          <AlkebulanCrest size={36} />
-          <span className="font-display text-xl font-semibold text-gold tracking-wide">
-            Alkebulan
-          </span>
-        </Link>
-
-        {/* Desktop nav */}
-        <div className="hidden lg:flex items-center gap-6 text-sm font-medium">
-          {NAV_LINKS.map(({ label, href, highlight }) => (
-            <Link
-              key={href}
-              href={href}
-              className={
-                highlight
-                  ? "text-gold font-semibold hover:text-gold-light transition-colors"
-                  : "text-ivory/80 hover:text-gold transition-colors"
-              }
-            >
-              {label}
-            </Link>
-          ))}
-
-          {/* Tools dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => setToolsOpen(!toolsOpen)}
-              onBlur={() => setTimeout(() => setToolsOpen(false), 150)}
-              className="text-ivory/80 hover:text-gold transition-colors flex items-center gap-1"
-            >
-              Tools
-              <span className="text-[10px] opacity-60">▾</span>
-            </button>
-            {toolsOpen && (
-              <div className="absolute top-full right-0 mt-2 w-52 bg-deep-green border border-gold/20 rounded-xl shadow-xl overflow-hidden z-50">
-                {TOOLS.map(({ label, href }) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    className="block px-4 py-2.5 text-xs text-ivory/80 hover:bg-gold/10 hover:text-gold transition-colors"
-                  >
-                    {label}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="hidden lg:flex items-center gap-3">
-          <Link href="/login" className="text-ivory/70 hover:text-ivory text-sm font-medium transition-colors">
-            Sign in
-          </Link>
-          <Link
-            href="/signup"
-            className="bg-gold text-deep-green text-sm font-semibold px-4 py-2 rounded-full hover:bg-gold-light transition-colors"
-          >
-            Get started
-          </Link>
-        </div>
-
-        {/* Mobile menu button */}
-        <button
-          className="lg:hidden text-ivory p-1"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+    <div className="relative">
+      <button
+        onClick={() => setOpen(o => !o)}
+        onBlur={() => setTimeout(() => setOpen(false), 160)}
+        className="flex items-center gap-1 text-ivory/65 hover:text-gold transition-colors text-[11px] font-semibold uppercase tracking-[0.14em]"
+      >
+        {label}
+        <svg
+          width="8"
+          height="6"
+          viewBox="0 0 8 6"
+          fill="none"
+          className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
         >
-          <div className="w-6 h-0.5 bg-current mb-1.5" />
-          <div className="w-6 h-0.5 bg-current mb-1.5" />
-          <div className="w-6 h-0.5 bg-current" />
-        </button>
-      </div>
-
-      {/* Mobile menu panel */}
-      {menuOpen && (
-        <div className="lg:hidden bg-deep-green border-t border-gold/20 px-4 py-4">
-          <div className="space-y-1 mb-4">
-            {NAV_LINKS.map(({ label, href, highlight }) => (
+          <path d="M1 1L4 5L7 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        </svg>
+      </button>
+      {open && (
+        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 bg-[#071F15] border border-gold/15 rounded-2xl shadow-2xl shadow-black/40 overflow-hidden z-50">
+          <div className="p-1.5">
+            {items.map(({ label, href }) => (
               <Link
                 key={href}
                 href={href}
-                className={`block py-2.5 text-sm ${
-                  highlight ? "text-gold font-semibold" : "text-ivory/80 hover:text-gold"
-                }`}
-                onClick={() => setMenuOpen(false)}
+                className="block px-3.5 py-2 text-xs text-ivory/70 hover:text-ivory hover:bg-white/5 rounded-xl transition-colors"
               >
                 {label}
               </Link>
             ))}
           </div>
-          <div className="border-t border-gold/20 pt-3 mb-4">
-            <p className="text-xs font-semibold text-gold/60 uppercase tracking-wider mb-2">AI Engines</p>
-            <div className="grid grid-cols-2 gap-1">
-              {TOOLS.map(({ label, href }) => (
-                <Link key={href} href={href} className="block py-1.5 text-xs text-ivory/70 hover:text-gold"
-                  onClick={() => setMenuOpen(false)}>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function Nav({ transparent = false }: { transparent?: boolean }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const navBg = transparent
+    ? "bg-transparent"
+    : "bg-[#071F15]";
+
+  function isActive(href: string) {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  }
+
+  return (
+    <header className={`${navBg} sticky top-0 z-50`}>
+      {/* Brand accent stripe */}
+      <div className="h-[3px] w-full bg-gradient-to-r from-gold-dark via-gold to-gold-light" />
+
+      {/* Main nav bar */}
+      <nav className="border-b border-white/8">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8 h-[68px] flex items-center justify-between gap-6">
+
+          {/* ── Logo ── */}
+          <Link href="/" className="flex items-center gap-3 flex-shrink-0 group">
+            <AlkebulanLion size={38} className="transition-transform duration-300 group-hover:scale-105" />
+            <span
+              style={{ letterSpacing: "0.13em", fontFamily: "var(--font-fraunces)" }}
+              className="font-bold italic text-[17px] text-gold leading-none hidden sm:block"
+            >
+              ALKEBULAN
+            </span>
+          </Link>
+
+          {/* ── Desktop nav ── */}
+          <div className="hidden lg:flex items-center gap-4">
+            {PRIMARY.map(({ label, href }, i) => (
+              <div key={href} className="flex items-center gap-4">
+                {i > 0 && <NavDot />}
+                <Link
+                  href={href}
+                  className={`text-[11px] font-semibold uppercase tracking-[0.14em] transition-colors ${
+                    isActive(href)
+                      ? "text-gold"
+                      : "text-ivory/65 hover:text-gold"
+                  }`}
+                >
+                  {label}
+                </Link>
+              </div>
+            ))}
+
+            <NavDot />
+            <Dropdown label="Explore" items={EXPLORE} />
+            <NavDot />
+            <Dropdown label="Tools" items={TOOLS} />
+          </div>
+
+          {/* ── Right side ── */}
+          <div className="hidden lg:flex items-center gap-5">
+            {/* Subtle editorial marker */}
+            <span
+              style={{ letterSpacing: "0.18em" }}
+              className="text-[9px] font-semibold uppercase text-gold/30 hidden xl:block"
+            >
+              Africa · 2026
+            </span>
+
+            <Link
+              href="/login"
+              className="text-ivory/50 hover:text-ivory text-[11px] font-semibold uppercase tracking-[0.12em] transition-colors"
+            >
+              Sign in
+            </Link>
+
+            <Link
+              href="/signup"
+              className="flex items-center gap-2 bg-gold hover:bg-gold-light text-deep-green text-[11px] font-bold uppercase tracking-[0.1em] px-5 py-2.5 rounded-full transition-colors"
+            >
+              <AlkebulanLion size={14} />
+              Get started
+            </Link>
+          </div>
+
+          {/* ── Mobile hamburger ── */}
+          <button
+            className="lg:hidden text-ivory/80 hover:text-gold transition-colors p-1"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            <div className="space-y-[5px]">
+              <span
+                className={`block h-[1.5px] bg-current transition-all duration-300 ${
+                  menuOpen ? "w-6 translate-y-[6.5px] rotate-45" : "w-6"
+                }`}
+              />
+              <span
+                className={`block h-[1.5px] bg-current transition-all duration-300 ${
+                  menuOpen ? "opacity-0 w-0" : "w-4"
+                }`}
+              />
+              <span
+                className={`block h-[1.5px] bg-current transition-all duration-300 ${
+                  menuOpen ? "w-6 -translate-y-[6.5px] -rotate-45" : "w-6"
+                }`}
+              />
+            </div>
+          </button>
+        </div>
+      </nav>
+
+      {/* ── Mobile menu ── */}
+      {menuOpen && (
+        <div className="lg:hidden bg-[#071F15] border-b border-white/8">
+          {/* Primary links */}
+          <div className="px-5 pt-5 pb-3 space-y-1">
+            <p
+              style={{ letterSpacing: "0.18em" }}
+              className="text-[9px] font-semibold uppercase text-gold/40 mb-3"
+            >
+              Navigate
+            </p>
+            {PRIMARY.map(({ label, href }) => (
+              <Link
+                key={href}
+                href={href}
+                className={`flex items-center gap-3 py-3 text-sm transition-colors border-b border-white/5 last:border-0 ${
+                  isActive(href) ? "text-gold" : "text-ivory/75 hover:text-gold"
+                }`}
+                onClick={() => setMenuOpen(false)}
+              >
+                <span className="font-semibold">{label}</span>
+                {isActive(href) && (
+                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-gold" />
+                )}
+              </Link>
+            ))}
+          </div>
+
+          {/* Explore */}
+          <div className="px-5 py-4 border-t border-white/8">
+            <p
+              style={{ letterSpacing: "0.18em" }}
+              className="text-[9px] font-semibold uppercase text-gold/40 mb-3"
+            >
+              Explore
+            </p>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+              {EXPLORE.map(({ label, href }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="text-xs text-ivory/60 hover:text-gold py-1.5 transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
                   {label}
                 </Link>
               ))}
             </div>
           </div>
-          <div className="pt-3 border-t border-gold/20 flex gap-3">
-            <Link href="/login" className="text-ivory/70 text-sm font-medium">Sign in</Link>
-            <Link href="/signup" className="bg-gold text-deep-green text-sm font-semibold px-4 py-2 rounded-full">
+
+          {/* Tools */}
+          <div className="px-5 py-4 border-t border-white/8">
+            <p
+              style={{ letterSpacing: "0.18em" }}
+              className="text-[9px] font-semibold uppercase text-gold/40 mb-3"
+            >
+              Tools
+            </p>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+              {TOOLS.map(({ label, href }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="text-xs text-ivory/60 hover:text-gold py-1.5 transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="px-5 py-5 border-t border-white/8 flex items-center gap-3">
+            <Link
+              href="/login"
+              className="text-ivory/60 text-sm font-medium hover:text-ivory"
+              onClick={() => setMenuOpen(false)}
+            >
+              Sign in
+            </Link>
+            <Link
+              href="/signup"
+              className="flex-1 flex items-center justify-center gap-2 bg-gold text-deep-green text-sm font-bold py-3 rounded-full hover:bg-gold-light transition-colors"
+              onClick={() => setMenuOpen(false)}
+            >
+              <AlkebulanLion size={16} />
               Get started
             </Link>
           </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 }
