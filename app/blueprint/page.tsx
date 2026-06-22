@@ -6,9 +6,9 @@ import { Nav } from "@/app/components/nav";
 import { BLUEPRINT_MODELS, type BlueprintModel, type BlueprintOrigin } from "@/lib/data/blueprint";
 
 const ORIGIN_COLORS: Record<BlueprintOrigin, string> = {
-  "French":          "bg-blue-100 text-blue-800",
-  "Chinese":         "bg-red-100 text-red-800",
-  "Lebanese / Arab": "bg-amber-100 text-amber-800",
+  "French":          "bg-indigo/12 text-indigo",
+  "Chinese":         "bg-red-earth/15 text-red-earth",
+  "Lebanese / Arab": "bg-gold/15 text-gold-dark",
   "Indian":          "bg-orange-100 text-orange-800",
   "Gulf Arab":       "bg-teal-100 text-teal-800",
   "South African":   "bg-green-100 text-green-800",
@@ -38,9 +38,9 @@ function ModelCard({ model }: { model: BlueprintModel }) {
         </div>
 
         {/* What they control */}
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-4">
-          <p className="text-xs font-bold text-amber-700 uppercase tracking-wide mb-1">What they control</p>
-          <p className="text-sm text-amber-900 leading-relaxed">{model.what_they_control}</p>
+        <div className="bg-gold/10 border border-gold/30 rounded-xl p-4 mb-4">
+          <p className="text-xs font-bold text-gold-dark uppercase tracking-wide mb-1">What they control</p>
+          <p className="text-sm text-ink leading-relaxed">{model.what_they_control}</p>
         </div>
 
         {/* Scale */}
@@ -69,7 +69,7 @@ function ModelCard({ model }: { model: BlueprintModel }) {
 
         {/* Entry Point */}
         <div className="bg-gold/10 border border-gold/30 rounded-xl p-4 mb-4">
-          <p className="text-xs font-bold text-amber-800 uppercase tracking-wide mb-2">Entry point — what you do in 90 days</p>
+          <p className="text-xs font-bold text-gold-dark uppercase tracking-wide mb-2">Entry point — what you do in 90 days</p>
           <p className="text-sm text-ink leading-relaxed">{model.entry_point}</p>
         </div>
 

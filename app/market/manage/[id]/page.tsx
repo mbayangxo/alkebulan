@@ -7,8 +7,8 @@ import { Nav } from "@/app/components/nav";
 import type { MarketListing, MarketEnquiry, EnquiryStatus } from "@/lib/market-data";
 
 const STATUS_STYLES: Record<EnquiryStatus, string> = {
-  new:       "bg-gold/20 text-amber-800",
-  read:      "bg-blue-50 text-blue-700",
+  new:       "bg-gold/20 text-gold-dark",
+  read:      "bg-indigo/8 text-indigo",
   responded: "bg-green-50 text-green-700",
   closed:    "bg-sand text-muted",
 };
@@ -235,7 +235,7 @@ export default function ManageListingPage() {
             <p className="text-muted text-sm">{listing.country}{listing.region ? `, ${listing.region}` : ""}</p>
           </div>
           {newCount > 0 && (
-            <span className="bg-gold/20 text-amber-800 text-sm font-bold px-3 py-1.5 rounded-full">
+            <span className="bg-gold/20 text-gold-dark text-sm font-bold px-3 py-1.5 rounded-full">
               {newCount} new {newCount === 1 ? "enquiry" : "enquiries"}
             </span>
           )}

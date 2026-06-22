@@ -232,10 +232,10 @@ export default function MarketGuidePage() {
               {VALUE_ADD_EXAMPLES.map((ex, i) => (
                 <div key={i} className="bg-white border border-sand rounded-2xl p-6">
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-5">
-                    <div className="bg-red-50 border border-red-100 rounded-xl p-4">
-                      <p className="text-xs font-bold text-red-600 uppercase mb-1">Raw (what you sell now)</p>
+                    <div className="bg-red-earth/10 border border-red-earth/20 rounded-xl p-4">
+                      <p className="text-xs font-bold text-red-earth uppercase mb-1">Raw (what you sell now)</p>
                       <p className="font-bold text-ink text-lg">{ex.raw}</p>
-                      <p className="text-2xl font-bold text-red-700 mt-2">{ex.raw_price}</p>
+                      <p className="text-2xl font-bold text-red-earth mt-2">{ex.raw_price}</p>
                     </div>
                     <div className="flex items-center justify-center">
                       <div className="text-center">
@@ -288,7 +288,7 @@ export default function MarketGuidePage() {
                 <div key={i} className="bg-white border border-sand rounded-2xl p-6">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <h3 className="font-display text-xl font-bold text-ink">{sol.name}</h3>
-                    <span className="bg-gold/20 text-amber-800 text-sm font-bold px-3 py-1 rounded-full whitespace-nowrap">
+                    <span className="bg-gold/20 text-gold-dark text-sm font-bold px-3 py-1 rounded-full whitespace-nowrap">
                       {sol.cost}
                     </span>
                   </div>
@@ -309,8 +309,8 @@ export default function MarketGuidePage() {
                       <p className="text-xs font-bold text-green-700 uppercase mb-1">Best for</p>
                       <p className="text-sm text-ink">{sol.best_for}</p>
                     </div>
-                    <div className="flex-1 bg-blue-50 border border-blue-100 rounded-xl p-3">
-                      <p className="text-xs font-bold text-blue-700 uppercase mb-1">Where to get it</p>
+                    <div className="flex-1 bg-indigo/8 border border-indigo/20 rounded-xl p-3">
+                      <p className="text-xs font-bold text-indigo uppercase mb-1">Where to get it</p>
                       <p className="text-sm text-ink">{sol.source}</p>
                     </div>
                   </div>
@@ -343,7 +343,7 @@ export default function MarketGuidePage() {
                   <h3 className="font-display text-xl font-bold text-ink mb-3">{story.name}</h3>
                   <p className="text-muted leading-relaxed mb-4">{story.summary}</p>
                   <div className="bg-gold/10 border border-gold/30 rounded-xl p-4">
-                    <p className="text-xs font-bold text-amber-800 uppercase mb-1">The lesson</p>
+                    <p className="text-xs font-bold text-gold-dark uppercase mb-1">The lesson</p>
                     <p className="text-sm text-ink font-medium">{story.lesson}</p>
                   </div>
                 </div>
@@ -391,7 +391,7 @@ export default function MarketGuidePage() {
                     {SELLER_EARNINGS_TABLE.map((row, i) => (
                       <tr key={i} className="hover:bg-warm-ivory/50">
                         <td className="px-6 py-4 font-medium text-ink">{row.product}</td>
-                        <td className="px-6 py-4 text-red-600">{row.raw_income}</td>
+                        <td className="px-6 py-4 text-red-earth">{row.raw_income}</td>
                         <td className="px-6 py-4 text-green-700 font-semibold">{row.processed_income}</td>
                         <td className="px-6 py-4 text-muted">{row.processing_cost}</td>
                         <td className="px-6 py-4 font-bold text-deep-green">{row.net_uplift}</td>

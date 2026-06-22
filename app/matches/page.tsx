@@ -12,16 +12,16 @@ import Link from "next/link";
 
 const CATEGORY_COLORS: Record<string, string> = {
   "Youth & Women":       "bg-gold/10 text-gold-dark",
-  "Development Finance": "bg-blue-50 text-blue-700",
+  "Development Finance": "bg-indigo/8 text-indigo",
   "Grants":              "bg-green-50 text-green-700",
-  "Startup & Innovation":"bg-purple-50 text-purple-700",
+  "Startup & Innovation":"bg-indigo/8 text-indigo",
 };
 
 const LABEL_COLORS: Record<string, string> = {
   "Strong Match":  "text-green-700 bg-green-50",
-  "Good Match":    "text-amber-700 bg-amber-50",
+  "Good Match":    "text-gold-dark bg-gold/10",
   "Partial Match": "text-orange-700 bg-orange-50",
-  "Low Match":     "text-red-600 bg-red-50",
+  "Low Match":     "text-red-earth bg-red-earth/10",
 };
 
 export default function MatchesPage() {

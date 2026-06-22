@@ -108,7 +108,7 @@ export default function OpportunitiesPage() {
         <div
           className="absolute inset-0 opacity-5"
           style={{
-            backgroundImage: `repeating-linear-gradient(45deg, #C9A035 0, #C9A035 1px, transparent 0, transparent 50%)`,
+            backgroundImage: `repeating-linear-gradient(45deg, #E05A18 0, #E05A18 1px, transparent 0, transparent 50%)`,
             backgroundSize: "20px 20px",
           }}
         />
@@ -239,16 +239,16 @@ export default function OpportunitiesPage() {
                   </div>
 
                   {/* Who profits */}
-                  <div className="bg-red-50 border border-red-100 rounded-2xl p-6">
-                    <p className="text-xs font-bold text-red-800 uppercase tracking-widest mb-2">Who is currently profiting</p>
-                    <p className="text-sm text-red-900/80 leading-relaxed">{opp.who_profits}</p>
-                    <div className="mt-3 pt-3 border-t border-red-200">
-                      <p className="text-xs font-bold text-red-800">Annual market size:</p>
-                      <p className="text-sm text-red-900/80 mt-1">{opp.annual_value}</p>
+                  <div className="bg-red-earth/10 border border-red-earth/20 rounded-2xl p-6">
+                    <p className="text-xs font-bold text-red-earth uppercase tracking-widest mb-2">Who is currently profiting</p>
+                    <p className="text-sm text-ink/70 leading-relaxed">{opp.who_profits}</p>
+                    <div className="mt-3 pt-3 border-t border-red-earth/30">
+                      <p className="text-xs font-bold text-red-earth">Annual market size:</p>
+                      <p className="text-sm text-ink/70 mt-1">{opp.annual_value}</p>
                     </div>
-                    <div className="mt-3 pt-3 border-t border-red-200">
-                      <p className="text-xs font-bold text-red-800">The value gap:</p>
-                      <p className="text-sm text-red-900/80 mt-1">{opp.the_gap}</p>
+                    <div className="mt-3 pt-3 border-t border-red-earth/30">
+                      <p className="text-xs font-bold text-red-earth">The value gap:</p>
+                      <p className="text-sm text-ink/70 mt-1">{opp.the_gap}</p>
                     </div>
                   </div>
 
@@ -284,9 +284,9 @@ export default function OpportunitiesPage() {
                   </div>
 
                   {/* Historical note */}
-                  <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
-                    <p className="text-xs font-bold text-amber-900 uppercase tracking-widest mb-2">Our history in this sector</p>
-                    <p className="text-sm text-amber-900/80 leading-relaxed">{opp.historical_note}</p>
+                  <div className="bg-gold/10 border border-gold/30 rounded-2xl p-6">
+                    <p className="text-xs font-bold text-ink uppercase tracking-widest mb-2">Our history in this sector</p>
+                    <p className="text-sm text-ink/70 leading-relaxed">{opp.historical_note}</p>
                   </div>
 
                   {/* First step */}
@@ -470,7 +470,7 @@ export default function OpportunitiesPage() {
                               {prog.country}
                             </span>
                             {prog.indigenous_only && (
-                              <span className="text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full flex-shrink-0">
+                              <span className="text-[10px] font-bold bg-gold/15 text-gold-dark px-2 py-0.5 rounded-full flex-shrink-0">
                                 Indigenous only
                               </span>
                             )}
@@ -581,9 +581,9 @@ export default function OpportunitiesPage() {
                       </div>
 
                       {prog.indigenous_note && (
-                        <div className="bg-amber-50 border border-amber-200 rounded-xl p-3">
-                          <p className="text-[10px] font-bold text-amber-700 uppercase mb-1">Indigenous note</p>
-                          <p className="text-xs text-amber-800 leading-relaxed">{prog.indigenous_note}</p>
+                        <div className="bg-gold/10 border border-gold/30 rounded-xl p-3">
+                          <p className="text-[10px] font-bold text-gold-dark uppercase mb-1">Indigenous note</p>
+                          <p className="text-xs text-gold-dark leading-relaxed">{prog.indigenous_note}</p>
                         </div>
                       )}
                     </div>
@@ -605,9 +605,9 @@ export default function OpportunitiesPage() {
               </p>
             </div>
 
-            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-6">
-              <p className="text-sm font-bold text-amber-800 mb-2">Why do foreign companies win these contracts?</p>
-              <p className="text-sm text-amber-900 leading-relaxed">
+            <div className="bg-gold/10 border border-gold/30 rounded-2xl p-5 mb-6">
+              <p className="text-sm font-bold text-gold-dark mb-2">Why do foreign companies win these contracts?</p>
+              <p className="text-sm text-ink leading-relaxed">
                 Not because they&apos;re better. Because they applied. A Chinese company wins a Senegalese road contract not because Senegalese engineers can&apos;t build roads —
                 but because not enough Senegalese companies submitted bids. The first step isn&apos;t skill. It&apos;s forming a company and showing up.
               </p>
@@ -637,13 +637,13 @@ export default function OpportunitiesPage() {
                       <p className="text-sm text-ink leading-relaxed">{contract.what_they_want}</p>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="bg-red-50 border border-red-100 rounded-xl p-3">
-                        <p className="text-[10px] font-bold text-red-700 uppercase mb-1">Why it goes abroad now</p>
-                        <p className="text-xs text-red-800 leading-relaxed">{contract.current_gap}</p>
+                      <div className="bg-red-earth/10 border border-red-earth/20 rounded-xl p-3">
+                        <p className="text-[10px] font-bold text-red-earth uppercase mb-1">Why it goes abroad now</p>
+                        <p className="text-xs text-red-earth leading-relaxed">{contract.current_gap}</p>
                       </div>
-                      <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-3">
-                        <p className="text-[10px] font-bold text-emerald-700 uppercase mb-1">The opportunity</p>
-                        <p className="text-xs text-emerald-800 leading-relaxed">{contract.the_opportunity}</p>
+                      <div className="bg-light-green/10 border border-light-green/20 rounded-xl p-3">
+                        <p className="text-[10px] font-bold text-mid-green uppercase mb-1">The opportunity</p>
+                        <p className="text-xs text-mid-green leading-relaxed">{contract.the_opportunity}</p>
                       </div>
                     </div>
                     <div className="bg-gold/10 border border-gold/20 rounded-xl p-4">

@@ -240,11 +240,11 @@ export default function GatekeepersPage() {
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-10">
         {/* Why this exists */}
-        <div className="bg-amber-50 border border-amber-100 rounded-2xl p-5 mb-8">
-          <p className="text-sm text-amber-900 leading-relaxed mb-3">
+        <div className="bg-gold/10 border border-gold/20 rounded-2xl p-5 mb-8">
+          <p className="text-sm text-ink leading-relaxed mb-3">
             The people most likely to leave are the least likely to find this platform on their own. They are not searching for &ldquo;entrepreneurship resources.&rdquo; They are asking their imam, their uncle, their teacher — what should I do?
           </p>
-          <p className="text-sm text-amber-900 font-semibold">
+          <p className="text-sm text-ink font-semibold">
             We built this for that moment. You are how it reaches them.
           </p>
         </div>
@@ -414,7 +414,7 @@ export default function GatekeepersPage() {
           </button>
 
           {formState === "error" && (
-            <p className="text-xs text-red-700 text-center">Something went wrong. Try again or contact us directly.</p>
+            <p className="text-xs text-red-earth text-center">Something went wrong. Try again or contact us directly.</p>
           )}
         </form>
       </div>

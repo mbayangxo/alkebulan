@@ -132,7 +132,7 @@ export default function StorePage({ params }: { params: Promise<{ slug: string }
         <div className="text-center">
           <div
             className="w-10 h-10 rounded-full border-2 animate-spin mx-auto mb-4"
-            style={{ borderColor: "#C9A035", borderTopColor: "transparent" }}
+            style={{ borderColor: "#E05A18", borderTopColor: "transparent" }}
           />
           <p className="text-sm" style={{ color: "#A89870" }}>Loading...</p>
         </div>

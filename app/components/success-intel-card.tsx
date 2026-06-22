@@ -62,13 +62,13 @@ export function SuccessIntelCard({ intel, programName }: Props) {
 
           {/* What kills */}
           <div className="p-5">
-            <p className="text-xs font-bold text-red-600 uppercase tracking-wide mb-3">
+            <p className="text-xs font-bold text-red-earth uppercase tracking-wide mb-3">
               ❌ What kills your application
             </p>
             <ul className="space-y-2">
               {intel.what_kills.map((item, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-ink">
-                  <span className="text-red-400 mt-0.5 flex-shrink-0">✕</span>
+                  <span className="text-red-earth/60 mt-0.5 flex-shrink-0">✕</span>
                   {item}
                 </li>
               ))}
@@ -87,7 +87,7 @@ export function SuccessIntelCard({ intel, programName }: Props) {
                     className="h-full rounded-full transition-all"
                     style={{
                       width: `${readinessScore}%`,
-                      backgroundColor: readinessScore === 100 ? "#2D7A3C" : readinessScore > 60 ? "#C9A035" : "#D4874A",
+                      backgroundColor: readinessScore === 100 ? "#2D7A3C" : readinessScore > 60 ? "#E05A18" : "#D4874A",
                     }}
                   />
                 </div>

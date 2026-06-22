@@ -43,7 +43,7 @@ export default function LoginPage() {
           <p className="text-muted text-sm mb-8">Sign in to see your matched opportunities</p>
 
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm mb-6">
+            <div className="bg-red-earth/10 border border-red-earth/30 text-red-earth rounded-xl px-4 py-3 text-sm mb-6">
               {error}
             </div>
           )}

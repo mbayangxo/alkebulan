@@ -36,10 +36,10 @@ function ReportDisplay({ text, loading }: { text: string; loading: boolean }) {
             return <h2 key={i} className="font-bold text-ink text-sm mt-5 mb-2 uppercase tracking-wide border-b border-border pb-1">{line.slice(3)}</h2>;
           }
           if (line.startsWith("✅")) {
-            return <p key={i} className="text-xs text-emerald-700 font-mono py-0.5">{line}</p>;
+            return <p key={i} className="text-xs text-mid-green font-mono py-0.5">{line}</p>;
           }
           if (line.startsWith("❌")) {
-            return <p key={i} className="text-xs text-red-600 font-mono py-0.5 font-bold">{line}</p>;
+            return <p key={i} className="text-xs text-red-earth font-mono py-0.5 font-bold">{line}</p>;
           }
           if (line.startsWith("**") || line.startsWith("*")) {
             return <p key={i} className="text-xs font-bold text-ink py-1">{line.replace(/\*\*/g, "")}</p>;
@@ -146,11 +146,11 @@ export default function ZuriPage() {
         {hasResult && !loading && (
           <div className="grid grid-cols-3 gap-4 mb-6">
             <div className="bg-white border border-border rounded-2xl p-4 text-center">
-              <p className="text-3xl font-bold text-emerald-600">{passCount}</p>
+              <p className="text-3xl font-bold text-light-green">{passCount}</p>
               <p className="text-xs text-muted mt-1">Passing</p>
             </div>
-            <div className={`border rounded-2xl p-4 text-center ${failCount > 0 ? "bg-red-50 border-red-200" : "bg-white border-border"}`}>
-              <p className={`text-3xl font-bold ${failCount > 0 ? "text-red-600" : "text-muted"}`}>{failCount}</p>
+            <div className={`border rounded-2xl p-4 text-center ${failCount > 0 ? "bg-red-earth/10 border-red-earth/30" : "bg-white border-border"}`}>
+              <p className={`text-3xl font-bold ${failCount > 0 ? "text-red-earth" : "text-muted"}`}>{failCount}</p>
               <p className="text-xs text-muted mt-1">Failing</p>
             </div>
             <div className="bg-white border border-border rounded-2xl p-4 text-center">

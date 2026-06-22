@@ -26,7 +26,7 @@ export default function LandingPage() {
         <div
           className="absolute inset-0 opacity-5"
           style={{
-            backgroundImage: `repeating-linear-gradient(45deg, #C9A035 0, #C9A035 1px, transparent 0, transparent 50%)`,
+            backgroundImage: `repeating-linear-gradient(45deg, #E05A18 0, #E05A18 1px, transparent 0, transparent 50%)`,
             backgroundSize: "24px 24px",
           }}
         />
@@ -49,7 +49,7 @@ export default function LandingPage() {
               to ask for money.{" "}
               <span
                 className="text-transparent bg-clip-text"
-                style={{ backgroundImage: "linear-gradient(135deg, #C9A035 0%, #E8C865 60%, #9B7A22 100%)" }}
+                style={{ backgroundImage: "linear-gradient(135deg, #E05A18 0%, #F27840 60%, #B04510 100%)" }}
               >
                 It&apos;s a place to build wealth.
               </span>

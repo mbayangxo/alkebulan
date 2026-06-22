@@ -104,13 +104,13 @@ export default function SovereigntyPage() {
                       <p className="text-sm text-ink leading-relaxed">{truth.what_they_built}</p>
                     </div>
 
-                    <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-                      <p className="text-xs font-bold text-amber-800 uppercase tracking-wide mb-2">The evidence</p>
-                      <p className="text-sm text-amber-900 leading-relaxed">{truth.the_evidence}</p>
+                    <div className="bg-gold/10 border border-gold/30 rounded-xl p-4">
+                      <p className="text-xs font-bold text-gold-dark uppercase tracking-wide mb-2">The evidence</p>
+                      <p className="text-sm text-ink leading-relaxed">{truth.the_evidence}</p>
                     </div>
 
-                    <div className="bg-red-50 border border-red-200 rounded-xl p-4">
-                      <p className="text-xs font-bold text-red-800 uppercase tracking-wide mb-2">What was taken</p>
+                    <div className="bg-red-earth/10 border border-red-earth/30 rounded-xl p-4">
+                      <p className="text-xs font-bold text-red-earth uppercase tracking-wide mb-2">What was taken</p>
                       <p className="text-sm text-red-900 leading-relaxed">{truth.what_was_taken}</p>
                     </div>
 
@@ -147,9 +147,9 @@ export default function SovereigntyPage() {
         {/* Tab: Who Owns Africa */}
         {tab === "opportunity" && (
           <div className="space-y-4">
-            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-6">
-              <p className="text-sm font-bold text-amber-900 mb-1">The honest truth</p>
-              <p className="text-sm text-amber-800 leading-relaxed">
+            <div className="bg-gold/10 border border-gold/30 rounded-2xl p-5 mb-6">
+              <p className="text-sm font-bold text-ink mb-1">The honest truth</p>
+              <p className="text-sm text-gold-dark leading-relaxed">
                 Africa holds 30% of the world&apos;s mineral reserves, 60% of the world&apos;s unused arable land, and 17% of the world&apos;s population — yet accounts for only 3% of global trade. Foreign companies extract the value. African entrepreneurs can reclaim it. Here&apos;s what&apos;s been taken — and what&apos;s yours to build.
               </p>
             </div>
@@ -185,7 +185,7 @@ export default function SovereigntyPage() {
                       <ul className="space-y-1">
                         {fact.who_owns_it.map((who) => (
                           <li key={who} className="flex items-start gap-2 text-sm text-ink">
-                            <span className="text-red-400 mt-0.5 flex-shrink-0">×</span>
+                            <span className="text-red-earth/60 mt-0.5 flex-shrink-0">×</span>
                             {who}
                           </li>
                         ))}
@@ -207,7 +207,7 @@ export default function SovereigntyPage() {
                     </div>
 
                     <div className="bg-gold/10 border border-gold/20 rounded-xl p-4">
-                      <p className="text-xs font-bold text-amber-800 uppercase tracking-wide mb-2">How to start — with African prices</p>
+                      <p className="text-xs font-bold text-gold-dark uppercase tracking-wide mb-2">How to start — with African prices</p>
                       <p className="text-sm font-semibold text-ink mb-2">Startup cost: {fact.african_startup_cost}</p>
                       <p className="text-sm text-ink leading-relaxed">{fact.how_to_start}</p>
                     </div>
@@ -270,8 +270,8 @@ export default function SovereigntyPage() {
 
                 {expandedLegal === topic.topic && (
                   <div className="border-t border-border px-5 py-5 space-y-5">
-                    <div className="bg-red-50 border border-red-200 rounded-xl p-4">
-                      <p className="text-xs font-bold text-red-800 uppercase tracking-wide mb-2">What Africans lose</p>
+                    <div className="bg-red-earth/10 border border-red-earth/30 rounded-xl p-4">
+                      <p className="text-xs font-bold text-red-earth uppercase tracking-wide mb-2">What Africans lose</p>
                       <p className="text-sm text-red-900 leading-relaxed">{topic.what_africans_lose}</p>
                     </div>
 
@@ -287,11 +287,11 @@ export default function SovereigntyPage() {
                       </ul>
                     </div>
 
-                    <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-                      <p className="text-xs font-bold text-amber-800 uppercase tracking-wide mb-2">Red flags — walk away</p>
+                    <div className="bg-gold/10 border border-gold/30 rounded-xl p-4">
+                      <p className="text-xs font-bold text-gold-dark uppercase tracking-wide mb-2">Red flags — walk away</p>
                       <ul className="space-y-1.5">
                         {topic.red_flags.map((flag, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-amber-900">
+                          <li key={i} className="flex items-start gap-2 text-sm text-ink">
                             <span className="text-red-500 font-bold flex-shrink-0 mt-0.5">⚠</span>
                             {flag}
                           </li>
@@ -356,12 +356,12 @@ export default function SovereigntyPage() {
                     </div>
 
                     <div className="bg-gold/10 border border-gold/20 rounded-xl p-3">
-                      <p className="text-xs font-bold text-amber-800 mb-0.5">First revenue expected</p>
+                      <p className="text-xs font-bold text-gold-dark mb-0.5">First revenue expected</p>
                       <p className="text-sm text-ink">{biz.first_revenue}</p>
                     </div>
 
-                    <div className="bg-red-50 border border-red-200 rounded-xl p-4">
-                      <p className="text-xs font-bold text-red-800 uppercase tracking-wide mb-2">Mistakes that kill new businesses</p>
+                    <div className="bg-red-earth/10 border border-red-earth/30 rounded-xl p-4">
+                      <p className="text-xs font-bold text-red-earth uppercase tracking-wide mb-2">Mistakes that kill new businesses</p>
                       <ul className="space-y-1.5">
                         {biz.mistakes_to_avoid.map((m, i) => (
                           <li key={i} className="flex items-start gap-2 text-sm text-red-900">

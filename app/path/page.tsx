@@ -10,10 +10,10 @@ import { useEducation } from "@/app/components/education-system";
 type Phase = PathStep["phase"];
 
 const PHASE_CONFIG: Record<Phase, { emoji: string; color: string }> = {
-  Foundation: { emoji: "🏗", color: "text-amber-700 bg-amber-50 border-amber-200" },
+  Foundation: { emoji: "🏗", color: "text-gold-dark bg-gold/10 border-gold/30" },
   Funding:    { emoji: "💰", color: "text-green-700 bg-green-50 border-green-200" },
-  Growth:     { emoji: "📈", color: "text-blue-700 bg-blue-50 border-blue-200" },
-  Scale:      { emoji: "🚀", color: "text-purple-700 bg-purple-50 border-purple-200" },
+  Growth:     { emoji: "📈", color: "text-indigo bg-indigo/8 border-indigo/30" },
+  Scale:      { emoji: "🚀", color: "text-indigo bg-indigo/8 border-indigo/30" },
 };
 
 const TYPE_ICONS: Record<PathStep["type"], string> = {

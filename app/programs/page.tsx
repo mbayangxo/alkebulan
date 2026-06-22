@@ -91,9 +91,9 @@ function ProgramCard({
       <p className="text-xs text-muted leading-relaxed mb-2">{program.what}</p>
       <p className="text-xs font-semibold text-deep-green">{program.for_who}</p>
       {program.indigenous_note && (
-        <div className="mt-2 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
-          <p className="text-[10px] font-bold text-amber-700 uppercase tracking-wide mb-0.5">Indigenous note</p>
-          <p className="text-xs text-amber-800">{program.indigenous_note}</p>
+        <div className="mt-2 bg-gold/10 border border-gold/30 rounded-lg px-3 py-2">
+          <p className="text-[10px] font-bold text-gold-dark uppercase tracking-wide mb-0.5">Indigenous note</p>
+          <p className="text-xs text-gold-dark">{program.indigenous_note}</p>
         </div>
       )}
       {program.apply_at && (

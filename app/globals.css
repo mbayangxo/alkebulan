@@ -1,44 +1,77 @@
 @import "tailwindcss";
 
 :root {
-  /* Alkebulan brand tokens */
-  --gold: #C9A035;
-  --gold-light: #E8C865;
-  --gold-dark: #9B7A22;
-  --deep-green: #0D3B2E;
+  /* ── Alkebulan brand tokens v1 ───────────────────────────────────────────
+   * Colorway: Green · Orange · Silver · Indigo
+   * ─────────────────────────────────────────────────────────────────────── */
+
+  /* Green — African heritage, growth, home */
+  --deep-green: #0B3D2E;
   --mid-green: #1A5C44;
-  --light-green: #2D8B5A;
-  --ivory: #FAF6F0;
-  --warm-ivory: #F5EDD8;
+  --light-green: #2A8455;
+
+  /* Orange — energy, action, opportunity (replaces gold; CSS names kept) */
+  --gold: #E05A18;
+  --gold-light: #F27840;
+  --gold-dark: #B04510;
+
+  /* Silver — clarity, modernity (replaces ivory; CSS names kept) */
+  --ivory: #F2F3F6;
+  --warm-ivory: #E8EBF2;
+  --border: #C8CCDA;
+
+  /* Indigo — knowledge, depth, intelligence */
+  --indigo: #3730A3;
+  --indigo-light: #6366F1;
+  --indigo-dark: #1E1B4B;
+  --royal-blue: #3730A3;
+  --midnight: #1E1B4B;
+
+  /* Neutrals */
   --ink: #0A0A0A;
+  --muted: #6B7180;
+  --white: #FFFFFF;
+
+  /* Semantic */
   --warm-brown: #8B5E3C;
   --red-earth: #B85C38;
-  --royal-blue: #1B3A7A;
-  --midnight: #0A0F1E;
-  --white: #FFFFFF;
-  --muted: #6B6860;
-  --border: #E8E0D0;
+  --silver: #F2F3F6;
+  --orange: #E05A18;
 
   --background: var(--ivory);
   --foreground: var(--ink);
 }
 
 @theme inline {
-  --color-gold: var(--gold);
-  --color-gold-light: var(--gold-light);
-  --color-gold-dark: var(--gold-dark);
+  /* Green */
   --color-deep-green: var(--deep-green);
   --color-mid-green: var(--mid-green);
   --color-light-green: var(--light-green);
+
+  /* Orange (named gold for backwards compat) */
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-orange: var(--orange);
+
+  /* Silver (named ivory for backwards compat) */
   --color-ivory: var(--ivory);
   --color-warm-ivory: var(--warm-ivory);
-  --color-ink: var(--ink);
-  --color-warm-brown: var(--warm-brown);
-  --color-red-earth: var(--red-earth);
+  --color-silver: var(--silver);
+
+  /* Indigo */
+  --color-indigo: var(--indigo);
+  --color-indigo-light: var(--indigo-light);
+  --color-indigo-dark: var(--indigo-dark);
   --color-royal-blue: var(--royal-blue);
   --color-midnight: var(--midnight);
-  --color-white: var(--white);
+
+  /* Neutrals */
+  --color-ink: var(--ink);
   --color-muted: var(--muted);
+  --color-white: var(--white);
+  --color-warm-brown: var(--warm-brown);
+  --color-red-earth: var(--red-earth);
   --color-border: var(--border);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -68,31 +101,27 @@ body {
   font-family: var(--font-fraunces), Georgia, serif;
 }
 
-/* Utility classes */
-.text-balance {
-  text-wrap: balance;
-}
+/* Utility */
+.text-balance { text-wrap: balance; }
 
 /* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--ivory);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--gold);
-  border-radius: 3px;
-}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--ivory); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
 
-/* Gold gradient */
+/* Orange / brand gradient (replaces gold-gradient) */
 .gold-gradient {
-  background: linear-gradient(135deg, #C9A035 0%, #E8C865 50%, #9B7A22 100%);
+  background: linear-gradient(135deg, #E05A18 0%, #F27840 50%, #B04510 100%);
 }
 
 /* Green gradient */
 .green-gradient {
-  background: linear-gradient(135deg, #0D3B2E 0%, #1A5C44 100%);
+  background: linear-gradient(135deg, #0B3D2E 0%, #1A5C44 100%);
+}
+
+/* Indigo gradient */
+.indigo-gradient {
+  background: linear-gradient(135deg, #1E1B4B 0%, #3730A3 100%);
 }
 
 /* Card hover */
@@ -101,28 +130,44 @@ body {
 }
 .card-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(201, 160, 53, 0.15);
+  box-shadow: 0 8px 32px rgba(224, 90, 24, 0.12);
 }
 
-/* Verified badge */
-.badge-verified {
-  background: #DCFCE7;
-  color: #166534;
-}
-.badge-needs-review {
-  background: #FEF9C3;
-  color: #854D0E;
-}
-.badge-deadline-unknown {
-  background: #F3F4F6;
-  color: #374151;
-}
+/* Verified badges */
+.badge-verified { background: #DCFCE7; color: #166534; }
+.badge-needs-review { background: #FEF9C3; color: #854D0E; }
+.badge-deadline-unknown { background: #F3F4F6; color: #374151; }
 
 /* Focus rings */
 input:focus, select:focus, textarea:focus {
   outline: 2px solid var(--gold);
   outline-offset: 2px;
 }
+
+/* ── Brand semantic utility classes ────────────────────────────────────────
+ * Use these instead of raw Tailwind amber/emerald/blue/purple colours
+ * so every page stays within the green·orange·silver·indigo system.
+ * ─────────────────────────────────────────────────────────────────────── */
+
+/* Orange — alerts, warnings, in-progress */
+.brand-orange-bg    { background-color: rgba(224, 90, 24, 0.08); }
+.brand-orange-border{ border-color:     rgba(224, 90, 24, 0.25); }
+.brand-orange-text  { color: var(--gold-dark); }
+
+/* Green — success, verified, opportunity */
+.brand-green-bg     { background-color: rgba(42, 132, 85, 0.08); }
+.brand-green-border { border-color:     rgba(42, 132, 85, 0.25); }
+.brand-green-text   { color: var(--mid-green); }
+
+/* Indigo — info, category, tag */
+.brand-indigo-bg    { background-color: rgba(55, 48, 163, 0.08); }
+.brand-indigo-border{ border-color:     rgba(55, 48, 163, 0.25); }
+.brand-indigo-text  { color: var(--indigo); }
+
+/* Red-earth — caution, risk (keep distinct from brand accent) */
+.brand-red-bg       { background-color: rgba(184, 92, 56, 0.08); }
+.brand-red-border   { border-color:     rgba(184, 92, 56, 0.25); }
+.brand-red-text     { color: var(--red-earth); }
 
 /* Transitions */
 * {

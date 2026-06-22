@@ -34,7 +34,7 @@ Scanner un produit → alkebulan.app/scan`;
   const confidenceColor = result.confidence === "high"
     ? "text-green-700 bg-green-50"
     : result.confidence === "medium"
-    ? "text-amber-700 bg-amber-50"
+    ? "text-gold-dark bg-gold/10"
     : "text-muted bg-warm-ivory";
 
   return (
@@ -50,8 +50,8 @@ Scanner un produit → alkebulan.app/scan`;
             {result.confidence === "high" ? "High confidence" : result.confidence === "medium" ? "Medium confidence" : "Low confidence — verify"}
           </span>
         </div>
-        <div className="bg-amber-50 border border-amber-100 rounded-xl p-4">
-          <p className="text-sm text-amber-900 font-medium leading-relaxed italic">&ldquo;{result.teaching_moment}&rdquo;</p>
+        <div className="bg-gold/10 border border-gold/20 rounded-xl p-4">
+          <p className="text-sm text-ink font-medium leading-relaxed italic">&ldquo;{result.teaching_moment}&rdquo;</p>
         </div>
       </div>
 
@@ -252,9 +252,9 @@ export default function ScanPage() {
               }}
             />
             {state === "error" && (
-              <div className="mt-3 bg-red-50 border border-red-100 rounded-xl p-4 text-center">
-                <p className="text-sm text-red-800">{errorMsg}</p>
-                <button onClick={reset} className="mt-2 text-xs font-semibold text-red-700 hover:underline">
+              <div className="mt-3 bg-red-earth/10 border border-red-earth/20 rounded-xl p-4 text-center">
+                <p className="text-sm text-red-earth">{errorMsg}</p>
+                <button onClick={reset} className="mt-2 text-xs font-semibold text-red-earth hover:underline">
                   Try again
                 </button>
               </div>

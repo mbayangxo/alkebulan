@@ -34,10 +34,10 @@ const CATEGORY_LABELS: Record<EducationMoment["category"], string> = {
 
 const CATEGORY_COLORS: Record<EducationMoment["category"], string> = {
   legacy: "bg-deep-green/10 text-deep-green",
-  taken: "bg-red-100 text-red-800",
+  taken: "bg-red-earth/15 text-red-earth",
   economic: "bg-gold/15 text-gold-dark",
-  confidence: "bg-blue-100 text-blue-800",
-  winning: "bg-emerald-100 text-emerald-800",
+  confidence: "bg-indigo/12 text-indigo",
+  winning: "bg-light-green/15 text-mid-green",
 };
 
 function EducationModal({

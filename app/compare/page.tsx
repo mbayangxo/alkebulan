@@ -68,7 +68,7 @@ function RouteCard({ route }: { route: MigrationRoute }) {
       <div className="p-5">
         <div className="flex items-start justify-between gap-3 mb-3">
           <div>
-            <p className="text-[10px] font-bold text-red-400 uppercase tracking-widest mb-1">Leave route</p>
+            <p className="text-[10px] font-bold text-red-earth/60 uppercase tracking-widest mb-1">Leave route</p>
             <h3 className="font-display text-lg font-bold text-white">{route.name}</h3>
             <p className="text-xs text-red-300 mt-0.5">Destination: {route.destination}</p>
           </div>
@@ -77,20 +77,20 @@ function RouteCard({ route }: { route: MigrationRoute }) {
 
         <div className="grid grid-cols-2 gap-3 mb-4">
           <div className="bg-red-900/60 rounded-xl p-3">
-            <p className="text-[10px] text-red-400 font-semibold uppercase tracking-wide mb-1">Fixer cost</p>
+            <p className="text-[10px] text-red-earth/60 font-semibold uppercase tracking-wide mb-1">Fixer cost</p>
             <p className="text-sm font-bold text-white">{route.cost_cfa}</p>
             <p className="text-xs text-red-300">{route.cost_usd}</p>
           </div>
           <div className="bg-red-900/60 rounded-xl p-3">
-            <p className="text-[10px] text-red-400 font-semibold uppercase tracking-wide mb-1">Death rate</p>
+            <p className="text-[10px] text-red-earth/60 font-semibold uppercase tracking-wide mb-1">Death rate</p>
             <p className="text-sm font-bold text-red-300">{route.death_rate}</p>
           </div>
           <div className="bg-red-900/60 rounded-xl p-3">
-            <p className="text-[10px] text-red-400 font-semibold uppercase tracking-wide mb-1">Stable in 5 years</p>
+            <p className="text-[10px] text-red-earth/60 font-semibold uppercase tracking-wide mb-1">Stable in 5 years</p>
             <p className="text-sm font-bold text-white">{route.probability_stable_in_5y}</p>
           </div>
           <div className="bg-red-900/60 rounded-xl p-3">
-            <p className="text-[10px] text-red-400 font-semibold uppercase tracking-wide mb-1">Papers timeline</p>
+            <p className="text-[10px] text-red-earth/60 font-semibold uppercase tracking-wide mb-1">Papers timeline</p>
             <p className="text-sm font-bold text-white leading-tight">{route.arrival_to_papers}</p>
           </div>
         </div>
@@ -101,7 +101,7 @@ function RouteCard({ route }: { route: MigrationRoute }) {
             {route.what_happens_to_most}
           </p>
           {!expanded && (
-            <button onClick={() => setExpanded(true)} className="text-[10px] text-red-400 hover:text-red-300 mt-1 font-semibold">
+            <button onClick={() => setExpanded(true)} className="text-[10px] text-red-earth/60 hover:text-red-300 mt-1 font-semibold">
               Read more
             </button>
           )}
@@ -109,7 +109,7 @@ function RouteCard({ route }: { route: MigrationRoute }) {
 
         <div className="border-t border-red-800 pt-3">
           <p className="text-[10px] text-red-500 leading-relaxed">{route.death_context}</p>
-          <p className="text-[9px] text-red-700 mt-1.5">Sources: {route.sources.join(" · ")}</p>
+          <p className="text-[9px] text-red-earth mt-1.5">Sources: {route.sources.join(" · ")}</p>
         </div>
       </div>
     </div>
@@ -176,7 +176,7 @@ function BuildCard({ path, countryCode }: { path: WealthPathLocal; countryCode: 
           <ul className="space-y-1">
             {path.risks.map((risk, i) => (
               <li key={i} className="flex items-start gap-2 text-xs text-ivory/70">
-                <span className="text-amber-400 mt-0.5 flex-shrink-0">·</span>
+                <span className="text-gold mt-0.5 flex-shrink-0">·</span>
                 {risk}
               </li>
             ))}
@@ -231,8 +231,8 @@ export default function ComparePage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
         {/* Context note */}
-        <div className="bg-amber-50 border border-amber-100 rounded-2xl p-5 mb-8">
-          <p className="text-sm text-amber-900 leading-relaxed">{data.comparison_note}</p>
+        <div className="bg-gold/10 border border-gold/20 rounded-2xl p-5 mb-8">
+          <p className="text-sm text-ink leading-relaxed">{data.comparison_note}</p>
         </div>
 
         {/* Wealth path selector */}
@@ -267,7 +267,7 @@ export default function ComparePage() {
                 className={`flex-1 text-xs font-semibold px-3 py-2 rounded-full border transition-colors ${
                   selectedRoute === i
                     ? "bg-red-900 text-white border-red-900"
-                    : "bg-white text-ink border-border hover:border-red-600 hover:text-red-800"
+                    : "bg-white text-ink border-border hover:border-red-600 hover:text-red-earth"
                 }`}
               >
                 {r.name}

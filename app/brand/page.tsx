@@ -479,19 +479,19 @@ Please provide:
 
               {PACKAGING_REQUIREMENTS.filter((r) => r.market === packagingMarket).map((req) => (
                 <div key={req.market} className="space-y-3">
-                  <div className="bg-red-50 border border-red-100 rounded-xl p-4">
-                    <p className="text-xs font-bold text-red-700 mb-2">Common mistakes for {req.market}</p>
+                  <div className="bg-red-earth/10 border border-red-earth/20 rounded-xl p-4">
+                    <p className="text-xs font-bold text-red-earth mb-2">Common mistakes for {req.market}</p>
                     <ul className="space-y-1">
                       {req.common_mistakes.map((m, i) => (
-                        <li key={i} className="text-xs text-red-800 flex gap-2">
+                        <li key={i} className="text-xs text-red-earth flex gap-2">
                           <span className="flex-shrink-0">✗</span> {m}
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div className="bg-amber-50 border border-amber-100 rounded-xl p-3">
-                    <p className="text-xs font-bold text-amber-800 mb-1">Pro tip</p>
-                    <p className="text-xs text-amber-900 leading-relaxed">{req.pro_tip}</p>
+                  <div className="bg-gold/10 border border-gold/20 rounded-xl p-3">
+                    <p className="text-xs font-bold text-gold-dark mb-1">Pro tip</p>
+                    <p className="text-xs text-ink leading-relaxed">{req.pro_tip}</p>
                   </div>
                 </div>
               ))}
@@ -555,9 +555,9 @@ Please provide:
                 <p className="text-sm text-muted mb-4 leading-relaxed">{selectedPlatform.note}</p>
 
                 {selectedPlatform.id === "xiaohongshu" && (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-sm">
-                    <p className="font-bold text-red-800 mb-2">Selling on Xiaohongshu (RED) — the China opportunity</p>
-                    <ul className="space-y-2 text-red-800 text-xs">
+                  <div className="bg-red-earth/10 border border-red-earth/30 rounded-xl p-4 text-sm">
+                    <p className="font-bold text-red-earth mb-2">Selling on Xiaohongshu (RED) — the China opportunity</p>
+                    <ul className="space-y-2 text-red-earth text-xs">
                       <li>• 250M+ monthly active users — mostly women, 18–35, urban China</li>
                       <li>• African beauty, food, and craft products are genuinely novel to this audience</li>
                       <li>• Post in Mandarin (use a translator — this is not optional)</li>
@@ -570,9 +570,9 @@ Please provide:
                 )}
 
                 {selectedPlatform.id === "whatsapp" && (
-                  <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-sm">
-                    <p className="font-bold text-emerald-800 mb-2">WhatsApp Broadcast — the most underrated sales tool in Africa</p>
-                    <ul className="space-y-2 text-emerald-800 text-xs">
+                  <div className="bg-light-green/10 border border-light-green/30 rounded-xl p-4 text-sm">
+                    <p className="font-bold text-mid-green mb-2">WhatsApp Broadcast — the most underrated sales tool in Africa</p>
+                    <ul className="space-y-2 text-mid-green text-xs">
                       <li>• Build your broadcast list from day one — every customer who buys, add them</li>
                       <li>• Post 3–5 times per week: product photos, behind-the-scenes, customer reviews</li>
                       <li>• Use WhatsApp Business — it lets you create a catalog and quick replies</li>
@@ -644,13 +644,13 @@ Please provide:
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                  <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-3">
-                    <p className="text-[10px] font-bold text-emerald-700 mb-1">What performs best</p>
-                    <p className="text-xs text-emerald-800 leading-relaxed">{strategy.what_performs_best}</p>
+                  <div className="bg-light-green/10 border border-light-green/20 rounded-xl p-3">
+                    <p className="text-[10px] font-bold text-mid-green mb-1">What performs best</p>
+                    <p className="text-xs text-mid-green leading-relaxed">{strategy.what_performs_best}</p>
                   </div>
-                  <div className="bg-red-50 border border-red-100 rounded-xl p-3">
-                    <p className="text-[10px] font-bold text-red-700 mb-1">What kills reach</p>
-                    <p className="text-xs text-red-800 leading-relaxed">{strategy.what_kills_reach}</p>
+                  <div className="bg-red-earth/10 border border-red-earth/20 rounded-xl p-3">
+                    <p className="text-[10px] font-bold text-red-earth mb-1">What kills reach</p>
+                    <p className="text-xs text-red-earth leading-relaxed">{strategy.what_kills_reach}</p>
                   </div>
                 </div>
 
@@ -711,9 +711,9 @@ Please provide:
                     <p className="text-sm text-ink leading-relaxed">{dive.the_real_story}</p>
                   </div>
                   <div className="grid grid-cols-3 gap-3">
-                    <div className="bg-red-50 rounded-xl p-3 text-center">
-                      <p className="text-[10px] text-red-600 mb-1">Africa earns</p>
-                      <p className="text-xs font-bold text-red-800">{dive.what_africa_earns}</p>
+                    <div className="bg-red-earth/10 rounded-xl p-3 text-center">
+                      <p className="text-[10px] text-red-earth mb-1">Africa earns</p>
+                      <p className="text-xs font-bold text-red-earth">{dive.what_africa_earns}</p>
                     </div>
                     <div className="bg-warm-ivory rounded-xl p-3 text-center">
                       <p className="text-[10px] text-muted mb-1">They earn</p>

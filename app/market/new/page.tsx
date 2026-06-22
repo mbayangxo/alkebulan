@@ -153,7 +153,7 @@ export default function NewListingPage() {
         </p>
 
         {errors._form && (
-          <div className="bg-red-50 border border-red-200 rounded-xl p-4 mb-6 text-sm text-red-700">
+          <div className="bg-red-earth/10 border border-red-earth/30 rounded-xl p-4 mb-6 text-sm text-red-earth">
             {errors._form}
           </div>
         )}

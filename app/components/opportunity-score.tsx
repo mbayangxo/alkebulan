@@ -6,7 +6,7 @@ type ScoreLabel = "Strong Match" | "Good Match" | "Partial Match" | "Low Match";
 
 const SCORE_COLORS: Record<ScoreLabel, { ring: string; text: string; bg: string }> = {
   "Strong Match":  { ring: "#2F855A", text: "#2F855A", bg: "#F0FFF4" },
-  "Good Match":    { ring: "#C9A035", text: "#92700F", bg: "#FFFBEB" },
+  "Good Match":    { ring: "#E05A18", text: "#92700F", bg: "#FFF4F0" },
   "Partial Match": { ring: "#D4874A", text: "#9C4221", bg: "#FFF7ED" },
   "Low Match":     { ring: "#FC8181", text: "#C53030", bg: "#FFF5F5" },
 };

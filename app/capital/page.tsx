@@ -5,9 +5,9 @@ import { Nav } from "@/app/components/nav";
 import { CAPITAL_TYPES, CAPITAL_WISDOM } from "@/lib/data/capital-intelligence";
 
 const OUTCOME_COLORS = {
-  good: "bg-emerald-50 border-emerald-200 text-emerald-800",
-  bad: "bg-red-50 border-red-200 text-red-800",
-  mixed: "bg-amber-50 border-amber-200 text-amber-800",
+  good: "bg-light-green/10 border-light-green/30 text-mid-green",
+  bad: "bg-red-earth/10 border-red-earth/30 text-red-earth",
+  mixed: "bg-gold/10 border-gold/30 text-gold-dark",
 };
 
 const OUTCOME_LABEL = {
@@ -131,7 +131,7 @@ Format your answers conversationally — no bullet points unless listing specifi
         </div>
 
         {/* Bootstrapping callout */}
-        <div className="bg-emerald-900 text-ivory rounded-2xl p-6 mb-8">
+        <div className="bg-deep-green text-ivory rounded-2xl p-6 mb-8">
           <div className="text-xs font-bold text-gold uppercase tracking-widest mb-2">Before you raise anything</div>
           <p className="text-ivory/90 leading-relaxed">{CAPITAL_WISDOM.the_bootstrapping_case}</p>
         </div>
@@ -192,18 +192,18 @@ Format your answers conversationally — no bullet points unless listing specifi
             {/* Best for / not for */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <div className="text-xs font-bold text-emerald-700 uppercase tracking-widest mb-2">Best for</div>
+                <div className="text-xs font-bold text-mid-green uppercase tracking-widest mb-2">Best for</div>
                 <ul className="space-y-1">
                   {current.best_for.map((b, i) => (
                     <li key={i} className="text-sm text-ink flex gap-2">
-                      <span className="text-emerald-600 mt-0.5 flex-shrink-0">✓</span>
+                      <span className="text-light-green mt-0.5 flex-shrink-0">✓</span>
                       <span>{b}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               <div>
-                <div className="text-xs font-bold text-red-600 uppercase tracking-widest mb-2">Not for</div>
+                <div className="text-xs font-bold text-red-earth uppercase tracking-widest mb-2">Not for</div>
                 <ul className="space-y-1">
                   {current.not_for.map((n, i) => (
                     <li key={i} className="text-sm text-ink flex gap-2">
@@ -217,19 +217,19 @@ Format your answers conversationally — no bullet points unless listing specifi
 
             {/* Red flags / Green flags */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-red-50 border border-red-100 rounded-xl p-4">
-                <div className="text-xs font-bold text-red-700 uppercase tracking-widest mb-2">🚩 Red flags</div>
+              <div className="bg-red-earth/10 border border-red-earth/20 rounded-xl p-4">
+                <div className="text-xs font-bold text-red-earth uppercase tracking-widest mb-2">🚩 Red flags</div>
                 <ul className="space-y-1.5">
                   {current.red_flags.map((f, i) => (
-                    <li key={i} className="text-sm text-red-800">{f}</li>
+                    <li key={i} className="text-sm text-red-earth">{f}</li>
                   ))}
                 </ul>
               </div>
-              <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-4">
-                <div className="text-xs font-bold text-emerald-700 uppercase tracking-widest mb-2">✅ Green flags</div>
+              <div className="bg-light-green/10 border border-light-green/20 rounded-xl p-4">
+                <div className="text-xs font-bold text-mid-green uppercase tracking-widest mb-2">✅ Green flags</div>
                 <ul className="space-y-1.5">
                   {current.green_flags.map((f, i) => (
-                    <li key={i} className="text-sm text-emerald-800">{f}</li>
+                    <li key={i} className="text-sm text-mid-green">{f}</li>
                   ))}
                 </ul>
               </div>

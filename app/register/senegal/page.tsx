@@ -34,8 +34,8 @@ function StepCard({ step }: { step: RegistrationStep }) {
           )}
         </div>
         {step.note && (
-          <div className="bg-amber-50 border border-amber-100 rounded-lg px-3 py-2">
-            <p className="text-xs text-amber-800 leading-relaxed">{step.note}</p>
+          <div className="bg-gold/10 border border-gold/20 rounded-lg px-3 py-2">
+            <p className="text-xs text-gold-dark leading-relaxed">{step.note}</p>
           </div>
         )}
       </div>
@@ -66,9 +66,9 @@ function PathCard({ path }: { path: BusinessPath }) {
       </div>
 
       {/* Why this structure */}
-      <div className="px-5 py-4 border-b border-border bg-amber-50/50">
-        <p className="text-xs font-semibold text-amber-800 uppercase tracking-wide mb-1">Why this structure</p>
-        <p className="text-sm text-amber-900 leading-relaxed">{path.why}</p>
+      <div className="px-5 py-4 border-b border-border bg-gold/10/50">
+        <p className="text-xs font-semibold text-gold-dark uppercase tracking-wide mb-1">Why this structure</p>
+        <p className="text-sm text-ink leading-relaxed">{path.why}</p>
       </div>
 
       {/* Steps */}
@@ -153,12 +153,12 @@ export default function SenegalRegistrationPage() {
         ))}
 
         {/* Common mistakes */}
-        <div className="bg-red-50 border border-red-100 rounded-2xl p-6 mb-8">
+        <div className="bg-red-earth/10 border border-red-earth/20 rounded-2xl p-6 mb-8">
           <h2 className="font-display text-lg font-bold text-red-900 mb-4">Common mistakes to avoid</h2>
           <ul className="space-y-3">
             {guide.common_mistakes.map((mistake, i) => (
               <li key={i} className="flex items-start gap-3">
-                <span className="text-red-600 font-bold text-sm flex-shrink-0 mt-0.5">✗</span>
+                <span className="text-red-earth font-bold text-sm flex-shrink-0 mt-0.5">✗</span>
                 <p className="text-sm text-red-900 leading-relaxed">{mistake}</p>
               </li>
             ))}

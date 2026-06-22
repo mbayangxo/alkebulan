@@ -67,8 +67,8 @@ export default async function CountryPage({
         {deep && (
           <>
             {/* Opening narrative */}
-            <div className="bg-amber-50 border border-amber-200/60 rounded-2xl p-6 mb-6">
-              <p className="text-sm text-amber-900 leading-relaxed">{deep.opening}</p>
+            <div className="bg-gold/10 border border-gold/30/60 rounded-2xl p-6 mb-6">
+              <p className="text-sm text-ink leading-relaxed">{deep.opening}</p>
             </div>
 
             {/* Quick facts */}
@@ -96,9 +96,9 @@ export default async function CountryPage({
                         <p className="text-sm text-muted leading-relaxed mb-3">{res.what_it_is}</p>
                         <p className="text-sm text-muted leading-relaxed mb-3">{res.current_state}</p>
                         {/* The gap — amber alert */}
-                        <div className="bg-amber-50 border border-amber-200 rounded-xl p-3">
-                          <p className="text-xs font-semibold text-amber-800 uppercase tracking-wide mb-1">The gap</p>
-                          <p className="text-xs text-amber-900 leading-relaxed">{res.the_gap}</p>
+                        <div className="bg-gold/10 border border-gold/30 rounded-xl p-3">
+                          <p className="text-xs font-semibold text-gold-dark uppercase tracking-wide mb-1">The gap</p>
+                          <p className="text-xs text-ink leading-relaxed">{res.the_gap}</p>
                         </div>
                       </div>
                       {/* Businesses to build */}
@@ -136,16 +136,16 @@ export default async function CountryPage({
                 <p className="text-xs text-muted mb-4">Foreign companies extracting value — and what you can do instead.</p>
                 <div className="space-y-3">
                   {deep.foreign_extraction.map((ext: ForeignExtraction) => (
-                    <div key={ext.sector} className="bg-white border border-red-100 rounded-2xl overflow-hidden">
-                      <div className="bg-red-50 px-5 py-3 border-b border-red-100">
+                    <div key={ext.sector} className="bg-white border border-red-earth/20 rounded-2xl overflow-hidden">
+                      <div className="bg-red-earth/10 px-5 py-3 border-b border-red-earth/20">
                         <div className="flex items-center justify-between gap-3">
-                          <span className="text-xs font-semibold text-red-700 uppercase tracking-wide">{ext.sector}</span>
+                          <span className="text-xs font-semibold text-red-earth uppercase tracking-wide">{ext.sector}</span>
                           <span className="text-xs font-bold text-red-900">{ext.company}</span>
                         </div>
                       </div>
                       <div className="p-5">
                         <p className="text-sm text-muted mb-2">{ext.what_they_do}</p>
-                        <p className="text-xs text-red-700 font-medium mb-3">{ext.what_africa_gets}</p>
+                        <p className="text-xs text-red-earth font-medium mb-3">{ext.what_africa_gets}</p>
                         <div className="flex items-start gap-2 bg-deep-green/5 rounded-lg p-3">
                           <span className="text-deep-green font-bold text-sm flex-shrink-0">→</span>
                           <p className="text-xs text-deep-green leading-relaxed">{ext.what_you_can_do}</p>
@@ -230,8 +230,8 @@ export default async function CountryPage({
                           <p className="text-xs text-gold-dark font-medium mb-1">{builder.sector}</p>
                           <p className="text-xs text-muted leading-relaxed mb-2">{builder.what}</p>
                           {builder.started_with && (
-                            <div className="bg-amber-50 border border-amber-100 rounded-lg px-2.5 py-1.5">
-                              <p className="text-xs text-amber-800 font-medium">Started with: {builder.started_with}</p>
+                            <div className="bg-gold/10 border border-gold/20 rounded-lg px-2.5 py-1.5">
+                              <p className="text-xs text-gold-dark font-medium">Started with: {builder.started_with}</p>
                             </div>
                           )}
                         </div>

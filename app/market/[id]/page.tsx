@@ -217,7 +217,7 @@ export default function ListingPage() {
             </div>
 
             {listing.availableUntil && (
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
+              <div className="bg-gold/10 border border-gold/30 rounded-xl p-4 text-sm text-gold-dark">
                 ⏳ Listed until{" "}
                 {new Date(listing.availableUntil).toLocaleDateString("en-GB", {
                   day: "numeric", month: "long", year: "numeric"

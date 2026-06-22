@@ -38,7 +38,7 @@ export function FlagListing({ opportunityId, opportunityTitle }: FlagListingProp
     return (
       <button
         onClick={() => setOpen(true)}
-        className="text-[10px] font-medium text-muted hover:text-amber-700 transition-colors underline underline-offset-2"
+        className="text-[10px] font-medium text-muted hover:text-gold-dark transition-colors underline underline-offset-2"
       >
         Flag as changed
       </button>
@@ -77,8 +77,8 @@ export function FlagListing({ opportunityId, opportunityTitle }: FlagListingProp
               </button>
             </div>
 
-            <div className="bg-amber-50 border border-amber-100 rounded-xl px-3 py-2 mb-4">
-              <p className="text-[10px] text-amber-800 font-medium line-clamp-2">{opportunityTitle}</p>
+            <div className="bg-gold/10 border border-gold/20 rounded-xl px-3 py-2 mb-4">
+              <p className="text-[10px] text-gold-dark font-medium line-clamp-2">{opportunityTitle}</p>
             </div>
 
             <div className="mb-4">
@@ -116,7 +116,7 @@ export function FlagListing({ opportunityId, opportunityTitle }: FlagListingProp
               <button
                 onClick={submit}
                 disabled={!what.trim() || state === "submitting"}
-                className="flex-1 text-sm font-semibold bg-amber-600 text-white rounded-full py-2 hover:bg-amber-700 transition-colors disabled:opacity-40"
+                className="flex-1 text-sm font-semibold bg-gold text-white rounded-full py-2 hover:bg-gold-dark transition-colors disabled:opacity-40"
               >
                 {state === "submitting" ? "Sending…" : "Flag it"}
               </button>
