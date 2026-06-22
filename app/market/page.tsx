@@ -133,9 +133,12 @@ export default function MarketPage() {
             >
               + List your supply
             </Link>
-            <span className="inline-flex items-center gap-2 border border-ivory/30 text-ivory/80 px-6 py-3 rounded-full text-sm">
-              {listings.length} listings active
-            </span>
+            <Link
+              href="/market/guide"
+              className="inline-flex items-center gap-2 border border-ivory/30 text-ivory/80 px-6 py-3 rounded-full text-sm hover:border-gold hover:text-ivory transition-colors"
+            >
+              Producers &amp; sellers guide →
+            </Link>
           </div>
         </div>
       </section>
