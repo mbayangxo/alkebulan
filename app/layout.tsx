@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Jost } from "next/font/google";
+import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { PWARegister } from "@/app/components/pwa-register";
 import { LocaleProvider } from "@/app/components/locale-context";
@@ -16,10 +16,10 @@ const fraunces = Fraunces({
   style: ["normal", "italic"],
 });
 
-const jost = Jost({
+const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jost",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -52,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${jost.variable} h-full antialiased`}>
+    <html lang="en" className={`${fraunces.variable} ${jakarta.variable} h-full antialiased`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
       </head>
