@@ -29,7 +29,7 @@ export default function LandingPage() {
               ))}
               <span className="text-white/20">·</span>
               <Link href="/build-business" className="flex items-center gap-2 bg-[#E05A18] hover:bg-[#F27840] text-[#0B3D2E] font-bold px-5 py-2 rounded-full transition-colors">
-                <AlkebulanLion size={14} /> Build a Business
+                <AlkebulanLion size={14} /> Alkebulan Builder
               </Link>
             </div>
             <div className="lg:hidden flex items-center gap-3">
@@ -65,30 +65,32 @@ export default function LandingPage() {
 
             {/* Main headline */}
             <h1 style={{ fontFamily: "var(--font-fraunces)", lineHeight: 1.0, letterSpacing: "-0.02em" }}
-              className="font-bold text-white mb-8"
-              >
+              className="font-bold text-white mb-8">
               <span className="block text-[clamp(3rem,9vw,7.5rem)]">Africa is not</span>
-              <span className="block text-[clamp(3rem,9vw,7.5rem)]">a place to ask</span>
-              <span className="block text-[clamp(3rem,9vw,7.5rem)]" style={{ color: "#E05A18" }}>for money.</span>
+              <span className="block text-[clamp(3rem,9vw,7.5rem)]">behind.</span>
+              <span className="block text-[clamp(3rem,9vw,7.5rem)]" style={{ color: "#E05A18" }}>Africa is early.</span>
             </h1>
 
             {/* Sub-headline */}
             <p style={{ fontFamily: "var(--font-fraunces)", color: "rgba(255,255,255,0.5)", lineHeight: 1.3 }}
-              className="text-[clamp(1.5rem,4vw,2.25rem)] italic font-light mb-12 max-w-2xl">
-              It&apos;s a place to build wealth.
+              className="text-[clamp(1.4rem,3.5vw,2rem)] italic font-light mb-8 max-w-2xl">
+              The infrastructure is being built. The markets are forming.
+              The wealth is being created — right now, all around you.
             </p>
 
-            <p className="text-white/50 text-base max-w-xl leading-relaxed mb-12">
-              Alkebulan opens your eyes to what is already in front of you —
-              the industries to enter, the businesses to build, the paths that
-              have already been walked. Then shows you exactly how.
+            <p className="text-white/45 text-base max-w-xl leading-relaxed mb-3">
+              Most people living in Africa don&apos;t realise what they are sitting next to.
+              The industries around them. The markets being built. The paths that already exist.
+            </p>
+            <p className="text-white/45 text-base max-w-xl leading-relaxed mb-12">
+              Alkebulan opens your eyes. Then shows you exactly how to move.
             </p>
 
             <div className="flex flex-wrap gap-4">
               <Link href="/path"
                 className="inline-flex items-center gap-3 font-bold px-8 py-4 rounded-full text-sm uppercase tracking-[0.08em] transition-all"
                 style={{ background: "#E05A18", color: "#0B3D2E" }}>
-                Build my roadmap
+                Show me the opportunity
                 <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
                   <path d="M5 12H19M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 </svg>
@@ -106,27 +108,61 @@ export default function LandingPage() {
             <p style={{ fontFamily: "var(--font-fraunces)", color: "#E05A18", fontSize: "5rem", lineHeight: 1, fontWeight: 700 }}>
               54
             </p>
-            <p className="text-white/30 text-xs uppercase tracking-[0.2em]">African countries</p>
+            <p className="text-white/30 text-xs uppercase tracking-[0.2em]">African countries mapped</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHAT ALKEBULAN IS (mission strip) ── */}
+      <section className="py-10" style={{ background: "#071F15", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12">
+            <p style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", fontSize: "clamp(1rem,2.5vw,1.35rem)", lineHeight: 1.4, fontWeight: 500, flexShrink: 0 }}
+              className="italic max-w-lg">
+              &ldquo;Built for the young person in Lagos, Nairobi, Accra, Dakar — who is already trying, but hasn&apos;t been shown what&apos;s actually possible.&rdquo;
+            </p>
+            <div className="hidden sm:block h-16 w-px" style={{ background: "rgba(255,255,255,0.1)" }} />
+            <p style={{ color: "rgba(253,250,244,0.4)", fontSize: "13px", lineHeight: 1.75 }}>
+              Not grants. Not aid. Not charity.<br />
+              Industry intelligence, real business paths, and the tools to build — whether a grant ever comes or not.
+            </p>
           </div>
         </div>
       </section>
 
       {/* ── EXTRACTION TRUTH ── */}
-      <section className="py-6" style={{ background: "#F5EFE0", borderBottom: "1px solid #E0D8C8" }}>
+      <section className="py-16 lg:py-20" style={{ background: "#F5EFE0" }}>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-          <div className="flex flex-wrap items-center gap-x-12 gap-y-3">
-            <p style={{ letterSpacing: "0.2em", color: "#B04510", fontSize: "9px" }} className="font-semibold uppercase flex-shrink-0">
-              What leaves Africa
+          <div className="mb-10">
+            <p style={{ letterSpacing: "0.2em", color: "#B04510", fontSize: "10px" }} className="font-semibold uppercase mb-3">
+              The gap that exists
             </p>
+            <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#0B3D2E", lineHeight: 1.1 }}
+              className="font-bold text-[clamp(1.75rem,4vw,3rem)] max-w-2xl">
+              Africa produces the world&apos;s most valuable commodities. And earns almost none of the value.
+            </h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              "Ghana grows 65% of world cocoa · earns 6% of chocolate value",
-              "Ethiopia invented coffee · earns 0.2% of the $500B market",
-              "DRC has 65% of global cobalt · earns 3% of EV battery value",
-              "$100B flows into Africa via remittance · $12B taken in fees",
-            ].map((fact) => (
-              <p key={fact} style={{ color: "#6B5B45", fontSize: "11px" }} className="flex items-center gap-2">
-                <span style={{ color: "#E05A18" }}>—</span> {fact}
-              </p>
+              { commodity: "Cocoa", country: "Ghana", fact: "Grows 65% of the world's cocoa", gap: "Earns 6% of chocolate's value", href: "/industry/cocoa" },
+              { commodity: "Coffee", country: "Ethiopia", fact: "Invented coffee. Still feeds the world.", gap: "Earns 0.2% of the $500B market", href: "/industry/coffee" },
+              { commodity: "Cobalt", country: "DRC", fact: "Holds 65% of global cobalt supply", gap: "Earns 3% of EV battery value", href: "/industry/coltan" },
+              { commodity: "Remittance", country: "Continent", fact: "$100B flows in from diaspora yearly", gap: "$12B taken in transfer fees alone", href: "/industry/remittance" },
+            ].map((item) => (
+              <Link key={item.commodity} href={item.href}
+                className="group p-6 rounded-2xl transition-all"
+                style={{ background: "#0B3D2E", border: "1px solid rgba(255,255,255,0.06)" }}>
+                <p style={{ color: "rgba(224,90,24,0.7)", fontSize: "10px", letterSpacing: "0.18em" }}
+                  className="font-semibold uppercase mb-3">{item.country}</p>
+                <p style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.2 }}
+                  className="font-bold text-lg mb-2">{item.commodity}</p>
+                <p style={{ color: "rgba(253,250,244,0.5)", fontSize: "12px", lineHeight: 1.6 }} className="mb-4">{item.fact}</p>
+                <div style={{ borderTop: "1px solid rgba(224,90,24,0.2)" }} className="pt-4">
+                  <p style={{ color: "#E05A18", fontSize: "12px", fontWeight: 700 }}>{item.gap}</p>
+                </div>
+                <p style={{ color: "rgba(224,90,24,0.5)", fontSize: "10px", letterSpacing: "0.1em" }}
+                  className="font-semibold uppercase mt-4">See the entry points →</p>
+              </Link>
             ))}
           </div>
         </div>
@@ -141,8 +177,12 @@ export default function LandingPage() {
             </p>
             <h2 style={{ fontFamily: "var(--font-fraunces)", lineHeight: 1.05, color: "#0B3D2E" }}
               className="font-bold text-[clamp(2rem,5vw,3.75rem)] max-w-3xl">
-              Not a database. An operating system for African opportunity.
+              Not a grant portal. An operating system for people who want to build.
             </h2>
+            <p style={{ color: "#6B5B45", lineHeight: 1.75, maxWidth: "36rem", marginTop: "1.25rem" }} className="text-base">
+              Grants run out. Government programs close. Markets don&apos;t.
+              Alkebulan is built around the opportunity that exists whether or not a grant exists.
+            </p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-0 border border-[#E0D8C8] rounded-3xl overflow-hidden">
@@ -166,8 +206,8 @@ export default function LandingPage() {
               },
               {
                 num: "03",
-                title: "AI Business Builder",
-                sub: "A structured multi-step session that builds your actual business plan — not a chat box.",
+                title: "Alkebulan Builder",
+                sub: "A structured session that builds your actual business plan — market, first sale, 12-month roadmap. Not a chat box.",
                 detail: "Market analysis · First sale · 12-month roadmap",
                 href: "/build-business",
                 cta: "Start Building",
@@ -213,10 +253,10 @@ export default function LandingPage() {
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 border border-white/10 rounded-3xl overflow-hidden">
             {[
-              { n: "$1T+", label: "African government contracts per year", sub: "3% bid. You could." },
-              { n: "54", label: "Countries with full intelligence coverage", sub: "Every market mapped." },
-              { n: "$100B", label: "Diaspora remittances into Africa yearly", sub: "Waiting to become equity." },
-              { n: "6%", label: "Of chocolate value stays in cocoa-growing Africa", sub: "94% is your opportunity." },
+              { n: "1.4B", label: "People living inside Africa right now", sub: "The largest young market on earth." },
+              { n: "54", label: "Countries with full intelligence coverage", sub: "Every market, every opportunity." },
+              { n: "$1T+", label: "In untapped market value across the continent", sub: "Most of it invisible without a map." },
+              { n: "6%", label: "Of chocolate value stays in cocoa-growing Africa", sub: "The other 94% is your entry point." },
             ].map((s, i) => (
               <div key={s.n} className="p-8 lg:p-10"
                 style={{ borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.08)" : "none" }}>
@@ -243,17 +283,22 @@ export default function LandingPage() {
               </p>
               <h2 style={{ fontFamily: "var(--font-fraunces)", lineHeight: 1.05, color: "#0B3D2E" }}
                 className="font-bold text-[clamp(2rem,4.5vw,3.5rem)] mb-8">
-                Your goal.<br />Your path.<br />Your first step.
+                First, we show you<br />what is possible.<br /><span style={{ color: "#E05A18" }}>Then how to do it.</span>
               </h2>
+              <p style={{ color: "#6B5B45", lineHeight: 1.75 }} className="text-base mb-4 max-w-lg">
+                Most people don&apos;t know they can build something. No one taught them.
+                No one showed them the industries around them, the businesses that already
+                work, or the path that people like them have already walked.
+              </p>
               <p style={{ color: "#6B5B45", lineHeight: 1.75 }} className="text-base mb-10 max-w-lg">
-                Most platforms say: here is a grant. Alkebulan says: you want to launch a
-                beauty brand in Senegal — here are the 7 steps, in order, with the exact
-                cost, timeline, and program at each stage.
+                Alkebulan does that first. Once you see it — then we give you
+                the exact steps. In order. With real costs and real timelines.
+                No grant required.
               </p>
               <Link href="/path"
                 className="inline-flex items-center gap-3 font-bold px-8 py-4 rounded-full text-sm uppercase tracking-[0.08em] transition-all"
                 style={{ background: "#0B3D2E", color: "#FDFAF4" }}>
-                Build my roadmap →
+                Show me what&apos;s possible →
               </Link>
             </div>
 
@@ -264,19 +309,19 @@ export default function LandingPage() {
                   <div className="w-2 h-2 rounded-full" style={{ background: "#E05A18" }} />
                   <p style={{ fontSize: "10px", letterSpacing: "0.18em", color: "rgba(224,90,24,0.7)" }}
                     className="font-semibold uppercase">
-                    Example · Beauty brand · Senegal
+                    Example · Skincare brand · Lagos, Nigeria
                   </p>
                 </div>
               </div>
               <div className="p-6 space-y-2.5">
                 {[
-                  { n: 1, text: "Register at RCCM Dakar", meta: "2 weeks · $40", done: true },
-                  { n: 2, text: "Open business bank account (BNDE)", meta: "1 week · Free", done: true },
-                  { n: 3, text: "Apply to DER/FJ Women's Fund — 1.5M CFA", meta: "4 weeks · Free", done: false },
-                  { n: 4, text: "ADPME SME training program", meta: "3 weeks · Free", done: false },
-                  { n: 5, text: "Tony Elumelu Foundation — $5,000", meta: "3 months · Free", done: false },
-                  { n: 6, text: "Register on ARMP tender portal", meta: "1 week · $20", done: false },
-                  { n: 7, text: "Bid: government cosmetics supply tender", meta: "Ongoing · 5% bid bond", done: false },
+                  { n: 1, text: "Register your business name at CAC", meta: "1 week · ₦10,000 (~$6)", done: true },
+                  { n: 2, text: "Open a business account at GTBank or Access", meta: "3 days · Free", done: true },
+                  { n: 3, text: "Source raw shea butter from Kwara suppliers", meta: "2 weeks · ₦80,000 starter stock", done: false },
+                  { n: 4, text: "Sell first 20 units via Instagram + WhatsApp", meta: "Month 1 · Zero ad spend", done: false },
+                  { n: 5, text: "List on Jumia and Konga", meta: "3 days setup · 10% commission", done: false },
+                  { n: 6, text: "Pitch to Shoprite / Hubmart for shelf space", meta: "Month 4 · Supply agreement", done: false },
+                  { n: 7, text: "Export to diaspora via DHL + Shopify storefront", meta: "Month 8 · $3,000–$8,000/month", done: false },
                 ].map(({ n, text, meta, done }) => (
                   <div key={n} className="flex items-start gap-3 px-4 py-3 rounded-xl"
                     style={{ background: done ? "rgba(224,90,24,0.1)" : "rgba(255,255,255,0.04)" }}>
@@ -465,9 +510,10 @@ export default function LandingPage() {
           <AlkebulanCrest size={56} className="mx-auto mb-10" />
           <blockquote style={{ fontFamily: "var(--font-fraunces)", color: "#0B3D2E", lineHeight: 1.35, fontWeight: 500 }}
             className="text-[clamp(1.4rem,3.5vw,2rem)] italic mb-8">
-            &ldquo;This platform is not about charity. It is not about development aid.
-            It is about ownership, wealth, business, culture, and the opportunity
-            that has always been here — waiting to be claimed.&rdquo;
+            &ldquo;The young person selling things on the street in Accra is not failing.
+            They are untaught. No one showed them the industry around them,
+            the business that could scale it, or the step that comes next.
+            That is what Alkebulan is here to do.&rdquo;
           </blockquote>
           <p style={{ color: "#9B8B75", letterSpacing: "0.12em", fontSize: "11px" }} className="uppercase font-semibold">
             Alkebulan — Mother of Mankind
@@ -480,22 +526,25 @@ export default function LandingPage() {
         <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
           <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.0, fontWeight: 700 }}
             className="text-[clamp(3rem,8vw,6rem)] mb-8">
-            Your path<br />starts <span style={{ color: "#E05A18" }}>here.</span>
+            You&apos;re in the<br />right <span style={{ color: "#E05A18" }}>place.</span>
           </h2>
-          <p style={{ color: "rgba(253,250,244,0.5)", lineHeight: 1.7 }} className="text-base mb-12 max-w-xl mx-auto">
-            Tell us your goal. Get your roadmap. No credit card.
-            No grant applications. Just the path.
+          <p style={{ color: "rgba(253,250,244,0.5)", lineHeight: 1.7 }} className="text-base mb-4 max-w-xl mx-auto">
+            You don&apos;t need a grant to start. You don&apos;t need to move abroad.
+            You need to see what is already around you — and know what to do with it.
+          </p>
+          <p style={{ color: "rgba(253,250,244,0.35)", lineHeight: 1.7 }} className="text-sm mb-12 max-w-xl mx-auto">
+            Tell us where you are and what you want to do. We&apos;ll show you the opportunity and the exact steps.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/path"
               className="inline-flex items-center gap-3 font-bold px-10 py-4 rounded-full text-sm uppercase tracking-[0.08em] transition-all"
               style={{ background: "#E05A18", color: "#0B3D2E" }}>
-              Build my roadmap →
+              Show me what&apos;s possible →
             </Link>
             <Link href="/build-business"
               className="inline-flex items-center gap-3 font-semibold px-10 py-4 rounded-full text-sm uppercase tracking-[0.08em] transition-all"
               style={{ border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.7)" }}>
-              AI Business Builder
+              Alkebulan Builder
             </Link>
           </div>
         </div>
