@@ -15,10 +15,10 @@
   --gold-light: #F27840;
   --gold-dark: #B04510;
 
-  /* Silver — clarity, modernity (replaces ivory; CSS names kept) */
-  --ivory: #F2F3F6;
-  --warm-ivory: #E8EBF2;
-  --border: #C8CCDA;
+  /* Warm parchment — replaces cool silver */
+  --ivory: #FDFAF4;
+  --warm-ivory: #F5EFE0;
+  --border: #E0D8C8;
 
   /* Indigo — knowledge, depth, intelligence */
   --indigo: #3730A3;
