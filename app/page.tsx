@@ -4,7 +4,8 @@ import { SAMPLE_OPPORTUNITIES } from "@/lib/data/sample-opportunities";
 import { SUCCESS_STORIES } from "@/lib/data/success-stories";
 import { WEALTH_PATHS } from "@/lib/wealth-paths";
 import { INDUSTRIES } from "@/lib/data/industry-intelligence";
-import { VideoEmbed, VideoGrid } from "./components/video-embed";
+import { VideoEmbed } from "./components/video-embed";
+import { ResourceVideoSection } from "./components/resource-video";
 
 const FEATURED_STORIES = SUCCESS_STORIES.slice(0, 3);
 
@@ -354,43 +355,47 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ── VIDEO SECTION ── */}
-      <section className="py-24" style={{ background: "#071F15" }}>
+      {/* ── RESOURCE VIDEOS ── */}
+      <section className="py-20" style={{ background: "#071F15" }}>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="mb-12">
-            <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-4">
-              Watch
+            <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">
+              What Africa has
             </p>
             <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.05 }}
-              className="font-bold text-[clamp(2rem,4.5vw,3.5rem)]">
-              See what is possible.
+              className="font-bold text-[clamp(1.75rem,4vw,2.75rem)] max-w-2xl mb-2">
+              The raw materials are here. The markets are forming.
             </h2>
+            <p style={{ color: "rgba(253,250,244,0.35)", fontSize: "14px", lineHeight: 1.7 }} className="max-w-xl">
+              Fruits, fish, agriculture, minerals — Africa has always had the supply.
+              What&apos;s being built now is the infrastructure to own more of the value.
+            </p>
           </div>
 
-          {/* Featured video — replace the src with your YouTube URL */}
-          <div className="mb-8">
-            <VideoEmbed
-              src="https://www.youtube.com/watch?v=LnzgE9DXNLA"
-              title="Africa is early — the opportunity hiding in plain sight"
-              caption="What Alkebulan is and why it exists"
-            />
+          <div className="space-y-10">
+            <div>
+              <p style={{ fontSize: "9px", letterSpacing: "0.2em", color: "rgba(224,90,24,0.5)" }} className="font-semibold uppercase mb-4">
+                Fruits &amp; Agriculture
+              </p>
+              <ResourceVideoSection
+                title=""
+                query="fruits"
+                count={4}
+                layout="strip"
+              />
+            </div>
+            <div>
+              <p style={{ fontSize: "9px", letterSpacing: "0.2em", color: "rgba(224,90,24,0.5)" }} className="font-semibold uppercase mb-4">
+                Fishing &amp; Ocean Resources
+              </p>
+              <ResourceVideoSection
+                title=""
+                query="fish"
+                count={4}
+                layout="strip"
+              />
+            </div>
           </div>
-
-          {/* Secondary videos — replace src values with your YouTube URLs */}
-          <VideoGrid
-            videos={[
-              {
-                src: "https://www.youtube.com/watch?v=gHBKqAMT5SM",
-                title: "Inside the cocoa value chain — who earns what",
-                caption: "Industry Intelligence walkthrough",
-              },
-              {
-                src: "https://www.youtube.com/watch?v=1wkPMUZ9vX8",
-                title: "How to use the Alkebulan Path Builder",
-                caption: "Get your roadmap in under 5 minutes",
-              },
-            ]}
-          />
         </div>
       </section>
 
