@@ -4,6 +4,7 @@ import { SAMPLE_OPPORTUNITIES } from "@/lib/data/sample-opportunities";
 import { SUCCESS_STORIES } from "@/lib/data/success-stories";
 import { WEALTH_PATHS } from "@/lib/wealth-paths";
 import { INDUSTRIES } from "@/lib/data/industry-intelligence";
+import { VideoEmbed, VideoGrid } from "./components/video-embed";
 
 const FEATURED_STORIES = SUCCESS_STORIES.slice(0, 3);
 
@@ -353,6 +354,46 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ── VIDEO SECTION ── */}
+      <section className="py-24" style={{ background: "#071F15" }}>
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
+          <div className="mb-12">
+            <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-4">
+              Watch
+            </p>
+            <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.05 }}
+              className="font-bold text-[clamp(2rem,4.5vw,3.5rem)]">
+              See what is possible.
+            </h2>
+          </div>
+
+          {/* Featured video — replace the src with your YouTube URL */}
+          <div className="mb-8">
+            <VideoEmbed
+              src="https://www.youtube.com/watch?v=LnzgE9DXNLA"
+              title="Africa is early — the opportunity hiding in plain sight"
+              caption="What Alkebulan is and why it exists"
+            />
+          </div>
+
+          {/* Secondary videos — replace src values with your YouTube URLs */}
+          <VideoGrid
+            videos={[
+              {
+                src: "https://www.youtube.com/watch?v=gHBKqAMT5SM",
+                title: "Inside the cocoa value chain — who earns what",
+                caption: "Industry Intelligence walkthrough",
+              },
+              {
+                src: "https://www.youtube.com/watch?v=1wkPMUZ9vX8",
+                title: "How to use the Alkebulan Path Builder",
+                caption: "Get your roadmap in under 5 minutes",
+              },
+            ]}
+          />
+        </div>
+      </section>
+
       {/* ── INDUSTRY INTELLIGENCE PREVIEW ── */}
       <section className="py-24" style={{ background: "#F5EFE0" }}>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
@@ -414,9 +455,13 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-3 gap-5">
             {FEATURED_STORIES.map((story) => {
               const initials = story.name.split(" ").map((n: string) => n[0]).join("");
+              const videoUrl = (story as Record<string, unknown>).video_url as string | undefined;
               return (
                 <div key={story.id} className="rounded-2xl overflow-hidden"
                   style={{ background: "#FDFAF4", border: "1px solid #E0D8C8" }}>
+                  {videoUrl && (
+                    <VideoEmbed src={videoUrl} title={story.headline} className="rounded-none" />
+                  )}
                   <div className="p-6">
                     <div className="flex items-center gap-3 mb-5">
                       <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0"
