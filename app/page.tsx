@@ -532,6 +532,57 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ── THE NAME ── */}
+      <section className="py-24 lg:py-32" style={{ background: "#0B3D2E" }}>
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
+          <div className="max-w-3xl">
+
+            {/* Name reveal — AL faded, KEBU lit, LAN faded */}
+            <div className="flex items-baseline mb-10 select-none" aria-label="Alkebulan">
+              <span style={{ fontFamily: "var(--font-fraunces)", color: "rgba(253,250,244,0.18)", fontSize: "clamp(2.75rem,8vw,5.5rem)", fontWeight: 700, letterSpacing: "0.04em", lineHeight: 1 }}>
+                AL
+              </span>
+              <span style={{ fontFamily: "var(--font-fraunces)", color: "#E05A18", fontSize: "clamp(2.75rem,8vw,5.5rem)", fontWeight: 700, letterSpacing: "0.04em", lineHeight: 1 }}>
+                KEBU
+              </span>
+              <span style={{ fontFamily: "var(--font-fraunces)", color: "rgba(253,250,244,0.18)", fontSize: "clamp(2.75rem,8vw,5.5rem)", fontWeight: 700, letterSpacing: "0.04em", lineHeight: 1 }}>
+                LAN
+              </span>
+            </div>
+
+            {/* Translation */}
+            <p style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", fontSize: "clamp(1.1rem,2.5vw,1.5rem)", lineHeight: 1.4, fontWeight: 500 }}
+              className="italic mb-8">
+              &ldquo;Mother of Mankind.&rdquo; The ancient name for Africa.
+            </p>
+
+            {/* History */}
+            <div className="space-y-4 max-w-2xl">
+              <p style={{ color: "rgba(253,250,244,0.55)", lineHeight: 1.8 }} className="text-sm">
+                Before the continent was called Africa — a name that came from outside — the land had its own name, given by its own people. <span style={{ color: "rgba(253,250,244,0.85)", fontWeight: 500 }}>Alkebulan.</span> It was used by the Moors, the Nubians, the Ethiopians, and the Carthaginians. Ancient civilisations that built empires, mapped the stars, traded across oceans, and gave the world mathematics, architecture, and medicine before Europe had modern cities.
+              </p>
+              <p style={{ color: "rgba(253,250,244,0.55)", lineHeight: 1.8 }} className="text-sm">
+                The name was not lost. It was buried under centuries of extraction, renaming, and the deliberate erasure of what Africa was before the world decided what it would become.
+              </p>
+              <p style={{ color: "rgba(253,250,244,0.55)", lineHeight: 1.8 }} className="text-sm">
+                We kept the heart of it. <span style={{ color: "#E05A18", fontWeight: 600 }}>Kebu.</span> The core of the oldest name for the oldest place. A platform built not on what Africa needs from the world — but on what Africa already has, and what it is becoming.
+              </p>
+            </div>
+
+            {/* Ka Score mention */}
+            <div className="mt-12 pt-8 border-t border-white/10">
+              <div className="flex items-center gap-3 mb-2">
+                <span style={{ fontFamily: "var(--font-fraunces)", color: "#E05A18", fontSize: "1.1rem", fontWeight: 700 }}>Ka</span>
+                <span style={{ color: "rgba(253,250,244,0.3)", fontSize: "11px", letterSpacing: "0.2em" }} className="font-semibold uppercase">Coming · Business credit for African builders</span>
+              </div>
+              <p style={{ color: "rgba(253,250,244,0.4)", fontSize: "12px", lineHeight: 1.7 }} className="max-w-lg">
+                Ka — the ancient Egyptian concept of life force and vital energy. Your business credit profile on Kebu, built from real activity: what you have, what you sell, what you build. A score that grows as you do — and opens doors that have been closed to informal businesses for too long.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── MANIFESTO ── */}
       <section className="py-24 lg:py-32" style={{ background: "#FDFAF4", borderTop: "1px solid #E0D8C8" }}>
         <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">

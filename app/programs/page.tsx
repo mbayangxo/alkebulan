@@ -9,6 +9,7 @@ import {
   type ProgramEntry,
 } from "@/lib/data/all-country-programs";
 import { COUNTRY_WEALTH } from "@/lib/data/country-wealth";
+import { COUNTRY_GAPS } from "@/lib/data/country-gaps";
 
 const REGIONS = ["All regions", "West Africa", "East Africa", "North Africa", "Southern Africa", "Central Africa"] as const;
 
@@ -360,6 +361,53 @@ function CountryCard({
               </div>
             )}
           </div>
+
+          {/* Business gaps — what's missing and what someone could build */}
+          {COUNTRY_GAPS[profile.country] && (
+            <div className="p-5 border-b border-border">
+              <p className="text-[10px] font-bold text-gold-dark uppercase tracking-widest mb-1">
+                Gaps in {profile.country} — what someone could build
+              </p>
+              <p className="text-xs text-muted mb-4 leading-relaxed">
+                Real, specific problems with no dominant solution. Each one is a business entry point.
+              </p>
+              <div className="space-y-4">
+                {COUNTRY_GAPS[profile.country].map((gap) => (
+                  <div key={gap.id} className="rounded-xl border border-border overflow-hidden">
+                    <div className="px-4 py-3 bg-deep-green/4">
+                      <div className="flex items-start justify-between gap-3 mb-1">
+                        <p className="text-xs font-bold text-ink leading-snug">{gap.problem}</p>
+                        <span className="text-[9px] font-bold text-deep-green bg-deep-green/8 border border-deep-green/15 px-2 py-0.5 rounded-full flex-shrink-0 uppercase tracking-wide">
+                          {gap.industry.split("·")[0].trim()}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-muted leading-relaxed">{gap.who}</p>
+                    </div>
+                    <div className="px-4 py-3 space-y-3">
+                      <div>
+                        <p className="text-[9px] font-bold text-muted uppercase tracking-widest mb-1">The gap</p>
+                        <p className="text-xs text-ink leading-relaxed">{gap.gap}</p>
+                      </div>
+                      <div className="rounded-lg bg-gold/6 border border-gold/20 px-3 py-2.5">
+                        <p className="text-[9px] font-bold text-gold-dark uppercase tracking-widest mb-1">What to build</p>
+                        <p className="text-xs text-ink leading-relaxed">{gap.build}</p>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <p className="text-[9px] font-bold text-muted uppercase tracking-widest mb-1">Starting capital</p>
+                          <p className="text-xs text-deep-green font-semibold">{gap.capital}</p>
+                        </div>
+                        <div>
+                          <p className="text-[9px] font-bold text-muted uppercase tracking-widest mb-1">First step</p>
+                          <p className="text-xs text-ink leading-relaxed">{gap.first_step}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Procurement portal */}
           {(category === "all" || category === "procurement") && profile.procurement_portal && (
