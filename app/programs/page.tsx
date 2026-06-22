@@ -8,6 +8,7 @@ import {
   type CountryOpportunityProfile,
   type ProgramEntry,
 } from "@/lib/data/all-country-programs";
+import { COUNTRY_WEALTH } from "@/lib/data/country-wealth";
 
 const REGIONS = ["All regions", "West Africa", "East Africa", "North Africa", "Southern Africa", "Central Africa"] as const;
 
@@ -244,7 +245,8 @@ function CountryCard({
         onClick={() => setExpanded(!expanded)}
         className="w-full text-left p-5 hover:bg-warm-ivory transition-colors"
       >
-        <div className="flex items-start justify-between gap-4">
+        {/* Header row */}
+        <div className="flex items-start justify-between gap-4 mb-3">
           <div className="flex items-center gap-3">
             <span className="text-3xl">{profile.flag}</span>
             <div>
@@ -262,7 +264,37 @@ function CountryCard({
             <span className="text-gold text-lg">{expanded ? "▾" : "▸"}</span>
           </div>
         </div>
-        <p className="text-xs text-muted mt-2 leading-relaxed text-left">{profile.the_opportunity}</p>
+
+        {/* What this country has */}
+        {COUNTRY_WEALTH[profile.country] && (
+          <div className="mb-3">
+            <p className="text-[10px] font-bold text-gold-dark uppercase tracking-widest mb-1.5">
+              What {profile.country} has
+            </p>
+            <p className="text-xs text-ink font-medium mb-2 leading-snug">
+              {COUNTRY_WEALTH[profile.country].headline}
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {COUNTRY_WEALTH[profile.country].resources.map(r => (
+                <span key={r} className="text-[10px] font-semibold bg-gold/8 border border-gold/20 text-gold-dark px-2 py-0.5 rounded-full">
+                  {r}
+                </span>
+              ))}
+            </div>
+            {COUNTRY_WEALTH[profile.country].market_size && (
+              <p className="text-[10px] text-muted mt-2 font-medium">
+                {COUNTRY_WEALTH[profile.country].market_size}
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* The opportunity */}
+        <p className="text-xs text-deep-green font-medium leading-relaxed text-left border-l-2 border-gold/40 pl-3">
+          {profile.the_opportunity}
+        </p>
+
+        {/* Active sectors */}
         <div className="flex flex-wrap gap-1 mt-3">
           {profile.key_sectors.map(s => (
             <span key={s} className="text-[10px] bg-warm-ivory border border-border text-muted px-2 py-0.5 rounded-full">{s}</span>
