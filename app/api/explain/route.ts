@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest } from "next/server";
+import { aiRateLimit } from "@/lib/api-guard";
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
@@ -15,6 +16,8 @@ Rules:
 - Never say "empowerment." Never say "beneficiaries." Talk like a friend.`;
 
 export async function POST(req: NextRequest) {
+  const limited = aiRateLimit(req);
+  if (limited) return limited;
   const { name, what, for_who, amount, apply_at, indigenous_note, country, profile } = await req.json();
 
   if (!name || !what) {

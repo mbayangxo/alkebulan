@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest } from "next/server";
+import { aiRateLimit } from "@/lib/api-guard";
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
@@ -29,6 +30,8 @@ export interface ScanResult {
 }
 
 export async function POST(req: NextRequest) {
+  const limited = aiRateLimit(req);
+  if (limited) return limited;
   const { imageBase64, mediaType = "image/jpeg" } = await req.json() as {
     imageBase64: string;
     mediaType?: string;

@@ -33,13 +33,27 @@ export async function POST(
 }
 
 export async function GET(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: { id: string } }
 ) {
   const listing = await getListing(params.id);
   if (!listing) return NextResponse.json({ error: "Listing not found" }, { status: 404 });
+
   const enquiries = await getEnquiriesForListing(params.id);
-  return NextResponse.json({ listing, enquiries });
+
+  // Only return full contact details to the seller.
+  // Sellers identify themselves with the ADMIN_PASSWORD header until a proper
+  // seller-auth system is in place.
+  const adminKey = process.env.ADMIN_PASSWORD;
+  const isOwner = adminKey && req.headers.get("x-seller-key") === adminKey;
+
+  const safeEnquiries = isOwner
+    ? enquiries
+    : enquiries.map(({ buyerName, quantity, unit, message, status, createdAt, id, listingId }) => ({
+        id, listingId, buyerName, quantity, unit, message, status, createdAt,
+      }));
+
+  return NextResponse.json({ listing, enquiries: safeEnquiries });
 }
 
 export async function PATCH(

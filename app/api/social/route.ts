@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest } from "next/server";
+import { aiRateLimit } from "@/lib/api-guard";
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
@@ -39,6 +40,8 @@ Government program explained simply: Take any complex government program and exp
 type ContentFormat = "instagram" | "tiktok" | "twitter" | "linkedin" | "fact" | "spotlight" | "story" | "alert" | "program";
 
 export async function POST(req: NextRequest) {
+  const limited = aiRateLimit(req);
+  if (limited) return limited;
   const { format, topic, country, sector, extra } = await req.json();
 
   if (!format || !topic) {

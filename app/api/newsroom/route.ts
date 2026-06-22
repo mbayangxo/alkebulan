@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest } from "next/server";
 import type { WebSearchTool20260209 } from "@anthropic-ai/sdk/resources/messages/messages";
+import { requireCronSecret, aiRateLimit } from "@/lib/api-guard";
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
@@ -39,6 +40,14 @@ Rules:
 - Voice: like a smart friend texting you about money you're leaving on the table.`;
 
 export async function POST(req: NextRequest) {
+  // Newsroom uses web search — more expensive. Require cron secret when called
+  // server-to-server; fall back to IP rate limit for interactive UI calls.
+  const cronDenied = requireCronSecret(req);
+  if (cronDenied) {
+    const ipDenied = aiRateLimit(req);
+    if (ipDenied) return ipDenied;
+  }
+
   const { focus } = await req.json().catch(() => ({ focus: undefined }));
 
   const prompt = focus

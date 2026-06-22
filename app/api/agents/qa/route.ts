@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest } from "next/server";
+import { aiRateLimit } from "@/lib/api-guard";
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
@@ -61,6 +62,8 @@ const API_ROUTES = [
 ];
 
 export async function POST(req: NextRequest) {
+  const limited = aiRateLimit(req);
+  if (limited) return limited;
   const origin = req.headers.get("origin") || `https://${req.headers.get("host")}` || "http://localhost:3000";
 
   const encoder = new TextEncoder();

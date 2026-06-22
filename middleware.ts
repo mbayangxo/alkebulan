@@ -1,6 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
 
+const ADMIN_COOKIE = "alkebulan-admin";
+
 // Known hostnames that serve the main Alkebulan app
 const MAIN_HOSTS = new Set([
   "alkebulan.com",
@@ -25,6 +27,19 @@ export async function middleware(request: NextRequest) {
     if (url.pathname === "/") {
       url.pathname = `/store/${slug}`;
       return NextResponse.rewrite(url);
+    }
+  }
+
+  // Protect /admin behind a password cookie
+  const { pathname } = request.nextUrl;
+  if (pathname.startsWith("/admin") && pathname !== "/admin/login") {
+    const adminPassword = process.env.ADMIN_PASSWORD;
+    const cookie = request.cookies.get(ADMIN_COOKIE);
+    if (!adminPassword || !cookie || cookie.value !== adminPassword) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/admin/login";
+      url.searchParams.set("next", pathname);
+      return NextResponse.redirect(url);
     }
   }
 

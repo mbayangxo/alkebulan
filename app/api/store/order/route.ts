@@ -1,13 +1,34 @@
 import { NextRequest } from "next/server";
-import { storeDb, type StoreOrder } from "@/lib/store-data";
+import { storeDb, type StoreOrder, type StoreSite } from "@/lib/store-data";
 import { analyticsDb } from "@/lib/analytics-store";
 import { sendOrderNotification } from "@/lib/notifications";
 
+// Currency mapping for Flutterwave (based on site country)
+const COUNTRY_CURRENCY: Record<string, string> = {
+  Nigeria: "NGN", Ghana: "GHS", Kenya: "KES", Rwanda: "RWF",
+  "South Africa": "ZAR", Uganda: "UGX", Tanzania: "TZS",
+  Senegal: "XOF", "Côte d'Ivoire": "XOF", Cameroon: "XAF",
+};
+
+function calculateTotal(site: StoreSite, items: StoreOrder["items"]): number {
+  return items.reduce((sum, item) => {
+    const offering = site.offerings.find(o => o.id === item.offeringId);
+    const price = offering?.price ? parseFloat(offering.price.replace(/[^0-9.]/g, "")) : 0;
+    return sum + (isNaN(price) ? 0 : price * item.quantity);
+  }, 0);
+}
+
 // Flutterwave payment initialization
 // Requires FLW_SECRET_KEY env variable — get from dashboard.flutterwave.com
-async function initFlutterwave(order: StoreOrder, site: { businessName: string }) {
+async function initFlutterwave(order: StoreOrder, site: StoreSite) {
   const secretKey = process.env.FLW_SECRET_KEY;
   if (!secretKey) return null;
+
+  const amount = calculateTotal(site, order.items);
+  if (amount <= 0) return null; // can't initiate payment without a calculable amount
+
+  const currency = COUNTRY_CURRENCY[site.country] ?? "NGN";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? process.env.NEXT_PUBLIC_APP_URL ?? "";
 
   const res = await fetch("https://api.flutterwave.com/v3/payments", {
     method: "POST",
@@ -17,11 +38,11 @@ async function initFlutterwave(order: StoreOrder, site: { businessName: string }
     },
     body: JSON.stringify({
       tx_ref: order.id,
-      amount: 1, // placeholder — real amount needs to be calculated from items
-      currency: "NGN", // should be dynamic based on country
-      redirect_url: `${process.env.NEXT_PUBLIC_BASE_URL}/store/order-confirmed?orderId=${order.id}&slug=${order.siteSlug}`,
+      amount,
+      currency,
+      redirect_url: `${baseUrl}/store/order-confirmed?orderId=${order.id}&slug=${order.siteSlug}`,
       customer: {
-        email: order.customerEmail || `${order.customerPhone}@placeholder.com`,
+        email: order.customerEmail || `customer@alkebulan.com`,
         phone_number: order.customerPhone,
         name: order.customerName,
       },
@@ -39,9 +60,14 @@ async function initFlutterwave(order: StoreOrder, site: { businessName: string }
 
 // Wave payment initialization
 // Requires WAVE_API_KEY env variable — get from developer.wave.com
-async function initWave(order: StoreOrder) {
+async function initWave(order: StoreOrder, site: StoreSite) {
   const apiKey = process.env.WAVE_API_KEY;
   if (!apiKey) return null;
+
+  const amount = calculateTotal(site, order.items);
+  if (amount <= 0) return null;
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? process.env.NEXT_PUBLIC_APP_URL ?? "";
 
   const res = await fetch("https://api.wave.com/v1/checkout/sessions", {
     method: "POST",
@@ -50,10 +76,10 @@ async function initWave(order: StoreOrder) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      amount: "1", // placeholder
-      currency: "XOF", // Francophone West Africa
-      error_url: `${process.env.NEXT_PUBLIC_BASE_URL}/store/${order.siteSlug}`,
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/store/order-confirmed?orderId=${order.id}&slug=${order.siteSlug}`,
+      amount: String(Math.round(amount)), // Wave expects integer string in minor units for XOF
+      currency: "XOF",
+      error_url: `${baseUrl}/store/${order.siteSlug}`,
+      success_url: `${baseUrl}/store/order-confirmed?orderId=${order.id}&slug=${order.siteSlug}`,
       client_reference: order.id,
     }),
   });
@@ -113,8 +139,8 @@ export async function POST(req: NextRequest) {
   }
 
   // Wave payment
-  if (body.paymentMethod === "wave") {
-    const paymentUrl = await initWave(order);
+  if (body.paymentMethod === "wave" && site) {
+    const paymentUrl = await initWave(order, site);
     return Response.json({ success: true, orderId: order.id, paymentUrl });
   }
 

@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest } from "next/server";
+import { aiRateLimit } from "@/lib/api-guard";
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
@@ -33,6 +34,8 @@ Rules:
 - No fluff. Every sentence earns its place.`;
 
 export async function POST(req: NextRequest) {
+  const limited = aiRateLimit(req);
+  if (limited) return limited;
   const { country, budget, skills, interests, stage } = await req.json();
 
   const prompt = `Generate 3 specific business recommendations for this person:

@@ -400,15 +400,33 @@ export default function MatchesPage() {
                         </div>
                       )}
                       {kitContent[match.programName] && (
-                        <div className="prose prose-sm max-w-none text-ink leading-relaxed">
-                          {kitContent[match.programName].split("\n").map((line, i) => {
-                            if (line.startsWith("## ")) return <h3 key={i} className="font-bold text-ink text-sm mt-4 mb-2">{line.replace("## ", "")}</h3>;
-                            if (line.startsWith("- ")) return <li key={i} className="text-xs text-ink/80 ml-4 mb-1 list-disc">{line.replace("- ", "")}</li>;
-                            if (/^\d+\./.test(line)) return <p key={i} className="text-xs text-ink/80 mb-1 flex gap-2"><span className="font-bold text-deep-green flex-shrink-0">{line.match(/^\d+/)?.[0]}.</span><span>{line.replace(/^\d+\.\s*/, "")}</span></p>;
-                            if (line.trim() === "") return <br key={i} />;
-                            return <p key={i} className="text-xs text-ink/80 mb-2 leading-relaxed">{line}</p>;
-                          })}
-                          {isKitLoading && <span className="inline-block w-1.5 h-3 bg-gold ml-0.5 animate-pulse align-middle" />}
+                        <div>
+                          {!isKitLoading && (
+                            <div className="flex items-center justify-between mb-3">
+                              <p className="text-xs text-muted">Copy any section into the real application form.</p>
+                              <button
+                                onClick={() => {
+                                  navigator.clipboard.writeText(kitContent[match.programName]).catch(() => {});
+                                }}
+                                className="flex items-center gap-1.5 text-xs font-semibold text-deep-green border border-deep-green/30 px-3 py-1.5 rounded-lg hover:bg-deep-green hover:text-ivory transition-colors"
+                              >
+                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
+                                Copy all
+                              </button>
+                            </div>
+                          )}
+                          <div className="prose prose-sm max-w-none text-ink leading-relaxed">
+                            {kitContent[match.programName].split("\n").map((line, i) => {
+                              if (line.startsWith("## PART")) return <div key={i} className="mt-5 mb-3 px-3 py-1.5 bg-deep-green/5 rounded-lg"><p className="text-xs font-bold text-deep-green uppercase tracking-widest">{line.replace(/^## /, "")}</p></div>;
+                              if (line.startsWith("## ")) return <h3 key={i} className="font-bold text-ink text-sm mt-4 mb-2">{line.replace("## ", "")}</h3>;
+                              if (line.startsWith("- ")) return <li key={i} className="text-xs text-ink/80 ml-4 mb-1 list-disc">{line.replace("- ", "")}</li>;
+                              if (/^\d+\./.test(line)) return <p key={i} className="text-xs text-ink/80 mb-1 flex gap-2"><span className="font-bold text-deep-green flex-shrink-0">{line.match(/^\d+/)?.[0]}.</span><span>{line.replace(/^\d+\.\s*/, "")}</span></p>;
+                              if (line === "---") return <hr key={i} className="border-border my-4" />;
+                              if (line.trim() === "") return <br key={i} />;
+                              return <p key={i} className="text-xs text-ink/80 mb-2 leading-relaxed">{line}</p>;
+                            })}
+                            {isKitLoading && <span className="inline-block w-1.5 h-3 bg-gold ml-0.5 animate-pulse align-middle" />}
+                          </div>
                         </div>
                       )}
                     </div>

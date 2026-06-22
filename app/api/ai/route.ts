@@ -1,10 +1,15 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest } from "next/server";
+import { aiRateLimit, clamp } from "@/lib/api-guard";
+
+const SYSTEM = "You are an expert in African business, finance, and entrepreneurship. You help African founders, entrepreneurs, and diaspora access funding, navigate regulations, and build generational wealth.";
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 export async function POST(req: NextRequest) {
-  const { prompt, system } = await req.json();
+  const limited = aiRateLimit(req);
+  if (limited) return limited;
+  const { prompt } = await req.json();
 
   if (!prompt) {
     return Response.json({ error: "prompt is required" }, { status: 400 });
@@ -14,8 +19,8 @@ export async function POST(req: NextRequest) {
     model: "claude-opus-4-8",
     max_tokens: 4096,
     thinking: { type: "adaptive" },
-    system: system || "You are an expert in African business, finance, and entrepreneurship. You help African founders, entrepreneurs, and diaspora access funding, navigate regulations, and build generational wealth.",
-    messages: [{ role: "user", content: prompt }],
+    system: SYSTEM,
+    messages: [{ role: "user", content: clamp(prompt, 8000) }],
   });
 
   const encoder = new TextEncoder();

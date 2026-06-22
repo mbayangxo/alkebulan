@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest } from "next/server";
+import { aiRateLimit } from "@/lib/api-guard";
 import type { WebSearchTool20260209 } from "@anthropic-ai/sdk/resources/messages/messages";
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
@@ -29,6 +30,8 @@ Rules:
 - Think like a builder, not a consultant.`;
 
 export async function POST(req: NextRequest) {
+  const limited = aiRateLimit(req);
+  if (limited) return limited;
   const { business, sector, country, stage } = await req.json();
 
   if (!country) {

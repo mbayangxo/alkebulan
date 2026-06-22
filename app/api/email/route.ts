@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest } from "next/server";
+import { aiRateLimit } from "@/lib/api-guard";
 import { ALL_COUNTRY_PROGRAMS } from "@/lib/data/all-country-programs";
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
@@ -25,6 +26,8 @@ Rules:
 - This person wants to BUILD, not receive charity.`;
 
 export async function POST(req: NextRequest) {
+  const limited = aiRateLimit(req);
+  if (limited) return limited;
   const { name, gender, country, sector, stage, goal } = await req.json();
 
   if (!country) {
