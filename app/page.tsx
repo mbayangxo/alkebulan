@@ -51,9 +51,9 @@ export default function LandingPage() {
             </h1>
 
             <p className="text-xl text-ivory/75 leading-relaxed mb-10 max-w-2xl">
-              Your goal. Your gap. Your path. Alkebulan finds every grant, tender, accelerator,
-              export opportunity, and government contract that exists for you — then maps
-              the exact sequence of steps to get there.
+              You are good enough. Africa has what you need. Alkebulan opens your eyes to
+              the opportunities already in front of you — the markets to enter, the problems
+              to solve, the businesses to build. Then shows you exactly how.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -486,13 +486,13 @@ export default function LandingPage() {
                 OPPORTUNITY NEWSROOM — powered by Amara
               </div>
               <h2 className="font-display text-4xl font-bold text-ivory mb-4">
-                New grants. New tenders.
+                New openings.
                 <br />Every single day.
               </h2>
               <p className="text-ivory/75 text-lg leading-relaxed mb-6">
-                Amara searches the web daily for new grants, government contracts, fund launches,
-                and policy changes across all 54 African countries. Real news. Actionable intel.
-                Never miss an opportunity because you didn&apos;t hear about it in time.
+                Amara scans all 54 African countries daily — new contracts, fund launches,
+                policy changes, export openings. Real intelligence. Never miss the thing
+                that was already meant for you.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/newsroom"
@@ -534,9 +534,9 @@ export default function LandingPage() {
       {/* ─── GRANTS BY CATEGORY ─── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
         <div className="text-center mb-10">
-          <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-3">Browse the database</p>
-          <h2 className="font-display text-4xl font-bold text-ink mb-4">Every type of opportunity, organized</h2>
-          <p className="text-lg text-muted max-w-2xl mx-auto">500+ verified programs across 54 countries — find yours by category or by country.</p>
+          <p className="text-gold text-sm font-semibold uppercase tracking-widest mb-3">The opportunity landscape</p>
+          <h2 className="font-display text-4xl font-bold text-ink mb-4">Where opportunity lives in Africa</h2>
+          <p className="text-lg text-muted max-w-2xl mx-auto">500+ verified programs across 54 countries. Grants and loans are one piece — explore everything.</p>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
           {[
