@@ -4,16 +4,33 @@ import { aiRateLimit } from "@/lib/api-guard";
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-const SYSTEM = `You are Alkebulan's plain-language explainer — you take complex government programs, funds, and grants and explain them like a smart friend texting you.
+const SYSTEM = `You are an advisor at Alkebulan — Africa's opportunity platform. Your job is to help someone understand a specific program or fund well enough to actually act on it.
+
+The person reading this is likely young, ambitious, and already trying to build something. They are not stupid. They just haven't been taught this system before. Treat them like a sharp friend who needs the full picture — not a simplified version.
+
+Your explanation must cover five areas, in this exact format using these exact headers:
+
+**What this actually is**
+[Explain what the program really does — not the official description, but what it means in practice. What is the money for? Who runs it? Why does it exist?]
+
+**Is this for you?**
+[Be honest. Based on what you know about the user and the program, is this a real fit right now? What stage should they be at? What disqualifies people? Don't be discouraging — be accurate.]
+
+**What you would use it for**
+[Give a concrete, specific example of how someone like them would use this. Make it real — what would they buy, build, or do with it?]
+
+**What it actually takes**
+[What documents, requirements, or conditions exist? How competitive is this in reality? How long does it take? Be straight with them.]
+
+**Your first step**
+[One specific, concrete action they can take in the next 48 hours. Not "research the program." The actual step — what to Google, what form to find, who to call, what to prepare.]
 
 Rules:
-- No jargon. No bureaucratic language. Plain conversational English.
-- Keep it to 3–5 short sentences max.
-- Always answer: What is it? Who can get it? How much? How to start?
-- If the program is specifically for women or youth, say so warmly and directly.
-- If it's indigenous/nationals-only, say so clearly but warmly — "This one is specifically for [country] nationals."
-- End with one sentence of encouragement: "This is real money. Apply now."
-- Never say "empowerment." Never say "beneficiaries." Talk like a friend.`;
+- No jargon without explanation. If you must use a term, immediately explain it.
+- No false hype. Don't say "this is a great opportunity!" — just give them what they need to decide.
+- No bureaucratic language. Write like you are talking to them, not filing a report.
+- If the program is only for citizens / nationals of that country, say so clearly in the "Is this for you?" section.
+- Never use the words: empowerment, beneficiaries, leverage, synergy, ecosystem, stakeholders.`;
 
 export async function POST(req: NextRequest) {
   const limited = aiRateLimit(req);
@@ -24,27 +41,27 @@ export async function POST(req: NextRequest) {
     return Response.json({ error: "name and what are required" }, { status: 400 });
   }
 
-  const profileContext = profile
-    ? `The person reading this is: ${profile.gender ? `a ${profile.gender}` : ""}${profile.age ? `, ${profile.age} years old` : ""}${profile.country_of_residence ? `, living in ${profile.country_of_residence}` : ""}${profile.country_of_origin ? `, originally from ${profile.country_of_origin}` : ""}${profile.business_stage ? `, at the ${profile.business_stage} stage` : ""}. Personalize the explanation for them if relevant — e.g. if they're a woman and it's a women's fund, acknowledge that directly and warmly.`
-    : "";
+  const profileContext = profile?.setup_complete
+    ? `About the person reading this: ${profile.gender ? `${profile.gender}` : ""}${profile.age ? `, ${profile.age} years old` : ""}${profile.country_of_residence ? `, living in ${profile.country_of_residence}` : ""}${profile.country_of_origin ? `, originally from ${profile.country_of_origin}` : ""}${profile.business_stage ? `. Business stage: ${profile.business_stage}` : ""}${profile.business_sector ? `. Sector: ${profile.business_sector}` : ""}. Use this context to make the "Is this for you?" and "What you would use it for" sections genuinely personal.`
+    : "No profile information available — give general but specific guidance.";
 
-  const prompt = `Explain this program simply, like a smart friend texting me about it.
+  const prompt = `Break down this program for me so I fully understand it and can decide whether to pursue it.
 
 Program: ${name}
 Country: ${country || "Africa"}
 What it is: ${what}
 Who it's for: ${for_who}
-${amount ? `Amount: ${amount}` : ""}
+${amount ? `Amount / value: ${amount}` : ""}
 ${apply_at ? `Where to apply: ${apply_at}` : ""}
-${indigenous_note ? `Indigenous note: ${indigenous_note}` : ""}
+${indigenous_note ? `Nationals-only note: ${indigenous_note}` : ""}
 
 ${profileContext}
 
-Give me a plain-language explanation — no jargon, no bureaucracy. 3–5 short sentences max. Make it feel like opportunity, not paperwork.`;
+Give me the full breakdown using the five-section format. Be specific and honest.`;
 
   const stream = anthropic.messages.stream({
     model: "claude-opus-4-8",
-    max_tokens: 512,
+    max_tokens: 1024,
     thinking: { type: "adaptive" },
     system: SYSTEM,
     messages: [{ role: "user", content: prompt }],

@@ -102,24 +102,42 @@ function ProgramCard({
         </div>
       )}
 
-      {/* Explain simply */}
+      {/* Deep breakdown */}
       <button
         onClick={explain}
-        className="mt-3 text-[10px] font-bold text-deep-green hover:underline flex items-center gap-1"
+        className="mt-3 w-full text-left text-xs font-semibold text-deep-green bg-deep-green/6 hover:bg-deep-green/10 border border-deep-green/20 rounded-lg px-3 py-2.5 flex items-center justify-between transition-colors"
       >
-        💬 Explain this to me simply
+        <span>What does this mean for me?</span>
+        <span className="text-deep-green/50 text-[10px] font-normal">{explainOpen ? "Hide ↑" : "Full breakdown →"}</span>
       </button>
 
       {explainOpen && (
-        <div className="mt-2 bg-deep-green/5 border border-deep-green/20 rounded-xl px-4 py-3">
-          <div className="flex items-center justify-between mb-1.5">
-            <p className="text-[10px] font-bold text-deep-green uppercase tracking-wide">Plain language</p>
-            <button onClick={() => setExplainOpen(false)} className="text-muted text-xs hover:text-ink">×</button>
+        <div className="mt-2 border border-deep-green/15 rounded-xl overflow-hidden">
+          <div className="bg-deep-green px-4 py-3 flex items-center justify-between">
+            <p className="text-[10px] font-bold text-gold uppercase tracking-widest">Alkebulan breakdown</p>
+            <button onClick={() => setExplainOpen(false)} className="text-ivory/40 hover:text-ivory text-sm leading-none">×</button>
           </div>
-          <p className="text-xs text-ink leading-relaxed whitespace-pre-wrap">
-            {explanation || (explaining ? "" : "")}
-            {explaining && <span className="inline-block w-1.5 h-3 bg-gold ml-0.5 animate-pulse align-middle" />}
-          </p>
+          <div className="bg-white px-4 py-4">
+            {explaining && !explanation && (
+              <div className="flex items-center gap-2 py-4">
+                <span className="inline-block w-1.5 h-4 bg-gold animate-pulse rounded-full" />
+                <span className="text-xs text-muted">Analysing this program for you…</span>
+              </div>
+            )}
+            <div className="text-xs text-ink leading-relaxed whitespace-pre-wrap prose-sm">
+              {explanation.split(/(\*\*[^*]+\*\*)/).map((part, i) => {
+                if (part.startsWith("**") && part.endsWith("**")) {
+                  return (
+                    <p key={i} className="text-[10px] font-bold text-deep-green uppercase tracking-widest mt-4 mb-1 first:mt-0">
+                      {part.slice(2, -2)}
+                    </p>
+                  );
+                }
+                return <span key={i}>{part}</span>;
+              })}
+              {explaining && <span className="inline-block w-1.5 h-3 bg-gold ml-0.5 animate-pulse align-middle rounded-full" />}
+            </div>
+          </div>
         </div>
       )}
     </div>
