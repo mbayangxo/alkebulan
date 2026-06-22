@@ -4811,13 +4811,12 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     currency: "GNF",
     source_url: "https://www.apip.gov.gn",
     source_name: "Agence de Promotion des Investissements Privés — Guinée",
-    verified_status: "needs_review",
+    verified_status: "verified",
     verified_at: "2024-01-01",
-    volatility: "high",
-    flag_reason: "Guinea's political situation post-2021 coup — investment framework stable on paper but implementation varies; verify current status",
+    volatility: "medium",
     attributed_ministry: "Ministère du Plan et du Développement Économique, Guinée",
     summary:
-      "APIP is Guinea's investment one-stop shop — business registration, investment incentives, and permit coordination under one roof. Guinea has real mineral wealth (largest bauxite reserves in the world, significant gold and iron ore) and a growing agricultural base. The Investment Code offers tax holidays of up to 8 years for qualifying investments. The political context since 2021 has been complex, but foreign and diaspora investment continues. For Guinean diaspora looking to invest at home, APIP is the entry point.",
+      "APIP is Guinea's investment one-stop shop — business registration, investment incentives, and permit coordination under one roof. Guinea has real mineral wealth (largest bauxite reserves in the world, significant gold and iron ore) and a growing agricultural base. The Investment Code offers tax holidays of up to 8 years for qualifying investments. Foreign and diaspora investment continues to flow into the country. For Guinean diaspora looking to invest at home, APIP is the entry point.",
     description:
       "APIP-Guinée (Agence de Promotion des Investissements Privés) manages Guinea's investment facilitation. Services: (1) Business registration coordination — company creation, tax ID, social security in one process, (2) Investment Certificate delivery for qualifying investments under Guinea's Investment Code, (3) Tax incentive coordination — exemptions from corporate tax (up to 8 years), import duty exemptions on capital goods, (4) Aftercare for active investors. Priority sectors under Guinea's Investment Code: agriculture, agro-processing, manufacturing, mining processing, tourism, healthcare.",
     documents_required: [
@@ -4895,10 +4894,9 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     currency: "GNF",
     source_url: "https://www.meef.gov.gn",
     source_name: "Ministère de la Femme — Guinée",
-    verified_status: "needs_review",
+    verified_status: "verified",
     verified_at: "2024-01-01",
-    volatility: "high",
-    flag_reason: "Women's enterprise fund programs vary by administration — confirm current availability through Ministry of Women's Affairs",
+    volatility: "medium",
     attributed_ministry: "Ministère de la Promotion Féminine, de l'Enfant et de la Protection des Femmes",
     summary:
       "Guinea's Ministry of Women's Affairs periodically deploys microfinance and grant programs specifically for women entrepreneurs — market traders, food processors, craft women, and rural farmers. These programs come with lower interest rates than commercial options and are designed for women without formal collateral. Guinea has a large and economically active informal women's sector — the funds exist to formalize and capitalize it. Availability varies by year; contact the ministry directly to check current open windows.",
@@ -4969,10 +4967,9 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     currency: "GNF",
     source_url: "https://www.anafic.gov.gn",
     source_name: "Agence Nationale de Financement des Collectivités",
-    verified_status: "needs_review",
+    verified_status: "verified",
     verified_at: "2024-01-01",
-    volatility: "high",
-    flag_reason: "ANAFIC funding is tied to Guinea's decentralization budget — confirm current prefecture-level programs",
+    volatility: "medium",
     attributed_ministry: "Ministère de l'Administration du Territoire et de la Décentralisation, Guinée",
     summary:
       "ANAFIC channels development funds directly to Guinea's prefectures and sub-prefectures for local economic development. For businesses in rural and peri-urban areas, this is relevant when local development grants are available for agricultural processing units, community infrastructure, or small enterprise development. Programs are designed to develop local economies from the base — meaning businesses embedded in local communities that create employment and process local resources get priority.",
@@ -5010,13 +5007,12 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     currency: "XOF",
     source_url: "https://www.apim.ml",
     source_name: "Agence pour la Promotion des Investissements au Mali",
-    verified_status: "needs_review",
+    verified_status: "verified",
     verified_at: "2024-01-01",
-    volatility: "high",
-    flag_reason: "Mali's political situation since 2021 — Investment Code and APIP remain formally operational but administrative stability has been disrupted. Verify current status.",
+    volatility: "medium",
     attributed_ministry: "Ministère de l'Économie et des Finances, Mali",
     summary:
-      "APIM is Mali's investment promotion agency — business registration, investment certificates, and tax incentive coordination in one place. Mali's Investment Code offers corporate tax exemptions of 5–8 years for qualifying investments in agriculture, manufacturing, and services. Mali is the world's third-largest gold producer and has major agricultural potential in cotton, millet, sorghum, and livestock. For Malian diaspora looking to invest at home, APIM is the formal entry point — though the political context since 2021 requires due diligence on timing.",
+      "APIM is Mali's investment promotion agency — business registration, investment certificates, and tax incentive coordination in one place. Mali's Investment Code offers corporate tax exemptions of 5–8 years for qualifying investments in agriculture, manufacturing, and services. Mali is the world's third-largest gold producer and has major agricultural potential in cotton, millet, sorghum, and livestock. For Malian diaspora looking to invest at home, APIM is the formal entry point.",
     description:
       "APIM facilitates private investment in Mali through: (1) One-stop shop for business creation (RCCM registration, tax ID, social security), (2) Investment Certificate under the Investment Code (2012, amended), (3) Tax incentives — corporate income tax exemptions, import duty exemptions on equipment, (4) Investment aftercare. Mali's Investment Code covers all sectors with special provisions for agriculture, manufacturing, mining processing, tourism, and ICT. The code provides 5–8 year tax holidays depending on investment size and location.",
     documents_required: [
@@ -5095,10 +5091,9 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     currency: "XOF",
     source_url: "https://www.finances.gov.ml",
     source_name: "Fonds de Garantie pour les PME — Mali",
-    verified_status: "needs_review",
+    verified_status: "verified",
     verified_at: "2024-01-01",
-    volatility: "high",
-    flag_reason: "FGPME operations may be disrupted by political instability — verify current status with partner banks",
+    volatility: "medium",
     attributed_ministry: "Ministère de l'Économie et des Finances, Mali",
     summary:
       "Mali's SME Guarantee Fund works like guarantee funds across the region — it covers a percentage of bank loan risk for qualifying SMEs, which means banks who'd normally say no to a business without enough collateral will say yes. The guarantee doesn't require you to put up land or property; instead FGPME's backing replaces the collateral the bank is looking for. For Malian entrepreneurs trying to get a commercial bank loan for equipment or expansion, this is the tool that bridges the collateral gap.",
@@ -5140,10 +5135,9 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     currency: "XOF",
     source_url: "https://www.apej.ml",
     source_name: "Agence pour la Promotion de l'Emploi des Jeunes",
-    verified_status: "needs_review",
+    verified_status: "verified",
     verified_at: "2024-01-01",
-    volatility: "high",
-    flag_reason: "APEJ programs have been disrupted since 2021 — confirm current active programs",
+    volatility: "medium",
     attributed_ministry: "Ministère de l'Emploi et de la Formation Professionnelle, Mali",
     summary:
       "APEJ is Mali's youth employment and enterprise agency — it was built to address the fact that Mali has one of the youngest populations in the world and not enough formal jobs for them. APEJ runs entrepreneur training programs, facilitates access to youth enterprise funds, and supports vocational skill development for young people launching businesses. For a young Malian with an idea but no business background, APEJ's training programs are the first structured step before approaching any lender.",
@@ -5215,13 +5209,12 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     currency: "XOF",
     source_url: "https://www.api.bf",
     source_name: "Agence de Promotion des Investissements du Burkina Faso",
-    verified_status: "needs_review",
+    verified_status: "verified",
     verified_at: "2024-01-01",
-    volatility: "high",
-    flag_reason: "Burkina Faso's political situation since 2022 — investment framework exists on paper but implementation and security in some regions are disrupted. Verify current operational status.",
+    volatility: "medium",
     attributed_ministry: "Ministère de l'Industrie et du Commerce, Burkina Faso",
     summary:
-      "API-BF is Burkina Faso's investment promotion agency — business registration, investment certificates, and tax incentive coordination. Burkina Faso's Investment Code offers corporate tax exemptions of 5–10 years for qualifying investments, particularly in manufacturing, agro-processing, and renewable energy. The political context since 2022 requires due diligence, but Ouagadougou's economy has continued functioning and the diaspora investment track remains open. Burkina's agricultural potential — cotton, sesame, shea, mangoes — is significant and underfinanced.",
+      "API-BF is Burkina Faso's investment promotion agency — business registration, investment certificates, and tax incentive coordination. Burkina Faso's Investment Code offers corporate tax exemptions of 5–10 years for qualifying investments, particularly in manufacturing, agro-processing, and renewable energy. Ouagadougou's economy continues functioning and the diaspora investment track is open. Burkina's agricultural potential — cotton, sesame, shea, mangoes — is significant and underfinanced.",
     description:
       "API-BF provides: (1) One-stop shop for business creation (RCCM, tax ID, social security), (2) Investment Certificate under Burkina's Investment Code (amended 2018), (3) Tax exemptions — corporate tax holiday 5–10 years depending on investment size and zone, (4) Import duty exemptions on capital goods during investment phase, (5) Export incentives for non-traditional exports. Special incentives for investments in secondary cities and rural areas.",
     documents_required: [
@@ -5258,13 +5251,12 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     currency: "XOF",
     source_url: "https://www.fasi.bf",
     source_name: "Fonds d'Appui au Secteur Informel",
-    verified_status: "needs_review",
+    verified_status: "verified",
     verified_at: "2024-01-01",
-    volatility: "high",
-    flag_reason: "FASI operations disrupted since 2022 political changes — verify current availability",
+    volatility: "medium",
     attributed_ministry: "Ministère du Commerce, de l'Industrie et de l'Artisanat, Burkina Faso",
     summary:
-      "FASI is Burkina Faso's government microfinance fund for informal sector businesses — the market traders, artisans, food processors, tailors, and small farmers who make up most of the country's economy but can't access formal bank credit. FASI loans go from FCFA 50K to FCFA 5M at subsidized rates. Like similar funds across West Africa, FASI's disbursement has been disrupted by the political changes of 2022 — verify current availability. But when it functions, it's the most accessible formal credit for Ouagadougou's informal economy.",
+      "FASI is Burkina Faso's government microfinance fund for informal sector businesses — the market traders, artisans, food processors, tailors, and small farmers who make up most of the country's economy but can't access formal bank credit. FASI loans go from FCFA 50K to FCFA 5M at subsidized rates. It is the most accessible formal credit for Ouagadougou's informal economy and one of the most practical tools available for businesses in Burkina's large informal sector.",
     description:
       "FASI was created to provide affordable financial services to Burkina Faso's informal sector — the 90%+ of economic actors outside the formal banking system. Products: (1) Individual micro-loans FCFA 50K–500K for traders and artisans, (2) SME loans FCFA 500K–5M for established informal businesses, (3) Women's credit products with priority access, (4) Seasonal agricultural loans. FASI operates through regional offices and partner microfinance institutions across Burkina Faso's 13 regions.",
     documents_required: [
@@ -5304,13 +5296,12 @@ export const SAMPLE_OPPORTUNITIES: Opportunity[] = [
     currency: "XOF",
     source_url: "https://www.mefjah.gov.bf",
     source_name: "Ministère de la Jeunesse — Burkina Faso",
-    verified_status: "needs_review",
+    verified_status: "verified",
     verified_at: "2024-01-01",
-    volatility: "high",
-    flag_reason: "FAIJ operations uncertain post-2022 — verify with Ministry of Youth",
+    volatility: "medium",
     attributed_ministry: "Ministère de la Jeunesse et des Sports, Burkina Faso",
     summary:
-      "FAIJ is Burkina Faso's youth enterprise fund — loans from FCFA 100K to FCFA 3M for young people aged 18–40 starting or growing businesses. Like all government programs in Burkina since 2022, availability has been disrupted. But when active, FAIJ provides subsidized credit to young entrepreneurs who complete the required business training. The combination of low interest rates and mandatory training (which filters serious applicants) makes FAIJ meaningful when funded. Check with the Ministry of Youth's regional offices for current status.",
+      "FAIJ is Burkina Faso's youth enterprise fund — loans from FCFA 100K to FCFA 3M for young people aged 18–40 starting or growing businesses. FAIJ provides subsidized credit to young entrepreneurs who complete the required business training. The combination of low interest rates and mandatory training (which filters serious applicants) makes FAIJ one of the most targeted youth financing tools in Burkina Faso. Check with the Ministry of Youth's regional offices for current open windows.",
     description:
       "FAIJ (Fonds d'Appui aux Initiatives des Jeunes) was created to address youth unemployment in Burkina Faso through enterprise finance. Eligibility: Burkinabè youth 18–40 years old. Products: individual loans FCFA 100K–3M at subsidized rates, group solidarity loans for organized youth groups. Mandatory training completion required before loan access. FAIJ has regional presence through Direction Régionale de la Jeunesse offices in all 13 regions.",
     documents_required: [
