@@ -14,25 +14,27 @@ const PRIMARY = [
 ];
 
 const EXPLORE = [
-  { label: "Programs",     href: "/programs" },
-  { label: "Procurement",  href: "/procurement" },
-  { label: "Feed",         href: "/feed" },
-  { label: "Countries",    href: "/map" },
-  { label: "Network",      href: "/network" },
-  { label: "Success Stories", href: "/success" },
+  { label: "Industry Intelligence", href: "/industry" },
+  { label: "Programs",              href: "/programs" },
+  { label: "Procurement",           href: "/procurement" },
+  { label: "Feed",                  href: "/feed" },
+  { label: "Countries",             href: "/map" },
+  { label: "Network",               href: "/network" },
+  { label: "Success Stories",       href: "/success" },
 ];
 
 const TOOLS = [
-  { label: "Build vs. Leave",     href: "/compare" },
-  { label: "Decode a Product",    href: "/scan" },
-  { label: "Local Starts Map",    href: "/starts" },
-  { label: "Build a Business",    href: "/build" },
-  { label: "Bankability Engine",  href: "/bankability" },
-  { label: "AfCFTA Navigator",    href: "/afcfta" },
-  { label: "Capital Stack",       href: "/capital-stack" },
-  { label: "Community Partners",  href: "/gatekeepers" },
-  { label: "AI Assistant",        href: "/assistant" },
-  { label: "AI Agents",           href: "/agents" },
+  { label: "AI Business Builder",  href: "/build-business" },
+  { label: "Build vs. Leave",      href: "/compare" },
+  { label: "Decode a Product",     href: "/scan" },
+  { label: "Local Starts Map",     href: "/starts" },
+  { label: "Build a Business",     href: "/build" },
+  { label: "Bankability Engine",   href: "/bankability" },
+  { label: "AfCFTA Navigator",     href: "/afcfta" },
+  { label: "Capital Stack",        href: "/capital-stack" },
+  { label: "Community Partners",   href: "/gatekeepers" },
+  { label: "AI Assistant",         href: "/assistant" },
+  { label: "AI Agents",            href: "/agents" },
 ];
 
 function NavDot() {
