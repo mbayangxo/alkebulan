@@ -4,7 +4,6 @@ import { SAMPLE_OPPORTUNITIES } from "@/lib/data/sample-opportunities";
 import { SUCCESS_STORIES } from "@/lib/data/success-stories";
 import { WEALTH_PATHS } from "@/lib/wealth-paths";
 import { INDUSTRIES } from "@/lib/data/industry-intelligence";
-import { VideoEmbed } from "./components/video-embed";
 import { ResourceVideoSection } from "./components/resource-video";
 
 const FEATURED_STORIES = SUCCESS_STORIES.slice(0, 3);
@@ -460,13 +459,9 @@ export default function LandingPage() {
           <div className="grid md:grid-cols-3 gap-5">
             {FEATURED_STORIES.map((story) => {
               const initials = story.name.split(" ").map((n: string) => n[0]).join("");
-              const videoUrl = (story as Record<string, unknown>).video_url as string | undefined;
               return (
                 <div key={story.id} className="rounded-2xl overflow-hidden"
                   style={{ background: "#FDFAF4", border: "1px solid #E0D8C8" }}>
-                  {videoUrl && (
-                    <VideoEmbed src={videoUrl} title={story.headline} className="rounded-none" />
-                  )}
                   <div className="p-6">
                     <div className="flex items-center gap-3 mb-5">
                       <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0"
