@@ -22,6 +22,19 @@ const CATEGORIES = [
 
 type CategoryId = (typeof CATEGORIES)[number]["id"];
 
+function renderMarkdown(text: string) {
+  return text.split(/(\*\*[^*]+\*\*)/).map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <p key={i} className="text-[10px] font-bold text-deep-green uppercase tracking-widest mt-5 mb-1.5 first:mt-0">
+          {part.slice(2, -2)}
+        </p>
+      );
+    }
+    return <span key={i}>{part}</span>;
+  });
+}
+
 function ProgramCard({
   program,
   country,
@@ -33,14 +46,16 @@ function ProgramCard({
   flag: string;
   userProfile?: ReturnType<typeof useProfile>["profile"];
 }) {
-  const [explaining, setExplaining] = useState(false);
-  const [explanation, setExplanation] = useState("");
-  const [explainOpen, setExplainOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [analysis, setAnalysis] = useState("");
+  const [open, setOpen] = useState(false);
 
-  async function explain() {
-    if (explanation) { setExplainOpen(true); return; }
-    setExplaining(true);
-    setExplainOpen(true);
+  async function loadAnalysis(e: React.MouseEvent) {
+    e.stopPropagation();
+    if (open && analysis) { setOpen(false); return; }
+    setOpen(true);
+    if (analysis) return;
+    setLoading(true);
     try {
       const res = await fetch("/api/explain", {
         method: "POST",
@@ -56,7 +71,12 @@ function ProgramCard({
           profile: userProfile,
         }),
       });
-      if (!res.body) throw new Error("No stream");
+      if (!res.ok) {
+        const err = await res.text();
+        setAnalysis(`Analysis unavailable: ${err || res.statusText}`);
+        return;
+      }
+      if (!res.body) { setAnalysis("No response from server."); return; }
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
       let text = "";
@@ -64,79 +84,79 @@ function ProgramCard({
         const { done, value } = await reader.read();
         if (done) break;
         text += decoder.decode(value, { stream: true });
-        setExplanation(text);
+        setAnalysis(text);
       }
-    } catch {
-      setExplanation("Couldn't load explanation. Try again.");
+    } catch (err) {
+      setAnalysis(`Could not load analysis. ${err instanceof Error ? err.message : "Check your connection."}`);
     } finally {
-      setExplaining(false);
+      setLoading(false);
     }
   }
 
   return (
-    <div className="bg-white border border-border rounded-xl p-4">
-      <div className="flex items-start justify-between gap-3 mb-2">
-        <div>
-          <p className="text-xs text-muted font-medium mb-0.5">
-            {flag} {country}
-          </p>
-          <h3 className="text-sm font-bold text-ink leading-snug">{program.name}</h3>
-        </div>
-        {program.amount && (
-          <span className="text-xs font-bold text-gold bg-gold/10 px-2 py-1 rounded-lg flex-shrink-0">
-            {program.amount}
-          </span>
-        )}
-      </div>
-      <p className="text-xs text-muted leading-relaxed mb-2">{program.what}</p>
-      <p className="text-xs font-semibold text-deep-green">{program.for_who}</p>
-      {program.indigenous_note && (
-        <div className="mt-2 bg-gold/10 border border-gold/30 rounded-lg px-3 py-2">
-          <p className="text-[10px] font-bold text-gold-dark uppercase tracking-wide mb-0.5">Indigenous note</p>
-          <p className="text-xs text-gold-dark">{program.indigenous_note}</p>
-        </div>
-      )}
-      {program.apply_at && (
-        <div className="mt-2 pt-2 border-t border-border">
-          <p className="text-[10px] text-muted">Apply at: <span className="font-semibold text-ink">{program.apply_at}</span></p>
-        </div>
-      )}
-
-      {/* Deep breakdown */}
-      <button
-        onClick={explain}
-        className="mt-3 w-full text-left text-xs font-semibold text-deep-green bg-deep-green/6 hover:bg-deep-green/10 border border-deep-green/20 rounded-lg px-3 py-2.5 flex items-center justify-between transition-colors"
-      >
-        <span>What does this mean for me?</span>
-        <span className="text-deep-green/50 text-[10px] font-normal">{explainOpen ? "Hide ↑" : "Full breakdown →"}</span>
-      </button>
-
-      {explainOpen && (
-        <div className="mt-2 border border-deep-green/15 rounded-xl overflow-hidden">
-          <div className="bg-deep-green px-4 py-3 flex items-center justify-between">
-            <p className="text-[10px] font-bold text-gold uppercase tracking-widest">Alkebulan breakdown</p>
-            <button onClick={() => setExplainOpen(false)} className="text-ivory/40 hover:text-ivory text-sm leading-none">×</button>
+    <div className="bg-white border border-border rounded-xl overflow-hidden">
+      <div className="p-4">
+        <div className="flex items-start justify-between gap-3 mb-2">
+          <div>
+            <p className="text-xs text-muted font-medium mb-0.5">{flag} {country}</p>
+            <h3 className="text-sm font-bold text-ink leading-snug">{program.name}</h3>
           </div>
-          <div className="bg-white px-4 py-4">
-            {explaining && !explanation && (
-              <div className="flex items-center gap-2 py-4">
-                <span className="inline-block w-1.5 h-4 bg-gold animate-pulse rounded-full" />
-                <span className="text-xs text-muted">Analysing this program for you…</span>
+          {program.amount && (
+            <span className="text-xs font-bold text-gold bg-gold/10 px-2 py-1 rounded-lg flex-shrink-0">
+              {program.amount}
+            </span>
+          )}
+        </div>
+        <p className="text-xs text-muted leading-relaxed mb-2">{program.what}</p>
+        <p className="text-xs font-semibold text-deep-green">{program.for_who}</p>
+        {program.indigenous_note && (
+          <div className="mt-2 bg-gold/10 border border-gold/30 rounded-lg px-3 py-2">
+            <p className="text-[10px] font-bold text-gold-dark uppercase tracking-wide mb-0.5">Nationals only</p>
+            <p className="text-xs text-gold-dark">{program.indigenous_note}</p>
+          </div>
+        )}
+        {program.apply_at && (
+          <div className="mt-2 pt-2 border-t border-border">
+            <p className="text-[10px] text-muted">Apply at: <span className="font-semibold text-ink">{program.apply_at}</span></p>
+          </div>
+        )}
+
+        <button
+          onClick={loadAnalysis}
+          className="mt-3 w-full text-left text-xs font-semibold text-deep-green bg-deep-green/5 hover:bg-deep-green/10 border border-deep-green/20 rounded-lg px-3 py-2.5 flex items-center justify-between transition-colors"
+        >
+          <span>Full program analysis</span>
+          <span className="text-deep-green/40 text-[10px] font-normal">{open ? "Collapse ↑" : "Read →"}</span>
+        </button>
+      </div>
+
+      {open && (
+        <div className="border-t border-border">
+          <div className="bg-deep-green px-4 py-3 flex items-center justify-between">
+            <p className="text-[10px] font-bold text-gold uppercase tracking-widest">Alkebulan analysis</p>
+            <button
+              onClick={(e) => { e.stopPropagation(); setOpen(false); }}
+              className="text-ivory/40 hover:text-ivory text-sm leading-none"
+            >
+              ×
+            </button>
+          </div>
+          <div className="bg-white px-4 py-5">
+            {loading && !analysis && (
+              <div className="flex items-center gap-2.5 py-3">
+                <span className="inline-block w-1.5 h-4 bg-gold animate-pulse rounded-full flex-shrink-0" />
+                <span className="text-xs text-muted">Building analysis for {program.name}…</span>
               </div>
             )}
-            <div className="text-xs text-ink leading-relaxed whitespace-pre-wrap prose-sm">
-              {explanation.split(/(\*\*[^*]+\*\*)/).map((part, i) => {
-                if (part.startsWith("**") && part.endsWith("**")) {
-                  return (
-                    <p key={i} className="text-[10px] font-bold text-deep-green uppercase tracking-widest mt-4 mb-1 first:mt-0">
-                      {part.slice(2, -2)}
-                    </p>
-                  );
-                }
-                return <span key={i}>{part}</span>;
-              })}
-              {explaining && <span className="inline-block w-1.5 h-3 bg-gold ml-0.5 animate-pulse align-middle rounded-full" />}
-            </div>
+            {analysis && (
+              <div className="text-xs text-ink leading-relaxed">
+                {renderMarkdown(analysis)}
+                {loading && <span className="inline-block w-1.5 h-3 bg-gold ml-0.5 animate-pulse align-middle rounded-full" />}
+              </div>
+            )}
+            {!loading && !analysis && (
+              <p className="text-xs text-muted py-3">Analysis not loaded. Click the button again.</p>
+            )}
           </div>
         </div>
       )}
@@ -144,24 +164,31 @@ function ProgramCard({
   );
 }
 
-function CountryCard({ profile, category, userProfile }: { profile: CountryOpportunityProfile; category: CategoryId; userProfile?: ReturnType<typeof useProfile>["profile"] }) {
+function CountryCard({
+  profile,
+  category,
+  userProfile,
+}: {
+  profile: CountryOpportunityProfile;
+  category: CategoryId;
+  userProfile?: ReturnType<typeof useProfile>["profile"];
+}) {
   const [expanded, setExpanded] = useState(false);
+  const [intelOpen, setIntelOpen] = useState(false);
+  const [intelLoading, setIntelLoading] = useState(false);
+  const [intel, setIntel] = useState("");
 
   const programs: { program: ProgramEntry; type: string }[] = useMemo(() => {
     if (category === "procurement") return [];
     const result: { program: ProgramEntry; type: string }[] = [];
-    if (category === "all" || category === "youth_women_funds") {
+    if (category === "all" || category === "youth_women_funds")
       profile.youth_women_funds.forEach(p => result.push({ program: p, type: "Youth & Women" }));
-    }
-    if (category === "all" || category === "development_bank_programs") {
+    if (category === "all" || category === "development_bank_programs")
       profile.development_bank_programs.forEach(p => result.push({ program: p, type: "Development Bank" }));
-    }
-    if (category === "all" || category === "donor_grants") {
+    if (category === "all" || category === "donor_grants")
       profile.donor_grants.forEach(p => result.push({ program: p, type: "Donor Grant" }));
-    }
-    if (category === "all" || category === "startup_innovation") {
+    if (category === "all" || category === "startup_innovation")
       profile.startup_innovation.forEach(p => result.push({ program: p, type: "Startup" }));
-    }
     return result;
   }, [profile, category]);
 
@@ -170,6 +197,46 @@ function CountryCard({ profile, category, userProfile }: { profile: CountryOppor
     profile.development_bank_programs.length +
     profile.donor_grants.length +
     profile.startup_innovation.length;
+
+  async function loadIntelligence(e: React.MouseEvent) {
+    e.stopPropagation();
+    if (intelOpen && intel) { setIntelOpen(false); return; }
+    setIntelOpen(true);
+    if (intel) return;
+    setIntelLoading(true);
+    try {
+      const res = await fetch("/api/country-intelligence", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          country: profile.country,
+          region: profile.region,
+          key_sectors: profile.key_sectors,
+          key_agencies: profile.key_agencies,
+          the_opportunity: profile.the_opportunity,
+        }),
+      });
+      if (!res.ok) {
+        const err = await res.text();
+        setIntel(`Could not load: ${err || res.statusText}`);
+        return;
+      }
+      if (!res.body) { setIntel("No response from server."); return; }
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let text = "";
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        text += decoder.decode(value, { stream: true });
+        setIntel(text);
+      }
+    } catch (err) {
+      setIntel(`Could not load intelligence. ${err instanceof Error ? err.message : "Check your connection."}`);
+    } finally {
+      setIntelLoading(false);
+    }
+  }
 
   return (
     <div className="bg-white border border-border rounded-2xl overflow-hidden">
@@ -205,6 +272,64 @@ function CountryCard({ profile, category, userProfile }: { profile: CountryOppor
 
       {expanded && (
         <div className="border-t border-border">
+
+          {/* Country Business Environment section */}
+          <div className="p-5 border-b border-border bg-warm-ivory/50">
+            <div className="flex items-start justify-between gap-4 mb-3">
+              <div>
+                <p className="text-xs font-bold text-deep-green uppercase tracking-wide mb-1">
+                  What {profile.country} is doing for business
+                </p>
+                <p className="text-xs text-muted leading-relaxed">
+                  Government priorities, sector support, youth programs, and where the real opportunity is right now.
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={loadIntelligence}
+              className="text-xs font-semibold text-deep-green bg-deep-green/8 hover:bg-deep-green/14 border border-deep-green/20 rounded-lg px-4 py-2.5 flex items-center gap-2 transition-colors"
+            >
+              {intelLoading && !intel
+                ? <span className="inline-block w-1.5 h-3.5 bg-deep-green animate-pulse rounded-full" />
+                : null}
+              {intelOpen && intel ? `Hide overview ↑` : `Full country overview →`}
+            </button>
+
+            {intelOpen && (
+              <div className="mt-4 border border-deep-green/15 rounded-xl overflow-hidden">
+                <div className="bg-deep-green px-4 py-3 flex items-center justify-between">
+                  <p className="text-[10px] font-bold text-gold uppercase tracking-widest">
+                    {profile.flag} {profile.country} — Business Environment
+                  </p>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setIntelOpen(false); }}
+                    className="text-ivory/40 hover:text-ivory text-sm leading-none"
+                  >
+                    ×
+                  </button>
+                </div>
+                <div className="bg-white px-5 py-5">
+                  {intelLoading && !intel && (
+                    <div className="flex items-center gap-2.5 py-3">
+                      <span className="inline-block w-1.5 h-4 bg-gold animate-pulse rounded-full flex-shrink-0" />
+                      <span className="text-xs text-muted">Loading full country intelligence for {profile.country}…</span>
+                    </div>
+                  )}
+                  {intel && (
+                    <div className="text-xs text-ink leading-[1.8]">
+                      {renderMarkdown(intel)}
+                      {intelLoading && <span className="inline-block w-1.5 h-3 bg-gold ml-0.5 animate-pulse align-middle rounded-full" />}
+                    </div>
+                  )}
+                  {!intelLoading && !intel && (
+                    <p className="text-xs text-muted py-3">Could not load. Click the button again.</p>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Procurement portal */}
           {(category === "all" || category === "procurement") && profile.procurement_portal && (
             <div className="p-5 bg-deep-green/5 border-b border-border">
               <p className="text-xs font-bold text-deep-green uppercase tracking-wide mb-1">Government procurement</p>
@@ -226,6 +351,7 @@ function CountryCard({ profile, category, userProfile }: { profile: CountryOppor
             </div>
           )}
 
+          {/* Program cards */}
           {programs.length > 0 && (
             <div className="p-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
               {programs.map(({ program }) => (
@@ -240,6 +366,7 @@ function CountryCard({ profile, category, userProfile }: { profile: CountryOppor
             </div>
           )}
 
+          {/* Key agencies */}
           <div className="px-5 pb-5">
             <p className="text-[10px] font-bold text-muted uppercase tracking-wide mb-2">Key agencies</p>
             <div className="flex flex-wrap gap-1.5">
@@ -281,7 +408,6 @@ export default function ProgramsPage() {
       return matchesRegion && matchesSearch;
     });
 
-    // Float user's home country to top if profile is set
     if (profile.setup_complete && profile.country_of_origin) {
       results = [
         ...results.filter(p => p.country === profile.country_of_origin),
@@ -328,20 +454,20 @@ export default function ProgramsPage() {
       <div className="bg-deep-green text-ivory py-14 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="inline-flex items-center gap-2 text-xs font-semibold text-gold bg-gold/15 px-3 py-1.5 rounded-full mb-5">
-            FUNDING & PROGRAMS DATABASE
+            PROGRAMS & FUNDING ACROSS AFRICA
           </div>
           <h1 className="font-display text-4xl sm:text-5xl font-bold mb-4 leading-tight">
-            54 countries.<br />Hundreds of programs.<br />Zero excuses.
+            54 countries.<br />The full picture of what&apos;s available.
           </h1>
           <p className="text-ivory/75 text-lg max-w-2xl leading-relaxed">
             Every major funding program, government procurement portal, youth fund,
-            development bank, and startup grant across Africa — in one place.
-            Search by country, sector, or type of funding.
+            development bank, and startup grant across Africa — and a full breakdown of
+            what each country is actively doing to support its entrepreneurs and business owners.
           </p>
           <div className="flex flex-wrap gap-6 mt-8">
             <div>
               <p className="text-2xl font-bold text-gold">54</p>
-              <p className="text-xs text-ivory/60">Countries</p>
+              <p className="text-xs text-ivory/60">Countries covered</p>
             </div>
             <div>
               <p className="text-2xl font-bold text-gold">{totalPrograms}+</p>
@@ -349,7 +475,7 @@ export default function ProgramsPage() {
             </div>
             <div>
               <p className="text-2xl font-bold text-gold">{indigenousCount}</p>
-              <p className="text-xs text-ivory/60">Indigenous-reserved funds</p>
+              <p className="text-xs text-ivory/60">Nationals-reserved funds</p>
             </div>
             <div>
               <p className="text-2xl font-bold text-gold">5</p>
@@ -362,10 +488,10 @@ export default function ProgramsPage() {
       {/* Continental resources bar */}
       <div className="bg-ink text-ivory py-4 px-4">
         <div className="max-w-5xl mx-auto flex flex-wrap items-center gap-x-6 gap-y-2">
-          <p className="text-xs font-bold text-gold uppercase tracking-widest">Continental resources:</p>
+          <p className="text-xs font-bold text-gold uppercase tracking-widest">Continental:</p>
           {[
             { name: "Tony Elumelu Foundation", note: "$5K, all 54 countries" },
-            { name: "AfDB Affirmative Finance (AFAWA)", note: "Women-led businesses" },
+            { name: "AfDB AFAWA", note: "Women-led businesses" },
             { name: "USAID West Africa Hub", note: "Exporters & manufacturers" },
             { name: "Norrsken Africa Fund", note: "Series A–B" },
             { name: "African Development Bank", note: "Infrastructure & agri" },
@@ -390,12 +516,11 @@ export default function ProgramsPage() {
                 {profile.gender === "woman" ? "women" : profile.gender === "man" ? "men" : "you"}
                 {profile.age ? `, age ${profile.age}` : ""}
                 {profile.country_of_origin ? ` from ${profile.country_of_origin}` : ""}
-                {profile.is_diaspora ? " (diaspora)" : ""}
               </p>
               <p className="text-ivory/70 text-xs">
                 {profile.country_of_origin
-                  ? `${profile.country_of_origin} programs are shown first. Indigenous notes highlighted where relevant.`
-                  : "Indigenous ownership notes are highlighted where relevant."}
+                  ? `${profile.country_of_origin} programs are shown first.`
+                  : "Nationals-only funds are clearly marked on each card."}
               </p>
             </div>
             <button
@@ -410,8 +535,8 @@ export default function ProgramsPage() {
             onClick={() => setShowSetup(true)}
             className="w-full bg-gold/10 border border-gold/30 rounded-2xl px-5 py-4 mb-5 text-left hover:bg-gold/15 transition-colors"
           >
-            <p className="text-sm font-bold text-ink mb-0.5">✨ Personalize this for me</p>
-            <p className="text-xs text-muted">Tell us who you are — we&apos;ll surface the most relevant programs for your gender, age, and country.</p>
+            <p className="text-sm font-bold text-ink mb-0.5">Personalise this for me</p>
+            <p className="text-xs text-muted">Tell us who you are — we&apos;ll show the most relevant programs for your country, gender, and stage.</p>
           </button>
         )}
 
@@ -423,7 +548,7 @@ export default function ProgramsPage() {
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search country, program, sector… (e.g. 'solar', 'DER/FJ', 'Morocco')"
+                placeholder="Search country, program, sector… e.g. 'solar', 'Morocco', 'women'"
                 className="w-full border border-border rounded-xl px-4 py-3 text-sm text-ink placeholder:text-muted/50 focus:outline-none focus:border-gold"
               />
             </div>
@@ -438,7 +563,6 @@ export default function ProgramsPage() {
             </select>
           </div>
 
-          {/* Category tabs */}
           <div className="flex flex-wrap gap-2">
             {CATEGORIES.map(({ id, label }) => (
               <button
@@ -462,10 +586,7 @@ export default function ProgramsPage() {
             Showing <span className="font-bold text-ink">{filtered.length}</span> of {ALL_COUNTRY_PROGRAMS.length} countries
           </p>
           {search && (
-            <button
-              onClick={() => setSearch("")}
-              className="text-xs text-gold hover:underline"
-            >
+            <button onClick={() => setSearch("")} className="text-xs text-gold hover:underline">
               Clear search
             </button>
           )}
@@ -480,26 +601,25 @@ export default function ProgramsPage() {
             </div>
           ) : (
             filtered.map((countryProfile) => (
-              <CountryCard key={countryProfile.country} profile={countryProfile} category={category} userProfile={profile} />
+              <CountryCard
+                key={countryProfile.country}
+                profile={countryProfile}
+                category={category}
+                userProfile={profile}
+              />
             ))
           )}
         </div>
 
-        {/* Bottom CTA */}
+        {/* Bottom note */}
         <div className="mt-10 bg-deep-green text-ivory rounded-2xl p-6">
-          <p className="text-gold text-xs font-bold uppercase tracking-widest mb-3">The real opportunity</p>
+          <p className="text-gold text-xs font-bold uppercase tracking-widest mb-3">How to use this page</p>
           <p className="text-ivory/85 leading-relaxed text-sm">
-            Most of these programs sit underused. DER/FJ in Senegal disburses millions every year to youth and women entrepreneurs —
-            but most people applying don&apos;t know it exists. Government procurement portals list contracts worth millions —
-            but barely anyone is submitting bids. The BSTP publishes infrastructure subcontracts on public works projects —
-            but local contractors aren&apos;t positioning themselves to win them.
+            Find your country. Expand it. Read what your government is actively doing for entrepreneurs and business owners right now.
+            Then go deeper into any specific program — a full analysis will walk you through what it is, whether it fits you, what it actually takes to get it, and your first step.
           </p>
           <p className="text-ivory/85 leading-relaxed text-sm mt-3">
-            The gap isn&apos;t the opportunity. The gap is the <em>awareness</em> of the opportunity.
-            That&apos;s what this database exists to close.
-          </p>
-          <p className="text-gold font-semibold mt-3 text-sm">
-            Africa is not lacking programs. It&apos;s lacking builders who know the programs exist.
+            Most of these programs are underused — not because they are bad, but because people do not know they exist or how to approach them. That gap is what this page closes.
           </p>
         </div>
       </div>
