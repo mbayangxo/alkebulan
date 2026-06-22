@@ -4,12 +4,17 @@ import { PantherSilhouette, PantherEyes, AlkebulanCrest } from "./components/pan
 import { SAMPLE_OPPORTUNITIES } from "@/lib/data/sample-opportunities";
 import { OpportunityCard } from "./components/opportunity-card";
 import { SUCCESS_STORIES } from "@/lib/data/success-stories";
-import { getHotItems } from "@/lib/data/feed-items";
+import { FEED_ITEMS, getHotItems } from "@/lib/data/feed-items";
 import { WEALTH_PATHS } from "@/lib/wealth-paths";
+import { NETWORK_PROFILES } from "@/lib/data/network-profiles";
+import { PROCUREMENT_EXAMPLES } from "@/lib/data/procurement-examples";
+import { COUNTRY_LOCALE } from "@/lib/locale";
 
 const FEATURED = SAMPLE_OPPORTUNITIES.slice(0, 3);
 const FEATURED_STORIES = SUCCESS_STORIES.slice(0, 3);
 const HOT_FEED = getHotItems().slice(0, 3);
+const FEATURED_NETWORK = NETWORK_PROFILES.slice(0, 4);
+const NEWSROOM_FEED = FEED_ITEMS.slice(0, 4);
 
 export default function LandingPage() {
   return (
@@ -283,12 +288,7 @@ export default function LandingPage() {
           <div className="bg-deep-green text-ivory rounded-2xl p-8">
             <p className="text-gold text-xs font-semibold uppercase tracking-widest mb-4">Procurement Intelligence</p>
             <div className="space-y-4">
-              {[
-                { flag: "🇸🇳", country: "Senegal", contract: "Government uniform supply", value: "250M CFA" },
-                { flag: "🇬🇭", country: "Ghana", contract: "Hospital catering services", value: "GH₵ 480K" },
-                { flag: "🇰🇪", country: "Kenya", contract: "County ICT infrastructure", value: "Sh 8M" },
-                { flag: "🇷🇼", country: "Rwanda", contract: "Ministry training services", value: "RWF 12M" },
-              ].map(({ flag, country, contract, value }) => (
+              {PROCUREMENT_EXAMPLES.map(({ flag, country, contract, value }) => (
                 <div key={country} className="flex items-center justify-between p-3 rounded-xl bg-ivory/10 hover:bg-ivory/20 transition-colors">
                   <div className="flex items-center gap-3">
                     <span className="text-xl">{flag}</span>
@@ -422,12 +422,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              {[
-                { initials: "AN", name: "Aïssatou N.", location: "Dakar", need: "Investor", sector: "Fashion" },
-                { initials: "EO", name: "Emeka O.", location: "Lagos", need: "Co-founder", sector: "Fintech" },
-                { initials: "FA", name: "Fatima A.", location: "Casablanca", need: "Export partner", sector: "Food" },
-                { initials: "SK", name: "Samuel K.", location: "Nairobi", need: "Mentor", sector: "Agriculture" },
-              ].map(({ initials, name, location, need, sector }) => (
+              {FEATURED_NETWORK.map(({ initials, name, location, looking_for, sector }) => (
                 <div key={name} className="bg-ivory/10 rounded-xl p-4">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-8 h-8 rounded-full bg-gold text-deep-green font-bold text-xs flex items-center justify-center">
@@ -435,11 +430,11 @@ export default function LandingPage() {
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-ivory">{name}</p>
-                      <p className="text-[10px] text-ivory/50">{location}</p>
+                      <p className="text-[10px] text-ivory/50">{location.split(",")[0]}</p>
                     </div>
                   </div>
                   <p className="text-xs text-ivory/70">{sector}</p>
-                  <p className="text-xs font-semibold text-gold mt-1">Seeking: {need}</p>
+                  <p className="text-xs font-semibold text-gold mt-1">Seeking: {looking_for[0]}</p>
                 </div>
               ))}
             </div>
@@ -506,23 +501,24 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="space-y-3">
-              {[
-                { emoji: "🇳🇬", headline: "NITDA launches ₦2B fund for Nigerian tech startups", cat: "Grant", time: "2 days ago" },
-                { emoji: "🇸🇳", headline: "DER/FJ opens new window for women entrepreneurs — deadline Aug 31", cat: "Grant", time: "4 days ago" },
-                { emoji: "🇬🇭", headline: "Ghana GIIF grants round 3 open — $50K per company", cat: "Fund", time: "6 days ago" },
-                { emoji: "🇰🇪", headline: "Kenya eTims tender database: new county contracts listed", cat: "Contract", time: "1 week ago" },
-              ].map(({ emoji, headline, cat, time }) => (
-                <div key={headline} className="bg-ivory/10 rounded-xl px-4 py-3 flex items-start gap-3 hover:bg-ivory/15 transition-colors">
-                  <span className="text-xl flex-shrink-0">{emoji}</span>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-ivory leading-snug">{headline}</p>
-                    <div className="flex gap-3 mt-1">
-                      <span className="text-[10px] text-gold font-semibold">{cat}</span>
-                      <span className="text-[10px] text-ivory/40">{time}</span>
+              {NEWSROOM_FEED.map((item) => {
+                const flag = item.country === "Pan-Africa" ? "🌍" : (COUNTRY_LOCALE[item.country]?.flag ?? "🌍");
+                const d = new Date(item.date);
+                const diff = Math.floor((Date.now() - d.getTime()) / 86400000);
+                const time = diff === 0 ? "Today" : diff === 1 ? "Yesterday" : diff < 7 ? `${diff} days ago` : diff < 14 ? "1 week ago" : `${Math.floor(diff / 7)} weeks ago`;
+                return (
+                  <div key={item.id} className="bg-ivory/10 rounded-xl px-4 py-3 flex items-start gap-3 hover:bg-ivory/15 transition-colors">
+                    <span className="text-xl flex-shrink-0">{flag}</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-semibold text-ivory leading-snug">{item.headline}</p>
+                      <div className="flex gap-3 mt-1">
+                        <span className="text-[10px] text-gold font-semibold">{item.category}</span>
+                        <span className="text-[10px] text-ivory/40">{time}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
               <Link href="/newsroom" className="block text-center text-xs font-semibold text-gold hover:text-gold-light transition-colors pt-1">
                 Run live search for today&apos;s news →
               </Link>
