@@ -24,6 +24,7 @@ const EXPLORE = [
 ];
 
 const TOOLS = [
+  { label: "Ka Score",             href: "/ka-score" },
   { label: "Alkebulan Builder",     href: "/build-business" },
   { label: "Build vs. Leave",      href: "/compare" },
   { label: "Decode a Product",     href: "/scan" },
