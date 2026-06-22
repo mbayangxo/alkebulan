@@ -25,12 +25,18 @@ const jost = Jost({
 export const metadata: Metadata = {
   title: "Alkebulan — Africa is the Opportunity",
   description:
-    "The African Opportunity Engine. Discover grants, loans, tenders, accelerators, and government programs built for Africans, African diaspora, women entrepreneurs, and young founders.",
-  keywords: ["Africa grants", "African funding", "African entrepreneurs", "diaspora investment", "AfCFTA", "African opportunity"],
+    "Africa has the resources. Africa has the youth. Africa has the ideas. Alkebulan opens your eyes to what is already in front of you — the businesses to build, the problems that are markets, and the tools that already exist to help you build them.",
+  keywords: ["African opportunity", "African entrepreneurs", "Africa business", "diaspora Africa", "AfCFTA", "African markets", "build in Africa"],
   openGraph: {
     title: "Alkebulan — Africa is the Opportunity",
-    description: "Find every grant, loan, tender, and program built for you across Africa.",
+    description: "What can we do as a people? Everything. Here is what is already in front of you.",
     type: "website",
+    siteName: "Alkebulan",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Alkebulan — Africa is the Opportunity",
+    description: "What can we do as a people? Everything. Here is what is already in front of you.",
   },
 };
 

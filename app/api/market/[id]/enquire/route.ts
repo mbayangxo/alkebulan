@@ -5,7 +5,7 @@ export async function POST(
   req: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  const listing = getListing(params.id);
+  const listing = await getListing(params.id);
   if (!listing) return NextResponse.json({ error: "Listing not found" }, { status: 404 });
 
   try {
@@ -15,7 +15,7 @@ export async function POST(
     if (!body.buyerPhone?.trim()) return NextResponse.json({ error: "Phone required" }, { status: 400 });
     if (!body.quantity?.trim()) return NextResponse.json({ error: "Quantity required" }, { status: 400 });
 
-    const enquiry = createEnquiry({
+    const enquiry = await createEnquiry({
       listingId: params.id,
       buyerName: String(body.buyerName).trim(),
       buyerPhone: String(body.buyerPhone).trim(),
@@ -32,13 +32,13 @@ export async function POST(
   }
 }
 
-export function GET(
+export async function GET(
   _req: NextRequest,
   { params }: { params: { id: string } }
 ) {
-  const listing = getListing(params.id);
+  const listing = await getListing(params.id);
   if (!listing) return NextResponse.json({ error: "Listing not found" }, { status: 404 });
-  const enquiries = getEnquiriesForListing(params.id);
+  const enquiries = await getEnquiriesForListing(params.id);
   return NextResponse.json({ listing, enquiries });
 }
 
@@ -50,7 +50,7 @@ export async function PATCH(
     const body = await req.json();
     if (!body.enquiryId) return NextResponse.json({ error: "enquiryId required" }, { status: 400 });
 
-    const updated = updateEnquiry(params.id, body.enquiryId, {
+    const updated = await updateEnquiry(params.id, body.enquiryId, {
       status: body.status,
       sellerReply: body.sellerReply,
       repliedAt: body.sellerReply ? new Date().toISOString() : undefined,

@@ -2,13 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { getAllListings, createListing, MARKET_CATEGORIES, UNITS } from "@/lib/market-data";
 import type { MarketCategory, PriceType } from "@/lib/market-data";
 
-export function GET(req: NextRequest) {
+export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const category = searchParams.get("category");
   const country = searchParams.get("country");
   const q = searchParams.get("q")?.toLowerCase();
 
-  let listings = getAllListings();
+  let listings = await getAllListings();
 
   if (category && MARKET_CATEGORIES.includes(category as MarketCategory)) {
     listings = listings.filter(l => l.category === category);
@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "At least one contact method required" }, { status: 400 });
     }
 
-    const listing = createListing({
+    const listing = await createListing({
       sellerName: String(body.sellerName).trim(),
       businessName: body.businessName ? String(body.businessName).trim() : undefined,
       category: body.category as MarketCategory,
