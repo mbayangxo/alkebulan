@@ -166,6 +166,17 @@ export default function LandingPage() {
               </Link>
             ))}
           </div>
+
+          {/* Footage of the raw materials being described above */}
+          <div className="mt-12 pt-10" style={{ borderTop: "1px solid rgba(11,61,46,0.12)" }}>
+            <p style={{ fontSize: "9px", letterSpacing: "0.22em", color: "#B04510" }} className="font-semibold uppercase mb-5">
+              What's being grown and fished right now
+            </p>
+            <div className="grid lg:grid-cols-2 gap-6">
+              <ResourceVideoSection title="" query="farming" count={2} layout="grid" />
+              <ResourceVideoSection title="" query="fish" count={2} layout="grid" />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -351,49 +362,21 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ── RESOURCE VIDEOS ── */}
-      <section className="py-20" style={{ background: "#071F15" }}>
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-          <div className="mb-12">
-            <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">
-              What Africa has
-            </p>
-            <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.05 }}
-              className="font-bold text-[clamp(1.75rem,4vw,2.75rem)] max-w-2xl mb-2">
-              The raw materials are here. The markets are forming.
-            </h2>
-            <p style={{ color: "rgba(253,250,244,0.35)", fontSize: "14px", lineHeight: 1.7 }} className="max-w-xl">
-              Fruits, fish, agriculture, minerals — Africa has always had the supply.
-              What&apos;s being built now is the infrastructure to own more of the value.
-            </p>
-          </div>
-
-          <div className="space-y-10">
-            <div>
-              <p style={{ fontSize: "9px", letterSpacing: "0.2em", color: "rgba(224,90,24,0.5)" }} className="font-semibold uppercase mb-4">
-                Fruits &amp; Agriculture
-              </p>
-              <ResourceVideoSection
-                title=""
-                query="fruits"
-                count={4}
-                layout="strip"
-              />
+          {/* What it looks like when Africa owns the value chain */}
+          <div className="mt-20 pt-16" style={{ borderTop: "1px solid #E0D8C8" }}>
+            <div className="flex items-end justify-between mb-6">
+              <div>
+                <p style={{ fontSize: "9px", letterSpacing: "0.22em", color: "#E05A18" }} className="font-semibold uppercase mb-2">
+                  What the end result looks like
+                </p>
+                <p style={{ fontFamily: "var(--font-fraunces)", color: "#0B3D2E", lineHeight: 1.2 }}
+                  className="font-semibold text-xl max-w-lg">
+                  African markets, brands, and businesses — already running, already winning.
+                </p>
+              </div>
             </div>
-            <div>
-              <p style={{ fontSize: "9px", letterSpacing: "0.2em", color: "rgba(224,90,24,0.5)" }} className="font-semibold uppercase mb-4">
-                Fishing &amp; Ocean Resources
-              </p>
-              <ResourceVideoSection
-                title=""
-                query="fish"
-                count={4}
-                layout="strip"
-              />
-            </div>
+            <ResourceVideoSection title="" query="market" count={4} layout="strip" />
           </div>
         </div>
       </section>

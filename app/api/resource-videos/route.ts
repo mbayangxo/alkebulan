@@ -13,6 +13,8 @@ const RESOURCE_QUERIES: Record<string, string> = {
   farming:     "farming agriculture Africa harvest",
   market:      "African market food trading commerce",
   ocean:       "ocean fishing boat Africa atlantic",
+  brand:       "African brand product packaging business shop",
+  skincare:    "skincare beauty products brand packaging",
 };
 
 export async function GET(req: NextRequest) {
