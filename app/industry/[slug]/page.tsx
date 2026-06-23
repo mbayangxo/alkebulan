@@ -36,7 +36,7 @@ export default async function IndustryDetailPage({
   return (
     <>
       <Nav />
-      <main className="min-h-screen bg-[#071F15]">
+      <main className="min-h-screen bg-[#0D0804]">
         {/* Breadcrumb */}
         <div className="border-b border-white/8 px-5 sm:px-8 py-4">
           <div className="max-w-4xl mx-auto flex items-center gap-2 text-[11px] text-ivory/40">

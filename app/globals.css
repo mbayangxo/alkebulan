@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  /* ── Alkebulan brand tokens v1 ───────────────────────────────────────────
-   * Colorway: Green · Orange · Silver · Indigo
+  /* ── Kebu brand tokens — Sahel palette ──────────────────────────────────
+   * Colorway: Earth · Terracotta · Sand · Warm
    * ─────────────────────────────────────────────────────────────────────── */
 
-  /* Green — African heritage, growth, home */
-  --deep-green: #0B3D2E;
-  --mid-green: #1A5C44;
-  --light-green: #2A8455;
+  /* Earth — deep warm charcoal (replaces forest green) */
+  --deep-green: #1A1008;
+  --mid-green: #2E1C0C;
+  --light-green: #5C3A1A;
 
-  /* Orange — energy, action, opportunity (replaces gold; CSS names kept) */
+  /* Terracotta / burnt clay — energy, action, opportunity */
   --gold: #E05A18;
   --gold-light: #F27840;
   --gold-dark: #B04510;
 
-  /* Warm parchment — replaces cool silver */
-  --ivory: #FDFAF4;
-  --warm-ivory: #F5EFE0;
-  --border: #E0D8C8;
+  /* Warm sand — backgrounds */
+  --ivory: #F8F0E2;
+  --warm-ivory: #EDE0C8;
+  --border: #D4C4A0;
 
   /* Indigo — knowledge, depth, intelligence */
   --indigo: #3730A3;
@@ -28,8 +28,8 @@
   --midnight: #1E1B4B;
 
   /* Neutrals */
-  --ink: #0A0A0A;
-  --muted: #6B7180;
+  --ink: #1A1008;
+  --muted: #7A6550;
   --white: #FFFFFF;
 
   /* Semantic */
@@ -98,7 +98,7 @@ body {
 
 /* Typography */
 .font-display {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-fraunces), system-ui, sans-serif;
 }
 
 /* Utility */
@@ -114,9 +114,9 @@ body {
   background: linear-gradient(135deg, #E05A18 0%, #F27840 50%, #B04510 100%);
 }
 
-/* Green gradient */
+/* Dark earth gradient */
 .green-gradient {
-  background: linear-gradient(135deg, #0B3D2E 0%, #1A5C44 100%);
+  background: linear-gradient(135deg, #1A1008 0%, #2E1C0C 100%);
 }
 
 /* Indigo gradient */

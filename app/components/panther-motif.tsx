@@ -36,12 +36,12 @@ export function AlkebulanLion({ size = 80, className = "" }: MarkProps) {
       <ellipse cx="40" cy="34" rx="17" ry="13" fill="#D04E10" />
 
       {/* Brow ridges — give the lion authority */}
-      <path d="M27 36 Q33 31 39 34" stroke="#0B3D2E" strokeWidth="2" fill="none" strokeLinecap="round" />
-      <path d="M53 36 Q47 31 41 34" stroke="#0B3D2E" strokeWidth="2" fill="none" strokeLinecap="round" />
+      <path d="M27 36 Q33 31 39 34" stroke="#1A1008" strokeWidth="2" fill="none" strokeLinecap="round" />
+      <path d="M53 36 Q47 31 41 34" stroke="#1A1008" strokeWidth="2" fill="none" strokeLinecap="round" />
 
       {/* Eyes */}
-      <ellipse cx="32" cy="40" rx="5.5" ry="4.5" fill="#0B3D2E" />
-      <ellipse cx="48" cy="40" rx="5.5" ry="4.5" fill="#0B3D2E" />
+      <ellipse cx="32" cy="40" rx="5.5" ry="4.5" fill="#1A1008" />
+      <ellipse cx="48" cy="40" rx="5.5" ry="4.5" fill="#1A1008" />
       {/* Pupils */}
       <ellipse cx="32" cy="41" rx="2.5" ry="3.2" fill="#061A10" />
       <ellipse cx="48" cy="41" rx="2.5" ry="3.2" fill="#061A10" />
@@ -50,16 +50,16 @@ export function AlkebulanLion({ size = 80, className = "" }: MarkProps) {
       <ellipse cx="46.5" cy="38.5" rx="1.5" ry="2" fill="white" opacity="0.6" />
 
       {/* Nose */}
-      <path d="M40 49 L36 53.5 L44 53.5 Z" fill="#0B3D2E" />
-      <path d="M36 53.5 Q40 58 44 53.5" fill="#0B3D2E" />
+      <path d="M40 49 L36 53.5 L44 53.5 Z" fill="#1A1008" />
+      <path d="M36 53.5 Q40 58 44 53.5" fill="#1A1008" />
 
       {/* Mouth */}
-      <path d="M40 57 L36.5 60.5" stroke="#0B3D2E" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-      <path d="M40 57 L43.5 60.5" stroke="#0B3D2E" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      <path d="M40 57 L36.5 60.5" stroke="#1A1008" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+      <path d="M40 57 L43.5 60.5" stroke="#1A1008" strokeWidth="1.5" fill="none" strokeLinecap="round" />
 
       {/* Whisker dots — readable at large size, disappear cleanly at small */}
-      <circle cx="33.5" cy="57" r="1.2" fill="#0B3D2E" opacity="0.35" />
-      <circle cx="46.5" cy="57" r="1.2" fill="#0B3D2E" opacity="0.35" />
+      <circle cx="33.5" cy="57" r="1.2" fill="#1A1008" opacity="0.35" />
+      <circle cx="46.5" cy="57" r="1.2" fill="#1A1008" opacity="0.35" />
     </svg>
   );
 }

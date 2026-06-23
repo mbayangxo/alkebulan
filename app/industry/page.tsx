@@ -13,7 +13,7 @@ export default function IndustryPage() {
   return (
     <>
       <Nav />
-      <main className="min-h-screen bg-[#071F15]">
+      <main className="min-h-screen bg-[#0D0804]">
         {/* Hero */}
         <section className="border-b border-white/8 px-5 sm:px-8 pt-16 pb-14">
           <div className="max-w-4xl mx-auto">

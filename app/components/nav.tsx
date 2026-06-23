@@ -69,7 +69,7 @@ function Dropdown({
         </svg>
       </button>
       {open && (
-        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 bg-[#071F15] border border-gold/15 rounded-2xl shadow-2xl shadow-black/40 overflow-hidden z-50">
+        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 bg-[#0D0804] border border-gold/15 rounded-2xl shadow-2xl shadow-black/40 overflow-hidden z-50">
           <div className="p-1.5">
             {items.map(({ label, href }) => (
               <Link
@@ -93,7 +93,7 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
 
   const navBg = transparent
     ? "bg-transparent"
-    : "bg-[#071F15]";
+    : "bg-[#0D0804]";
 
   function isActive(href: string) {
     if (href === "/") return pathname === "/";
@@ -199,7 +199,7 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
 
       {/* ── Mobile menu ── */}
       {menuOpen && (
-        <div className="lg:hidden bg-[#071F15] border-b border-white/8">
+        <div className="lg:hidden bg-[#0D0804] border-b border-white/8">
           {/* Primary links */}
           <div className="px-5 pt-5 pb-3 space-y-1">
             <p

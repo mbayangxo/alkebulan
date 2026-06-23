@@ -78,7 +78,7 @@ function Toggle({
         )}
       </div>
       <div>
-        <p className="text-sm font-semibold" style={{ color: checked ? "#FDFAF4" : "rgba(253,250,244,0.6)" }}>{label}</p>
+        <p className="text-sm font-semibold" style={{ color: checked ? "#F8F0E2" : "rgba(253,250,244,0.6)" }}>{label}</p>
         {sub && <p className="text-xs mt-0.5" style={{ color: "rgba(253,250,244,0.35)" }}>{sub}</p>}
       </div>
     </button>
@@ -110,7 +110,7 @@ function OptionSelect({
               {selected && <div className="w-2 h-2 rounded-full bg-white" />}
             </div>
             <div>
-              <p className="text-sm font-semibold" style={{ color: selected ? "#FDFAF4" : "rgba(253,250,244,0.6)" }}>{o.label}</p>
+              <p className="text-sm font-semibold" style={{ color: selected ? "#F8F0E2" : "rgba(253,250,244,0.6)" }}>{o.label}</p>
               {o.sub && <p className="text-xs mt-0.5" style={{ color: "rgba(253,250,244,0.35)" }}>{o.sub}</p>}
             </div>
           </button>
@@ -160,12 +160,12 @@ export default function KaScorePage() {
   const liveResult = result ?? calculateKaScore(profile);
 
   return (
-    <div className="min-h-screen" style={{ background: "#FDFAF4" }}>
+    <div className="min-h-screen" style={{ background: "#F8F0E2" }}>
       <Nav />
 
       {/* ── INTRO ── */}
       {step === 0 && (
-        <div className="min-h-[calc(100vh-68px)] flex flex-col" style={{ background: "#0B3D2E" }}>
+        <div className="min-h-[calc(100vh-68px)] flex flex-col" style={{ background: "#1A1008" }}>
           <div className="flex-1 flex items-center">
             <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-16 py-24 w-full">
               <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -198,7 +198,7 @@ export default function KaScorePage() {
                   <button
                     onClick={() => setStep(1)}
                     className="inline-flex items-center gap-3 font-bold px-8 py-4 rounded-full text-sm uppercase tracking-[0.08em] transition-all"
-                    style={{ background: "#E05A18", color: "#0B3D2E" }}
+                    style={{ background: "#E05A18", color: "#1A1008" }}
                   >
                     Build my Ka Score
                     <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
@@ -217,7 +217,7 @@ export default function KaScorePage() {
                         <span style={{ color: l.color, fontSize: "10px", fontWeight: 700 }}>{l.min}</span>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", fontSize: "13px", fontWeight: 700 }}>{l.name}</p>
+                        <p style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", fontSize: "13px", fontWeight: 700 }}>{l.name}</p>
                         <p style={{ color: "rgba(253,250,244,0.35)", fontSize: "11px" }}>{l.tagline}</p>
                       </div>
                       <div className="text-right flex-shrink-0">
@@ -236,7 +236,7 @@ export default function KaScorePage() {
 
       {/* ── QUESTIONNAIRE STEPS 1-5 ── */}
       {step >= 1 && step <= 5 && (
-        <div className="min-h-[calc(100vh-68px)]" style={{ background: "#071F15" }}>
+        <div className="min-h-[calc(100vh-68px)]" style={{ background: "#0D0804" }}>
           <div className="max-w-[1400px] mx-auto px-5 sm:px-8 py-12">
 
             {/* Step progress */}
@@ -248,7 +248,7 @@ export default function KaScorePage() {
                       style={{
                         background: step > i + 1 ? "#E05A18" : step === i + 1 ? "rgba(224,90,24,0.2)" : "rgba(255,255,255,0.05)",
                         border: step === i + 1 ? "1px solid #E05A18" : "1px solid transparent",
-                        color: step > i + 1 ? "#0B3D2E" : step === i + 1 ? "#E05A18" : "rgba(255,255,255,0.3)",
+                        color: step > i + 1 ? "#1A1008" : step === i + 1 ? "#E05A18" : "rgba(255,255,255,0.3)",
                       }}>
                       {step > i + 1 ? "✓" : i + 1}
                     </div>
@@ -272,7 +272,7 @@ export default function KaScorePage() {
                 {step === 1 && (
                   <div>
                     <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">Step 1 of 5</p>
-                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.1 }}
+                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.1 }}
                       className="font-bold text-3xl mb-2">Business Identity</h2>
                     <p style={{ color: "rgba(253,250,244,0.4)", fontSize: "13px", lineHeight: 1.7 }} className="mb-8">
                       Does your business have an official presence? These are the foundation of your Ka Score. Each one makes you more visible to banks, suppliers, and buyers.
@@ -297,7 +297,7 @@ export default function KaScorePage() {
                 {step === 2 && (
                   <div>
                     <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">Step 2 of 5</p>
-                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.1 }}
+                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.1 }}
                       className="font-bold text-3xl mb-2">Operating History</h2>
                     <p style={{ color: "rgba(253,250,244,0.4)", fontSize: "13px", lineHeight: 1.7 }} className="mb-8">
                       How long has your business been operating? Time in operation is one of the most powerful signals of business health. Consistent operation is proof of survival.
@@ -320,7 +320,7 @@ export default function KaScorePage() {
                 {step === 3 && (
                   <div>
                     <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">Step 3 of 5</p>
-                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.1 }}
+                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.1 }}
                       className="font-bold text-3xl mb-2">Revenue Track Record</h2>
                     <p style={{ color: "rgba(253,250,244,0.4)", fontSize: "13px", lineHeight: 1.7 }} className="mb-8">
                       What is your approximate monthly revenue? This is not a judgment — it is a signal. Even small consistent revenue is worth more to a lender than a larger number with no history.
@@ -343,7 +343,7 @@ export default function KaScorePage() {
                 {step === 4 && (
                   <div>
                     <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">Step 4 of 5</p>
-                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.1 }}
+                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.1 }}
                       className="font-bold text-3xl mb-2">Assets & Resources</h2>
                     <p style={{ color: "rgba(253,250,244,0.4)", fontSize: "13px", lineHeight: 1.7 }} className="mb-8">
                       What does your business actually have? Assets are proof that your business exists beyond words. They show capacity — the ability to deliver on a contract.
@@ -368,7 +368,7 @@ export default function KaScorePage() {
                 {step === 5 && (
                   <div>
                     <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">Step 5 of 5</p>
-                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.1 }}
+                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.1 }}
                       className="font-bold text-3xl mb-2">Network & Relationships</h2>
                     <p style={{ color: "rgba(253,250,244,0.4)", fontSize: "13px", lineHeight: 1.7 }} className="mb-8">
                       Who trusts your business? Relationships are the oldest form of credit. A business with repeat customers and verified connections is a business that has earned trust.
@@ -400,7 +400,7 @@ export default function KaScorePage() {
                     <button
                       onClick={() => setStep(s => s + 1)}
                       className="flex-1 sm:flex-none px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all"
-                      style={{ background: "#E05A18", color: "#0B3D2E" }}
+                      style={{ background: "#E05A18", color: "#1A1008" }}
                     >
                       Continue →
                     </button>
@@ -408,7 +408,7 @@ export default function KaScorePage() {
                     <button
                       onClick={finish}
                       className="flex-1 sm:flex-none px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all"
-                      style={{ background: "#E05A18", color: "#0B3D2E" }}
+                      style={{ background: "#E05A18", color: "#1A1008" }}
                     >
                       See my Ka Score →
                     </button>
@@ -418,7 +418,7 @@ export default function KaScorePage() {
 
               {/* Live score sidebar */}
               <div className="lg:sticky lg:top-24">
-                <div className="rounded-2xl overflow-hidden" style={{ background: "#0B3D2E" }}>
+                <div className="rounded-2xl overflow-hidden" style={{ background: "#1A1008" }}>
                   <div className="px-5 py-4" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
                     <p style={{ fontSize: "9px", letterSpacing: "0.22em", color: "rgba(224,90,24,0.6)" }} className="font-semibold uppercase">
                       Your score — live
@@ -460,9 +460,9 @@ export default function KaScorePage() {
 
       {/* ── RESULTS ── */}
       {step === 6 && result && (
-        <div style={{ background: "#071F15" }}>
+        <div style={{ background: "#0D0804" }}>
           {/* Score hero */}
-          <div className="py-16 lg:py-24" style={{ background: "#0B3D2E" }}>
+          <div className="py-16 lg:py-24" style={{ background: "#1A1008" }}>
             <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
               <div className="grid lg:grid-cols-[320px_1fr] gap-12 items-center">
                 <div className="text-center lg:text-left">
@@ -513,7 +513,7 @@ export default function KaScorePage() {
                     </button>
                     <Link href="/programs"
                       className="px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all"
-                      style={{ background: "#E05A18", color: "#0B3D2E" }}>
+                      style={{ background: "#E05A18", color: "#1A1008" }}>
                       See matched programs →
                     </Link>
                   </div>
@@ -528,7 +528,7 @@ export default function KaScorePage() {
               <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.6)", fontSize: "10px" }} className="font-semibold uppercase mb-3">
                 What your Ka Score unlocks
               </p>
-              <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.1 }}
+              <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.1 }}
                 className="font-bold text-3xl mb-10">
                 You have access to {result.level.unlocks.length} things right now.
               </h2>
@@ -615,7 +615,7 @@ export default function KaScorePage() {
                             style={{ background: l.color + "22", color: l.color }}>You</span>
                         )}
                       </div>
-                      <p style={{ fontFamily: "var(--font-fraunces)", color: isCurrentOrBelow ? "#FDFAF4" : "rgba(253,250,244,0.2)", fontWeight: 700, fontSize: "15px", lineHeight: 1.2 }}
+                      <p style={{ fontFamily: "var(--font-fraunces)", color: isCurrentOrBelow ? "#F8F0E2" : "rgba(253,250,244,0.2)", fontWeight: 700, fontSize: "15px", lineHeight: 1.2 }}
                         className="mb-1">{l.name}</p>
                       <p style={{ color: "rgba(253,250,244,0.3)", fontSize: "10px", lineHeight: 1.5 }}>{l.tagline}</p>
                     </div>

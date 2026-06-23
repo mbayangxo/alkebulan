@@ -32,7 +32,7 @@ function SingleResourceVideo({ video, autoplay = false }: { video: PexelsVideo; 
   }, []);
 
   return (
-    <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: "16/9", background: "#0B3D2E" }}>
+    <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: "16/9", background: "#1A1008" }}>
       <video
         ref={ref}
         src={video.url}
@@ -91,7 +91,7 @@ export function ResourceVideoSection({
     <div>
       {(title || subtitle) && (
         <div className="mb-6">
-          {title && <h3 className="font-bold text-lg" style={{ fontFamily: "var(--font-fraunces)", color: "#0B3D2E" }}>{title}</h3>}
+          {title && <h3 className="font-bold text-lg" style={{ fontFamily: "var(--font-fraunces)", color: "#1A1008" }}>{title}</h3>}
           {subtitle && <p className="text-sm mt-1" style={{ color: "#6B5B45" }}>{subtitle}</p>}
         </div>
       )}
@@ -99,7 +99,7 @@ export function ResourceVideoSection({
       {loading && (
         <div className={`grid gap-4 ${layout === "strip" ? "grid-cols-2 lg:grid-cols-4" : "grid-cols-1 sm:grid-cols-2"}`}>
           {Array.from({ length: count }).map((_, i) => (
-            <div key={i} className="rounded-2xl bg-[#0B3D2E]/10 animate-pulse" style={{ aspectRatio: "16/9" }} />
+            <div key={i} className="rounded-2xl bg-[#1A1008]/10 animate-pulse" style={{ aspectRatio: "16/9" }} />
           ))}
         </div>
       )}

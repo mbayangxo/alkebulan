@@ -10,10 +10,10 @@ const FEATURED_STORIES = SUCCESS_STORIES.slice(0, 3);
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen" style={{ background: "#FDFAF4", color: "#0A0A0A" }}>
+    <div className="min-h-screen" style={{ background: "#F8F0E2", color: "#0A0A0A" }}>
 
       {/* ── NAV ── */}
-      <header className="sticky top-0 z-50" style={{ background: "#0B3D2E" }}>
+      <header className="sticky top-0 z-50" style={{ background: "#1A1008" }}>
         <div className="h-[3px] w-full" style={{ background: "linear-gradient(90deg, #B04510, #E05A18, #F27840)" }} />
         <nav style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
           <div className="max-w-[1400px] mx-auto px-5 sm:px-8 h-[68px] flex items-center justify-between gap-6">
@@ -29,12 +29,12 @@ export default function LandingPage() {
                 <Link key={h} href={h} className="text-white/60 hover:text-[#E05A18] transition-colors">{l}</Link>
               ))}
               <span className="text-white/20">·</span>
-              <Link href="/build-business" className="flex items-center gap-2 bg-[#E05A18] hover:bg-[#F27840] text-[#0B3D2E] font-bold px-5 py-2 rounded-full transition-colors">
+              <Link href="/build-business" className="flex items-center gap-2 bg-[#E05A18] hover:bg-[#F27840] text-[#1A1008] font-bold px-5 py-2 rounded-full transition-colors">
                 <AlkebulanLion size={14} /> Kebu Builder
               </Link>
             </div>
             <div className="lg:hidden flex items-center gap-3">
-              <Link href="/signup" className="text-[11px] font-bold uppercase tracking-[0.1em] bg-[#E05A18] text-[#0B3D2E] px-4 py-2 rounded-full">
+              <Link href="/signup" className="text-[11px] font-bold uppercase tracking-[0.1em] bg-[#E05A18] text-[#1A1008] px-4 py-2 rounded-full">
                 Start
               </Link>
             </div>
@@ -43,7 +43,7 @@ export default function LandingPage() {
       </header>
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden" style={{ background: "#0B3D2E", minHeight: "92vh", display: "flex", alignItems: "center" }}>
+      <section className="relative overflow-hidden" style={{ background: "#1A1008", minHeight: "92vh", display: "flex", alignItems: "center" }}>
         {/* Subtle texture */}
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, #E05A18 1px, transparent 0)`,
@@ -90,7 +90,7 @@ export default function LandingPage() {
             <div className="flex flex-wrap gap-4">
               <Link href="/path"
                 className="inline-flex items-center gap-3 font-bold px-8 py-4 rounded-full text-sm uppercase tracking-[0.08em] transition-all"
-                style={{ background: "#E05A18", color: "#0B3D2E" }}>
+                style={{ background: "#E05A18", color: "#1A1008" }}>
                 Show me the opportunity
                 <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
                   <path d="M5 12H19M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -115,10 +115,10 @@ export default function LandingPage() {
       </section>
 
       {/* ── WHAT ALKEBULAN IS (mission strip) ── */}
-      <section className="py-10" style={{ background: "#071F15", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+      <section className="py-10" style={{ background: "#0D0804", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12">
-            <p style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", fontSize: "clamp(1rem,2.5vw,1.35rem)", lineHeight: 1.4, fontWeight: 500, flexShrink: 0 }}
+            <p style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", fontSize: "clamp(1rem,2.5vw,1.35rem)", lineHeight: 1.4, fontWeight: 500, flexShrink: 0 }}
               className="italic max-w-lg">
               &ldquo;Built for the young person in Lagos, Nairobi, Accra, Dakar — who is already trying, but hasn&apos;t been shown what&apos;s actually possible.&rdquo;
             </p>
@@ -132,13 +132,13 @@ export default function LandingPage() {
       </section>
 
       {/* ── EXTRACTION TRUTH ── */}
-      <section className="py-16 lg:py-20" style={{ background: "#F5EFE0" }}>
+      <section className="py-16 lg:py-20" style={{ background: "#EDE0C8" }}>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="mb-10">
             <p style={{ letterSpacing: "0.2em", color: "#B04510", fontSize: "10px" }} className="font-semibold uppercase mb-3">
               The gap that exists
             </p>
-            <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#0B3D2E", lineHeight: 1.1 }}
+            <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#1A1008", lineHeight: 1.1 }}
               className="font-bold text-[clamp(1.75rem,4vw,3rem)] max-w-2xl">
               Africa produces the world&apos;s most valuable commodities. And earns almost none of the value.
             </h2>
@@ -152,10 +152,10 @@ export default function LandingPage() {
             ].map((item) => (
               <Link key={item.commodity} href={item.href}
                 className="group p-6 rounded-2xl transition-all"
-                style={{ background: "#0B3D2E", border: "1px solid rgba(255,255,255,0.06)" }}>
+                style={{ background: "#1A1008", border: "1px solid rgba(255,255,255,0.06)" }}>
                 <p style={{ color: "rgba(224,90,24,0.7)", fontSize: "10px", letterSpacing: "0.18em" }}
                   className="font-semibold uppercase mb-3">{item.country}</p>
-                <p style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.2 }}
+                <p style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.2 }}
                   className="font-bold text-lg mb-2">{item.commodity}</p>
                 <p style={{ color: "rgba(253,250,244,0.5)", fontSize: "12px", lineHeight: 1.6 }} className="mb-4">{item.fact}</p>
                 <div style={{ borderTop: "1px solid rgba(224,90,24,0.2)" }} className="pt-4">
@@ -181,13 +181,13 @@ export default function LandingPage() {
       </section>
 
       {/* ── THREE PILLARS ── */}
-      <section className="py-24 lg:py-32" style={{ background: "#FDFAF4" }}>
+      <section className="py-24 lg:py-32" style={{ background: "#F8F0E2" }}>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="mb-16">
             <p style={{ letterSpacing: "0.2em", color: "#E05A18", fontSize: "10px" }} className="font-semibold uppercase mb-4">
               What Kebu is
             </p>
-            <h2 style={{ fontFamily: "var(--font-fraunces)", lineHeight: 1.05, color: "#0B3D2E" }}
+            <h2 style={{ fontFamily: "var(--font-fraunces)", lineHeight: 1.05, color: "#1A1008" }}
               className="font-bold text-[clamp(2rem,5vw,3.75rem)] max-w-3xl">
               Not a grant portal. An operating system for people who want to build.
             </h2>
@@ -197,7 +197,7 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-0 border border-[#E0D8C8] rounded-3xl overflow-hidden">
+          <div className="grid lg:grid-cols-3 gap-0 border border-[#D4C4A0] rounded-3xl overflow-hidden">
             {[
               {
                 num: "01",
@@ -227,8 +227,8 @@ export default function LandingPage() {
             ].map((p, i) => (
               <div key={p.num} className="relative"
                 style={{
-                  background: p.highlight ? "#0B3D2E" : "#FDFAF4",
-                  borderLeft: i > 0 ? "1px solid #E0D8C8" : "none",
+                  background: p.highlight ? "#1A1008" : "#F8F0E2",
+                  borderLeft: i > 0 ? "1px solid #D4C4A0" : "none",
                 }}>
                 <div className="p-8 lg:p-10 flex flex-col h-full min-h-[380px]">
                   <div className="flex items-start justify-between mb-8">
@@ -236,7 +236,7 @@ export default function LandingPage() {
                       {p.num}
                     </span>
                   </div>
-                  <h3 style={{ fontFamily: "var(--font-fraunces)", color: p.highlight ? "#FDFAF4" : "#0B3D2E", lineHeight: 1.15 }}
+                  <h3 style={{ fontFamily: "var(--font-fraunces)", color: p.highlight ? "#F8F0E2" : "#1A1008", lineHeight: 1.15 }}
                     className="font-bold text-2xl mb-4">
                     {p.title}
                   </h3>
@@ -250,7 +250,7 @@ export default function LandingPage() {
                   </p>
                   <Link href={p.href}
                     className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.1em] transition-all self-start"
-                    style={{ color: p.highlight ? "#E05A18" : "#0B3D2E" }}>
+                    style={{ color: p.highlight ? "#E05A18" : "#1A1008" }}>
                     {p.cta} →
                   </Link>
                 </div>
@@ -261,7 +261,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── NUMBERS THAT MATTER ── */}
-      <section className="py-24" style={{ background: "#0B3D2E" }}>
+      <section className="py-24" style={{ background: "#1A1008" }}>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-0 border border-white/10 rounded-3xl overflow-hidden">
             {[
@@ -286,14 +286,14 @@ export default function LandingPage() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section className="py-24 lg:py-32" style={{ background: "#FDFAF4" }}>
+      <section className="py-24 lg:py-32" style={{ background: "#F8F0E2" }}>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <p style={{ letterSpacing: "0.2em", color: "#E05A18", fontSize: "10px" }} className="font-semibold uppercase mb-5">
                 How it works
               </p>
-              <h2 style={{ fontFamily: "var(--font-fraunces)", lineHeight: 1.05, color: "#0B3D2E" }}
+              <h2 style={{ fontFamily: "var(--font-fraunces)", lineHeight: 1.05, color: "#1A1008" }}
                 className="font-bold text-[clamp(2rem,4.5vw,3.5rem)] mb-8">
                 First, we show you<br />what is possible.<br /><span style={{ color: "#E05A18" }}>Then how to do it.</span>
               </h2>
@@ -309,13 +309,13 @@ export default function LandingPage() {
               </p>
               <Link href="/path"
                 className="inline-flex items-center gap-3 font-bold px-8 py-4 rounded-full text-sm uppercase tracking-[0.08em] transition-all"
-                style={{ background: "#0B3D2E", color: "#FDFAF4" }}>
+                style={{ background: "#1A1008", color: "#F8F0E2" }}>
                 Show me what&apos;s possible →
               </Link>
             </div>
 
             {/* Path preview card */}
-            <div style={{ background: "#0B3D2E", borderRadius: "24px", overflow: "hidden" }}>
+            <div style={{ background: "#1A1008", borderRadius: "24px", overflow: "hidden" }}>
               <div className="px-6 py-4" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full" style={{ background: "#E05A18" }} />
@@ -341,7 +341,7 @@ export default function LandingPage() {
                       style={{
                         background: done ? "#E05A18" : "transparent",
                         border: done ? "none" : "1px solid rgba(255,255,255,0.15)",
-                        color: done ? "#0B3D2E" : "rgba(255,255,255,0.3)"
+                        color: done ? "#1A1008" : "rgba(255,255,255,0.3)"
                       }}>
                       {done ? "✓" : n}
                     </div>
@@ -356,7 +356,7 @@ export default function LandingPage() {
               </div>
               <div className="px-6 pb-6">
                 <Link href="/path" className="block text-center text-xs font-bold uppercase tracking-[0.12em] py-3 rounded-full transition-all"
-                  style={{ background: "#E05A18", color: "#0B3D2E" }}>
+                  style={{ background: "#E05A18", color: "#1A1008" }}>
                   Build your path →
                 </Link>
               </div>
@@ -364,13 +364,13 @@ export default function LandingPage() {
           </div>
 
           {/* What it looks like when Africa owns the value chain */}
-          <div className="mt-20 pt-16" style={{ borderTop: "1px solid #E0D8C8" }}>
+          <div className="mt-20 pt-16" style={{ borderTop: "1px solid #D4C4A0" }}>
             <div className="flex items-end justify-between mb-6">
               <div>
                 <p style={{ fontSize: "9px", letterSpacing: "0.22em", color: "#E05A18" }} className="font-semibold uppercase mb-2">
                   What the end result looks like
                 </p>
-                <p style={{ fontFamily: "var(--font-fraunces)", color: "#0B3D2E", lineHeight: 1.2 }}
+                <p style={{ fontFamily: "var(--font-fraunces)", color: "#1A1008", lineHeight: 1.2 }}
                   className="font-semibold text-xl max-w-lg">
                   African markets, brands, and businesses — already running, already winning.
                 </p>
@@ -382,20 +382,20 @@ export default function LandingPage() {
       </section>
 
       {/* ── INDUSTRY INTELLIGENCE PREVIEW ── */}
-      <section className="py-24" style={{ background: "#F5EFE0" }}>
+      <section className="py-24" style={{ background: "#EDE0C8" }}>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="flex items-end justify-between mb-12">
             <div>
               <p style={{ letterSpacing: "0.2em", color: "#E05A18", fontSize: "10px" }} className="font-semibold uppercase mb-4">
                 Industry Intelligence
               </p>
-              <h2 style={{ fontFamily: "var(--font-fraunces)", lineHeight: 1.05, color: "#0B3D2E" }}
+              <h2 style={{ fontFamily: "var(--font-fraunces)", lineHeight: 1.05, color: "#1A1008" }}
                 className="font-bold text-[clamp(2rem,4.5vw,3.5rem)]">
                 Who controls the chain.<br />Where you can enter.
               </h2>
             </div>
             <Link href="/industry" className="hidden lg:flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] transition-colors"
-              style={{ color: "#0B3D2E" }}>
+              style={{ color: "#1A1008" }}>
               All 5 industries →
             </Link>
           </div>
@@ -404,9 +404,9 @@ export default function LandingPage() {
             {INDUSTRIES.map((ind) => (
               <Link key={ind.slug} href={`/industry/${ind.slug}`}
                 className="group relative p-6 rounded-2xl transition-all"
-                style={{ background: "#0B3D2E", border: "1px solid rgba(255,255,255,0.06)" }}>
+                style={{ background: "#1A1008", border: "1px solid rgba(255,255,255,0.06)" }}>
                 <div className="text-3xl mb-4">{ind.icon}</div>
-                <p style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.2 }}
+                <p style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.2 }}
                   className="font-bold text-lg mb-2">{ind.name}</p>
                 <p style={{ color: "rgba(253,250,244,0.4)", fontSize: "11px", lineHeight: 1.5 }}
                   className="line-clamp-2 mb-4">{ind.tagline}</p>
@@ -421,20 +421,20 @@ export default function LandingPage() {
       </section>
 
       {/* ── SUCCESS PATHS ── */}
-      <section className="py-24 lg:py-32" style={{ background: "#FDFAF4" }}>
+      <section className="py-24 lg:py-32" style={{ background: "#F8F0E2" }}>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="flex items-end justify-between mb-12">
             <div>
               <p style={{ letterSpacing: "0.2em", color: "#E05A18", fontSize: "10px" }} className="font-semibold uppercase mb-4">
                 Proof it works
               </p>
-              <h2 style={{ fontFamily: "var(--font-fraunces)", lineHeight: 1.05, color: "#0B3D2E" }}
+              <h2 style={{ fontFamily: "var(--font-fraunces)", lineHeight: 1.05, color: "#1A1008" }}
                 className="font-bold text-[clamp(2rem,4.5vw,3.5rem)]">
                 Real people. Real paths.
               </h2>
             </div>
             <Link href="/success" className="hidden lg:block text-xs font-bold uppercase tracking-[0.12em]"
-              style={{ color: "#0B3D2E" }}>
+              style={{ color: "#1A1008" }}>
               All stories →
             </Link>
           </div>
@@ -444,11 +444,11 @@ export default function LandingPage() {
               const initials = story.name.split(" ").map((n: string) => n[0]).join("");
               return (
                 <div key={story.id} className="rounded-2xl overflow-hidden"
-                  style={{ background: "#FDFAF4", border: "1px solid #E0D8C8" }}>
+                  style={{ background: "#F8F0E2", border: "1px solid #D4C4A0" }}>
                   <div className="p-6">
                     <div className="flex items-center gap-3 mb-5">
                       <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0"
-                        style={{ background: "#0B3D2E", color: "#FDFAF4" }}>
+                        style={{ background: "#1A1008", color: "#F8F0E2" }}>
                         {initials}
                       </div>
                       <div>
@@ -456,7 +456,7 @@ export default function LandingPage() {
                         <p className="text-xs" style={{ color: "#9B8B75" }}>{story.location}</p>
                       </div>
                     </div>
-                    <h3 style={{ fontFamily: "var(--font-fraunces)", color: "#0B3D2E", lineHeight: 1.25 }}
+                    <h3 style={{ fontFamily: "var(--font-fraunces)", color: "#1A1008", lineHeight: 1.25 }}
                       className="font-bold text-base mb-3">
                       {story.headline}
                     </h3>
@@ -476,13 +476,13 @@ export default function LandingPage() {
       </section>
 
       {/* ── WEALTH PATHS ── */}
-      <section className="py-24" style={{ background: "#0B3D2E" }}>
+      <section className="py-24" style={{ background: "#1A1008" }}>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="mb-14">
             <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.6)", fontSize: "10px" }} className="font-semibold uppercase mb-4">
               7 proven paths
             </p>
-            <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.05 }}
+            <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.05 }}
               className="font-bold text-[clamp(2rem,4.5vw,3.5rem)]">
               Which path is yours?
             </h2>
@@ -493,7 +493,7 @@ export default function LandingPage() {
                 className="group p-6 rounded-2xl transition-all"
                 style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
                 <div className="text-2xl mb-4">{path.emoji}</div>
-                <h3 style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.2 }}
+                <h3 style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.2 }}
                   className="font-bold text-lg mb-2">
                   {path.persona}
                 </h3>
@@ -523,7 +523,7 @@ export default function LandingPage() {
                 style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
                 <span className="text-2xl flex-shrink-0">{path.emoji}</span>
                 <div>
-                  <p style={{ color: "#FDFAF4", fontFamily: "var(--font-fraunces)" }} className="font-semibold text-sm">{path.persona}</p>
+                  <p style={{ color: "#F8F0E2", fontFamily: "var(--font-fraunces)" }} className="font-semibold text-sm">{path.persona}</p>
                   <p style={{ color: "#E05A18", fontSize: "11px" }} className="font-semibold mt-0.5">From {path.startingCapital} →</p>
                 </div>
               </Link>
@@ -533,7 +533,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── THE NAME ── */}
-      <section className="py-24 lg:py-32" style={{ background: "#0B3D2E" }}>
+      <section className="py-24 lg:py-32" style={{ background: "#1A1008" }}>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
           <div className="max-w-3xl">
 
@@ -551,7 +551,7 @@ export default function LandingPage() {
             </div>
 
             {/* Translation */}
-            <p style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", fontSize: "clamp(1.1rem,2.5vw,1.5rem)", lineHeight: 1.4, fontWeight: 500 }}
+            <p style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", fontSize: "clamp(1.1rem,2.5vw,1.5rem)", lineHeight: 1.4, fontWeight: 500 }}
               className="italic mb-8">
               &ldquo;Mother of Mankind.&rdquo; The ancient name for Africa.
             </p>
@@ -584,10 +584,10 @@ export default function LandingPage() {
       </section>
 
       {/* ── MANIFESTO ── */}
-      <section className="py-24 lg:py-32" style={{ background: "#FDFAF4", borderTop: "1px solid #E0D8C8" }}>
+      <section className="py-24 lg:py-32" style={{ background: "#F8F0E2", borderTop: "1px solid #D4C4A0" }}>
         <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
           <AlkebulanCrest size={56} className="mx-auto mb-10" />
-          <blockquote style={{ fontFamily: "var(--font-fraunces)", color: "#0B3D2E", lineHeight: 1.35, fontWeight: 500 }}
+          <blockquote style={{ fontFamily: "var(--font-fraunces)", color: "#1A1008", lineHeight: 1.35, fontWeight: 500 }}
             className="text-[clamp(1.4rem,3.5vw,2rem)] italic mb-8">
             &ldquo;The young person selling things on the street in Accra is not failing.
             They are untaught. No one showed them the industry around them,
@@ -601,9 +601,9 @@ export default function LandingPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-32" style={{ background: "#0B3D2E" }}>
+      <section className="py-32" style={{ background: "#1A1008" }}>
         <div className="max-w-3xl mx-auto px-5 sm:px-8 text-center">
-          <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", lineHeight: 1.0, fontWeight: 700 }}
+          <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.0, fontWeight: 700 }}
             className="text-[clamp(3rem,8vw,6rem)] mb-8">
             You&apos;re in the<br />right <span style={{ color: "#E05A18" }}>place.</span>
           </h2>
@@ -617,7 +617,7 @@ export default function LandingPage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <Link href="/path"
               className="inline-flex items-center gap-3 font-bold px-10 py-4 rounded-full text-sm uppercase tracking-[0.08em] transition-all"
-              style={{ background: "#E05A18", color: "#0B3D2E" }}>
+              style={{ background: "#E05A18", color: "#1A1008" }}>
               Show me what&apos;s possible →
             </Link>
             <Link href="/build-business"
@@ -636,7 +636,7 @@ export default function LandingPage() {
             <div className="col-span-2 md:col-span-1">
               <div className="flex items-center gap-3 mb-4">
                 <AlkebulanCrest size={32} />
-                <span style={{ fontFamily: "var(--font-fraunces)", color: "#FDFAF4", letterSpacing: "0.1em" }}
+                <span style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", letterSpacing: "0.1em" }}
                   className="font-bold italic">KEBU</span>
               </div>
               <p style={{ color: "rgba(253,250,244,0.35)", fontSize: "12px", lineHeight: 1.7 }}>

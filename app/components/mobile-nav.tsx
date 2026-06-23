@@ -74,7 +74,7 @@ export function MobileBottomNav() {
     <>
       <nav className="fixed bottom-0 left-0 right-0 z-50 lg:hidden">
         {/* Frosted glass effect */}
-        <div className="bg-[#071F15]/95 backdrop-blur-md border-t border-white/8">
+        <div className="bg-[#0D0804]/95 backdrop-blur-md border-t border-white/8">
           {/* Thin accent stripe at top */}
           <div className="h-[2px] w-full bg-gradient-to-r from-gold-dark via-gold to-gold-light" />
           <div className="flex items-stretch">
@@ -120,7 +120,7 @@ export function MobileBottomNav() {
               );
             })}
           </div>
-          <div className="h-safe-bottom bg-[#071F15]/95" />
+          <div className="h-safe-bottom bg-[#0D0804]/95" />
         </div>
       </nav>
       <div className="h-20 lg:hidden" aria-hidden />

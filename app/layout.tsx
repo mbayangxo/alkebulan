@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
+import { Space_Grotesk, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { PWARegister } from "@/app/components/pwa-register";
 import { LocaleProvider } from "@/app/components/locale-context";
@@ -9,11 +9,10 @@ import { ReportBug } from "@/app/components/report-bug";
 import { MobileBottomNav } from "@/app/components/mobile-nav";
 import { EducationProvider } from "@/app/components/education-system";
 
-const fraunces = Fraunces({
+const spaceGrotesk = Space_Grotesk({
   variable: "--font-fraunces",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "900"],
-  style: ["normal", "italic"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const jakarta = Plus_Jakarta_Sans({
@@ -52,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${jakarta.variable} h-full antialiased`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${jakarta.variable} h-full antialiased`}>
       <head>
         <link rel="manifest" href="/manifest.json" />
       </head>

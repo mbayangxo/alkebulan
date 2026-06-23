@@ -31,7 +31,7 @@ export function VideoEmbed({ src, title, caption, className = "" }: VideoEmbedPr
 
   if (!id) {
     return (
-      <div className={`relative w-full rounded-2xl overflow-hidden bg-[#0B3D2E] ${className}`} style={{ aspectRatio: "16/9" }}>
+      <div className={`relative w-full rounded-2xl overflow-hidden bg-[#1A1008] ${className}`} style={{ aspectRatio: "16/9" }}>
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
           <div className="w-14 h-14 rounded-full border border-white/15 flex items-center justify-center">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeOpacity="0.3">

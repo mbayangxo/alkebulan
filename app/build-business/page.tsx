@@ -115,7 +115,7 @@ function BuildBusinessInner() {
   const currentIdx = STEP_ORDER.indexOf(step);
 
   return (
-    <main className="min-h-screen bg-[#071F15]">
+    <main className="min-h-screen bg-[#0D0804]">
       {/* Hero */}
       <section className="border-b border-white/8 px-5 sm:px-8 pt-14 pb-10">
         <div className="max-w-3xl mx-auto">
@@ -517,7 +517,7 @@ export default function BuildBusinessPage() {
     <>
       <Nav />
       <Suspense fallback={
-        <main className="min-h-screen bg-[#071F15] flex items-center justify-center">
+        <main className="min-h-screen bg-[#0D0804] flex items-center justify-center">
           <p className="text-ivory/40 text-sm">Loading…</p>
         </main>
       }>
