@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Africa's Opportunity Intelligence Network. Build businesses, find funding, export to the world.",
     start_url: "/build",
     display: "standalone",
-    background_color: "#F0E8D6",
-    theme_color: "#1A1008",
+    background_color: "#F0EFF8",
+    theme_color: "#0F0D33",
     orientation: "portrait-primary",
     categories: ["business", "education", "finance"],
     icons: [

@@ -65,12 +65,12 @@ function Toggle({
       onClick={() => onChange(!checked)}
       className="w-full flex items-start gap-4 p-4 rounded-xl border transition-all text-left"
       style={{
-        background: checked ? "rgba(224,90,24,0.06)" : "rgba(255,255,255,0.02)",
-        borderColor: checked ? "rgba(224,90,24,0.35)" : "rgba(255,255,255,0.1)",
+        background: checked ? "rgba(0,200,81,0.06)" : "rgba(255,255,255,0.02)",
+        borderColor: checked ? "rgba(0,200,81,0.35)" : "rgba(255,255,255,0.1)",
       }}
     >
       <div className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all"
-        style={{ borderColor: checked ? "#E05A18" : "rgba(255,255,255,0.25)", background: checked ? "#E05A18" : "transparent" }}>
+        style={{ borderColor: checked ? "#00C851" : "rgba(255,255,255,0.25)", background: checked ? "#00C851" : "transparent" }}>
         {checked && (
           <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
             <path d="M1 4L3.5 6.5L9 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
@@ -78,7 +78,7 @@ function Toggle({
         )}
       </div>
       <div>
-        <p className="text-sm font-semibold" style={{ color: checked ? "#F8F0E2" : "rgba(253,250,244,0.6)" }}>{label}</p>
+        <p className="text-sm font-semibold" style={{ color: checked ? "#FAFAF8" : "rgba(253,250,244,0.6)" }}>{label}</p>
         {sub && <p className="text-xs mt-0.5" style={{ color: "rgba(253,250,244,0.35)" }}>{sub}</p>}
       </div>
     </button>
@@ -101,16 +101,16 @@ function OptionSelect({
             onClick={() => onChange(o.value)}
             className="w-full flex items-start gap-4 p-4 rounded-xl border transition-all text-left"
             style={{
-              background: selected ? "rgba(224,90,24,0.06)" : "rgba(255,255,255,0.02)",
-              borderColor: selected ? "rgba(224,90,24,0.35)" : "rgba(255,255,255,0.1)",
+              background: selected ? "rgba(0,200,81,0.06)" : "rgba(255,255,255,0.02)",
+              borderColor: selected ? "rgba(0,200,81,0.35)" : "rgba(255,255,255,0.1)",
             }}
           >
             <div className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all"
-              style={{ borderColor: selected ? "#E05A18" : "rgba(255,255,255,0.25)", background: selected ? "#E05A18" : "transparent" }}>
+              style={{ borderColor: selected ? "#00C851" : "rgba(255,255,255,0.25)", background: selected ? "#00C851" : "transparent" }}>
               {selected && <div className="w-2 h-2 rounded-full bg-white" />}
             </div>
             <div>
-              <p className="text-sm font-semibold" style={{ color: selected ? "#F8F0E2" : "rgba(253,250,244,0.6)" }}>{o.label}</p>
+              <p className="text-sm font-semibold" style={{ color: selected ? "#FAFAF8" : "rgba(253,250,244,0.6)" }}>{o.label}</p>
               {o.sub && <p className="text-xs mt-0.5" style={{ color: "rgba(253,250,244,0.35)" }}>{o.sub}</p>}
             </div>
           </button>
@@ -160,19 +160,19 @@ export default function KaScorePage() {
   const liveResult = result ?? calculateKaScore(profile);
 
   return (
-    <div className="min-h-screen" style={{ background: "#F8F0E2" }}>
+    <div className="min-h-screen" style={{ background: "#FAFAF8" }}>
       <Nav />
 
       {/* ── INTRO ── */}
       {step === 0 && (
-        <div className="min-h-[calc(100vh-68px)] flex flex-col" style={{ background: "#1A1008" }}>
+        <div className="min-h-[calc(100vh-68px)] flex flex-col" style={{ background: "#0F0D33" }}>
           <div className="flex-1 flex items-center">
             <div className="max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-16 py-24 w-full">
               <div className="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
                   <div className="mb-8">
                     <div className="flex items-baseline gap-0 mb-4" aria-label="Ka">
-                      <span style={{ fontFamily: "var(--font-fraunces)", color: "#E05A18", fontSize: "clamp(3rem,8vw,6rem)", fontWeight: 700, lineHeight: 1 }}>
+                      <span style={{ fontFamily: "var(--font-fraunces)", color: "#00C851", fontSize: "clamp(3rem,8vw,6rem)", fontWeight: 700, lineHeight: 1 }}>
                         Ka
                       </span>
                       <span style={{ fontFamily: "var(--font-fraunces)", color: "rgba(253,250,244,0.2)", fontSize: "clamp(3rem,8vw,6rem)", fontWeight: 700, lineHeight: 1 }}>
@@ -186,7 +186,7 @@ export default function KaScorePage() {
                   </div>
 
                   <p style={{ color: "rgba(253,250,244,0.55)", lineHeight: 1.8 }} className="text-sm mb-4 max-w-xl">
-                    In ancient Egypt, <span style={{ color: "#E05A18", fontWeight: 600 }}>Ka</span> was the life force that distinguished a living being from one that had not yet begun. Every person — every business — has a Ka. The question is whether it is visible.
+                    In ancient Egypt, <span style={{ color: "#00C851", fontWeight: 600 }}>Ka</span> was the life force that distinguished a living being from one that had not yet begun. Every person — every business — has a Ka. The question is whether it is visible.
                   </p>
                   <p style={{ color: "rgba(253,250,244,0.55)", lineHeight: 1.8 }} className="text-sm mb-4 max-w-xl">
                     Most African businesses are invisible to the financial system. No credit history. No verifiable record. No score. Banks say no. Suppliers demand cash upfront. Buyers ask for references you can&apos;t provide.
@@ -198,7 +198,7 @@ export default function KaScorePage() {
                   <button
                     onClick={() => setStep(1)}
                     className="inline-flex items-center gap-3 font-bold px-8 py-4 rounded-full text-sm uppercase tracking-[0.08em] transition-all"
-                    style={{ background: "#E05A18", color: "#1A1008" }}
+                    style={{ background: "#00C851", color: "#0F0D33" }}
                   >
                     Build my Ka Score
                     <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
@@ -211,13 +211,13 @@ export default function KaScorePage() {
                 <div className="space-y-2">
                   {KA_LEVELS.map((l, i) => (
                     <div key={l.name} className="flex items-center gap-4 px-5 py-3.5 rounded-xl"
-                      style={{ background: i === 2 ? "rgba(224,90,24,0.08)" : "rgba(255,255,255,0.03)", border: `1px solid ${i === 2 ? "rgba(224,90,24,0.2)" : "rgba(255,255,255,0.06)"}` }}>
+                      style={{ background: i === 2 ? "rgba(0,200,81,0.08)" : "rgba(255,255,255,0.03)", border: `1px solid ${i === 2 ? "rgba(0,200,81,0.2)" : "rgba(255,255,255,0.06)"}` }}>
                       <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
                         style={{ background: l.color + "22", border: `1px solid ${l.color}40` }}>
                         <span style={{ color: l.color, fontSize: "10px", fontWeight: 700 }}>{l.min}</span>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", fontSize: "13px", fontWeight: 700 }}>{l.name}</p>
+                        <p style={{ fontFamily: "var(--font-fraunces)", color: "#FAFAF8", fontSize: "13px", fontWeight: 700 }}>{l.name}</p>
                         <p style={{ color: "rgba(253,250,244,0.35)", fontSize: "11px" }}>{l.tagline}</p>
                       </div>
                       <div className="text-right flex-shrink-0">
@@ -236,7 +236,7 @@ export default function KaScorePage() {
 
       {/* ── QUESTIONNAIRE STEPS 1-5 ── */}
       {step >= 1 && step <= 5 && (
-        <div className="min-h-[calc(100vh-68px)]" style={{ background: "#0D0804" }}>
+        <div className="min-h-[calc(100vh-68px)]" style={{ background: "#080620" }}>
           <div className="max-w-[1400px] mx-auto px-5 sm:px-8 py-12">
 
             {/* Step progress */}
@@ -246,9 +246,9 @@ export default function KaScorePage() {
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0"
                       style={{
-                        background: step > i + 1 ? "#E05A18" : step === i + 1 ? "rgba(224,90,24,0.2)" : "rgba(255,255,255,0.05)",
-                        border: step === i + 1 ? "1px solid #E05A18" : "1px solid transparent",
-                        color: step > i + 1 ? "#1A1008" : step === i + 1 ? "#E05A18" : "rgba(255,255,255,0.3)",
+                        background: step > i + 1 ? "#00C851" : step === i + 1 ? "rgba(0,200,81,0.2)" : "rgba(255,255,255,0.05)",
+                        border: step === i + 1 ? "1px solid #00C851" : "1px solid transparent",
+                        color: step > i + 1 ? "#0F0D33" : step === i + 1 ? "#00C851" : "rgba(255,255,255,0.3)",
                       }}>
                       {step > i + 1 ? "✓" : i + 1}
                     </div>
@@ -259,7 +259,7 @@ export default function KaScorePage() {
                   </div>
                   {i < STEPS.length - 1 && (
                     <div className="h-px w-4 sm:w-8 flex-shrink-0"
-                      style={{ background: step > i + 1 ? "rgba(224,90,24,0.4)" : "rgba(255,255,255,0.08)" }} />
+                      style={{ background: step > i + 1 ? "rgba(0,200,81,0.4)" : "rgba(255,255,255,0.08)" }} />
                   )}
                 </div>
               ))}
@@ -271,8 +271,8 @@ export default function KaScorePage() {
               <div>
                 {step === 1 && (
                   <div>
-                    <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">Step 1 of 5</p>
-                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.1 }}
+                    <p style={{ letterSpacing: "0.2em", color: "rgba(0,200,81,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">Step 1 of 5</p>
+                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FAFAF8", lineHeight: 1.1 }}
                       className="font-bold text-3xl mb-2">Business Identity</h2>
                     <p style={{ color: "rgba(253,250,244,0.4)", fontSize: "13px", lineHeight: 1.7 }} className="mb-8">
                       Does your business have an official presence? These are the foundation of your Ka Score. Each one makes you more visible to banks, suppliers, and buyers.
@@ -296,8 +296,8 @@ export default function KaScorePage() {
 
                 {step === 2 && (
                   <div>
-                    <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">Step 2 of 5</p>
-                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.1 }}
+                    <p style={{ letterSpacing: "0.2em", color: "rgba(0,200,81,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">Step 2 of 5</p>
+                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FAFAF8", lineHeight: 1.1 }}
                       className="font-bold text-3xl mb-2">Operating History</h2>
                     <p style={{ color: "rgba(253,250,244,0.4)", fontSize: "13px", lineHeight: 1.7 }} className="mb-8">
                       How long has your business been operating? Time in operation is one of the most powerful signals of business health. Consistent operation is proof of survival.
@@ -319,8 +319,8 @@ export default function KaScorePage() {
 
                 {step === 3 && (
                   <div>
-                    <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">Step 3 of 5</p>
-                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.1 }}
+                    <p style={{ letterSpacing: "0.2em", color: "rgba(0,200,81,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">Step 3 of 5</p>
+                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FAFAF8", lineHeight: 1.1 }}
                       className="font-bold text-3xl mb-2">Revenue Track Record</h2>
                     <p style={{ color: "rgba(253,250,244,0.4)", fontSize: "13px", lineHeight: 1.7 }} className="mb-8">
                       What is your approximate monthly revenue? This is not a judgment — it is a signal. Even small consistent revenue is worth more to a lender than a larger number with no history.
@@ -342,8 +342,8 @@ export default function KaScorePage() {
 
                 {step === 4 && (
                   <div>
-                    <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">Step 4 of 5</p>
-                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.1 }}
+                    <p style={{ letterSpacing: "0.2em", color: "rgba(0,200,81,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">Step 4 of 5</p>
+                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FAFAF8", lineHeight: 1.1 }}
                       className="font-bold text-3xl mb-2">Assets & Resources</h2>
                     <p style={{ color: "rgba(253,250,244,0.4)", fontSize: "13px", lineHeight: 1.7 }} className="mb-8">
                       What does your business actually have? Assets are proof that your business exists beyond words. They show capacity — the ability to deliver on a contract.
@@ -367,8 +367,8 @@ export default function KaScorePage() {
 
                 {step === 5 && (
                   <div>
-                    <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">Step 5 of 5</p>
-                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.1 }}
+                    <p style={{ letterSpacing: "0.2em", color: "rgba(0,200,81,0.7)", fontSize: "10px" }} className="font-semibold uppercase mb-3">Step 5 of 5</p>
+                    <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FAFAF8", lineHeight: 1.1 }}
                       className="font-bold text-3xl mb-2">Network & Relationships</h2>
                     <p style={{ color: "rgba(253,250,244,0.4)", fontSize: "13px", lineHeight: 1.7 }} className="mb-8">
                       Who trusts your business? Relationships are the oldest form of credit. A business with repeat customers and verified connections is a business that has earned trust.
@@ -400,7 +400,7 @@ export default function KaScorePage() {
                     <button
                       onClick={() => setStep(s => s + 1)}
                       className="flex-1 sm:flex-none px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all"
-                      style={{ background: "#E05A18", color: "#1A1008" }}
+                      style={{ background: "#00C851", color: "#0F0D33" }}
                     >
                       Continue →
                     </button>
@@ -408,7 +408,7 @@ export default function KaScorePage() {
                     <button
                       onClick={finish}
                       className="flex-1 sm:flex-none px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all"
-                      style={{ background: "#E05A18", color: "#1A1008" }}
+                      style={{ background: "#00C851", color: "#0F0D33" }}
                     >
                       See my Ka Score →
                     </button>
@@ -418,9 +418,9 @@ export default function KaScorePage() {
 
               {/* Live score sidebar */}
               <div className="lg:sticky lg:top-24">
-                <div className="rounded-2xl overflow-hidden" style={{ background: "#1A1008" }}>
+                <div className="rounded-2xl overflow-hidden" style={{ background: "#0F0D33" }}>
                   <div className="px-5 py-4" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-                    <p style={{ fontSize: "9px", letterSpacing: "0.22em", color: "rgba(224,90,24,0.6)" }} className="font-semibold uppercase">
+                    <p style={{ fontSize: "9px", letterSpacing: "0.22em", color: "rgba(0,200,81,0.6)" }} className="font-semibold uppercase">
                       Your score — live
                     </p>
                   </div>
@@ -441,11 +441,11 @@ export default function KaScorePage() {
                         <div key={cat.label}>
                           <div className="flex justify-between items-center mb-1">
                             <p style={{ fontSize: "9px", color: "rgba(253,250,244,0.4)", letterSpacing: "0.12em" }} className="font-semibold uppercase">{cat.label}</p>
-                            <p style={{ fontSize: "9px", color: cat.score > 0 ? "#E05A18" : "rgba(253,250,244,0.2)" }} className="font-bold">{cat.score}/{cat.max}</p>
+                            <p style={{ fontSize: "9px", color: cat.score > 0 ? "#00C851" : "rgba(253,250,244,0.2)" }} className="font-bold">{cat.score}/{cat.max}</p>
                           </div>
                           <div className="h-1 rounded-full" style={{ background: "rgba(255,255,255,0.07)" }}>
                             <div className="h-1 rounded-full transition-all duration-500"
-                              style={{ width: `${(cat.score / cat.max) * 100}%`, background: "#E05A18" }} />
+                              style={{ width: `${(cat.score / cat.max) * 100}%`, background: "#00C851" }} />
                           </div>
                         </div>
                       ))}
@@ -460,9 +460,9 @@ export default function KaScorePage() {
 
       {/* ── RESULTS ── */}
       {step === 6 && result && (
-        <div style={{ background: "#0D0804" }}>
+        <div style={{ background: "#080620" }}>
           {/* Score hero */}
-          <div className="py-16 lg:py-24" style={{ background: "#1A1008" }}>
+          <div className="py-16 lg:py-24" style={{ background: "#0F0D33" }}>
             <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
               <div className="grid lg:grid-cols-[320px_1fr] gap-12 items-center">
                 <div className="text-center lg:text-left">
@@ -475,7 +475,7 @@ export default function KaScorePage() {
                       {result.level.meaning}
                     </p>
                     {result.next_level && (
-                      <p style={{ color: "rgba(224,90,24,0.6)", fontSize: "11px", marginTop: "10px" }} className="font-semibold">
+                      <p style={{ color: "rgba(0,200,81,0.6)", fontSize: "11px", marginTop: "10px" }} className="font-semibold">
                         {result.points_to_next} points to {result.next_level.name}
                       </p>
                     )}
@@ -483,7 +483,7 @@ export default function KaScorePage() {
                 </div>
 
                 <div>
-                  <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.6)", fontSize: "10px" }} className="font-semibold uppercase mb-3">
+                  <p style={{ letterSpacing: "0.2em", color: "rgba(0,200,81,0.6)", fontSize: "10px" }} className="font-semibold uppercase mb-3">
                     Your score breakdown
                   </p>
                   <div className="space-y-4">
@@ -491,13 +491,13 @@ export default function KaScorePage() {
                       <div key={cat.label}>
                         <div className="flex justify-between items-center mb-2">
                           <p style={{ color: "rgba(253,250,244,0.7)", fontSize: "13px" }} className="font-semibold">{cat.label}</p>
-                          <p style={{ color: cat.score > 0 ? "#E05A18" : "rgba(253,250,244,0.2)", fontSize: "13px" }} className="font-bold">
+                          <p style={{ color: cat.score > 0 ? "#00C851" : "rgba(253,250,244,0.2)", fontSize: "13px" }} className="font-bold">
                             {cat.score} / {cat.max}
                           </p>
                         </div>
                         <div className="h-2 rounded-full" style={{ background: "rgba(255,255,255,0.07)" }}>
                           <div className="h-2 rounded-full transition-all"
-                            style={{ width: `${(cat.score / cat.max) * 100}%`, background: cat.score > 0 ? "#E05A18" : "transparent" }} />
+                            style={{ width: `${(cat.score / cat.max) * 100}%`, background: cat.score > 0 ? "#00C851" : "transparent" }} />
                         </div>
                       </div>
                     ))}
@@ -513,7 +513,7 @@ export default function KaScorePage() {
                     </button>
                     <Link href="/programs"
                       className="px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all"
-                      style={{ background: "#E05A18", color: "#1A1008" }}>
+                      style={{ background: "#00C851", color: "#0F0D33" }}>
                       See matched programs →
                     </Link>
                   </div>
@@ -525,10 +525,10 @@ export default function KaScorePage() {
           {/* What you've unlocked */}
           <div className="py-16">
             <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-              <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.6)", fontSize: "10px" }} className="font-semibold uppercase mb-3">
+              <p style={{ letterSpacing: "0.2em", color: "rgba(0,200,81,0.6)", fontSize: "10px" }} className="font-semibold uppercase mb-3">
                 What your Ka Score unlocks
               </p>
-              <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#F8F0E2", lineHeight: 1.1 }}
+              <h2 style={{ fontFamily: "var(--font-fraunces)", color: "#FAFAF8", lineHeight: 1.1 }}
                 className="font-bold text-3xl mb-10">
                 You have access to {result.level.unlocks.length} things right now.
               </h2>
@@ -538,8 +538,8 @@ export default function KaScorePage() {
                   <div key={i} className="flex items-start gap-3 px-4 py-3.5 rounded-xl"
                     style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
                     <div className="w-4 h-4 rounded-full flex-shrink-0 mt-0.5 flex items-center justify-center"
-                      style={{ background: "rgba(224,90,24,0.15)" }}>
-                      <div className="w-1.5 h-1.5 rounded-full" style={{ background: "#E05A18" }} />
+                      style={{ background: "rgba(0,200,81,0.15)" }}>
+                      <div className="w-1.5 h-1.5 rounded-full" style={{ background: "#00C851" }} />
                     </div>
                     <p style={{ color: "rgba(253,250,244,0.7)", fontSize: "12px", lineHeight: 1.6 }}>{item}</p>
                   </div>
@@ -548,8 +548,8 @@ export default function KaScorePage() {
 
               {/* Next level preview */}
               {result.next_level && (
-                <div className="rounded-2xl p-6" style={{ border: "1px solid rgba(224,90,24,0.2)", background: "rgba(224,90,24,0.04)" }}>
-                  <p style={{ fontSize: "9px", letterSpacing: "0.22em", color: "rgba(224,90,24,0.6)" }} className="font-semibold uppercase mb-2">
+                <div className="rounded-2xl p-6" style={{ border: "1px solid rgba(0,200,81,0.2)", background: "rgba(0,200,81,0.04)" }}>
+                  <p style={{ fontSize: "9px", letterSpacing: "0.22em", color: "rgba(0,200,81,0.6)" }} className="font-semibold uppercase mb-2">
                     {result.points_to_next} points away
                   </p>
                   <p style={{ fontFamily: "var(--font-fraunces)", color: result.next_level.color, fontWeight: 700, fontSize: "1.1rem" }} className="mb-1">
@@ -562,8 +562,8 @@ export default function KaScorePage() {
                     {result.next_level.unlocks.map((item, i) => (
                       <div key={i} className="flex items-center gap-2.5">
                         <div className="w-3.5 h-3.5 rounded-full flex-shrink-0 flex items-center justify-center"
-                          style={{ border: "1px solid rgba(224,90,24,0.3)" }}>
-                          <div className="w-1 h-1 rounded-full" style={{ background: "rgba(224,90,24,0.5)" }} />
+                          style={{ border: "1px solid rgba(0,200,81,0.3)" }}>
+                          <div className="w-1 h-1 rounded-full" style={{ background: "rgba(0,200,81,0.5)" }} />
                         </div>
                         <p style={{ color: "rgba(253,250,244,0.4)", fontSize: "11px" }}>{item}</p>
                       </div>
@@ -572,7 +572,7 @@ export default function KaScorePage() {
                   <button
                     onClick={restart}
                     className="mt-5 text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full transition-all"
-                    style={{ border: "1px solid rgba(224,90,24,0.3)", color: "#E05A18" }}
+                    style={{ border: "1px solid rgba(0,200,81,0.3)", color: "#00C851" }}
                   >
                     Build toward {result.next_level.name} →
                   </button>
@@ -580,8 +580,8 @@ export default function KaScorePage() {
               )}
 
               {result.total === 100 && (
-                <div className="rounded-2xl p-6 text-center" style={{ background: "rgba(224,90,24,0.06)", border: "1px solid rgba(224,90,24,0.2)" }}>
-                  <p style={{ fontFamily: "var(--font-fraunces)", color: "#E05A18", fontSize: "1.5rem", fontWeight: 700 }} className="mb-2">
+                <div className="rounded-2xl p-6 text-center" style={{ background: "rgba(0,200,81,0.06)", border: "1px solid rgba(0,200,81,0.2)" }}>
+                  <p style={{ fontFamily: "var(--font-fraunces)", color: "#00C851", fontSize: "1.5rem", fontWeight: 700 }} className="mb-2">
                     Ka Trusted. Maximum.
                   </p>
                   <p style={{ color: "rgba(253,250,244,0.5)", fontSize: "13px", lineHeight: 1.7 }} className="max-w-xl mx-auto">
@@ -595,7 +595,7 @@ export default function KaScorePage() {
           {/* All levels map */}
           <div className="py-16 border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
             <div className="max-w-[1400px] mx-auto px-5 sm:px-8">
-              <p style={{ letterSpacing: "0.2em", color: "rgba(224,90,24,0.6)", fontSize: "10px" }} className="font-semibold uppercase mb-8">
+              <p style={{ letterSpacing: "0.2em", color: "rgba(0,200,81,0.6)", fontSize: "10px" }} className="font-semibold uppercase mb-8">
                 The full Ka journey
               </p>
               <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
@@ -615,7 +615,7 @@ export default function KaScorePage() {
                             style={{ background: l.color + "22", color: l.color }}>You</span>
                         )}
                       </div>
-                      <p style={{ fontFamily: "var(--font-fraunces)", color: isCurrentOrBelow ? "#F8F0E2" : "rgba(253,250,244,0.2)", fontWeight: 700, fontSize: "15px", lineHeight: 1.2 }}
+                      <p style={{ fontFamily: "var(--font-fraunces)", color: isCurrentOrBelow ? "#FAFAF8" : "rgba(253,250,244,0.2)", fontWeight: 700, fontSize: "15px", lineHeight: 1.2 }}
                         className="mb-1">{l.name}</p>
                       <p style={{ color: "rgba(253,250,244,0.3)", fontSize: "10px", lineHeight: 1.5 }}>{l.tagline}</p>
                     </div>

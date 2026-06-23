@@ -108,7 +108,7 @@ export default function OpportunitiesPage() {
         <div
           className="absolute inset-0 opacity-5"
           style={{
-            backgroundImage: `repeating-linear-gradient(45deg, #E05A18 0, #E05A18 1px, transparent 0, transparent 50%)`,
+            backgroundImage: `repeating-linear-gradient(45deg, #00C851 0, #00C851 1px, transparent 0, transparent 50%)`,
             backgroundSize: "20px 20px",
           }}
         />

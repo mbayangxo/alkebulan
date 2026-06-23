@@ -47,7 +47,7 @@ export interface StoreOrder {
 }
 
 export const SITE_THEMES = {
-  forest:   { bg: "#1A1008", text: "#F0E6C8", accent: "#C9A035", accentText: "#1A1008", card: "#243D2F", border: "#2D5040", muted: "#A89870" },
+  forest:   { bg: "#0F0D33", text: "#F0E6C8", accent: "#C9A035", accentText: "#0F0D33", card: "#243D2F", border: "#2D5040", muted: "#A89870" },
   earth:    { bg: "#3D2416", text: "#F5EDE0", accent: "#D4874A", accentText: "#FFFFFF", card: "#4A2E1A", border: "#5C3820", muted: "#B89070" },
   ocean:    { bg: "#0F2235", text: "#E4F2F8", accent: "#38B2CC", accentText: "#0F2235", card: "#162E45", border: "#1E3D5A", muted: "#7AAFC0" },
   flame:    { bg: "#1C0E08", text: "#F5E8DE", accent: "#E05A2B", accentText: "#FFFFFF", card: "#261410", border: "#381C14", muted: "#B07860" },

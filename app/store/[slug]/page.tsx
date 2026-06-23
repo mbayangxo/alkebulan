@@ -128,11 +128,11 @@ export default function StorePage({ params }: { params: Promise<{ slug: string }
 
   if (loading) {
     return (
-      <div style={{ backgroundColor: "#1A1008", minHeight: "100vh" }} className="flex items-center justify-center">
+      <div style={{ backgroundColor: "#0F0D33", minHeight: "100vh" }} className="flex items-center justify-center">
         <div className="text-center">
           <div
             className="w-10 h-10 rounded-full border-2 animate-spin mx-auto mb-4"
-            style={{ borderColor: "#E05A18", borderTopColor: "transparent" }}
+            style={{ borderColor: "#00C851", borderTopColor: "transparent" }}
           />
           <p className="text-sm" style={{ color: "#A89870" }}>Loading...</p>
         </div>

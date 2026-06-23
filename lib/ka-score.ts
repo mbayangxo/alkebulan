@@ -77,7 +77,7 @@ export const KA_LEVELS: KaLevel[] = [
     max: 39,
     tagline: "Your roots are taking hold.",
     meaning: "You are operating. Your Ka is growing with each step you take.",
-    color: "#B04510",
+    color: "#009E40",
     unlocks: [
       "Everything in Ka Seed",
       "Microfinance partner introductions",
@@ -91,7 +91,7 @@ export const KA_LEVELS: KaLevel[] = [
     max: 59,
     tagline: "Your business has a foundation.",
     meaning: "You have history, assets, and customers. Your Ka can be seen.",
-    color: "#E05A18",
+    color: "#00C851",
     unlocks: [
       "Everything in Ka Rising",
       "Trade network access — verified buyers and sellers",
@@ -121,7 +121,7 @@ export const KA_LEVELS: KaLevel[] = [
     max: 100,
     tagline: "Your word is your bond. Your record speaks.",
     meaning: "You are verified and credit-worthy. Your Ka is at full strength.",
-    color: "#E05A18",
+    color: "#00C851",
     unlocks: [
       "Everything in Ka Established",
       "Priority partner lender introductions",

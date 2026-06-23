@@ -87,7 +87,7 @@ export function SuccessIntelCard({ intel, programName }: Props) {
                     className="h-full rounded-full transition-all"
                     style={{
                       width: `${readinessScore}%`,
-                      backgroundColor: readinessScore === 100 ? "#2D7A3C" : readinessScore > 60 ? "#E05A18" : "#D4874A",
+                      backgroundColor: readinessScore === 100 ? "#2D7A3C" : readinessScore > 60 ? "#00C851" : "#D4874A",
                     }}
                   />
                 </div>

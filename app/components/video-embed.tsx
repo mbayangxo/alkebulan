@@ -31,7 +31,7 @@ export function VideoEmbed({ src, title, caption, className = "" }: VideoEmbedPr
 
   if (!id) {
     return (
-      <div className={`relative w-full rounded-2xl overflow-hidden bg-[#1A1008] ${className}`} style={{ aspectRatio: "16/9" }}>
+      <div className={`relative w-full rounded-2xl overflow-hidden bg-[#0F0D33] ${className}`} style={{ aspectRatio: "16/9" }}>
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
           <div className="w-14 h-14 rounded-full border border-white/15 flex items-center justify-center">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeOpacity="0.3">
@@ -78,7 +78,7 @@ export function VideoEmbed({ src, title, caption, className = "" }: VideoEmbedPr
             <div className="absolute inset-0 flex items-center justify-center">
               <div
                 className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-105 transition-transform duration-200"
-                style={{ background: "#E05A18" }}
+                style={{ background: "#00C851" }}
               >
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="white" className="translate-x-0.5">
                   <polygon points="5 3 19 12 5 21 5 3" />

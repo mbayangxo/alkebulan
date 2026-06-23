@@ -32,7 +32,7 @@ function SingleResourceVideo({ video, autoplay = false }: { video: PexelsVideo; 
   }, []);
 
   return (
-    <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: "16/9", background: "#1A1008" }}>
+    <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: "16/9", background: "#0F0D33" }}>
       <video
         ref={ref}
         src={video.url}
@@ -91,7 +91,7 @@ export function ResourceVideoSection({
     <div>
       {(title || subtitle) && (
         <div className="mb-6">
-          {title && <h3 className="font-bold text-lg" style={{ fontFamily: "var(--font-fraunces)", color: "#1A1008" }}>{title}</h3>}
+          {title && <h3 className="font-bold text-lg" style={{ fontFamily: "var(--font-fraunces)", color: "#0F0D33" }}>{title}</h3>}
           {subtitle && <p className="text-sm mt-1" style={{ color: "#6B5B45" }}>{subtitle}</p>}
         </div>
       )}
@@ -99,7 +99,7 @@ export function ResourceVideoSection({
       {loading && (
         <div className={`grid gap-4 ${layout === "strip" ? "grid-cols-2 lg:grid-cols-4" : "grid-cols-1 sm:grid-cols-2"}`}>
           {Array.from({ length: count }).map((_, i) => (
-            <div key={i} className="rounded-2xl bg-[#1A1008]/10 animate-pulse" style={{ aspectRatio: "16/9" }} />
+            <div key={i} className="rounded-2xl bg-[#0F0D33]/10 animate-pulse" style={{ aspectRatio: "16/9" }} />
           ))}
         </div>
       )}
@@ -184,7 +184,7 @@ export function ResourceReel({ queries }: { queries: string[] }) {
         onEnded={() => setCurrent(c => (c + 1) % videos.length)}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0" style={{ background: "rgba(11,61,46,0.55)" }} />
+      <div className="absolute inset-0" style={{ background: "rgba(15,13,51,0.55)" }} />
       {/* Reel dots */}
       {videos.length > 1 && (
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
@@ -193,7 +193,7 @@ export function ResourceReel({ queries }: { queries: string[] }) {
               key={i}
               onClick={() => setCurrent(i)}
               className="w-1.5 h-1.5 rounded-full transition-all"
-              style={{ background: i === current ? "#E05A18" : "rgba(255,255,255,0.3)" }}
+              style={{ background: i === current ? "#00C851" : "rgba(255,255,255,0.3)" }}
             />
           ))}
         </div>

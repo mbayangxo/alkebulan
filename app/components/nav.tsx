@@ -69,7 +69,7 @@ function Dropdown({
         </svg>
       </button>
       {open && (
-        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 bg-[#0D0804] border border-gold/15 rounded-2xl shadow-2xl shadow-black/40 overflow-hidden z-50">
+        <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-52 bg-[#080620] border border-gold/15 rounded-2xl shadow-2xl shadow-black/40 overflow-hidden z-50">
           <div className="p-1.5">
             {items.map(({ label, href }) => (
               <Link
@@ -93,7 +93,7 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
 
   const navBg = transparent
     ? "bg-transparent"
-    : "bg-[#0D0804]";
+    : "bg-[#080620]";
 
   function isActive(href: string) {
     if (href === "/") return pathname === "/";
@@ -113,8 +113,8 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
           <Link href="/" className="flex items-center gap-3 flex-shrink-0 group">
             <AlkebulanLion size={38} className="transition-transform duration-300 group-hover:scale-105" />
             <span
-              style={{ letterSpacing: "0.13em", fontFamily: "var(--font-fraunces)" }}
-              className="font-bold italic text-[17px] text-gold leading-none hidden sm:block"
+              style={{ letterSpacing: "0.13em", fontFamily: "var(--font-fraunces)", color: "#D4A820" }}
+              className="font-bold text-[17px] leading-none hidden sm:block"
             >
               KEBU
             </span>
@@ -199,7 +199,7 @@ export function Nav({ transparent = false }: { transparent?: boolean }) {
 
       {/* ── Mobile menu ── */}
       {menuOpen && (
-        <div className="lg:hidden bg-[#0D0804] border-b border-white/8">
+        <div className="lg:hidden bg-[#080620] border-b border-white/8">
           {/* Primary links */}
           <div className="px-5 pt-5 pb-3 space-y-1">
             <p
