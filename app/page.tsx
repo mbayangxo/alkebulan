@@ -87,20 +87,37 @@ export default function LandingPage() {
               Kebu opens your eyes. Then shows you exactly how to move.
             </p>
 
-            <div className="flex flex-wrap gap-4">
-              <Link href="/path"
-                className="inline-flex items-center gap-3 font-bold px-8 py-4 rounded-full text-sm uppercase tracking-[0.08em] transition-all"
-                style={{ background: "#00C851", color: "#0F0D33" }}>
-                Show me the opportunity
-                <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
-                  <path d="M5 12H19M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              </Link>
-              <Link href="/industry"
-                className="inline-flex items-center gap-3 font-semibold px-8 py-4 rounded-full text-sm uppercase tracking-[0.08em] transition-all"
-                style={{ border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.7)" }}>
-                Industry Intelligence
-              </Link>
+            {/* Primary CTA: Ka Score */}
+            <div className="mb-4">
+              <p style={{ color: "rgba(0,200,81,0.55)", fontSize: "11px", letterSpacing: "0.18em", fontWeight: 600, textTransform: "uppercase", marginBottom: "12px" }}>
+                Start here — it takes 3 minutes
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/ka-score"
+                  className="inline-flex items-center gap-3 font-bold px-8 py-4 rounded-full text-sm uppercase tracking-[0.08em] transition-all"
+                  style={{ background: "#00C851", color: "#0F0D33" }}>
+                  Get my Ka Score — free
+                  <svg width="16" height="16" fill="none" viewBox="0 0 24 24">
+                    <path d="M5 12H19M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                </Link>
+                <Link href="/build"
+                  className="inline-flex items-center gap-3 font-semibold px-8 py-4 rounded-full text-sm uppercase tracking-[0.08em] transition-all"
+                  style={{ border: "1px solid rgba(255,255,255,0.2)", color: "rgba(255,255,255,0.7)" }}>
+                  What can I build? →
+                </Link>
+              </div>
+            </div>
+
+            {/* What Ka Score is */}
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+              {["Business Identity", "Revenue Track", "Assets", "Network", "History"].map((cat, i) => (
+                <div key={cat} className="flex items-center gap-1.5">
+                  {i > 0 && <span style={{ color: "rgba(255,255,255,0.15)" }}>·</span>}
+                  <span style={{ color: "rgba(255,255,255,0.35)", fontSize: "11px" }}>{cat}</span>
+                </div>
+              ))}
+              <span style={{ color: "rgba(0,200,81,0.5)", fontSize: "11px", fontWeight: 600 }}>= Your Ka Score</span>
             </div>
           </div>
 

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Nav } from "@/app/components/nav";
+import { createClient } from "@/lib/supabase/client";
 import {
   calculateKaScore,
   loadKaProfile,
@@ -125,9 +126,14 @@ export default function KaScorePage() {
   const [step, setStep] = useState(0); // 0 = intro, 1-5 = steps, 6 = results
   const [result, setResult] = useState<KaResult | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [authed, setAuthed] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data }) => {
+      setAuthed(!!data.user);
+    });
     const saved = loadKaProfile();
     if (saved) {
       setProfile(saved);
@@ -458,8 +464,58 @@ export default function KaScorePage() {
         </div>
       )}
 
+      {/* ── RESULTS GATE — must be signed in ── */}
+      {step === 6 && result && !authed && (
+        <div style={{ minHeight: "calc(100vh - 68px)", background: "#0F0D33", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div className="max-w-[540px] mx-auto px-5 sm:px-8 py-24 text-center">
+            {/* Blurred score preview */}
+            <div className="relative mb-10">
+              <div style={{ filter: "blur(10px)", opacity: 0.4, pointerEvents: "none" }}>
+                <ScoreRing score={result.total} color={result.level.color} />
+              </div>
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <div className="w-14 h-14 rounded-full flex items-center justify-center mb-3"
+                  style={{ background: "rgba(0,200,81,0.12)", border: "1px solid rgba(0,200,81,0.3)" }}>
+                  <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
+                    <path d="M12 2C9.24 2 7 4.24 7 7v2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-2V7c0-2.76-2.24-5-5-5zm0 2c1.66 0 3 1.34 3 3v2H9V7c0-1.66 1.34-3 3-3zm0 9a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" fill="#00C851" />
+                  </svg>
+                </div>
+                <p style={{ color: "#FAFAF8", fontWeight: 700, fontSize: "15px", fontFamily: "var(--font-fraunces)" }}>
+                  Your Ka Score is ready
+                </p>
+              </div>
+            </div>
+
+            <p style={{ fontFamily: "var(--font-fraunces)", color: "#FAFAF8", fontWeight: 700, fontSize: "clamp(1.6rem,3.5vw,2rem)", lineHeight: 1.2, marginBottom: "1rem" }}>
+              Create your Alkebulan ID to unlock your score
+            </p>
+            <p style={{ color: "rgba(253,250,244,0.45)", fontSize: "14px", lineHeight: 1.75, marginBottom: "2.5rem", maxWidth: "400px", margin: "0 auto 2.5rem" }}>
+              Kebu is for Africans, by Africans. Create a free account to unlock your Ka Score,
+              see which funding programs you qualify for, and get your step-by-step path.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link href="/signup"
+                className="inline-flex items-center justify-center gap-2 font-bold text-sm uppercase tracking-[0.08em] px-10 py-4 rounded-full transition-all"
+                style={{ background: "#00C851", color: "#0F0D33" }}>
+                Create free Alkebulan ID →
+              </Link>
+              <Link href="/login"
+                className="inline-flex items-center justify-center gap-2 font-semibold text-sm uppercase tracking-[0.08em] px-8 py-4 rounded-full transition-all"
+                style={{ border: "1px solid rgba(255,255,255,0.15)", color: "rgba(253,250,244,0.6)" }}>
+                Sign in
+              </Link>
+            </div>
+
+            <p style={{ color: "rgba(253,250,244,0.2)", fontSize: "11px", marginTop: "2rem" }}>
+              This platform is for people of African origin. Continental and diaspora Africans welcome.
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* ── RESULTS ── */}
-      {step === 6 && result && (
+      {step === 6 && result && authed && (
         <div style={{ background: "#080620" }}>
           {/* Score hero */}
           <div className="py-16 lg:py-24" style={{ background: "#0F0D33" }}>
